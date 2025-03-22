@@ -1,0 +1,205 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% i7 Seminar Report Template
+% Version November 8, 2023
+
+\documentclass[a4paper,11pt,DIV=15]{scrartcl} % Do not edit this line.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble
+
+% Page Geometry, Typography and Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{lmodern}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+% \renewcommand{theta}{\vartheta} % if you want
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% Floats
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+% Colors
+\usepackage{xcolor} %already loaded by tikz, but here for completeness
+% RWTH colors
+% blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+% Hyperlinks and Cross-References
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\hypersetup{%
+	pdftoolbar=false,
+	pdfmenubar=false,
+	colorlinks,
+	%pdfborderstyle={/S/U/W 1.25},
+	urlcolor={rwth-magenta},
+	linkcolor={rwth-red},
+	citecolor={rwth-green}
+}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{claim}[theorem]{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+
+
+% Misc packages
+\usepackage{lipsum}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+
+
+\begin{document}
+
+%TODO Insert topic of seminar, e.g. Theoretical Topics in Data Science or Complexity Theory
+\subtitle{}
+\date{\today}
+\publishers{RWTH Aachen University}	% Do not edit this line.
+
+%TODO Change this to your report title.
+\title{Thesis Concept: Relational Color Refinement}
+
+%TODO Change this to your name.
+\author{Theodor Teslia}
+
+\maketitle
+
+\section{Background}
+
+Color Refinement is a well-understood algorithm that can be applied in a lot of situations.
+The original applications of the procedure is graph isomorphism testing, as it is possible to prove that two Graphs are not isomorphic (however proving isomorphy is not possible).
+But there are also other fields, for example in Linear Programming, where the algorithm can be used as a pre-processing step to find a smaller, but equivalent, problem or Machine Learning, where color refinement can accelerate computations for kernel methods. \cite{grohe2021color}
+\\ \\
+The wide applicability and very simple nature of color refinement poses the question, whether an analogous algorithm exists for general relational structures.
+Such a relational color refinement (RCR) has been found by Schweikardt and Scheidt \cite{scheidt2024color} and will be further described in the rest of this chapter.
+\\ \\
+The key idea of RCR is to color tuples of elements that appear in some relation instead of elements themselves. 
+The coloring uses the atomic type $\mathsf{atp}(\mathbf{a})=\{R\in\sigma : \mathbf{a}\in R\}$ (the set of relations that include $\mathbf{a}$) as well as the similarity type $\mathsf{stp}(\mathbf{a},\mathbf{b})=\{(i,j)\in[k]\times[\ell] : a_i=b_j\}$ (the set of pairs of indices for equal elements) where $\mathbf{a}$ and $\mathbf{b}$ are of arity $k$ and $\ell$ respectively.
+This algorithm is shown to be equivalent to color refinement on a graph that is constructed from the relational structure by using the tuples as vertices and the shared types as edges.
+\\ \\
+An interesting aspect of color refinement is the equivalence to counting the number of homomorphisms between trees and the graphs \cite{dvovrak2010recognizing}. A similar measure can be found for relational color refinement.
+Needed for this is the generalization of trees as acyclic, connected graphs to relational structures, i.e. acyclic relational structures.
+For this we define the join-tree $J$, which represents a structure $\mathfrak C$ as a tree, where the nodes are the tuples of elements $\mathbf c$ that appear in some relation $R^\mathfrak C$ and the edges are defined, such that for every element $v\in C$, the set $\{\mathbf{c}\in \mathbf{C} : v\in\operatorname{set}(\mathbf c)\}$ induces a connected subgraph (which is also a tree).
+Then an acyclic relational structure is a structure for which a join tree exists.
+With this we can obtain the following equivalence:
+\begin{center}
+$\sigma$-structures $\mathfrak{A}$ and $\mathfrak{B}$ are distinguished by Relational Color Refinement \\ $\Leftrightarrow$ \\ There exists an acyclic $\sigma$-structure $\mathfrak{C}$ s.t $\hom(\mathfrak C, \mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
+\end{center}
+where $\hom(\mathfrak C,\mathfrak A)$ is the number of homomorphisms from $\mathfrak C$ to $\mathfrak A$.
+\\ \\
+Another way to characterize graphs that are distinguished by color refinement is logically.
+As described in \cite{cai1992optimal}, two graphs are distinguished by color refinement iff. there exists a sentence in first-order logic with counting quantifiers and up to $2$ variables such that one graph fulfills the sentence and the other does not.
+Again a similar result has been achieved for relational color refinement.
+By taking formulae of the guarded fragment of first-order counting logic the equivalence holds for general relational structures.
+The guarded fragment can informally be described as those formulae which have a guard for every quantifier, i.e. quantifiers only appear in the form $\exists^{\geq n}\mathbf v.(\Delta \land \psi)$ where the free variables in $\Delta$ are a superset of the free variables of $\psi$ ($\Delta$ then is called a guard for $\psi$).
+
+Similarly to the analogous result for graphs the proof uses a game between Spoiler and Duplicator to to prove the above results.
+\\ \\
+Taking the equivalences together, we obtain the end-result of \cite{scheidt2024color}:
+
+\begin{theorem}[\cite{scheidt2024color}]
+	Let $\sigma$ be a (relational) signature and let $\mathfrak A$ and $\mathfrak B$ be $\sigma$-structures. The following statements are equivalent:
+	\begin{enumerate}
+		\item Relational Color Refinement distinguishes $\mathfrak A$ and $\mathfrak B$.
+		\item There is an acyclic $\sigma$-structure $\mathfrak C$ such that $\hom(\mathfrak C,\mathfrak A)=\hom(\mathfrak C,\mathfrak B)$.
+		\item There is a sentence $\varphi\in \mathsf{GF(C)}$ such that $\mathfrak A\models\varphi$ and $\mathfrak B\not\models\varphi$.
+		\item Spoiler has a winning strategy for the Guarded-Game on $\mathfrak A,\mathfrak B$.
+	\end{enumerate}
+	\label{RCRMainThm}
+\end{theorem}
+
+\section{Objectives}
+
+The objectives and aims of the thesis are to explore the robustness of the results of \cite{scheidt2024color}. Primarily the applicability and adaptability to other classes of structures will be examined.
+
+Those include
+\begin{itemize}
+	\item Structures with functions, in particular constants / $0$-ary functions
+	\item Symmetric structures
+	\item Other classes
+\end{itemize}
+on which I will be elaborating in the following.
+
+\subsection{Structures with Functions}
+
+In the considerations for \cref{RCRMainThm} there do not appear function-symbols as only relational structures are considered.
+However as the generalization from graphs to relational structures is possible, it poses the question whether a further widening to structures is possible.
+For this, constant symbols, unary functions, an functions of arbitrary arity could be included in the signature.
+
+A first consideration in the thesis would then need be, whether the given definitions still make sense, i.e. can $\mathsf{GF(C)}$ also work with functions, do functions impact the acyclic property of structures?
+Further the definition of RCR needs to be investigated and adapted to also work with function symbols.
+
+As they are considerably simpler, those considerations will first be done for constants, i.e. $0$-ary functions and then increased to functions of higher arity.
+\label{StructWFunc}
+
+\subsection{Symmetric Structures}
+
+A symmetric structure is a relational structure $\mathfrak A$, where for all relations $R^\mathfrak A$ of arity $k$ it holds $R^\mathfrak A \subseteq \binom{A}{k}$, i.e. the order of elements inside a tuple does not matter.
+
+As those structures are relational, \cref{RCRMainThm} obviously also applies to them.
+However this trivial implication does not apply if we also restrict the other sides of the equivalence.
+In particular, does it still hold, if instead of acyclic structures we only use symmetric acyclic structures?
+Or can we restrict parts of the distinguishing sentence to be of a certain form?
+\label{SymmStruct}
+
+\subsection{Other classes}
+
+The same considerations will also be made for any other class that will be encountered while working on the thesis.
+If the class is a contains relational structures, the questions of \cref{StructWFunc} can be examined, while the questions of \cref{SymmStruct} can be investigated, if the class is a subclass of relational structures.
+
+\section{Structure}
+
+First I will blablabla, then I will blablabla
+
+
+\section{Related Work}
+
+balblabla
+
+\bibliographystyle{plainurl}
+\bibliography{references.bib}
+
+
+
+
+
+\end{document}
+
+
+
+
+
