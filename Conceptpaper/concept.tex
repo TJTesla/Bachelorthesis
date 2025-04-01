@@ -102,7 +102,7 @@
 
 Color Refinement is a well-understood algorithm that can be applied in a lot of situations.
 The original application of the procedure is graph isomorphism testing, as it is possible to prove that two graphs are not isomorphic (however proving isomorphy is not possible).
-However there are also other fields, for example Linear Programming, where the algorithm can be used as a pre-processing step to find a smaller, but equivalent, problem or Machine Learning, where color refinement can accelerate computations for kernel methods. \cite{grohe2021color}
+However, there are also other fields, for example Linear Programming, where the algorithm can be used as a pre-processing step to find a smaller, but equivalent, problem or Machine Learning, where color refinement can accelerate computations for kernel methods. \cite{grohe2021color}
 \\ \\
 The wide applicability and very simple nature of color refinement poses the question, whether an analogous algorithm exists for general relational structures.
 Such a relational color refinement (RCR) has been found by Schweikardt and Scheidt \cite{scheidt2024color} and will be further described in the following.
@@ -158,8 +158,8 @@ on which I will be elaborating in the following.
 
 \subsection{Structures with Functions}
 
-In the considerations for \cref{RCRMainThm} there do not appear function-symbols, since only relational structures are considered.
-However as the generalization from graphs to relational structures is possible, it poses the question whether a further widening to structures is possible.
+In the considerations for \cref{RCRMainThm}, there do not appear function-symbols, since only relational structures are considered.
+However, as the generalization from graphs to relational structures is possible, it poses the question whether a further widening to arbitrary signatures is achievable.
 For this, constant symbols, unary functions, and functions of arbitrary arity could be included in the signature.
 
 A first consideration in the thesis then needs to be, whether the given definitions still make sense, i.e. can $\mathsf{GF(C)}$ also work with functions, do functions impact the acyclic property of structures?
@@ -188,7 +188,7 @@ Furthermore the questions in \cref{SymmStruct} can be investigated.
 \subsection{Other classes}
 
 Additionally, the investigation of other classes of structures is possible, but will not be focused on as intensely as the above classes.
-These could, for example, be algebraic structures, which are a subclass of structures with functions, or relational structures with (countably) infinite signatures, which would be an expansion on the results by Schweickardt and Scheidt.
+These could, for example, be algebraic structures, which are a subclass of structures with functions, or relational structures with (countably) infinite signatures, which would be an expansion on relational structures.
 This list is obviously non-exhaustive.
 
 \subsection{Further Examinations}
@@ -203,11 +203,11 @@ If not, why?
 First I will begin with an introduction to color refinement on graphs and then define the relational color refinement due to \cite{scheidt2024color}.
 Further the existing work will be put into context by naming related works.
 
-After explaining the underlying algorithms, logics and structures such that the contents of \cite{scheidt2024color} are understandable, I will move onto the questions and problems stated in \cref{Sec::Objectives}.
+After explaining the underlying algorithms, logics and structures, such that the contents of \cite{scheidt2024color} are understandable, I will move onto the questions and problems stated in \cref{Sec::Objectives}.
 The main focus will lie on structures with functions and symmetric structures.
-The other classes will be investigated too. However the main work should happen in the chapters for the two former classes.
+However while the other classes will be investigated too, the main work should happen in the chapters for the two former classes.
 
-At the end I will conclude my results, put them into context, point out possible problems and state approaches for further work.
+At the end, I will conclude my results, put them into context, point out possible problems and state approaches for further work.
 
 
 \section{Related Works}
