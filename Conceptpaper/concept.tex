@@ -86,58 +86,110 @@
 \begin{document}
 
 %TODO Insert topic of seminar, e.g. Theoretical Topics in Data Science or Complexity Theory
-\subtitle{}
+\subtitle{Bachelor Thesis Concept}
 \date{\today}
 \publishers{RWTH Aachen University}	% Do not edit this line.
 
 %TODO Change this to your report title.
-\title{Thesis Concept: Relational Color Refinement}
+\title{Thesis Concept: Relational Colour Refinement for Non-Relational Signatures}
 
 %TODO Change this to your name.
 \author{Theodor Teslia}
 
 \maketitle
 
+\section{Introduction}
+
+Colour Refinement is a well-understood algorithm that can be applied in a lot of situations.
+The original application of the procedure is graph isomorphism testing.
+Colour Refinement colours the vertices of a graph in such a way that two non-isomorphic graphs always will have different colourings.
+As a consequence, Colour Refinement can detect that two graphs are not isomorphic, but the converse does not hold.
+However, there are also other fields where the algorithm can be applied.
+For example Linear Programming, where it can be used as a pre-processing step to find a smaller, but equivalent, problem or Machine Learning, where colour refinement can accelerate computations for kernel methods \cite{grohe2021color}.
+The wide applicability and very simple nature of Colour Refinement lead to a thorough investigation of its power (e.g. \cite{fluck2023going}, \cite{manvcinska2020quantum}).
+
+Furthermore, the simple procedure has been generalized to the $k$-dimensional Weisfeiler-Leman Algorithm, where Colour Refinement is the $1$-dimensional variant.
+This expansion makes it possible to colour non-isomorphic graphs differently, which would receive the same colouring from normal Colour Refinement \cite{kiefer2020power}.
+\\ \\
+As mentioned, Colour Refinement is an algorithm that operates on graphs.
+However, as graphs are very limited, an interesting direction of research is to find a similar algorithm that operates on structures that are more complex than graphs.
+
+A first step in that direction is Colour Refinement for coloured multigraphs, which are vertex-coloured binary structures. 
+This can be achieved by adapting the colours of the Colour Refinement to also include the vertex and edge colours. \cite{scheidt2024color}
+A further widening to hypergraphs, graphs that admit edges between any number of vertices, has been made by Scheidt and Schweikardt \cite{scheidt2023counting}.
+The generalization to arbitrary relational structures has been achieved by the same authors in \cite{scheidt2024color}, which will serve as a basis of the thesis.
+
 \section{Background}
 
-Color Refinement is a well-understood algorithm that can be applied in a lot of situations.
-The original application of the procedure is graph isomorphism testing, as it is possible to prove that two graphs are not isomorphic (however proving isomorphy is not possible).
-However, there are also other fields, for example Linear Programming, where the algorithm can be used as a pre-processing step to find a smaller, but equivalent, problem or Machine Learning, where color refinement can accelerate computations for kernel methods. \cite{grohe2021color}
-\\ \\
-The wide applicability and very simple nature of color refinement poses the question, whether an analogous algorithm exists for general relational structures.
-Such a relational color refinement (RCR) has been found by Schweikardt and Scheidt \cite{scheidt2024color} and will be further described in the following.
-\\ \\
-The key idea of RCR is to color tuples of elements that appear in some relation instead of the specific elements themselves. 
-The coloring uses the atomic type $\mathsf{atp}(\mathbf{a})=\{R\in\sigma : \mathbf{a}\in R\}$ (the set of relations that include $\mathbf{a}$) as well as the similarity type $\mathsf{stp}(\mathbf{a},\mathbf{b})=\{(i,j)\in[k]\times[\ell] : a_i=b_j\}$ (the set of pairs of indices for equal elements) where $\mathbf{a}$ and $\mathbf{b}$ are of arity $k$ and $\ell$ respectively.
-This algorithm is shown to be equivalent to color refinement on a graph that is constructed from the relational structure by using the tuples as vertices and the shared types as edges.
-\\ \\
-An interesting aspect of color refinement is the equivalence to counting the number of homomorphisms between trees and the graphs \cite{dvovrak2010recognizing}. A similar method can be found for relational color refinement.
-Needed for this is the generalization of trees (i.e. acyclic, connected graphs) to acyclic relational structures.
-For this we define the join-tree $J$, which represents a structure $\mathfrak C$ as a tree, where the nodes are the tuples of elements $\mathbf c$ that appear in some relation $R^\mathfrak C$. Further the edges are defined, such that for every element $v\in C$, the set $\{\mathbf{c}\in \mathbf{C} : v\in\operatorname{set}(\mathbf c)\}$ induces a connected subgraph (which is also a tree).
-Then an acyclic relational structure is a structure for which a join tree exists.
-With this we can obtain the following equivalence:
-\begin{center}
-$\sigma$-structures $\mathfrak{A}$ and $\mathfrak{B}$ are distinguished by Relational Color Refinement \\ $\Leftrightarrow$ \\ There exists an acyclic $\sigma$-structure $\mathfrak{C}$ s.t $\hom(\mathfrak C, \mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
-\end{center}
-where $\hom(\mathfrak C,\mathfrak A)$ is the number of homomorphisms from $\mathfrak C$ to $\mathfrak A$.
-\\ \\
-Another way to characterize graphs that are distinguished by color refinement is logically.
-As described in \cite{cai1992optimal}, two graphs are distinguished by color refinement iff. there exists a sentence in first-order logic with counting quantifiers and up to $2$ variables such that one graph fulfills the sentence and the other does not.
-Again a similar result has been achieved for relational color refinement.
-By taking formulae of the guarded fragment of first-order counting logic the equivalence holds for general relational structures.
-The guarded fragment can informally be described as those formulae which have a guard for every quantifier, i.e. quantifiers only appear in the form $\exists^{\geq n}\mathbf v.(\Delta \land \psi)$ where the free variables in $\Delta$ are a superset of the free variables of $\psi$. $\Delta$ is then called a guard for $\psi$.
+This section aims to explain and define Colour Refinement and its Relational version.
 
-Similarly to the analogous result for graphs the proof uses a game between Spoiler and Duplicator to prove the above results.
+\subsection{Colour Refinement} \label{sec::CR}
+
+Colour Refinement is a simple iterative algorithm which aims to find a colouring of the vertices of a graph.
+Initially, every vertex receives the same colour. 
+After this, the colouring gets iteratively refined where the next colour of a vertex is determined by its current one and the multiset of colours of its neighbours.
+This process is repeated until it stabilizes, i.e. the partition of the vertices induced by the colouring stays the same. This colouring is then called the stable colouring.
+
+If the stable colourings of two graphs are different, we say that Colour Refinement distinguishes the graphs.
+As the iterative step only uses the computed colours and amount of neighbour vertices, it is a very efficient procedure.
+In fact, Berkholz, Bonsma and Grohe showed Colour Refinement to be computable in $\mathcal O((n+m)\cdot\log (n))$ \cite{berkholz2017TightLower}.
+For a formal definition of Colour Refinement see e.g. \cite{kiefer2020power}, \cite{scheidt2024color} or \cite{grohe2021color}.
+
+One very interesting aspect of Colour Refinement is its characterisation through combinatorics and logic.
+Due to Dvo\v r\'ak \cite{dvovrak2010recognizing} and Dell, Grohe and Rattan \cite{dell2018LovaszMeets} we obtain the following statement:
+\begin{center}
+	Two graphs $G$ and $G'$ are distinguished by Colour Refinement.
+	\\ $\Longleftrightarrow$ \\ 
+	There exists a tree $T$ s.t. the number of homomorphisms from $T$ to $G$ is different from the number of homomorphisms from $T$ to $G'$.
+\end{center}
+Furthermore Cai, Fürer and Immerman were able to show that the fragment of first-order logic with counting quantifiers and up to two variables ($\mathsf C^2$) characterises Colour Refinement \cite{cai1992optimal}:
+\begin{center}
+	Two graphs $G$ and $G'$ are distinguished by Colour Refinement.
+	\\ $\Longleftrightarrow$ \\ 
+	There exists a sentence $\varphi\in \mathsf C^2$ s.t. $G\models \varphi$ and $G'\not\models\varphi$.
+\end{center}
+
+\subsection{Relational Colour Refinement}
+
+The key idea of Relational Colour Refinement (RCR) is to colour tuples of elements that appear in some relation instead of the specific elements themselves. 
+The colouring uses the atomic type $\mathsf{atp}(\mathbf{a})=\{R\in\sigma : \mathbf{a}\in R\}$ (the set of relations that include $\mathbf{a}$) as well as the similarity type $\mathsf{stp}(\mathbf{a},\mathbf{b})=\{(i,j)\in[k]\times[\ell] : a_i=b_j\}$ (the set of pairs of indices for equal elements) where $\mathbf{a}$ and $\mathbf{b}$ are of arity $k$ and $\ell$, respectively.
+When compared to Colour Refinement on coloured multigraphs, we find that the atomic type acts like the colouring of the vertices, while the similarity types play the role of the different edges.
+
+This algorithm is shown to be equivalent to Colour Refinement on a graph that is constructed from the relational structure, by using the tuples as vertices and the shared types as edges.
+In fact, this translation to the traditional Colour Refinement can then be used to state the running time of RCR to be in $\mathcal O(\Vert \mathfrak A\vert\cdot \log\Vert\mathfrak A\Vert)$.
+
+One interesting attribute of RCR is that it allows for two characterisations that are analogous to those of normal Colour Refinement. Those will be described in the following. \cite{scheidt2024color}
 \\ \\
-By combining the equivalences, we obtain the end-result of \cite{scheidt2024color}:
+As discussed in \cref{sec::CR}, Colour Refinement can be characterised by the number of homomorphisms from trees to graphs.
+To achieve a similar result for RCR, a generalisation of trees to relational structures is needed.
+A suitable definition is that of acyclic structures as they are used in database theory \cite{abiteboul1995foundations}.
+A formal definition can be found in \cite{scheidt2024color}.
+With this definition a main result of \cite{scheidt2024color} can be stated:
+\begin{center}
+	Two relational structures $\mathfrak A$ and $\mathfrak B$ are distinguished by RCR.
+	\\ $\Longleftrightarrow$ \\ 
+	There exists an acyclic structure $\mathfrak C$ s.t. the number of homomorphisms from $\mathfrak C$ to $\mathfrak A$ is different from the number of homomorphisms from $\mathfrak C$ to $\mathfrak B$.
+\end{center}
+\hfill
+\\
+As seen in \cref*{sec::CR}, Colour Refinement can be characterised logically.
+Again a similar result has been achieved for RCR.
+However, instead of by $\mathsf C^2$, RCR can be characterised by $\mathsf{GF}(\mathsf C)$, the guarded fragment of first-order logic with counting quantifiers.
+
+This logic depends on the definition of a guard: 
+Let $\operatorname{free}(\varphi)$ be the set of variables that appear freely in $\varphi$.
+Now let $\Delta$ be an atomic and $\psi$ be an arbitrary formula of $\mathsf{GF}(\mathsf C)$.
+If $\operatorname{free}(\Delta)\supseteq\operatorname{free}(\psi)$ we then call $\Delta$ a guard for $\psi$.
+$\mathsf{GF}(\mathsf C)$ is the fragment of $\mathsf C$ where quantifiers only appear of the form $\exists^{\geq n}\mathbf v.(\Delta \land \psi)$ where $\Delta$ is a guard for $\psi$.
+
+By taking this logical characterisation and the results from above, we obtain the end-result of \cite{scheidt2024color}:
 
 \begin{theorem}[Scheidt, Schweikardt \cite{scheidt2024color}]
-	Let $\sigma$ be a (relational) signature and let $\mathfrak A$ and $\mathfrak B$ be $\sigma$-structures. The following statements are equivalent:
+	Let $\mathfrak A$ and $\mathfrak B$ be relational structures. The following statements are equivalent:
 	\begin{enumerate}
 		\item Relational Color Refinement distinguishes $\mathfrak A$ and $\mathfrak B$.
-		\item There is an acyclic $\sigma$-structure $\mathfrak C$ such that $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
-		\item There is a sentence $\varphi\in \mathsf{GF(C)}$ such that $\mathfrak A\models\varphi$ and $\mathfrak B\not\models\varphi$.
-		\item Spoiler has a winning strategy for the Guarded-Game on $\mathfrak A,\mathfrak B$.
+		\item There exists an acyclic structure $\mathfrak C$ s.t. the number of homomorphisms from $\mathfrak C$ to $\mathfrak A$ is different from the number of homomorphisms from $\mathfrak C$ to $\mathfrak B$.
+		\item There is a sentence $\varphi\in \mathsf{GF}(\mathsf C)$ such that $\mathfrak A\models\varphi$ and $\mathfrak B\not\models\varphi$.
 	\end{enumerate}
 	\label{RCRMainThm}
 \end{theorem}
@@ -145,44 +197,33 @@ By combining the equivalences, we obtain the end-result of \cite{scheidt2024colo
 \section{Objectives}
 \label{Sec::Objectives}
 
-The objectives and aims of the thesis are to explore the robustness of the results of \cite{scheidt2024color}. Primarily the applicability and adaptability to other classes of structures will be examined.
-
-Those include
-\begin{itemize}
-	\item Structures with functions, in particular constants / $0$-ary functions
-	\item Symmetric structures
-	\item Ordered structures
-	\item Other classes
-\end{itemize}
-on which I will be elaborating in the following.
-
-\subsection{Structures with Functions}
-
-In the considerations for \cref{RCRMainThm}, there do not appear function-symbols, since only relational structures are considered.
-However, as the generalization from graphs to relational structures is possible, it poses the question whether a further widening to arbitrary signatures is achievable.
+The objectives and aims of the thesis are to explore the robustness of the results of \cite{scheidt2024color} and find potential expansions. 
+Primarily the applicability and adaptability to other classes of structures will be examined.
+\\ \\
+\cref{RCRMainThm} only considers relational signatures, but for example not functional ones.
+However, as the generalisation from graphs to relational structures is possible, it poses the question whether a further widening to arbitrary signatures is achievable.
 For this, constant symbols, unary functions, and functions of arbitrary arity could be included in the signature.
 
-A first consideration in the thesis then needs to be, whether the given definitions still make sense, i.e. can $\mathsf{GF(C)}$ also work with functions, do functions impact the acyclic property of structures?
+This thesis will consider, how the given definitions need to be adapted to work with function symbols, i.e. can $\mathsf{GF(C)}$ also work with functions, do functions impact the acyclic property of structures?
 Further the definition of RCR needs to be investigated and adapted to also work with function symbols.
 
-As they are considerably simpler, those considerations will first be done for constants, i.e. $0$-ary functions and then increased to functions of higher arity.
+As they are considerably simpler, those questions will first be considered for unary functions and then later increased to functions of higher arity.
 \label{StructWFunc}
-
-\subsection{Symmetric Structures}
-
-A symmetric structure is a relational structure $\mathfrak A$, where for all relations $R^\mathfrak A$ of arity $k$ it holds $R^\mathfrak A \subseteq \binom{A}{k}$, i.e. the order of elements inside a tuple does not matter.
+\\ \\
+A relational structure with symmetric relations is a structure $\mathfrak A$, where for all relations $R^\mathfrak A$ of arity $k$ it holds $R^\mathfrak A \subseteq \binom{A}{k}$, i.e. the order of elements inside a tuple does not matter.
 
 As those structures are relational, \cref{RCRMainThm} obviously applies to them.
-However this trivial implication does not apply if we also restrict the other sides of the equivalence.
+However, this trivial implication does not apply, if we also restrict the other sides of the equivalence.
 In particular, does it still hold, if instead of acyclic structures we only use symmetric acyclic structures?
 Or can we restrict parts of the distinguishing sentence to be of a certain form?
 
 A possible approach could be inspired by \cite{scheidt2023counting}, since symmetric structures and hypergraphs seem to be similar in some form.
 \label{SymmStruct}
 
+\iffalse
 \subsection{Ordered Structures}
 
-Given a relational structure where we require the structure to be ordered by a partial / total ordering, what role does the order play on the coloring?
+Given a relational structure where we require the structure to be ordered by a partial / total ordering, what role does the order play on the colouring?
 Furthermore the questions in \cref{SymmStruct} can be investigated.
 
 \subsection{Other classes}
@@ -193,37 +234,35 @@ This list is obviously non-exhaustive.
 
 \subsection{Further Examinations}
 
-Another possible question can be stated in relation to the results and methods of \cite{dell2018lov}.
-The term ``fractionally isomorphic'' is defined and is shown to be equivalent to the classical color refinement results.
-Can such a concept be widened, to also be equivalent to the relational color refinement?
+Another possible question can be stated in relation to the results and methods of \cite{dell2018LovaszMeets}.
+The term ``fractionally isomorphic'' is defined and is shown to be equivalent to the classical Colour Refinement results.
+Can such a concept be widened, to also be equivalent to the relational Colour Refinement?
 If not, why?
+\fi
 
 \section{Structure}
 
-First I will begin with an introduction to color refinement on graphs and then define the relational color refinement due to \cite{scheidt2024color}.
-Further the existing work will be put into context by naming related works.
+First I will begin with an introduction to Colour Refinement on graphs and the existing results for it. Further the Relational Colour Refinement due to \cite{scheidt2024color} will be defined and explained through own examples.
 
-After explaining the underlying algorithms, logics and structures, such that the contents of \cite{scheidt2024color} are understandable, I will move onto the questions and problems stated in \cref{Sec::Objectives}.
-The main focus will lie on structures with functions and symmetric structures.
-However while the other classes will be investigated too, the main work should happen in the chapters for the two former classes.
+After explaining the underlying algorithms, logics and structures, such that the results of \cite{scheidt2024color} can be explained, I will move onto the questions and problems stated in \cref{Sec::Objectives}.
 
 At the end, I will conclude my results, put them into context, point out possible problems and state approaches for further work.
 
 
+\iffalse
 \section{Related Works}
 
-Color refinement is a well-known algorithm that allows for isomorphism testing and performance optimizations in various fields, such as linear programming or machine learning \cite{grohe2021color}.
-There have been multiple considerations of the homomorphism indistinguishability defined by color refinement (e.g. \cite{fluck2023going}, \cite{manvcinska2020quantum}).
+Colour refinement is a well-known algorithm that allows for isomorphism testing and performance optimizations in various fields, such as linear programming or machine learning \cite{grohe2021color}.
+There have been multiple considerations of the homomorphism indistinguishability defined by Colour Refinement (e.g. \cite{fluck2023going}, \cite{manvcinska2020quantum}).
 Furthermore, the $k$-dimensional Weisfeiler-Leman Algorithm extends the simple procedure and allows for stricter relationships between graphs \cite{kiefer2020power}.
-However, the established results are constrained to (subclasses of) graphs (or colored multigraphs, cf. \cite{dell2018lov}).
+However, the established results are constrained to (subclasses of) graphs (or Colored multigraphs, cf. \cite{dell2018LovaszMeets}).
 An extension has been achieved by Schweickardt and Scheidt, by showing an analogous result for hypergraphs (graphs that admit edges between any number of vertices) in \cite{scheidt2023counting} and has further been generalized to structures of arbitrary relational signatures \cite{scheidt2024color}.
-As color refinement on graphs has shown itself to be very applicable in a lot of situations, a similar usefulness for relational color refinement seems probable.
+As Colour Refinement on graphs has shown itself to be very applicable in a lot of situations, a similar usefulness for Relational Colour Refinement seems probable.
+\fi
 
 
 \bibliographystyle{plainurl}
 \bibliography{references.bib}
-
-
 
 
 
