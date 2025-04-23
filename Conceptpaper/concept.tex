@@ -106,7 +106,6 @@ Colour Refinement colours the vertices of a graph in such a way that two non-iso
 As a consequence, Colour Refinement can detect that two graphs are not isomorphic, but the converse does not hold.
 However, there are also other fields where the algorithm can be applied.
 For example Linear Programming, where it can be used as a pre-processing step to find a smaller, but equivalent, problem or Machine Learning, where colour refinement can accelerate computations for kernel methods \cite{grohe2021color}.
-The wide applicability and very simple nature of Colour Refinement lead to a thorough investigation of its power (e.g. \cite{fluck2023going}, \cite{manvcinska2020quantum}).
 
 Furthermore, the simple procedure has been generalized to the $k$-dimensional Weisfeiler-Leman Algorithm, where Colour Refinement is the $1$-dimensional variant.
 This expansion makes it possible to colour non-isomorphic graphs differently, which would receive the same colouring from normal Colour Refinement \cite{kiefer2020power}.
@@ -131,6 +130,8 @@ After this, the colouring gets iteratively refined where the next colour of a ve
 This process is repeated until it stabilizes, i.e. the partition of the vertices induced by the colouring stays the same. This colouring is then called the stable colouring.
 
 If the stable colourings of two graphs are different, we say that Colour Refinement distinguishes the graphs.
+This means that there is a colour which occurs differently often in the colouring of one graph than in the colouring of the other.
+
 As the iterative step only uses the computed colours and amount of neighbour vertices, it is a very efficient procedure.
 In fact, Berkholz, Bonsma and Grohe showed Colour Refinement to be computable in $\mathcal O((n+m)\cdot\log (n))$ \cite{berkholz2017TightLower}.
 For a formal definition of Colour Refinement see e.g. \cite{kiefer2020power}, \cite{scheidt2024color} or \cite{grohe2021color}.
@@ -220,26 +221,6 @@ Or can we restrict parts of the distinguishing sentence to be of a certain form?
 A possible approach could be inspired by \cite{scheidt2023counting}, since symmetric structures and hypergraphs seem to be similar in some form.
 \label{SymmStruct}
 
-\iffalse
-\subsection{Ordered Structures}
-
-Given a relational structure where we require the structure to be ordered by a partial / total ordering, what role does the order play on the colouring?
-Furthermore the questions in \cref{SymmStruct} can be investigated.
-
-\subsection{Other classes}
-
-Additionally, the investigation of other classes of structures is possible, but will not be focused on as intensely as the above classes.
-These could, for example, be algebraic structures, which are a subclass of structures with functions, or relational structures with (countably) infinite signatures, which would be an expansion on relational structures.
-This list is obviously non-exhaustive.
-
-\subsection{Further Examinations}
-
-Another possible question can be stated in relation to the results and methods of \cite{dell2018LovaszMeets}.
-The term ``fractionally isomorphic'' is defined and is shown to be equivalent to the classical Colour Refinement results.
-Can such a concept be widened, to also be equivalent to the relational Colour Refinement?
-If not, why?
-\fi
-
 \section{Structure}
 
 First I will begin with an introduction to Colour Refinement on graphs and the existing results for it. Further the Relational Colour Refinement due to \cite{scheidt2024color} will be defined and explained through own examples.
@@ -247,18 +228,6 @@ First I will begin with an introduction to Colour Refinement on graphs and the e
 After explaining the underlying algorithms, logics and structures, such that the results of \cite{scheidt2024color} can be explained, I will move onto the questions and problems stated in \cref{Sec::Objectives}.
 
 At the end, I will conclude my results, put them into context, point out possible problems and state approaches for further work.
-
-
-\iffalse
-\section{Related Works}
-
-Colour refinement is a well-known algorithm that allows for isomorphism testing and performance optimizations in various fields, such as linear programming or machine learning \cite{grohe2021color}.
-There have been multiple considerations of the homomorphism indistinguishability defined by Colour Refinement (e.g. \cite{fluck2023going}, \cite{manvcinska2020quantum}).
-Furthermore, the $k$-dimensional Weisfeiler-Leman Algorithm extends the simple procedure and allows for stricter relationships between graphs \cite{kiefer2020power}.
-However, the established results are constrained to (subclasses of) graphs (or Colored multigraphs, cf. \cite{dell2018LovaszMeets}).
-An extension has been achieved by Schweickardt and Scheidt, by showing an analogous result for hypergraphs (graphs that admit edges between any number of vertices) in \cite{scheidt2023counting} and has further been generalized to structures of arbitrary relational signatures \cite{scheidt2024color}.
-As Colour Refinement on graphs has shown itself to be very applicable in a lot of situations, a similar usefulness for Relational Colour Refinement seems probable.
-\fi
 
 
 \bibliographystyle{plainurl}
