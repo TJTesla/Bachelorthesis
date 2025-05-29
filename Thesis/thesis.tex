@@ -1,0 +1,236 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% i7 Seminar Report Template
+% Version November 8, 2023
+
+\documentclass[a4paper,11pt,DIV=15]{scrartcl} % Do not edit this line.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble
+
+% Page Geometry, Typography and Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{lmodern}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+% \renewcommand{theta}{\vartheta} % if you want
+
+% Math packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% Floats
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+
+% Colors
+\usepackage{xcolor} %already loaded by tikz, but here for completeness
+% RWTH colors
+% blue violet purple carmine red magenta orange yellow grass cyan gold silver
+\definecolor{rwth-blue}{cmyk}{1,.5,0,0}\colorlet{rwth-lblue}{rwth-blue!50}\colorlet{rwth-llblue}{rwth-blue!25}
+\definecolor{rwth-violet}{cmyk}{.6,.6,0,0}\colorlet{rwth-lviolet}{rwth-violet!50}\colorlet{rwth-llviolet}{rwth-violet!25}
+\definecolor{rwth-purple}{cmyk}{.7,1,.35,.15}\colorlet{rwth-lpurple}{rwth-purple!50}\colorlet{rwth-llpurple}{rwth-purple!25}
+\definecolor{rwth-carmine}{cmyk}{.25,1,.7,.2}\colorlet{rwth-lcarmine}{rwth-carmine!50}\colorlet{rwth-llcarmine}{rwth-carmine!25}
+\definecolor{rwth-red}{cmyk}{.15,1,1,0}\colorlet{rwth-lred}{rwth-red!50}\colorlet{rwth-llred}{rwth-red!25}
+\definecolor{rwth-magenta}{cmyk}{0,1,.25,0}\colorlet{rwth-lmagenta}{rwth-magenta!50}\colorlet{rwth-llmagenta}{rwth-magenta!25}
+\definecolor{rwth-orange}{cmyk}{0,.4,1,0}\colorlet{rwth-lorange}{rwth-orange!50}\colorlet{rwth-llorange}{rwth-orange!25}
+\definecolor{rwth-yellow}{cmyk}{0,0,1,0}\colorlet{rwth-lyellow}{rwth-yellow!50}\colorlet{rwth-llyellow}{rwth-yellow!25}
+\definecolor{rwth-grass}{cmyk}{.35,0,1,0}\colorlet{rwth-lgrass}{rwth-grass!50}\colorlet{rwth-llgrass}{rwth-grass!25}
+\definecolor{rwth-green}{cmyk}{.7,0,1,0}\colorlet{rwth-lgreen}{rwth-green!50}\colorlet{rwth-llgreen}{rwth-green!25}
+\definecolor{rwth-cyan}{cmyk}{1,0,.4,0}\colorlet{rwth-lcyan}{rwth-cyan!50}\colorlet{rwth-llcyan}{rwth-cyan!25}
+\definecolor{rwth-teal}{cmyk}{1,.3,.5,.3}\colorlet{rwth-lteal}{rwth-teal!50}\colorlet{rwth-llteal}{rwth-teal!25}
+\definecolor{rwth-gold}{cmyk}{.35,.46,.7,.35}
+\definecolor{rwth-silver}{cmyk}{.39,.31,.32,.14}
+
+% Hyperlinks and Cross-References
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
+\hypersetup{%
+	pdftoolbar=false,
+	pdfmenubar=false,
+	colorlinks,
+	%pdfborderstyle={/S/U/W 1.25},
+	urlcolor={rwth-magenta},
+	linkcolor={rwth-red},
+	citecolor={rwth-green}
+}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{claim}[theorem]{Claim}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+
+
+% Misc packages
+\usepackage{lipsum}
+
+
+% Custom commands
+\newcommand{\GFC}{\mathsf{GF}(\mathsf{C})}
+\newcommand{\free}[1]{\operatorname{free}(#1)}
+\newcommand{\gd}[1]{\operatorname{gd}(#1)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+
+
+\begin{document}
+
+%TODO Insert topic of seminar, e.g. Theoretical Topics in Data Science or Complexity Theory
+\subtitle{Bachelor's Thesis}
+\date{August 28, 2025}
+\publishers{RWTH Aachen University}	% Do not edit this line.
+
+%TODO Change this to your report title.
+\title{Relational Colour Refinement for Non-Relational Signatures}
+
+%TODO Change this to your name.
+\author{Theodor Teslia}
+
+\maketitle
+
+
+%TODO Provide a short abstract for your report.
+\begin{abstract}
+	\lipsum[1-2]
+\end{abstract}
+
+\thispagestyle{empty}
+
+\clearpage
+
+%TODO The content of your report goes below.
+
+
+\section{Introduction}
+
+\lipsum[2-3]
+
+\section{Relational Colour Refinement}
+
+\lipsum[4-5]
+
+\clearpage
+
+\section{Relational Colour Refinement for structures with functions}
+
+\subsection{Naive Encoding of functions}
+
+A simple way to apply relational colour refinement to non-relational structures is, to encode the functions in the signature as a relation.
+Formally we transform a signature $\sigma$ that includes function symbols to a new signature $\sigma'$: 
+For every relation symbol $R\in \sigma$, we introduce a relation symbol $R\in \sigma'$ with the same arity and for every function symbol $f\in\sigma$ with arity $k$, we introduce a relational symbol $R_f\in\sigma'$ of arity $k+1$.
+
+Semantically, a structure $\mathfrak A$ of signature $\sigma$ can then be encoded as a structure $\mathfrak A'$ of signature $\sigma'$ and with the same universe as $\mathfrak A$. 
+For every relational symbol $R\in\sigma$ we set $R^{\mathfrak A'}\coloneqq R^{\mathfrak A}$ and for every function symbol $f\in\sigma$ of arity $k$ there exists a relation symbol $R_f\in\sigma'$ and we set $R_f^{\mathfrak A}\coloneqq \{(\mathbf x, y) : f^{\mathfrak A}(\mathbf x)=y\}$ where $\mathbf x$ is a tuple of arity $k$.
+
+This procedure encodes a non-relational structure as a relational one, on which Relational Colour Refinement can now be performed.
+As such we say, that the Naive Relational Colour Refinement (nRCR) distinguishes two structures $\mathfrak A$ and $\mathfrak B$ if, and only if, RCR distinguishes their naive encodings $\mathfrak A'$ and $\mathfrak B'$.
+However, this results in a very weak logical characterisation, that does not allow nesting of terms, namely the nesting-free-fragment of $\GFC$.
+
+\begin{definition}[$\mathsf{nfGF}(\mathsf C)$]
+	Consider the definition of $\GFC$ given in \ref{}.
+	We obtain the nesting-free fragment, by allowing $f(\mathbf x)=y$ as a further atomic formula.
+	Concretely, the only allowed atomic formulae are of the form $R(x_1,\dots,x_\ell)$, $x=y$ and $f(x_1,\dots,x_\ell)=y$, where $f$ has arity $\ell$, $\free{f(x_1,\dots,x_\ell)=y}=\{x_1,\dots,x_\ell\}$ and $\gd{f(\mathbf x)=y}=0$.
+	
+	The remaining definitions stay the same.
+\end{definition}
+
+\begin{theorem}
+	The two following statements are equivalent:
+	\begin{enumerate}
+		\item nRCR distinguishes $\mathfrak A$ and $\mathfrak B$.
+		\item There exists a sentence $\phi\in \mathsf{nfGF}(\mathsf C)$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	1. $\Rightarrow$ 2.:
+	By definition, $\mathfrak A$ and $\mathfrak B$ are distinguished by nRCR if, and only if, $\mathfrak A'$ and $\mathfrak B'$ are distinguished by RCR.
+	Using the result of \cite{scheidt2025ColorRefinement}, we obtain a sentence $\varphi'\in\GFC$ that distinguishes the encoded structures.
+	Via a structural induction on the formula, we can now translate $\varphi'$ into a formula $\phi\in \mathsf{nfGF}(\mathsf C)$
+	This can be achieved by expanding formulae $R_f(x_1,\dots,x_\ell,y)$ to $f(x_1,\dots,x_\ell)=y$ for function symbols $f\in\sigma$ and letting everything else stay the same.
+	
+	2. $\Rightarrow$ 1.:
+	When considering $\mathsf{nfGF}(\mathsf C)$, one can find that the transformation done at the end of the other direction can be applied in reverse.
+	This then leads to a distinguishing sentence in $\GFC$ and with \cite{scheidt2025ColorRefinement} to a distinguishing colouring of the encoded structures, which by definition is a distinguishing colouring for the structures themselves.
+\end{proof}
+
+While the above theorem results in a nice characterisation of the naive encoding, the nesting of terms is often very desired when using functions.
+However, it can be shown that nesting is too powerful for such a naive encoding.
+
+Consider the two structures $\mathfrak A$ and $\mathfrak B$ of signature $\sigma=\{f/1\}$ which can be seen in \cref{NaiveEncodingCounterexample}.
+Formally they are defined as
+
+\begin{alignat*}{2}
+	\mathfrak A = (&\{a_1, a_2, &&a_3, a_4, a_5, a_6\} \\ 
+	& f^{\mathfrak A} = \{&& \\
+	& && a_1 \mapsto a_3,\; a_3 \mapsto a_2,\; a_2 \mapsto a_1, \\
+	& && a_4 \mapsto a_5,\; a_5 \mapsto a_6,\; a_6 \mapsto a_4 \\
+	&\})
+\end{alignat*}
+and
+\begin{alignat*}{2}
+	\mathfrak B = (&\{b_1, b_2, &&b_3, b_4, b_5, b_6\} \\ 
+	& f^{\mathfrak A} = \{&& \\
+	& && b_1 \mapsto b_3,\; b_3 \mapsto b_5,\; b_5 \mapsto b_6, \\
+	& && b_6 \mapsto b_4,\; b_4 \mapsto b_2,\; b_2 \mapsto b_1 \\
+	&\})
+\end{alignat*}
+
+\begin{figure}[h]
+	This will be two nice graphs
+	
+	\caption{Two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$}
+	\label{NaiveEncodingCounterexample}
+\end{figure}
+
+Consider the formula $\phi=\exists x.(f(f(f(x)))=x)$ which utilizes term nesting to find a cycle with length three.
+It is obvious that $\mathfrak A \models \phi$ and $\mathfrak B\not\models \phi$.
+However, when encoding the two structures with the naive method described above, one finds that nRCR cannot distinguish them.
+Therefore, term nesting is too powerful for the naive encoding.
+
+A method that allows for the nesting of terms will be described in the following section.
+
+\subsection{Using the bounded transitive closure} 
+
+\begin{theorem}
+	Let $\psi(x_1,x_2)\coloneqq f^m(x_1) = x_2$.
+\end{theorem}
+
+\section {Relational Colour Refinement for symmetric structures}
+
+\lipsum[3-4]
+
+\section{Conclusion}
+
+\lipsum[2-3]
+
+
+\clearpage
+
+\bibliographystyle{plainurl}
+\bibliography{references.bib}
+
+
+
+
+
+\end{document}
+
+
+
+
+

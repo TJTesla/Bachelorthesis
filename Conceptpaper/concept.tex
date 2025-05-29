@@ -102,7 +102,7 @@
 
 Colour Refinement is a well-understood algorithm that can be applied in a lot of situations.
 The original application of the procedure is graph isomorphism testing.
-Colour Refinement colours the vertices of a graph in such a way that two non-isomorphic graphs always will have different colourings.
+Colour Refinement colours the vertices of a graph in such a way that a different colouring implies that the graphs cannot be isomorphic.
 As a consequence, Colour Refinement can detect that two graphs are not isomorphic, but the converse does not hold.
 However, there are also other fields where the algorithm can be applied.
 For example Linear Programming, where it can be used as a pre-processing step to find a smaller, but equivalent, problem or Machine Learning, where colour refinement can accelerate computations for kernel methods \cite{grohe2021color}.
@@ -111,7 +111,7 @@ Furthermore, the simple procedure has been generalized to the $k$-dimensional We
 This expansion makes it possible to colour non-isomorphic graphs differently, which would receive the same colouring from normal Colour Refinement \cite{kiefer2020power}.
 \\ \\
 As mentioned, Colour Refinement is an algorithm that operates on graphs.
-However, as graphs are very limited, an interesting direction of research is to find a similar algorithm that operates on structures that are more complex than graphs.
+Another interesting direction of research is to find a similar algorithm that operates on structures that are more complex than graphs.
 
 A first step in that direction is Colour Refinement for coloured multigraphs, which are vertex-coloured binary structures. 
 This can be achieved by adapting the colours of the Colour Refinement to also include the vertex and edge colours. \cite{scheidt2024color}
@@ -130,7 +130,7 @@ After this, the colouring gets iteratively refined where the next colour of a ve
 This process is repeated until it stabilizes, i.e. the partition of the vertices induced by the colouring stays the same. This colouring is then called the stable colouring.
 
 If the stable colourings of two graphs are different, we say that Colour Refinement distinguishes the graphs.
-This means that there is a colour which occurs differently often in the colouring of one graph than in the colouring of the other.
+This means that there is a colour which occurs a different number of times in the colouring of one graph than in the colouring of the other.
 
 As the iterative step only uses the computed colours and amount of neighbour vertices, it is a very efficient procedure.
 In fact, Berkholz, Bonsma and Grohe showed Colour Refinement to be computable in $\mathcal O((n+m)\cdot\log (n))$ \cite{berkholz2017TightLower}.
@@ -143,7 +143,7 @@ Due to Dvo\v r\'ak \cite{dvovrak2010recognizing} and Dell, Grohe and Rattan \cit
 	\\ $\Longleftrightarrow$ \\ 
 	There exists a tree $T$ s.t. the number of homomorphisms from $T$ to $G$ is different from the number of homomorphisms from $T$ to $G'$.
 \end{center}
-Furthermore Cai, Fürer and Immerman were able to show that the fragment of first-order logic with counting quantifiers and up to two variables ($\mathsf C^2$) characterises Colour Refinement \cite{cai1992optimal}:
+Furthermore Cai, Fürer and Immerman showed that the fragment of first-order logic with counting quantifiers and up to two variables ($\mathsf C^2$) characterises Colour Refinement \cite{cai1992optimal}:
 \begin{center}
 	Two graphs $G$ and $G'$ are distinguished by Colour Refinement.
 	\\ $\Longleftrightarrow$ \\ 
@@ -169,7 +169,7 @@ With this definition a main result of \cite{scheidt2024color} can be stated:
 \begin{center}
 	Two relational structures $\mathfrak A$ and $\mathfrak B$ are distinguished by RCR.
 	\\ $\Longleftrightarrow$ \\ 
-	There exists an acyclic structure $\mathfrak C$ s.t. the number of homomorphisms from $\mathfrak C$ to $\mathfrak A$ is different from the number of homomorphisms from $\mathfrak C$ to $\mathfrak B$.
+	There exists an acyclic structure $\mathfrak C$ such that the number of homomorphisms from $\mathfrak C$ to $\mathfrak A$ is different from the number of homomorphisms from $\mathfrak C$ to $\mathfrak B$.
 \end{center}
 \hfill
 \\
@@ -179,11 +179,12 @@ However, instead of by $\mathsf C^2$, RCR can be characterised by $\mathsf{GF}(\
 
 This logic depends on the definition of a guard: 
 Let $\operatorname{free}(\varphi)$ be the set of variables that appear freely in $\varphi$.
-Now let $\Delta$ be an atomic and $\psi$ be an arbitrary formula of $\mathsf{GF}(\mathsf C)$.
-If $\operatorname{free}(\Delta)\supseteq\operatorname{free}(\psi)$ we then call $\Delta$ a guard for $\psi$.
-$\mathsf{GF}(\mathsf C)$ is the fragment of $\mathsf C$ where quantifiers only appear of the form $\exists^{\geq n}\mathbf v.(\Delta \land \psi)$ where $\Delta$ is a guard for $\psi$.
+Now let $\Delta$ be an atomic formula and $\psi$ be an arbitrary formula of $\mathsf{GF}(\mathsf C)$.
+If $\operatorname{free}(\Delta)\supseteq\operatorname{free}(\psi)$, then we call $\Delta$ a guard for $\psi$.
+Let $v_1,\dots,v_k$ be variables with $v_i\in \operatorname{free}(\Delta)$ for all $i\in[k]$ and $\mathbf v = (v_1,\dots,v_k)$.
+$\mathsf{GF}(\mathsf C)$ is the fragment of $\mathsf C$, where quantifiers only appear of the form $\exists^{\geq n}\mathbf v.(\Delta \land \psi)$ where $\Delta$ is a guard for $\psi$.
 
-By taking this logical characterisation and the results from above, we obtain the end-result of \cite{scheidt2024color}:
+By taking this logical characterisation and the results from above, we can state the end-result of \cite{scheidt2024color}:
 
 \begin{theorem}[Scheidt, Schweikardt \cite{scheidt2024color}]
 	Let $\mathfrak A$ and $\mathfrak B$ be relational structures. The following statements are equivalent:
