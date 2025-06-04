@@ -83,6 +83,8 @@
 \newcommand{\free}[1]{\operatorname{free}(#1)}
 \newcommand{\gd}[1]{\operatorname{gd}(#1)}
 
+\renewcommand{\theta}{\vartheta}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document
@@ -204,11 +206,174 @@ Therefore, term nesting is too powerful for the naive encoding.
 
 A method that allows for the nesting of terms will be described in the following section.
 
+
+
+
 \subsection{Using the bounded transitive closure} 
 
-\begin{theorem}
-	Let $\psi(x_1,x_2)\coloneqq f^m(x_1) = x_2$.
-\end{theorem}
+We use the notation $f^{(m)}(x_1)$ as a shorthand for 
+$\underbrace{f(f(\dots f(}_{m\text{-times}}x_1) \dots))$.
+\break
+Let 
+\begin{align*}
+\mathcal I(n,m)=\{(k,l,p)\in [n]^3 \quad:\quad & k+p < k+l \leq n \; \land \\
+& k+r\cdot l + p = m \text{ for some } r\in \mathbb N\}.
+\end{align*}
+
+\begin{definition}
+	Let $(i,j)\in \mathbb N^2$ and let $f^\mathfrak A$ be a unary function symbol of a structure $\mathfrak A$. 
+	We call $(i,j)$ collision-minimal with respect to $a\in A$, if $i<j$ (especially $i\neq j$),  $f^{(i)}(a)= f^{(j)}(a)$ and for any $(i',j')\in \mathbb N^2$ with the two former properties, either
+	\begin{enumerate}
+		\item $i < i'$ or
+		\item $i=i'$ and $j < j'$.
+	\end{enumerate} 
+\end{definition}
+
+
+\begin{lemma}
+	Let $\psi(x_1,x_2)\coloneqq f^{(m)}(x_1)=x_2$. 
+	Then there exists a formula $\theta(x_1,x_2)$ such that for any $\mathfrak A$ with $\Vert \mathfrak A\Vert=n$ it holds
+	$$\mathfrak A \models \psi(\mathbf a) \Longleftrightarrow \mathfrak A \models \theta(\mathbf a)$$ 
+	and for any $f^{(m')}(x)$ that appears in $\theta$, $m'\leq n$.
+	\label{Simple_fm_to_fk}
+\end{lemma}
+\begin{proof}
+	If $m \leq n$, we let $\theta\coloneqq\psi$ and the claim follows.
+	
+	Otherwise, we define
+	$$\theta(x_1,x_2)\coloneqq \bigvee_{(k,\ell,p)\in \mathcal I(n,m)} \zeta_{(k,\ell,p)}(x_1,x_2)$$
+	where
+	\begin{align*}
+		\zeta_{(k,\ell,p)}(x_1,x_2)\coloneqq & f^{(k+p)}(x_1)=x_2 \land f^{(k)}(x_1)=f^{(k+\ell)}(x_1) \\
+		& \land \operatorname{E}^{k,\ell}_{f(x)}(x_1)  \\
+		& \land \bigwedge_{\ell'<\ell}f^{(k)}(x_1)\neq f^{(k+\ell')}(x_1)
+	\end{align*}
+	and
+	$$E^{k,\ell}_{f}(t(x_1))=\begin{cases}
+		\top & \text{if } k=0 \\
+		f^{(k-1)}(t(x_1))\neq f^{(k-1+\ell)}(t(x_1)) & \text{otherwise}.
+	\end{cases}$$
+	Due to the definition of $\mathcal I(n,m)$ it is obvious that only $f^{(m')}$ with $m'\leq n$ appears.
+	
+	We now proof the equivalence.
+	
+	$\Longleftarrow$: Let $\mathfrak A \models \theta(\mathbf a)$. 
+	By definition of $\theta$, there are $(k,\ell,p)\in \mathcal I(n,m)$ with $\mathfrak A \models \zeta_{(k,\ell,p)}(a_1,a_2)$.
+	In particular $f^{(k)}(a_1)=f^{(k+\ell)}(a_1)$. It follows that
+	$$f^{(k)}(a_1)=f^{(k+\ell)}(a_1)=f^{(k+2\ell)}(a_1)=f^{(k+3\ell)}(a_1) = \dots = f^{(k+r\cdot \ell)}(a_1)$$
+	for any $r\in \mathbb N$. By using the second equality and the definition of $\mathcal{I}(n,m)$, we get
+	$$a_2 =f^{(k+p)}(a_1) = f^{(k+r\cdot \ell + p)}(a_1)=f^{(m)}(a_1).$$
+	From this we can deduce $\mathfrak A\models f^{(m)}(a_1)=a_2 \eqqcolon \psi(\mathbf a)$.
+	
+	$\Longrightarrow$: Let $\mathfrak A\models \psi(a_1,a_2)$. By assumption $m>n$ and by the pigeonhole principle there have to be distinct $i, j$ such that $f^{(i)}(a_1)=f^{(j)}(a_1)$.
+	Choose such $i$, $j$ such that they are collision-minimal with respect to $a_1$.
+	
+	Now choose $k\coloneqq i$, $\ell \coloneqq j-i$ and $p\coloneqq (m-i) \mod (j-i)= (m-i) \mod \ell$.
+	Obviously $(k,\ell,p)\in\mathcal I(n,m)$ and what remains to be shown is that $\mathfrak A\models \zeta_{(k,\ell,p)}(a_1,a_2)$.
+	
+	$\mathfrak A\models f^{(k+p)}(a_1)=a_2$. We use the fact that
+	$$a= b \mod c \Leftrightarrow b = r\cdot c +a \text{ for some } r\in \mathbb N.$$
+	Then
+	$$f^{(k+p)}(a_1)=f^{(i+(m-i)-r\cdot \ell)}(a_1)=f^{(i+r\cdot \ell + m -i - r\cdot \ell)}(a_1)=f^{(m)}(a_1)=a_2.$$
+	
+	$\mathfrak A\models f^{(k)}(a_1)=f^{(k+\ell)}(a_1)$, because
+	$$f^{(k)}(a_1)=f^{(i)}(a_1)=f^{(j)}(a_1)=f^{(j+i-i)}(a_1)=f^{(i+j-i)}(a_1)=f^{(k+\ell)}(a_1).$$
+	
+	$\mathfrak A\models \operatorname{E}^{k,\ell}_f(a_1)$, because otherwise $f^{(k-1)}(a_1)=f^{(k-1+\ell)}(a)$, but then $(k-1,\ell)$ would contradict the collision-minimality of $(i,j)$.
+	
+	The same reasoning applies to $\mathfrak A\models \bigwedge_{\ell'<\ell}f^{(k)}(a_1)\neq f^{(k+\ell')}(a_1)$. I.e., otherwise there would be a $(i,j')$ with $j'<j$ which would contradict the collision-minimality.
+	
+	Thus we have shown that every subformula of the conjunction and therefore the formula is being fulfilled.
+\end{proof}
+
+As the following proof, as well as the main argument for the characterisation of $\GFC$, depend on the above proof, a small explanation of the intuition will be stated here.
+
+The indices $(j,k,l)$ represent a path to, the length of and the remaining part of a cycle.
+Due to the pigeonhole principle, such a cycle must exist if $m>n$, a picture that describes that argument can be seen in \ref{}.
+The argument for first two subformulae of $\zeta$ can be seen in the picture.
+$\operatorname{E}^{k,l}_f(x_1)$ and $\bigwedge_{\ell'<\ell}f^{(k)}(x_1)\neq f^{(k+\ell')}(x_1)$ is needed because in the following, it will be required that there is exactly one $(k,\ell,p)$ with the above properties.
+
+\begin{lemma}
+	Let $\psi(x_1,x_2)\coloneqq t(x_1)=x_2$ be an atomic formula. 
+	Then there exists a $\theta_{t(x)}(x_1,x_2)$ such that for any structure (of a fitting signature) $\mathfrak A$ with $\Vert \mathfrak A \Vert = n$ it holds
+	$$\mathfrak A \models \psi(\mathbf a) \Longleftrightarrow \mathfrak A \models \vartheta_{t(x)}(\mathbf a).$$ 
+	Furthermore, $\theta_{t(x)}(x_2,x_2)$ is of the form $\theta_{t(x)}(x_1,x_2)=\bigvee \Phi(x_1,x_2)$ where all $\phi(x_1,x_2)\in\Phi(x_1,x_2)$ are of the form
+	$$\phi(x_1,x_2)\coloneqq \Delta(x_1,x_2) \land \bigwedge \Psi(x_1)$$ 
+	where $\Delta(x_1,x_2)\coloneqq t'(x_1)=x_2$ for some term $t'(x_1)$, and for every $f^m(s(x))$ that appears in $\theta_{t(x)}$, $m\leq n$.
+\end{lemma}
+\begin{proof}
+	We proof this via an induction on the term $t(x_1)$.
+	
+	\textbf{Base cases: } 
+	If $t(x_1)\coloneqq x_1$, we define $\theta_{t(x)}(x_1,x_2)=\bigvee \{\Delta(x_1,x_2) \land \bigwedge \Psi\}$ with $\Delta(x_1,x_2) \coloneqq x_1=x_2$ and $\Psi=\{\top\}$.
+	Thus obviously $\theta_{t(x)}(x_1,x_2) \equiv x_1 = x_2$.
+	
+	If $t(x_1)\coloneqq f^{(m)}(x_1)$ for a unary function symbol $f$ and $m\in \mathbb N$, we use the formula constructed in the proof of \cref{Simple_fm_to_fk}.
+	It can easily be verified that it is in the correct form.
+	
+	\textbf{Inductive step: }
+	Assume that $t(x_1)\coloneqq g^m(s(x_1))$ for a function symbol $g$, $m\in\mathbb N$ and term $s$.
+	By induction hypothesis, we have a formula $\theta_{s(x)}(y_1,y_2)=\bigvee \Phi_s$ in the above defined form with $\mathfrak A,\mathbf{a} \models s(y_1)=y_2 \Leftrightarrow \mathfrak A,\mathbf{a}\models \theta_{s(x)}(y_1,y_2)$.
+	
+	If $m\leq n$, we set 
+	$$\theta_{t(x_1)}(x_1,x_2)=\bigvee \Phi'(x_1,x_2),$$
+	where $\Phi'(x_1,x_2)\coloneqq\{g^{(m)}(t'(y_1/x_1))=x_2 \land \bigwedge \Psi(y_1/x_1) : t'(y_1)=y_2 \land \bigwedge \Psi(y_1)\in \Phi_s\}$.
+	
+	Now assume $m>n$.
+	
+	Then we set
+	$$\theta_{t(x_1)}(x_1,x_2)=\bigvee_{(k,\ell,p)\in \mathcal I(n,m)} \bigvee \Phi'_{(k,\ell,p)}(x_1,x_2),$$
+	where 
+	\begin{align*}
+		\Phi'_{(k,\ell,p)}\coloneqq \{g^{(k+p)}(t'(y_1/x_1))=x_2 &\land g^{(k)}(t'(y_1/x_1))=g^{(k+l)}(t'(y_1/x_1)) \\
+		& \land \operatorname{E}^{k,l}_g(t'(y_1/x_1)) \land \bigwedge_{\ell'<\ell} g^{(k)}(t'(y_1/x_1))\neq g^{(k+\ell')}(t'(y_1/x_1)) \\
+		& \land \Psi(y_1/x_1) : t'(y_1)=y_2 \land \bigwedge \Psi(y_1)\in \Phi_s\}
+	\end{align*}
+	
+	By using the above definitions, we get $\mathfrak A,\mathbf a\models s(y_1)=y_2 \Leftrightarrow \mathfrak A,\mathbf a\models \phi_s(y_1,y_2)\coloneqq t'(y_1)=y_2 \land \bigwedge \Psi(y_1))$ for some $\phi_s\in\Phi_s$.
+	Therefore
+	\begin{equation}
+		\mathfrak A, \mathbf a \models s(y_1)=y_2 \Longleftrightarrow \mathfrak A,\mathbf a \models t'(y_1)=y_2 \land \bigwedge \Psi(y_1).
+		\label{Equivalence_s_and_tPsi}
+	\end{equation}
+	
+	We now proof that 
+	$$\mathfrak A, \mathbf a\models t(x_1)=x_2 \Longleftrightarrow \mathfrak A,\mathbf a\models \theta_{t(x_1)}(x_1,x_2).$$
+	
+	$\Longleftarrow$: 
+	Let $\mathfrak A, \mathbf a \models \theta_{t(x_1)}$.
+	If $m\leq n$, then there is some $\psi(x_1,x_2)\coloneqq g^{(m)}(t'(y_1/x_1))=x_2 \land \bigwedge \Psi(y_1/x_1)$ such that $\mathfrak A,a_1,a_2\models \psi(x_1,x_2)$.
+	We then get
+	\begin{align*}
+		\mathfrak A,a_1,a_2 \models & g^{(m)}(t'(y_1/x_1))=x_2 \land \bigwedge \Psi(y_1/x_1) \\
+		\Leftrightarrow \mathfrak A,a_1,a_2,a_3 \models & g^{(m)}(x_3)=x_2 \land \bigwedge \Psi(y_1/x_1) \land t'(y_1/x_1)=x_3 \text{ for any } a_3\in A \\
+		\overset{\cref{Equivalence_s_and_tPsi}}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3\models & g^{(m)}(x_3)=x_2 \land s(x_1)=x_3 \text{ for any } a_3\in A \\
+		\Leftrightarrow \mathfrak A,a_1,a_2 \models & g^{(m)}(s(x_1))=x_2.
+	\end{align*}
+	This was to be shown.
+	
+	Now let $m>n$.
+	Now there is a 
+	\begin{align*}
+		\psi(x_1,x_2)\coloneqq g^{(k+p)}(t'(y_1/x_1))=x_2 &\land g^{(k)}(t'(y_1/x_1))=g^{(k+l)}(t'(y_1/x_1)) \\
+		& \land \operatorname{E}^{k,l}_g(t'(y_1/x_1)) \land \bigwedge_{\ell'<\ell} g^{(k)}(t'(y_1/x_1))\neq g^{(k+\ell')}(t'(y_1/x_1)) \\
+		& \land \Psi(y_1/x_1)
+	\end{align*}
+	for some $(k,\ell,p)\in\mathcal I(n,m)$ with $\mathfrak A,a_1,a_2\models \psi(x_1,x_2)$.
+	And now
+	\begin{align*}
+		\mathfrak A,a_1,a_2 \models & \psi(x_1,x_2) \\
+		\Leftrightarrow A,a_1,a_2,a_3 \models &g^{(k+p)}(x_3)=x_2 \land g^{(k)}(x_3))=g^{(k+l)}(x_3) \\
+			& \land \operatorname{E}^{k,l}_g(x_3) \land \bigwedge_{\ell'<\ell} g^{(k)}(x_3))\neq g^{(k+\ell')}(x_3)) \\
+			& \land \Psi(y_1/x_1) \land t'(y_1/x_1)=x_3 \text{ for any } a_3\in A \\
+		\overset{\cref{Simple_fm_to_fk}}{\Leftrightarrow} \mathfrak A, a_1,a_2,a_3 \models & g^{(m)}(x_3)=x_2 \land t'(y_1/x_1)=x_3 \land \Psi(y_1/x_1) \text{ for any } a_3 \in A \\
+		\overset{\cref{Equivalence_s_and_tPsi}}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3 \models & g^{(m)}(x_3)=x_2\land s(x_1)=x_3 \text{ for any } a_3\in A \\
+		\Leftrightarrow \mathfrak A,a_1,a_2 \models & g^{(m)}(s(x_1))=x_2.
+	\end{align*}
+	This concludes the direction.
+	
+	The other direction should be analogous, as for any set of formulae $\Phi$ and formulae $\psi\in \Phi$ it holds: $\mathfrak A \models \psi \Leftrightarrow \mathfrak A\models \bigvee \Phi$.
+\end{proof}
 
 \section {Relational Colour Refinement for symmetric structures}
 
