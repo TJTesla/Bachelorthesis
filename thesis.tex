@@ -114,7 +114,7 @@
 
 %TODO Provide a short abstract for your report.
 \begin{abstract}
-	\lipsum[1-2]
+	% \lipsum[1-2]
 \end{abstract}
 
 \thispagestyle{empty}
@@ -126,13 +126,11 @@
 
 \section{Introduction}
 
-\lipsum[2-3]
+%\lipsum[2-3]
 
 \section{Relational Colour Refinement}
 
-\lipsum[4-5]
-
-\clearpage
+%\lipsum[4-5]
 
 \section{Relational Colour Refinement for structures with functions}
 
@@ -398,6 +396,42 @@ This is also possible and will be proved in the following proof.
 	Therefore we have finished the proof.
 \end{proof}
 
+A corollary of the above lemma is that the same statement holds for an arbitrary relation, instead of equality.
+
+\begin{corollary}
+	Let $\psi(x_1,\dots,x_m)\coloneqq R(t_1(x_1),\dots,t_m(x_m))$ be an atomic formula.
+	Then there exists a formula $\theta_\psi\in\GFC$, such that for any given structure (of fitting signature) $\mathfrak A$ with $\Vert\mathfrak A \Vert=n$ it holds
+	$$\mathfrak A,a_1,\dots,a_m\models \psi(x_1,\dots,x_m) \text{ if, and only if, } \mathfrak A,a_1,\dots,a_m\models \theta_\psi(x_1,\dots,x_m).$$
+	Furthermore, $\theta_\psi(x_1,\dots,x_m)$ is of the form $\bigvee \Phi(x_1,\dots,x_m)$ where all $\phi\in\Phi$ are of the form
+	$$R(t_1'(x_1),\dots,t_m'(x_m))\land \bigwedge\Psi_1(x_1)\land \dots\land\bigwedge \Psi_m(x_m),$$
+	and for every $f^m(s(x))$ that appear in $\theta_\psi$, where $f$ is a unary function symbol and $s$ is a term, $m\leq n$.
+\end{corollary}
+\begin{proof}
+	Let $\mathfrak A,a_1,\dots,a_m\models\psi(x_1,\dots,x_m)$.
+	This is equivalent to 
+	$$\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models R(b_1,\dots,b_m)\land t_1(x_1)=b_1\land\dots\land t_m(x_m)=b_m$$
+	for arbitrary $b_1,\dots,b_m\in A$.
+	By applying the previous lemma, we get the equivalent statement
+	\begin{align*}
+		\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models R(y_1,\dots,y_m) \land& \bigvee_{i_1}\left(t_{1,i_1}'(x_1)=y_1\land \bigwedge\Psi_{1,i_1}(x_1)\right) \\
+		\land& \dots \\
+		\land& \bigvee_{i_m}\left(t_{m,i_m}'(x_m)=y_m\land \bigwedge\Psi_{m,i_m}(x_m)\right).
+	\end{align*}
+	Through distribution of boolean formulae we get
+	\begin{align*}
+	\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \bigvee_{i_1} \dots \bigvee_{i_m} ( R(y_1,\dots,y_m)\land &
+	t_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi_{1,i_1}(x_1) \\
+	\land & \dots \\
+	\land & t_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi_{m,i_m}(x_m) ).
+	\end{align*}
+	
+	Finally, we can resubstitute variables and get
+	$$\mathfrak A,a_1,\dots,a_m\models \bigvee_{i_1}\dots\bigvee_{i_m} R(t_{1,i_1}'(x_1),\dots,t_{m,i_m}'(x_m))\land \bigwedge\Psi_{1,i_1}(x_1)\land\dots\land\bigwedge\Psi_{m,i_m}(x_m)\eqqcolon \theta_\psi(x_1,\dots,x_m).$$
+	
+	One can see that $\theta_\psi$ is of the correct form.
+	The equality follows from the fact that only equivalences have been used to derive $\theta_\psi$ from $\psi$.
+\end{proof}
+
 To obtain our characterising result for structures with (unary) functions, we have to define how the functions should be encoded.
 
 \begin{definition}[Transitive Expansion]
@@ -486,7 +520,10 @@ To formalise this, we want to characterise this algorithm logically, as well as 
 	\break
 	Now we prove that \emph{2.} implies \emph{1.}.
 	Let $\phi\in \GFC_k$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
-	
+	Our approach will be, to transform $\phi$ to a formula $\widetilde{\phi}$ that only uses symbols from $\widetilde{\sigma}$.
+	However, through the transformation, we introduce a syntactical form that is not allowed in the definition of $\GFC$.
+	Therefore we will define a new class of formulae, called $\text{conjunctive-}\GFC$, of which $\widetilde{\phi}$ will be an element of.
+	Furthermore, we will derive a winning strategy of the Guarded Game for the Spoiler (cf. \cite{scheidt2025ColorRefinement}, Lemma 5.7), which then will conclude the proof.
 \end{proof}
 
 % Now:
@@ -499,11 +536,11 @@ To formalise this, we want to characterise this algorithm logically, as well as 
 
 \section {Relational Colour Refinement for symmetric structures}
 
-\lipsum[3-4]
+%\lipsum[3-4]
 
 \section{Conclusion}
 
-\lipsum[2-3]
+%\lipsum[2-3]
 
 
 \clearpage

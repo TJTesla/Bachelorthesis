@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  9 JUN 2025 17:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  10 JUN 2025 14:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1159,19 +1159,16 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-
-[2
-
-]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 142.
+(Font)              <10.95> on input line 140.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 142.
+(Font)              <8> on input line 140.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 142.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 145
+(Font)              <6> on input line 140.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 143
 .
- (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
+
+(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-euf.cfg
@@ -1179,7 +1176,7 @@ File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-150.
+148.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1190,44 +1187,56 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-LaTeX Warning: Reference `' on page 3 undefined on input line 153.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
+LaTeX Warning: Reference `' on page 2 undefined on input line 151.
 
 
 
-[3
+[2
 
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/loca
 l/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/
 2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
 
+[3]
+
 [4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 
 [5]
+Overfull \hbox (10.98434pt too wide) detected at line 429
+\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[]; [] ; a[] \OMS/lmsy/m/n/10.95 j[]\O
+T1/lmr/m/n/10.95 = [] [] [] \OML/lmm/m/it/10.95 R\OT1/lmr/m/n/10.95 (\OML/lmm/m
+/it/10.95 t[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 x[]\OT1/lmr/m/n/10.95 )\OM
+L/lmm/m/it/10.95 ; [] ; t[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 x[]\OT1/lmr/
+m/n/10.95 )) \OMS/lmsy/m/n/10.95 ^ [] \OT1/lmr/m/n/10.95 	[](\OML/lmm/m/it/10.9
+5 x[]\OT1/lmr/m/n/10.95 ) \OMS/lmsy/m/n/10.95 ^ [] ^ [] \OT1/lmr/m/n/10.95 	[](
+\OML/lmm/m/it/10.95 x[]\OT1/lmr/m/n/10.95 ) =[][] \OML/lmm/m/it/10.95 #[]\OT1/l
+mr/m/n/10.95 (\OML/lmm/m/it/10.95 x[]; [] ; x[]\OT1/lmr/m/n/10.95 )\OML/lmm/m/i
+t/10.95 :
+ []
+
+
 
 [6]
 
 [7]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 455.
+(hyperref)                removing `math shift' on input line 489.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 455.
+(hyperref)                removing `\new@ifnextchar' on input line 489.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 455.
+(hyperref)                removing `subscript' on input line 489.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 455.
+(hyperref)                removing `math shift' on input line 489.
 
 
-Underfull \hbox (badness 7777) in paragraph at lines 485--489
+Underfull \hbox (badness 7777) in paragraph at lines 519--527
 []\T1/lmr/m/n/10.95 (+20) Therefore, we get a for-mula $\OML/lmm/m/it/10.95 ' \
 OMS/lmsy/m/n/10.95 2 []\OT1/lmr/m/n/10.95 (+20) (\OT1/lmss/m/n/10.95 (+20) C\OT
 1/lmr/m/n/10.95 (+20) )[]$ \T1/lmr/m/n/10.95 (+20) that dis-tin-guishes $\U/euf
@@ -1266,11 +1275,11 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 30925 strings out of 473190
- 615312 string characters out of 5715801
- 1256643 words of memory out of 5000000
- 53430 multiletter control sequences out of 15000+600000
- 653306 words of font info for 196 fonts, out of 8000000 for 9000
+ 30924 strings out of 473190
+ 615351 string characters out of 5715801
+ 1254643 words of memory out of 5000000
+ 53432 multiletter control sequences out of 15000+600000
+ 653260 words of font info for 194 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,12n,107p,10901b,910s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
@@ -1289,10 +1298,10 @@ ype1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/publi
 c/lm/lmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (10 pages, 312920 bytes).
+Output written on thesis.pdf (10 pages, 312233 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
+ 243 PDF objects out of 1000 (max. 8388607)
+ 175 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
  51789 words of extra memory for PDF output out of 61914 (max. 10000000)
 
