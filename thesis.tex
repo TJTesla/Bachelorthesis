@@ -88,6 +88,7 @@
 \newcommand{\free}[1]{\operatorname{free}(#1)}
 \newcommand{\gd}[1]{\operatorname{gd}(#1)}
 \newcommand{\RCR}{\operatorname{RCR}}
+\newcommand{\disjunctiveGFC}{\operatorname{disjunctive-\GFC}}
 
 \renewcommand{\theta}{\vartheta}
 
@@ -368,8 +369,8 @@ This is also possible and will be proved in the following proof.
 	We then get
 	\begin{align*}
 		\mathfrak A,a_1,a_2 \models & g^{m}(t'(y_1/x_1))=x_2 \land \bigwedge \Psi(y_1/x_1) \\
-		\Leftrightarrow \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land \bigwedge \Psi(y_1/x_1) \land t'(y_1/x_1)=x_3 \text{ for all } a_3\in A \\
-		\overset{\cref{Equivalence_s_and_tPsi}}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3\models & g^{m}(x_3)=x_2 \land s(x_1)=x_3 \text{ for all } a_3\in A \\
+		\Leftrightarrow \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land \bigwedge \Psi(y_1/x_1) \land t'(y_1/x_1)=x_3 \text{ for some } a_3\in A \\
+		\overset{\cref{Equivalence_s_and_tPsi}}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3\models & g^{m}(x_3)=x_2 \land s(x_1)=x_3 \text{ for some } a_3\in A \\
 		\Leftrightarrow \mathfrak A,a_1,a_2 \models & g^{m}(s(x_1))=x_2.
 	\end{align*}
 	
@@ -386,9 +387,9 @@ This is also possible and will be proved in the following proof.
 		\mathfrak A,a_1,a_2 \models & \psi(x_1,x_2) \\
 		\Leftrightarrow A,a_1,a_2,a_3 \models &g^{k+p}(x_3)=x_2 \land g^{k}(x_3))=g^{k+l}(x_3) \\
 			& \land \operatorname{E}^{k,l}_g(x_3) \land \bigwedge_{\ell'<\ell} g^{k}(x_3)\neq g^{k+\ell'}(x_3) \\
-			& \land \Psi(y_1/x_1) \land t'(y_1/x_1)=x_3 \text{ for all } a_3\in A \\
-		\overset{\cref{Simple_fm_to_fk}}{\Leftrightarrow} \mathfrak A, a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land t'(y_1/x_1)=x_3 \land \Psi(y_1/x_1) \text{ for all } a_3 \in A \\
-		\overset{\cref{Equivalence_s_and_tPsi}}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2\land s(x_1)=x_3 \text{ for any } a_3\in A \\
+			& \land \Psi(y_1/x_1) \land t'(y_1/x_1)=x_3 \text{ for some } a_3\in A \\
+		\overset{\cref{Simple_fm_to_fk}}{\Leftrightarrow} \mathfrak A, a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land t'(y_1/x_1)=x_3 \land \Psi(y_1/x_1) \text{ for some } a_3 \in A \\
+		\overset{\cref{Equivalence_s_and_tPsi}}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2\land s(x_1)=x_3 \text{ for some } a_3\in A \\
 		\Leftrightarrow \mathfrak A,a_1,a_2 \models & g^{m}(s(x_1))=x_2.
 	\end{align*}
 	The other direction follows in both cases, as only equivalent steps have been used and it is obvious that the disjunction of a set is being fulfilled, if a formula of the set is satisfied.
@@ -405,12 +406,13 @@ A corollary of the above lemma is that the same statement holds for an arbitrary
 	Furthermore, $\theta_\psi(x_1,\dots,x_m)$ is of the form $\bigvee \Phi(x_1,\dots,x_m)$ where all $\phi\in\Phi$ are of the form
 	$$R(t_1'(x_1),\dots,t_m'(x_m))\land \bigwedge\Psi_1(x_1)\land \dots\land\bigwedge \Psi_m(x_m),$$
 	and for every $f^m(s(x))$ that appear in $\theta_\psi$, where $f$ is a unary function symbol and $s$ is a term, $m\leq n$.
+	\label{TranslationOfArbAtomics}
 \end{corollary}
 \begin{proof}
 	Let $\mathfrak A,a_1,\dots,a_m\models\psi(x_1,\dots,x_m)$.
 	This is equivalent to 
 	$$\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models R(b_1,\dots,b_m)\land t_1(x_1)=b_1\land\dots\land t_m(x_m)=b_m$$
-	for arbitrary $b_1,\dots,b_m\in A$.
+	for some $b_1,\dots,b_m\in A$.
 	By applying the previous lemma, we get the equivalent statement
 	\begin{align*}
 		\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models R(y_1,\dots,y_m) \land& \bigvee_{i_1}\left(t_{1,i_1}'(x_1)=y_1\land \bigwedge\Psi_{1,i_1}(x_1)\right) \\
@@ -522,8 +524,91 @@ To formalise this, we want to characterise this algorithm logically, as well as 
 	Let $\phi\in \GFC_k$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
 	Our approach will be, to transform $\phi$ to a formula $\widetilde{\phi}$ that only uses symbols from $\widetilde{\sigma}$.
 	However, through the transformation, we introduce a syntactical form that is not allowed in the definition of $\GFC$.
-	Therefore we will define a new class of formulae, called $\text{conjunctive-}\GFC$, of which $\widetilde{\phi}$ will be an element of.
+	Therefore we will define a new class of formulae, called $\text{disjunctive-}\GFC$, of which $\widetilde{\phi}$ will be an element of.
 	Furthermore, we will derive a winning strategy of the Guarded Game for the Spoiler (cf. \cite{scheidt2025ColorRefinement}, Lemma 5.7), which then will conclude the proof.
+	
+	Using \cref{TranslationOfArbAtomics} we can obtain a formula $\theta_\psi$ for every atomic subformula $\psi$ of $\phi$ with $\mathfrak A\models \psi$ if, and only if, $\mathfrak A\models \theta_\psi$.
+	Now replace every subformula $\psi$ in $\phi$ with this newly constructed formula.
+	This yields us $\phi'\in \mathsf{C}$.
+	
+	\begin{claim}
+		The two formulae $\phi$ and $\phi'$ are equivalent.
+	\end{claim}
+	\begin{proof}
+		\textbf{Base cases:}
+		If $\phi$ is an atomic formula, that is, either a term equivalence or a relation, then replace $\phi$ with $\theta_\phi$.
+		The equivalence follows directly from the above lemmas.
+		
+		\textbf{Inductive cases:}
+		In the cases where $\phi$ is of the form $\neg\theta$ and $\theta_1\land\theta_2$, the claim follows directly using the induction hypothesis.
+		
+		Let $\phi$ be of the form $\exists^{\geq\ell}\mathbf v. \Delta\land \theta$.
+		In addition to translating $\Delta$ and $\theta$ respectively, we also want to distribute them to allow for easier definitions in the following proofs.
+		As such, we want to translate $\phi$ to $\phi'\coloneqq\exists^{\geq\ell}\mathbf v.\bigvee\left( \Delta'\land\bigwedge\Psi \land\theta'\right)$.
+		
+		In the following we prove the equivalence of these two formulae.
+		Let $\mathfrak A\models \phi$.
+		This means there are at least $\ell$ tuples $\mathbf a\in A$, such that $(\mathfrak A,\mathbf a)\models \Delta(\mathbf v) \land \theta(\mathbf v)$.
+		Using the induction hypothesis we get that this is equivalent to $(\mathfrak A,\mathbf a)\models \bigvee(\Delta'\land\bigwedge\Psi)\land \theta'$, which, using the distributive law of propositional logic, is equivalent to $(\mathfrak A,\mathbf a)\models \bigvee(\Delta'\land\bigwedge\Psi\land\theta')$.
+		
+		Therefore the number of tuples that satisfy $\Delta\land\theta$ must be the same as for $\bigvee(\Delta'\land\bigwedge\Psi\land\theta')$ and $\mathfrak A\models \exists^{\geq\ell}\mathbf v. \bigvee (\Delta'\land\bigwedge\Psi\land\theta')$ follows.
+	\end{proof}
+	
+	Note that for every term $\alpha$ that appears in $\phi'$ it is either a variable or there is a $F_\alpha \in \widetilde{\sigma}$.
+	This follows from the properties of the translation in \cref{TranslationOfArbAtomics}.
+	Furthermore, for guards we have to distribute the formulae a bit more.
+	
+	Now we can transform $\phi'$ to a formula of signature $\widetilde{\sigma}$.
+	We will define this transformation inductively over the structure of the formula $\psi$.
+	Furthermore, we use this induction to prove that this does not change, whether a structure satisfies the formula. 
+	\begin{claim}
+		It holds that $\mathfrak A\models \phi'$ if, and only if, $\widetilde{\mathfrak A}\models \widetilde{\phi}$.
+	\end{claim}
+	\begin{proof}
+		\textbf{Base cases:}
+		If $\psi$ is of the form $t(x)=y$ for a term $t$, then there exists a relation $F_t$ in $\widetilde{\sigma}$. Therefore we set the transformed formula to $F_t(x,y)$.
+		
+		If $\psi$ is of the form $R(t_1(x_1),\dots,t_m(x_m))$, then there are relations $F_{t_i}$ for $1\leq i \leq m$ in $\widetilde{\sigma}$. Therefore we set the transformed formula to $R(y_1,\dots,y_m)\land F_{t_1}(x_1,y_1)\land\dots\land F_{t_m}(x_m,y_m)$.
+		
+		The claim obviously follows from the definition of the transitive expansion.
+		
+		\textbf{Inductive cases:}
+		Given the formulae $\theta_1$ and $\theta_2$, as well as their transformed forms $\widetilde{\theta_1}$ and $\widetilde{\theta_2}$, which fulfil the above claim.
+		
+		We then have the following translations, for which the claim can easily be shown using the induction hypothesis.
+		\begin{itemize}
+			\item $\neg \theta_1$ to $\neg \widetilde{\theta_1}$,
+			\item $\theta_1\land\theta_2$ to $\widetilde{\theta_1}\land\widetilde{\theta_2}$ and
+			\item $\exists^{\geq\ell}\mathbf v.\theta_1$ to $\exists^{\geq \ell}\mathbf v. \widetilde{\theta_1}$.
+		\end{itemize}
+	\end{proof}
+	
+	The resulting formula is a formula in the logic $\text{disjunctive-}\GFC$, which we will define in the following.
+	
+	\begin{definition}[$\text{disjunctive-}\GFC$]
+		The logic $\text{disjunctive-}\GFC$ is a syntactical extension of $\GFC$.
+		As such it is defined by the rules given in \ref{} of $\GFC$ in addition to a sixth rule:
+		
+		For two disjunct sets of variables $\mathbf x=\{x_1,\dots,x_m\}$ and $\mathbf y=\{y_1,\dots,y_m\}$, atomic formulae $\Delta_i$ with $\free{\Delta_i}\subseteq \mathbf y$, formulae $\theta_i$ with $\free{\theta_i}\subseteq \mathbf x$, binary relations $R_j$, $\ell\in\mathbb N$ and a set $\mathbf{x'}\subseteq \mathbf{x}$, the formula 
+		$$\exists^{\geq\ell}\mathbf {x'}.\bigvee_i\left(\Delta(\mathbf y) \land \bigwedge_j R_j(x_j, y_j) \land \theta(\mathbf x)\right)$$
+		is a formula of $\text{disjunctive-}\GFC$.
+		\label{disjunctiveGFCDef}
+	\end{definition}
+	
+	We can now extend the proof of Lemma 5.7 from \cite{scheidt2025ColorRefinement} to find a winning strategy for Spoiler for a formula in $\disjunctiveGFC$.
+	This will then conclude the proof of this theorem.
+	
+	\begin{lemma}
+		Let $\mathfrak A$ and $\mathfrak B$ be structures of strictly equal size and let $\mathbf a\in A^k$, $b\in B^k$ be arbitrary tuples of arity $k$.
+		Let $\mathbf x$ be a tuple of $k$ distinct variables.
+		If there exists a formula $\phi\in\operatorname{disjunctive-\GFC}$ with $\free{\phi}\subseteq\{x_1,\dots,x_k\}$ such that $(\mathfrak A,\mathbf a)\models \phi(\mathbf x) \Longleftrightarrow (\mathfrak B,\mathbf b)\not\models \phi(\mathbf x)$, then Spoiler has a $\gd{\phi}$-round winning strategy for the Guarded-Game on $(\mathfrak A,\mathbf a),(\mathfrak B,\mathbf b)$.
+	\end{lemma}
+	\begin{proof}
+		By looking at the definition of $\disjunctiveGFC$, we find that all cases but one are covered in the analogous proof in \cite{scheidt2025ColorRefinement}.
+		Therefore we only have to consider the case added in \cref{disjunctiveGFCDef}.
+		
+		Let $\phi(\mathbf x)$ be of the form
+	\end{proof}
 \end{proof}
 
 % Now:
