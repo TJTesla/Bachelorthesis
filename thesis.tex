@@ -255,6 +255,7 @@ One can see that in a structure $\mathfrak A$ with a unary function $f$ and $n$ 
 	Then there exists a formula $\theta(x_1,x_2)\in \GFC$ such that for any $\mathfrak A$ with $\Vert \mathfrak A\Vert=n$ it holds
 	$$\mathfrak A,a_1,a_2 \models \psi(x_1,x_2) \text{ if, and only if, } \mathfrak A,a_1,a_2 \models \theta(x_1,x_2)$$ 
 	and for any $f^{m'}(x)$ that appears in $\theta$, $m'\leq n$.
+	Furthermore, $\theta(x_1,x_2)$ is of the form $\bigvee \Phi(x_1,x_2)$, and if $\mathfrak A,a_1,a_2\models \theta(x_1,x_2)$, then there is exactly one $\phi(x_1,x_2)\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1} x_2 . \phi(x_1,x_2)$.
 	\label{Simple_fm_to_fk}
 \end{lemma}
 \begin{proof}
@@ -313,6 +314,44 @@ One can see that in a structure $\mathfrak A$ with a unary function $f$ and $n$ 
 	If it weren't satisfied, there would be a $(i,j')$ with $j'<j$ and $f_{\mathfrak A}^{i}(a_1)=f_{\mathfrak A}^{i+j'}(a_1)$ which would be lexicographically smaller than $(i,j)$.
 	
 	Thus we have shown that every subformula of the conjunction and therefore the formula is being fulfilled.
+	
+	Lastly, it remains to prove that if $\theta$ is being satisfied, there is exactly one $\exists^{\geq 1}x_2.\zeta_{(k,\ell,p)}(x_1, x_2)$ that is fulfilled.
+	We prove this with a proof by contradiction.
+	Assume that $\mathfrak A,a_1,a_2\models \theta(x_1,x_2)$ and that there are $\zeta_{(k,\ell,p)}(x_1,x_2)$ and $\zeta_{(k',\ell',p')}(x_1,x_2)$ with $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\zeta_{(k,\ell,p)}(x_1,x_2)$, $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\zeta_{(k',\ell',p')}(x_1,x_2)$ and $(k,\ell,p)\neq (k',\ell',p')$.
+	
+	We proceed with a case distinction. 
+	Let $k=k'$ and with a second case distinction let $\ell=\ell'$.
+	Then there are $r,r'\in\mathbb N$ such that
+	$$k+r\cdot \ell + p = k'+r'\cdot \ell' + p'=m.$$
+	Thus we can infer that $r\cdot \ell+p = r'\cdot \ell'+p'$.
+	By definition of $\mathcal{I}(n,m)$ we know that $p,p'<\ell=\ell'$ and as such 
+	$$r\cdot \ell +p,r'\cdot \ell'+p'\in \{r\cdot \ell,r\cdot \ell +1,\dots, r\cdot \ell +(\ell-1)\}$$
+	And $p$ is non-negative, $r=r'$ has to follow and further we get $p=p'$.
+	However this would contradict that $(k,\ell,p)\neq (k',\ell',p')$.
+	
+	Now assume that $\ell\neq\ell'$ and without loss of generality assume that $\ell<\ell'$.
+	But then $\mathfrak A,a_1 \not\models \bigwedge_{\hat{\ell}<\ell'}f^{k'}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$, because 
+	$$f^{k'+\ell}_{\mathfrak A}(a_1)=f^{k+\ell}_{\mathfrak A}=f^k_{\mathfrak A}(a_1)=f^{k'}_{\mathfrak A}(a_1)$$
+	and $k'+\ell < k'+\ell'$.
+	Thus this cannot be the case as well.
+	
+	Consider that $k\neq k'$ and without loss of generality assume that $k<k'$.
+	If $\ell=\ell'$, then by the principle of induction, we get that $f_{\mathfrak A}^k(a_1)=f_{\mathfrak A}^{k+\ell}(a_1)$, $f_{\mathfrak A}^{k+1}(a_1)=f_{\mathfrak A}^{k+1+\ell}(a_1)$ and then $f_{\mathfrak A}^{k'}(a_1)=f_{\mathfrak A}^{k'+\ell'}(a_1)$.
+	But this contradicts $\mathfrak A,a_1 \models \operatorname{E}^{k',\ell'}_f(x_1)$.
+	
+	If $\ell < \ell'$, then 
+	$$f_{\mathfrak A}^{k'}(a_1) =f_{\mathfrak A}^{k+(k'-k)}(a_1)=f_{\mathfrak A}^{k+(k'-k)+\ell}(a_1) = f_{\mathfrak A}^{k'+\ell}(a_1),$$
+	but this again contradicts $\mathfrak A,a_1 \models \bigwedge_{\hat{\ell}<\ell'}f^{k'}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$.
+	
+	If $\ell'<\ell$, then there exists a $t\in\mathbb N$ such that 
+	$$k+t\cdot  \ell < k' \leq k+(t+1)\cdot \ell.$$
+	We now define $r\coloneqq k+(t+1)\cdot \ell -k'$ and get $f_{\mathfrak A}^{k'+r}(a_1)=f_{\mathfrak A}^{k'+r+\ell'}$ and by using $f_{\mathfrak A}^{k'+r}(a_1)=f_{\mathfrak A}^{k+(t+1)\cdot \ell}(a_1)=f_{\mathfrak A}^k(a_1)$ it follows that $f_{\mathfrak A}^{k}(a_1)=f_{\mathfrak A}^{k+\ell'}(a_1)$.
+	This contradicts $\mathfrak A,a_1 \models \bigwedge_{\hat{\ell}<\ell}f^{k}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$.
+	
+	One can see that we neither used $x_2$.
+	Therefore its interpretation is irrelevant, which is why we can existentially quantify it in the claim.
+	
+	As all possible cases lead to a contradiction, the first assumption cannot be true and we proved the claim.
 \end{proof}
 
 The above proof allows for the translation of formulae $f^m(x)=y$ to a formula $\theta(x,y)$ that is equivalent for structures with $n$ elements.
@@ -326,21 +365,23 @@ This is also possible and will be proved in the following proof.
 	Furthermore, $\theta_{t}(x_1,x_2)$ is of the form $\theta_{t}(x_1,x_2)=\bigvee \Phi(x_1,x_2)$ where all $\phi(x_1,x_2)\in\Phi(x_1,x_2)$ are of the form
 	$$t'(x_1)=x_2 \land \bigwedge \Psi(x_1)$$ 
 	for some term $t'(x_1)$, and for every $f^m(s(x))$ that appears in $\theta_{t}$, $m\leq n$.
+	Additionally, if $\mathfrak A,a_1,a_2\models \theta_{t}(x_1,x_2)$, then there is exactly one $\phi\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi(x_1,x_2)$.
+	\label{TranslationOfArbTerms}
 \end{lemma}
 \begin{proof}
 	We prove this via an induction on the term $t(x_1)$.
 	
 	\textbf{Base case:}
 	If $t(x_1)\coloneqq f^{m}(x_1)$ for a unary function symbol $f$ and $m\in \mathbb N$, we use the formula constructed in the proof of \cref{Simple_fm_to_fk}.
-	It can easily be verified that it is in the correct form.
+	It can easily be verified that it is in the correct form and from the same proof we get that if the translated formula is fulfilled, exactly one subformula of the disjunction is satisfied.
 	
 	\textbf{Inductive step:}
 	Assume that $t(x_1)\coloneqq g^m(s(x_1))$ for a unary function symbol $g$, $m\in\mathbb N$ and term $s$.
-	By induction hypothesis, we have a formula $\theta_{s}(y_1,y_2)=\bigvee \Phi_s(y_1,y_2)$ in the above defined form with $\mathfrak A,a_1,a_2 \models s(y_1)=y_2$ if, and only if, $\mathfrak A,a_1,a_2\models \theta_{s}(y_1,y_2)$.
+	By induction hypothesis, we have a formula $\theta_{s}(x_1,x_2)=\bigvee \Phi_s(x_1,x_2)$ in the above defined form with $\mathfrak A,a_1,a_2 \models s(x_1)=x_2$ if, and only if, $\mathfrak A,a_1,a_2\models \theta_{s}(x_1,x_2)$.
 	
 	If $m\leq n$, we set 
 	$$\theta_{t}(x_1,x_2)=\bigvee \Phi'(x_1,x_2),$$
-	where $\Phi'(x_1,x_2)\coloneqq\{g^{m}(t'(y_1/x_1))=x_2 \land \bigwedge \Psi(y_1/x_1) : t'(y_1)=y_2 \land \bigwedge \Psi(y_1)\in \Phi_s(y_1,y_2)\}$.
+	where $\Phi'(x_1,x_2)\coloneqq\{g^{m}(t'(x_1))=x_2 \land \bigwedge \Psi(x_1) : t'(x_1)=x_2 \land \bigwedge \Psi(x_1)\in \Phi_s(x_1,x_2)\}$.
 	
 	Now assume $m>n$.
 	
@@ -348,15 +389,15 @@ This is also possible and will be proved in the following proof.
 	$$\theta_{t}(x_1,x_2)=\bigvee_{(k,\ell,p)\in \mathcal I(n,m)} \bigvee \Phi'_{(k,\ell,p)}(x_1,x_2),$$
 	where 
 	\begin{align*}
-		\Phi'_{(k,\ell,p)}\coloneqq \{g^{k+p}(t'(y_1/x_1))=x_2 &\land g^{k}(t'(y_1/x_1))=g^{k+l}(t'(y_1/x_1)) \\
-		& \land \operatorname{E}^{k,l}_g(t'(y_1/x_1)) \land \bigwedge_{\ell'<\ell} g^{k}(t'(y_1/x_1))\neq g^{k+\ell'}(t'(y_1/x_1)) \\
-		& \land \Psi(y_1/x_1) : t'(y_1)=y_2 \land \bigwedge \Psi(y_1)\in \Phi_s(y_1,y_2)\}
+		\Phi'_{(k,\ell,p)}\coloneqq \{g^{k+p}(t'(x_1))=x_2 &\land g^{k}(t'(x_1))=g^{k+l}(t'(x_1)) \\
+		& \land \operatorname{E}^{k,l}_g(t'(x_1)) \land \bigwedge_{\ell'<\ell} g^{k}(t'(x_1))\neq g^{k+\ell'}(t'(x_1)) \\
+		& \land \Psi(x_1) : t'(x_1)=x_2 \land \bigwedge \Psi(x_1)\in \Phi_s(x_1,x_2)\}
 	\end{align*}
 	
-	By using the above definitions, we get $\mathfrak A,a_1,a_2\models s(y_1)=y_2$ if, and only if, $\mathfrak A,a_1,a_2\models \phi_s(y_1,y_2)$ for some $\phi_s\in\Phi_s$ where $\phi_s(y_1,y_2)$ is of the form $t'(y_1)=y_2 \land \bigwedge \Psi(y_1)$.
+	By using the above definitions, we get $\mathfrak A,a_1,a_2\models s(x_1)=x_2$ if, and only if, $\mathfrak A,a_1,a_2\models \phi_s(x_1,x_2)$ for some $\phi_s\in\Phi_s$ where $\phi_s(x_1,x_2)$ is of the form $t'(x_1)=x_2 \land \bigwedge \Psi(x_1)$.
 	Therefore
 	\begin{equation}
-		\mathfrak A, a_1,a_2 \models s(y_1)=y_2 \text{ if, and only if, } \mathfrak A,a_1,a_2 \models t'(y_1)=y_2 \land \bigwedge \Psi(y_1).
+		\mathfrak A, a_1,a_2 \models s(x_1)=x_2 \text{ if, and only if, } \mathfrak A,a_1,a_2 \models t'(x_1)=x_2 \land \bigwedge \Psi(x_1).
 		\label{Equivalence_s_and_tPsi}
 	\end{equation}
 	
@@ -365,11 +406,11 @@ This is also possible and will be proved in the following proof.
 	
 	Assume $m\leq n$.
 	Let $\mathfrak A, a_1,a_2 \models \theta_{t}$.
-	Then there is some $\phi(x_1,x_2)\coloneqq g^{m}(t'(y_1/x_1))=x_2 \land \bigwedge \Psi(y_1/x_1)$ such that $\mathfrak A,a_1,a_2\models \phi(x_1,x_2)$.
+	Then there is some $\phi(x_1,x_2)\coloneqq g^{m}(t'(x_1))=x_2 \land \bigwedge \Psi(x_1)$ such that $\mathfrak A,a_1,a_2\models \phi(x_1,x_2)$.
 	We then get
 	\begin{align*}
-		\mathfrak A,a_1,a_2 \models & g^{m}(t'(y_1/x_1))=x_2 \land \bigwedge \Psi(y_1/x_1) \\
-		\Leftrightarrow \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land \bigwedge \Psi(y_1/x_1) \land t'(y_1/x_1)=x_3 \text{ for some } a_3\in A \\
+		\mathfrak A,a_1,a_2 \models & g^{m}(t'(x_1))=x_2 \land \bigwedge \Psi(x_1) \\
+		\Leftrightarrow \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land \bigwedge \Psi(x_1) \land t'(x_1)=x_3 \text{ for some } a_3\in A \\
 		\overset{\cref{Equivalence_s_and_tPsi}}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3\models & g^{m}(x_3)=x_2 \land s(x_1)=x_3 \text{ for some } a_3\in A \\
 		\Leftrightarrow \mathfrak A,a_1,a_2 \models & g^{m}(s(x_1))=x_2.
 	\end{align*}
@@ -377,9 +418,9 @@ This is also possible and will be proved in the following proof.
 	Now let $m>n$.
 	Then there is a
 	\begin{align*}
-		\phi(x_1,x_2)\coloneqq g^{k+p}(t'(y_1/x_1))=x_2 &\land g^{k}(t'(y_1/x_1))=g^{k+l}(t'(y_1/x_1)) \\
-		& \land \operatorname{E}^{k,l}_g(t'(y_1/x_1)) \land \bigwedge_{\ell'<\ell} g^{k}(t'(y_1/x_1))\neq g^{k+\ell'}(t'(y_1/x_1)) \\
-		& \land \Psi(y_1/x_1)
+		\phi(x_1,x_2)\coloneqq g^{k+p}(t'(x_1))=x_2 &\land g^{k}(t'(x_1))=g^{k+l}(t'(x_1)) \\
+		& \land \operatorname{E}^{k,l}_g(t'(x_1)) \land \bigwedge_{\ell'<\ell} g^{k}(t'(x_1))\neq g^{k+\ell'}(t'(x_1)) \\
+		& \land \Psi(x_1)
 	\end{align*}
 	for some $(k,\ell,p)\in\mathcal I(n,m)$ with $\mathfrak A,a_1,a_2\models \phi(x_1,x_2)$.
 	And now
@@ -387,14 +428,30 @@ This is also possible and will be proved in the following proof.
 		\mathfrak A,a_1,a_2 \models & \psi(x_1,x_2) \\
 		\Leftrightarrow A,a_1,a_2,a_3 \models &g^{k+p}(x_3)=x_2 \land g^{k}(x_3))=g^{k+l}(x_3) \\
 			& \land \operatorname{E}^{k,l}_g(x_3) \land \bigwedge_{\ell'<\ell} g^{k}(x_3)\neq g^{k+\ell'}(x_3) \\
-			& \land \Psi(y_1/x_1) \land t'(y_1/x_1)=x_3 \text{ for some } a_3\in A \\
-		\overset{\cref{Simple_fm_to_fk}}{\Leftrightarrow} \mathfrak A, a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land t'(y_1/x_1)=x_3 \land \Psi(y_1/x_1) \text{ for some } a_3 \in A \\
+			& \land \Psi(x_1) \land t'(x_1)=x_3 \text{ for some } a_3\in A \\
+		\overset{\cref{Simple_fm_to_fk}}{\Leftrightarrow} \mathfrak A, a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land t'(x_1)=x_3 \land \Psi(x_1) \text{ for some } a_3 \in A \\
 		\overset{\cref{Equivalence_s_and_tPsi}}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2\land s(x_1)=x_3 \text{ for some } a_3\in A \\
 		\Leftrightarrow \mathfrak A,a_1,a_2 \models & g^{m}(s(x_1))=x_2.
 	\end{align*}
 	The other direction follows in both cases, as only equivalent steps have been used and it is obvious that the disjunction of a set is being fulfilled, if a formula of the set is satisfied.
 	
-	Therefore we have finished the proof.
+	Lastly, we show that if $\mathfrak A,a_1,a_2\models \theta_t(x_1,x_2)$, where $\theta_t$ is of the form $\bigvee \Phi$, there is exactly one $\phi\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1} x_2.\phi(x_1,x_2)$.
+	As in the proof of \cref{Simple_fm_to_fk}, we are going to use a proof by contradiction and we will look at the cases where $m\leq n$ and $m> n$ separately.
+	If $m\leq n$, assume that $\mathfrak A,a_1,a_2\models \theta_t(x_1,x_2)$ and that there are $\phi_1,\phi_2\in \Phi'(x_1,x_2)$ with $\phi_1\neq \phi_2$, $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi_1(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi_2(x_1,x_2)$.
+	It is easy to see that 
+	$$\mathfrak A,a_1,a_2\models g^m(t'_1(x_1))=x_2 \land \bigwedge \Psi_1(x_1) \land g^m(t'_2(x_1))=x_2 \land \bigwedge\Psi_2(x_1)$$
+	for some $a_2$, which is equivalent to
+	$$\mathfrak A,a_1,a_2,a_3,a_4\models g^m(x_3)=x_2 \land t'_1(x_1)=x_3\land \Psi_1(x_1) \land g^m(x_4)=x_2 \land t'_2(x_1)=x_4 \land \Psi_2(x_1).$$
+	However, $t'_1(x_1)=x_2\land \Psi_1(x_1), t'_2(x_1)=x_s \land \Psi_2(x_1) \in \Phi_s$ and thus there would be $\psi_1(x_1,x_3/x_2),\psi_2(x_1,x_4/x_2) \in \Phi_s$, such that $\mathfrak A,a_1\models \exists^{\geq 1}x_3. \psi(x_1,x_3)$ and $\mathfrak A,a_1\models \exists^{\geq 1}x_4.\psi(x_1,x_4)$.
+	This is a contradiction to the induction hypothesis.
+	
+	If $m>n$, we again assume that $\mathfrak A,a_1,a_2\models \theta_t(x_1,x_2)$ and that there are $\phi_1(x_1,x_2)\in\Phi'_{(k,\ell,p)}(x_1,x_2)$ and $\phi_2(x_1,x_2)\in\Phi'_{(k',\ell',p')}(x_1,x_2)$ with $\phi_1\neq \phi_2$, $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi_1(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi_2(x_1,x_2)$.
+	By looking at the structure of the formulae as they are defined in this proof and by substituting terms and variables like in the first case, we again get that 
+	$$\mathfrak A,a_1,a_3,a_4\models t'_1(x_1)=x_3\land \Psi_1(x_1) \land t'_2(x_1)=x_4 \land \Psi_2(x_1),$$
+	where $t'_1(x_1)=x_2\land\bigwedge \Psi_1(x_1), t'_2(x_1)=x_2\land\bigwedge \Psi_2(x_1)\in \Phi_2$.
+	By using the same arguments as before, we as well arrive at a contradiction.
+	
+	As such, the assumption must be false and we have finished the proof.
 \end{proof}
 
 A corollary of the above lemma is that the same statement holds for an arbitrary relation, instead of equality.
@@ -406,6 +463,7 @@ A corollary of the above lemma is that the same statement holds for an arbitrary
 	Furthermore, $\theta_\psi(x_1,\dots,x_m)$ is of the form $\bigvee \Phi(x_1,\dots,x_m)$ where all $\phi\in\Phi$ are of the form
 	$$R(t_1'(x_1),\dots,t_m'(x_m))\land \bigwedge\Psi_1(x_1)\land \dots\land\bigwedge \Psi_m(x_m),$$
 	and for every $f^m(s(x))$ that appear in $\theta_\psi$, where $f$ is a unary function symbol and $s$ is a term, $m\leq n$.
+	Additionally, if $\mathfrak A,a_1,\dots,a_,\models \theta_\psi(x_1,\dots,x_m)$, then there exists exactly one $\phi(x_1,\dots,x_m)\in\Phi(x_1,\dots,x_m)$, such that $\mathfrak A,a_1,\dots,a_m\models \phi(x_1,\dots,x_m)$.
 	\label{TranslationOfArbAtomics}
 \end{corollary}
 \begin{proof}
@@ -420,31 +478,55 @@ A corollary of the above lemma is that the same statement holds for an arbitrary
 		\land& \bigvee_{i_m}\left(t_{m,i_m}'(x_m)=y_m\land \bigwedge\Psi_{m,i_m}(x_m)\right).
 	\end{align*}
 	Through distribution of boolean formulae we get
-	\begin{align*}
-	\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \bigvee_{i_1} \dots \bigvee_{i_m} ( R(y_1,\dots,y_m)\land &
-	t_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi_{1,i_1}(x_1) \\
-	\land & \dots \\
-	\land & t_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi_{m,i_m}(x_m) ).
-	\end{align*}
+	\begin{align}
+		\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \bigvee_{i_1} \dots \bigvee_{i_m} ( R(y_1,\dots,y_m)\land & t_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi_{1,i_1}(x_1) \nonumber \\
+		\land & \dots \label{EquivalentDistributedAtomic}\\
+		\land & t_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi_{m,i_m}(x_m) ). \nonumber
+	\end{align}
 	
 	Finally, we can resubstitute variables and get
 	$$\mathfrak A,a_1,\dots,a_m\models \bigvee_{i_1}\dots\bigvee_{i_m} R(t_{1,i_1}'(x_1),\dots,t_{m,i_m}'(x_m))\land \bigwedge\Psi_{1,i_1}(x_1)\land\dots\land\bigwedge\Psi_{m,i_m}(x_m)\eqqcolon \theta_\psi(x_1,\dots,x_m).$$
 	
 	One can see that $\theta_\psi$ is of the correct form.
 	The equality follows from the fact that only equivalences have been used to derive $\theta_\psi$ from $\psi$.
+	
+	Lastly, we prove that if $\theta_\psi$ is satisfied, there is exactly one formula of the disjunction that is satisfied.
+	For this, consider the equivalent formula from \cref{EquivalentDistributedAtomic}.
+	Assume that $\mathfrak A,a_1,\dots,a_m\models \theta_\psi$ and that there are two subformulae $\phi_1$ and $\phi_2$ of the formula in \cref{EquivalentDistributedAtomic}, where $\phi_1$ is of the form 
+	\begin{align*}
+		R(y_1,\dots,y_m)\land & t_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi_{1,i_1}(x_1) \\
+		\land & \dots \\
+		\land & t_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi_{m,i_m}(x_m)
+	\end{align*}
+	and $\phi_2$ is of the form
+	\begin{align*}
+		R(y_1,\dots,y_m)\land & s_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi'_{1,i_1}(x_1) \\
+		\land & \dots \\
+		\land & s_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi'_{m,i_m}(x_m),
+	\end{align*}
+	such that $\phi_1\neq\phi_2$, $\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \phi_1$ and $\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \phi_2$.
+	As $\phi_1\neq \phi_2$, there must be a $j$ such that $\psi_1=t'_{j,i_j}(x_j)=y_j\land \bigwedge \Psi_{j,i_j}(x_j)$, $\psi_2 = s'_{j,i_j}(x_j)=y_j\land\bigwedge \Psi'_{j,i_j}(x_j)$ and $\psi_1\neq\psi_2$.
+	From the construction of the formula we know, that there is a term $t_j$, formula $\theta_{t_j}=\bigvee \Phi_{t_j}$ and $\psi_1,\psi_2\in\Phi_{t_j}$.
+	However, $\mathfrak A,a_j\models \exists^{\geq 1}y_j . \psi_1(x_j,y_j)$ and $\mathfrak A,a_j\models \exists^{\geq 1}y_j.\psi_2(x_j,y_j)$ would contradict the claim that has been proved in \cref{TranslationOfArbTerms}.
 \end{proof}
 
 To obtain our characterising result for structures with (unary) functions, we have to define how the functions should be encoded.
 
 \begin{definition}[Transitive Expansion]
 	Let $\sigma\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature with relation symbols $\sigma_{\operatorname{Rel}}$ and unary function symbols $\sigma_{\operatorname{Func}}$ and let $\mathfrak A$ be a structure of signature $\sigma$ with $\Vert \mathfrak A \Vert=n$.
-	For readability, we define the family of sets $\operatorname{Alters}_n^0(\sigma)\coloneqq\emptyset$ and
-	$$\operatorname{Alters}^k_{n}(\sigma)\coloneqq \operatorname{Alters}^{k-1}_{n}(\sigma)\cup\{f_1^{m_1}f_2^{m_2}\dots f_k^{m_k} : f_1f_2\dots f_k\in (\sigma_{\operatorname{Func}})^k, 0 \leq m_i \leq n \text{ for } 1 \leq i \leq k\}$$
+	For readability, we define the family of sets $\operatorname{Alters}_n^0(\sigma)\coloneqq\{\operatorname{id}\}$ and
+	$$\operatorname{Alters}^k_{n}(\sigma)\coloneqq \operatorname{Alters}^{k-1}_{n}(\sigma)\cup\{f_1^{m_1}f_2^{m_2}\dots f_k^{m_k} : f_1f_2\dots f_k\in (\sigma_{\operatorname{Func}})^k, 0 < m_i \leq n \text{ for } i \in [k]\}.$$
 	For an arbitrary $k\in \mathbb{N}$, we define the transitive expansion with alternation depth $k$ as a structure $\widetilde{\mathfrak A}$ of signature $\widetilde{\sigma}$, where 
-	$$\widetilde{\sigma}\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \{F_\alpha : \alpha \in \operatorname{Alters}_n^k(\sigma)\}$$
-	and the $F_\alpha$ are binary relations.
+	\begin{align*}
+		\widetilde{\sigma}\coloneqq &\sigma_{\operatorname{Rel}} \\
+		& \operatorname{\dot{\cup}}\{\operatorname{Eq}_{\alpha,\beta}: \alpha,\beta\in\operatorname{Alters}^k_n(\sigma)\}, \\
+		& \operatorname{\dot{\cup}} \{R_{\alpha_1,\dots,\alpha_\ell} : R\in \sigma_{\operatorname{Rel}},\operatorname{ar}(R)=\ell \text{ and } \alpha\in \operatorname{Alters}^k_n(\sigma)\}
+	\end{align*}
+	the $\operatorname{Eq}_{\alpha,\beta}$ are binary relations and $R_\alpha$ has the same arity as $R\in\sigma_{\operatorname{Rel}}$.
 	Semantically, we have 
-	$$F_\alpha^{\widetilde{\mathfrak A}}\coloneqq \{(a, b) : \alpha^{\mathfrak A}(a)=b\}.$$
+	$$\operatorname{Eq}_{\alpha,\beta}^{\widetilde{\mathfrak A}}\coloneqq \{(a,b) : \alpha^{\mathfrak A}(a)=\beta^{\mathfrak A}(b)\},$$
+	where we define $\operatorname{id}^{\widetilde{\mathfrak A}}(a)\coloneqq a$ and 
+	$$R_{\alpha_1,\dots,\alpha_\ell}^{\widetilde{\mathfrak A}} \coloneqq \{(a_1,\dots,a_\ell) : (\alpha_1^{\mathfrak A}(a_1),\dots,\alpha_\ell^{\mathfrak A}(a_\ell))\in R^{\mathfrak A}\}.$$
 \end{definition}
 
 We now can define the algorithm for relational colour refinement for (unary) functions.
@@ -456,27 +538,26 @@ We now can define the algorithm for relational colour refinement for (unary) fun
 \end{definition}
 
 To show that this definition may be sensible, we want to execute $\RCR_1$ on the structures $\mathfrak A$ and $\mathfrak B$ from \cref{NaiveEncodingCounterexample}.
-First we compute $\widetilde\sigma$ as $\{F_{f^i} : 0\leq i \leq 6\}$ and by performing the translation we obtain:
+First we compute $\widetilde\sigma$ as $\{\operatorname{Eq}_{f^i,f^j} : 0\leq i,j \leq 6\}\cup\{\operatorname{Eq}_{f^i,\operatorname{id}} : 0 \leq i \leq n\} \cup \{\operatorname{Eq}_{\operatorname{id},f^i} : 0 \leq i \leq n\}\cup\{\operatorname{Eq}_{\operatorname{id},\operatorname{id}}\}$. 
+For easier readability, we will only give the definitions for the symbols in $\{\operatorname{Eq}_{f^i,\operatorname{id}} : 0 \leq i \leq n\}$, which are
 \begin{align*}
-	\widetilde{\mathfrak A}=(A, 
-	&F_{f^0}^{\widetilde{\mathfrak A}}=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\}, \\
-	&F_{f^1}^{\widetilde{\mathfrak A}}=\{(a_1, a_3), (a_2, a_1),(a_3, a_2), (a_4, a_5), (a_5, a_6), (a_6, a_4)\}, \\
-	&F_{f^2}^{\widetilde{\mathfrak A}}=\{(a_1, a_2), (a_2, a_3),(a_3, a_1), (a_4, a_6), (a_5, a_4), (a_6, a_5)\}, \\
-	&F_{f^3}^{\widetilde{\mathfrak A}}=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\}, \\
-	&F_{f^4}^{\widetilde{\mathfrak A}}=\{(a_1, a_3), (a_2, a_1),(a_3, a_2), (a_4, a_5), (a_5, a_6), (a_6, a_4)\}, \\
-	&F_{f^5}^{\widetilde{\mathfrak A}}=\{(a_1, a_2), (a_2, a_3),(a_3, a_1), (a_4, a_6), (a_5, a_4), (a_6, a_5)\}, \\
-	&F_{f^6}^{\widetilde{\mathfrak A}}=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\})
+	\operatorname{Eq}_{f^0,\operatorname{id}}^{\widetilde{\mathfrak A}}&=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\}, \\
+	\operatorname{Eq}_{f^1,\operatorname{id}}^{\widetilde{\mathfrak A}}&=\{(a_1, a_3), (a_2, a_1),(a_3, a_2), (a_4, a_5), (a_5, a_6), (a_6, a_4)\}, \\
+	\operatorname{Eq}_{f^2,\operatorname{id}}^{\widetilde{\mathfrak A}}&=\{(a_1, a_2), (a_2, a_3),(a_3, a_1), (a_4, a_6), (a_5, a_4), (a_6, a_5)\}, \\
+	\operatorname{Eq}_{f^3,\operatorname{id}}^{\widetilde{\mathfrak A}}&=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\}, \\
+	\operatorname{Eq}_{f^4,\operatorname{id}}^{\widetilde{\mathfrak A}}&=\{(a_1, a_3), (a_2, a_1),(a_3, a_2), (a_4, a_5), (a_5, a_6), (a_6, a_4)\}, \\
+	\operatorname{Eq}_{f^5,\operatorname{id}}^{\widetilde{\mathfrak A}}&=\{(a_1, a_2), (a_2, a_3),(a_3, a_1), (a_4, a_6), (a_5, a_4), (a_6, a_5)\}, \\
+	\operatorname{Eq}_{f^6,\operatorname{id}}^{\widetilde{\mathfrak A}}&=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\}
 \end{align*}
 and 
 \begin{align*}
-	\widetilde{\mathfrak B}=(B, 
-	&F_{f^0}^{\widetilde{\mathfrak B}}=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\}, \\
-	&F_{f^1}^{\widetilde{\mathfrak B}}=\{(a_1, a_3), (a_2, a_1),(a_3, a_5), (a_4, a_2), (a_5, a_6), (a_6, a_4)\}, \\
-	&F_{f^2}^{\widetilde{\mathfrak B}}=\{(a_1, a_5), (a_2, a_3),(a_3, a_6), (a_4, a_1), (a_5, a_4), (a_6, a_2)\}, \\
-	&F_{f^3}^{\widetilde{\mathfrak B}}=\{(a_1, a_6), (a_2, a_5),(a_3, a_4), (a_4, a_3), (a_5, a_2), (a_6, a_1)\}, \\
-	&F_{f^4}^{\widetilde{\mathfrak B}}=\{(a_1, a_4), (a_2, a_6),(a_3, a_2), (a_4, a_5), (a_5, a_1), (a_6, a_3)\}, \\
-	&F_{f^5}^{\widetilde{\mathfrak B}}=\{(a_1, a_2), (a_2, a_4),(a_3, a_1), (a_4, a_6), (a_5, a_3), (a_6, a_5)\}, \\
-	&F_{f^6}^{\widetilde{\mathfrak B}}=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\})
+	\operatorname{Eq}_{f^0,\operatorname{id}}^{\widetilde{\mathfrak B}}&=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\}, \\
+	\operatorname{Eq}_{f^1,\operatorname{id}}^{\widetilde{\mathfrak B}}&=\{(a_1, a_3), (a_2, a_1),(a_3, a_5), (a_4, a_2), (a_5, a_6), (a_6, a_4)\}, \\
+	\operatorname{Eq}_{f^2,\operatorname{id}}^{\widetilde{\mathfrak B}}&=\{(a_1, a_5), (a_2, a_3),(a_3, a_6), (a_4, a_1), (a_5, a_4), (a_6, a_2)\}, \\
+	\operatorname{Eq}_{f^3,\operatorname{id}}^{\widetilde{\mathfrak B}}&=\{(a_1, a_6), (a_2, a_5),(a_3, a_4), (a_4, a_3), (a_5, a_2), (a_6, a_1)\}, \\
+	\operatorname{Eq}_{f^4,\operatorname{id}}^{\widetilde{\mathfrak B}}&=\{(a_1, a_4), (a_2, a_6),(a_3, a_2), (a_4, a_5), (a_5, a_1), (a_6, a_3)\}, \\
+	\operatorname{Eq}_{f^5,\operatorname{id}}^{\widetilde{\mathfrak B}}&=\{(a_1, a_2), (a_2, a_4),(a_3, a_1), (a_4, a_6), (a_5, a_3), (a_6, a_5)\}, \\
+	\operatorname{Eq}_{f^6,\operatorname{id}}^{\widetilde{\mathfrak B}}&=\{(a_1, a_1), (a_2, a_2),(a_3, a_3), (a_4, a_4), (a_5, a_5), (a_6, a_6)\}
 \end{align*}
 
 By using \cite{scheidt2025ColorRefinement}, we know that $\RCR$ distinguishes $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$ if, and only if, there is a formula $\widetilde{\phi}\in\GFC$ of signature $\widetilde{\sigma}$ that distinguishes them.
@@ -515,100 +596,82 @@ To formalise this, we want to characterise this algorithm logically, as well as 
 	When using the proof from \cite{scheidt2025ColorRefinement}, we obtain a formula $\widetilde{\phi}\in \GFC$ of signature $\widetilde{\sigma}$ that distinguishes the expansions.
 	This formula $\widetilde{\phi}$ can then be translated to a formula $\phi\in\GFC_k$ of signature $\sigma$.
 	
-	For every atomic subformula $R(\mathbf x)$, where $R\in \sigma_{\operatorname{Rel}}$, let the formula stay the same.
-	For every atomic subformla $F_\alpha(x,y)$, where $\alpha\in \operatorname{Alters}_n^k(\sigma)$, replace it by the formula $\alpha(x)=y$. Obviously, if a structure's expansion satisfied $\widetilde{\phi}$, it also satisfies $\phi$ and vice versa.
+	For every atomic subformula $\operatorname{Eq}_{\alpha,\beta}(x,y)$, where $\alpha,\beta\in \operatorname{Alters}_n^k(\sigma)$, replace it by the formula $\alpha(x)=\beta(y)$,
+	and every atomic subformula $R_{\alpha_1,\dots,\alpha_\ell}(x_1,\dots,x_\ell)$, replace it by the formula $R(\alpha_1(x_1),\dots,\alpha_\ell(x_\ell))$.
+	Obviously, if a structure's expansion satisfied $\widetilde{\phi}$, it also satisfies $\phi$ and vice versa.
 	
 	Therefore, we get a formula $\phi\in \GFC_k$ that distinguishes $\mathfrak A$ and $\mathfrak B$.
 	\break
 	Now we prove that \emph{2.} implies \emph{1.}.
 	Let $\phi\in \GFC_k$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
-	Our approach will be, to transform $\phi$ to a formula $\widetilde{\phi}$ that only uses symbols from $\widetilde{\sigma}$.
-	However, through the transformation, we introduce a syntactical form that is not allowed in the definition of $\GFC$.
-	Therefore we will define a new class of formulae, called $\text{disjunctive-}\GFC$, of which $\widetilde{\phi}$ will be an element of.
-	Furthermore, we will derive a winning strategy of the Guarded Game for the Spoiler (cf. \cite{scheidt2025ColorRefinement}, Lemma 5.7), which then will conclude the proof.
 	
 	Using \cref{TranslationOfArbAtomics} we can obtain a formula $\theta_\psi$ for every atomic subformula $\psi$ of $\phi$ with $\mathfrak A\models \psi$ if, and only if, $\mathfrak A\models \theta_\psi$.
-	Now replace every subformula $\psi$ in $\phi$ with this newly constructed formula.
-	This yields us $\phi'\in \mathsf{C}$.
+	With this we can construct an equivalent formula $\phi'\in\GFC_k$, which then allows us, to easily translate it to $\widetilde{\sigma}$.
 	
 	\begin{claim}
 		The two formulae $\phi$ and $\phi'$ are equivalent.
 	\end{claim}
 	\begin{proof}
 		\textbf{Base cases:}
-		If $\phi$ is an atomic formula, that is, either a term equivalence or a relation, then replace $\phi$ with $\theta_\phi$.
+		If $\phi$ is an atomic formula, that is, either a term equivalence or a relation, then set $\phi'$ to $\theta_\phi$.
 		The equivalence follows directly from the above lemmas.
 		
 		\textbf{Inductive cases:}
-		In the cases where $\phi$ is of the form $\neg\theta$ and $\theta_1\land\theta_2$, the claim follows directly using the induction hypothesis.
+		In the cases where $\phi$ is of the form $\neg\theta$ or $\theta_1\land\theta_2$, we set $\phi'$ to $\neg\theta'$ or $\theta_1'\land\theta_2'$ and the claim follows directly using the induction hypothesis.
 		
 		Let $\phi$ be of the form $\exists^{\geq\ell}\mathbf v. \Delta\land \theta$.
-		In addition to translating $\Delta$ and $\theta$ respectively, we also want to distribute them to allow for easier definitions in the following proofs.
-		As such, we want to translate $\phi$ to $\phi'\coloneqq\exists^{\geq\ell}\mathbf v.\bigvee\left( \Delta'\land\bigwedge\Psi \land\theta'\right)$.
+		In addition to translating $\Delta$ and $\theta$ to $\theta_\Delta$ and $\theta'$ respectively, we also will need to transform the formula, so that it still is a valid formula in $\GFC_k$.
+		When looking at the possible translations from the atomic formula $\Delta(x_1,\dots,x_m)$, we see that it must be of the form $\bigvee_{i\in[o]} (\Delta'_i(x_1,\dots,x_m) \land \bigwedge \Psi_i(x_1,\dots,x_m))$.
+		When considering the transformed formula 
+		$$\exists^{\geq \ell}\mathbf v. \left(\bigvee_{i\in [o]}(\Delta'_i\land\bigwedge \Psi_i) \land \theta'\right),$$
+		we then will distribute $\theta$ over the disjunction.
+		We thus define
+		$$\psi \coloneqq \exists^{\geq \ell}\mathbf v. \left(\bigvee_{i\in[o]} \Delta'_i\land\bigwedge \Psi_i \land \theta'\right)$$
 		
-		In the following we prove the equivalence of these two formulae.
+		In the following we prove the equivalence of $\phi$ and $\psi$.
 		Let $\mathfrak A\models \phi$.
 		This means there are at least $\ell$ tuples $\mathbf a\in A$, such that $(\mathfrak A,\mathbf a)\models \Delta(\mathbf v) \land \theta(\mathbf v)$.
 		Using the induction hypothesis we get that this is equivalent to $(\mathfrak A,\mathbf a)\models \bigvee(\Delta'\land\bigwedge\Psi)\land \theta'$, which, using the distributive law of propositional logic, is equivalent to $(\mathfrak A,\mathbf a)\models \bigvee(\Delta'\land\bigwedge\Psi\land\theta')$.
-		
 		Therefore the number of tuples that satisfy $\Delta\land\theta$ must be the same as for $\bigvee(\Delta'\land\bigwedge\Psi\land\theta')$ and $\mathfrak A\models \exists^{\geq\ell}\mathbf v. \bigvee (\Delta'\land\bigwedge\Psi\land\theta')$ follows.
+		
+		However, $\psi$ is not in $\GFC_k$.
+		We will solve this, by considering all possible segmentations of the disjunction.
+		Formally, we define 
+		$$\operatorname{Parts}(o, n)\coloneqq \{(M, \operatorname{mult}_M) : M\subseteq [o] \land \operatorname{mult}_M : M \to \mathbb{N}_{>0} \land \sum_{m\in M} \operatorname{mult}_M(m) = n\}$$
+		as the set of all multisets over $[o]$ with exactly $n$ elements.
+		We then define $\phi'$ as
+		$$\bigvee_{(M,\operatorname{mult}_M)\in \operatorname{Parts}(o,\ell)} \bigwedge_{i\in M} \exists^{\geq \operatorname{mult}_M(i)}\mathbf v. (\Delta'_i\land\bigwedge \Psi_i \land \theta')$$
+		and will prove the equivalence between $\psi$ and $\phi'$ in the following. 
+		
+		Let $\mathfrak A\models \psi$.
+		Then there are $\ell$ different tuples $\mathbf a$, such that $\mathfrak A,\mathbf a \models \bigvee_{i\in[o]}(\Delta'_i\land\bigwedge\Psi_i\land\theta')$.
+		From the above lemmas we know that for every such tuple, there is exactly one $i$ such that $\mathfrak A,\mathbf a\models \Delta'_i\land\bigwedge \Psi_i\land \theta'$.
+		Now construct a multiset $(M,\operatorname{mult}_M)$ with exactly these $i$ that are being satisfied and with the multiplicity of the amount of tuples satisfying them.
+		One can see that $(M,\operatorname{mult}_M)\in \operatorname{Parts}(o,n)$ and that 
+		$$\mathfrak A \models \bigwedge_{i\in M}\exists^{\geq\operatorname{mult}_M(i)}\mathbf v. (\Delta'_i\land \bigwedge\Psi_i\land \theta').$$
+		It directly follows that $\mathfrak A\models \phi'$.
+		
+		Let $\mathfrak A\models \phi'$.
+		From the construction we know, that every $\mathbf a$ that is being quantified satisfies only the $\Delta'_i\land\bigwedge\Psi_i\land\theta'$ they are being quantified for.
+		By the definition of $\operatorname{Parts}(o,\ell)$, we thus get exactly $\ell$ tuples that satisfy some $\Delta'_i\land\bigwedge\Psi_i\land\theta'$ and $\mathfrak A\models \psi$ follows.
 	\end{proof}
 	
-	Note that for every term $\alpha$ that appears in $\phi'$ it is either a variable or there is a $F_\alpha \in \widetilde{\sigma}$.
+	Note that for every term $\alpha$ that appears in $\phi'$, it holds that $\alpha\in \operatorname{Alters}^k_n(\sigma)$.
 	This follows from the properties of the translation in \cref{TranslationOfArbAtomics}.
-	Furthermore, for guards we have to distribute the formulae a bit more.
+	Furthermore, for every atomic subformula, that is relation symbol or term equation, we have a corresponding relation symbol in $\widetilde{\sigma}$.
+	With this, we can transform $\phi'$ to a formula $\widetilde{\sigma}\in\GFC$ of signature $\widetilde{\sigma}$, such that $\mathfrak A\models \phi'$ if, and only if, $\widetilde{\mathfrak A}\models \widetilde{\phi}$.
 	
-	Now we can transform $\phi'$ to a formula of signature $\widetilde{\sigma}$.
-	We will define this transformation inductively over the structure of the formula $\psi$.
-	Furthermore, we use this induction to prove that this does not change, whether a structure satisfies the formula. 
-	\begin{claim}
-		It holds that $\mathfrak A\models \phi'$ if, and only if, $\widetilde{\mathfrak A}\models \widetilde{\phi}$.
-	\end{claim}
-	\begin{proof}
-		\textbf{Base cases:}
-		If $\psi$ is of the form $t(x)=y$ for a term $t$, then there exists a relation $F_t$ in $\widetilde{\sigma}$. Therefore we set the transformed formula to $F_t(x,y)$.
-		
-		If $\psi$ is of the form $R(t_1(x_1),\dots,t_m(x_m))$, then there are relations $F_{t_i}$ for $1\leq i \leq m$ in $\widetilde{\sigma}$. Therefore we set the transformed formula to $R(y_1,\dots,y_m)\land F_{t_1}(x_1,y_1)\land\dots\land F_{t_m}(x_m,y_m)$.
-		
-		The claim obviously follows from the definition of the transitive expansion.
-		
-		\textbf{Inductive cases:}
-		Given the formulae $\theta_1$ and $\theta_2$, as well as their transformed forms $\widetilde{\theta_1}$ and $\widetilde{\theta_2}$, which fulfil the above claim.
-		
-		We then have the following translations, for which the claim can easily be shown using the induction hypothesis.
-		\begin{itemize}
-			\item $\neg \theta_1$ to $\neg \widetilde{\theta_1}$,
-			\item $\theta_1\land\theta_2$ to $\widetilde{\theta_1}\land\widetilde{\theta_2}$ and
-			\item $\exists^{\geq\ell}\mathbf v.\theta_1$ to $\exists^{\geq \ell}\mathbf v. \widetilde{\theta_1}$.
-		\end{itemize}
-	\end{proof}
+	It can be seen that the only subformulae that need to be changed are atomic.
+	Let $\psi$ be an atomic formula that appears in $\phi'$.
+	If $\psi$ is a term equation, that is, it is of the form $t(x)=s(y)$, we know through the construction of $\phi'$ and the definition of the transitive expansion, that there are $\alpha,\beta\in \operatorname{Alters}^k_n(\sigma)$ with $\alpha=t$ and $\beta=s$. 
+	As such, we can replace $\psi$ with $\operatorname{Eq}_{\alpha,\beta}(x,y)$.
 	
-	The resulting formula is a formula in the logic $\text{disjunctive-}\GFC$, which we will define in the following.
-	
-	\begin{definition}[$\text{disjunctive-}\GFC$]
-		The logic $\text{disjunctive-}\GFC$ is a syntactical extension of $\GFC$.
-		As such it is defined by the rules given in \ref{} of $\GFC$ in addition to a sixth rule:
+	If $\psi$ is a relation, that is, it is of the form $R(t_1(x_1),\dots,t_m(x_m))$, we again have $\alpha_1,\dots,\alpha_m\in \operatorname{Alters}^k_n(\sigma)$, such that $\alpha_i=t_i$ for $i\in[m]$.
+	We then can replace $\psi$ with $R_{\alpha_1,\dots,\alpha_m}(x_1,\dots,x_m)$.
+	From the semantic definition of the transitive expansion, it can be easily seen that $\mathfrak A\models \phi'$ if, and only if, $\widetilde{\mathfrak A}\models \widetilde{\phi}$.
 		
-		For two disjunct sets of variables $\mathbf x=\{x_1,\dots,x_m\}$ and $\mathbf y=\{y_1,\dots,y_m\}$, atomic formulae $\Delta_i$ with $\free{\Delta_i}\subseteq \mathbf y$, formulae $\theta_i$ with $\free{\theta_i}\subseteq \mathbf x$, binary relations $R_j$, $\ell\in\mathbb N$ and a set $\mathbf{x'}\subseteq \mathbf{x}$, the formula 
-		$$\exists^{\geq\ell}\mathbf {x'}.\bigvee_i\left(\Delta(\mathbf y) \land \bigwedge_j R_j(x_j, y_j) \land \theta(\mathbf x)\right)$$
-		is a formula of $\text{disjunctive-}\GFC$.
-		\label{disjunctiveGFCDef}
-	\end{definition}
-	
-	We can now extend the proof of Lemma 5.7 from \cite{scheidt2025ColorRefinement} to find a winning strategy for Spoiler for a formula in $\disjunctiveGFC$.
-	This will then conclude the proof of this theorem.
-	
-	\begin{lemma}
-		Let $\mathfrak A$ and $\mathfrak B$ be structures of strictly equal size and let $\mathbf a\in A^k$, $b\in B^k$ be arbitrary tuples of arity $k$.
-		Let $\mathbf x$ be a tuple of $k$ distinct variables.
-		If there exists a formula $\phi\in\operatorname{disjunctive-\GFC}$ with $\free{\phi}\subseteq\{x_1,\dots,x_k\}$ such that $(\mathfrak A,\mathbf a)\models \phi(\mathbf x) \Longleftrightarrow (\mathfrak B,\mathbf b)\not\models \phi(\mathbf x)$, then Spoiler has a $\gd{\phi}$-round winning strategy for the Guarded-Game on $(\mathfrak A,\mathbf a),(\mathfrak B,\mathbf b)$.
-	\end{lemma}
-	\begin{proof}
-		By looking at the definition of $\disjunctiveGFC$, we find that all cases but one are covered in the analogous proof in \cite{scheidt2025ColorRefinement}.
-		Therefore we only have to consider the case added in \cref{disjunctiveGFCDef}.
-		
-		Let $\phi(\mathbf x)$ be of the form
-	\end{proof}
+	With this, we have obtained a formula $\widetilde{\phi}\in\GFC$ of signature $\widetilde{\sigma}$, where $\widetilde{\mathfrak A}\models \widetilde{\phi}$ and $\widetilde{\mathfrak B}\not\models \widetilde{\phi}$.
+	Using \cite{scheidt2025ColorRefinement}, we thus know that $\RCR$ distinguishes $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$ and by definition we can deduce that $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$.
 \end{proof}
 
 % Now:
