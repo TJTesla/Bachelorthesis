@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  28 JUN 2025 22:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  29 JUN 2025 22:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1160,12 +1160,12 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 141.
+(Font)              <10.95> on input line 143.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 141.
+(Font)              <8> on input line 143.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 141.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 144
+(Font)              <6> on input line 143.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 146
 .
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
@@ -1176,7 +1176,7 @@ File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
-149.
+151.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1187,7 +1187,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-LaTeX Warning: Reference `' on page 2 undefined on input line 152.
+LaTeX Warning: Reference `' on page 2 undefined on input line 154.
 
 
 
@@ -1197,29 +1197,37 @@ LaTeX Warning: Reference `' on page 2 undefined on input line 152.
 l/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/
 2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
 
-[3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+[3]
 
-[4]
+[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 353.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\new@ifnextchar' on input line 353.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 353.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 353.
+
+
 
 [5]
 
 [6]
-Overfull \hbox (40.85577pt too wide) in paragraph at lines 444--447
-\T1/lmr/m/n/10.95 (-20) However, $\OML/lmm/m/it/10.95 t[]\OT1/lmr/m/n/10.95 (-2
-0) (\OML/lmm/m/it/10.95 x[]\OT1/lmr/m/n/10.95 (-20) ) = \OML/lmm/m/it/10.95 x[]
- \OMS/lmsy/m/n/10.95 ^ \OT1/lmr/m/n/10.95 (-20) 	[](\OML/lmm/m/it/10.95 x[]\OT1
-/lmr/m/n/10.95 (-20) )\OML/lmm/m/it/10.95 ; t[]\OT1/lmr/m/n/10.95 (-20) (\OML/l
-mm/m/it/10.95 x[]\OT1/lmr/m/n/10.95 (-20) ) = \OML/lmm/m/it/10.95 x[] \OMS/lmsy
-/m/n/10.95 ^ \OT1/lmr/m/n/10.95 (-20) 	[](\OML/lmm/m/it/10.95 x[]\OT1/lmr/m/n/1
-0.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT1/lmr/m/n/10.95 (-20) ^^H[]$ \T1/lmr/m/n/
-10.95 (-20) and thus there would be $\OML/lmm/m/it/10.95  []\OT1/lmr/m/n/10.95 
-(-20) (\OML/lmm/m/it/10.95 x[]; x[]=x[]\OT1/lmr/m/n/10.95 (-20) )\OML/lmm/m/it/
-10.95 ;  []\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]=x[]\OT1/lmr/m
-/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2
- []
 
+[7]
 
-Overfull \hbox (5.27805pt too wide) in paragraph at lines 448--450
+[8]
+
+[9]
+Overfull \hbox (5.27805pt too wide) in paragraph at lines 578--580
 \T1/lmr/m/n/10.95 (-20) and $\OML/lmm/m/it/10.95 '[]\OT1/lmr/m/n/10.95 (-20) (\
 OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 1/lmr/m/n/10.95 (-20) ^^H[](\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20
@@ -1236,56 +1244,15 @@ OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 
 
 
-[7]
-Overfull \hbox (10.98434pt too wide) detected at line 488
-\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[]; [] ; a[] \OMS/lmsy/m/n/10.95 j[]\O
-T1/lmr/m/n/10.95 = [] [] [] \OML/lmm/m/it/10.95 R\OT1/lmr/m/n/10.95 (\OML/lmm/m
-/it/10.95 t[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 x[]\OT1/lmr/m/n/10.95 )\OM
-L/lmm/m/it/10.95 ; [] ; t[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 x[]\OT1/lmr/
-m/n/10.95 )) \OMS/lmsy/m/n/10.95 ^ [] \OT1/lmr/m/n/10.95 	[](\OML/lmm/m/it/10.9
-5 x[]\OT1/lmr/m/n/10.95 ) \OMS/lmsy/m/n/10.95 ^ [] ^ [] \OT1/lmr/m/n/10.95 	[](
-\OML/lmm/m/it/10.95 x[]\OT1/lmr/m/n/10.95 ) =[][] \OML/lmm/m/it/10.95 #[]\OT1/l
-mr/m/n/10.95 (\OML/lmm/m/it/10.95 x[]; [] ; x[]\OT1/lmr/m/n/10.95 )\OML/lmm/m/i
-t/10.95 :
- []
-
-
-
-[8]
-
-[9]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 572.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 572.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 572.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 572.
-
-
-Underfull \hbox (badness 7777) in paragraph at lines 603--607
-[]\T1/lmr/m/n/10.95 (+20) Therefore, we get a for-mula $\OML/lmm/m/it/10.95 ' \
-OMS/lmsy/m/n/10.95 2 []\OT1/lmr/m/n/10.95 (+20) (\OT1/lmss/m/n/10.95 (+20) C\OT
-1/lmr/m/n/10.95 (+20) )[]$ \T1/lmr/m/n/10.95 (+20) that dis-tin-guishes $\U/euf
-/m/n/10.95 A$ \T1/lmr/m/n/10.95 (+20) and $\U/euf/m/n/10.95 B$\T1/lmr/m/n/10.95
- (+20) . 
- []
-
-
-
 [10]
 
 [11]
 
-[12] (./thesis.bbl
+[12]
+
+[13]
+
+[14] (./thesis.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
 .
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
@@ -1297,7 +1264,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 )
 
-[13
+[15
 
 ] (./thesis.aux)
  ***********
@@ -1312,13 +1279,13 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 30992 strings out of 473190
- 616258 string characters out of 5715801
- 1254661 words of memory out of 5000000
- 53445 multiletter control sequences out of 15000+600000
- 655512 words of font info for 219 fonts, out of 8000000 for 9000
+ 31145 strings out of 473190
+ 619280 string characters out of 5715801
+ 1255661 words of memory out of 5000000
+ 53575 multiletter control sequences out of 15000+600000
+ 656285 words of font info for 228 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,12n,107p,10901b,910s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,12n,107p,10901b,968s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texl
@@ -1335,10 +1302,10 @@ ype1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/publi
 c/lm/lmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (13 pages, 337404 bytes).
+Output written on thesis.pdf (15 pages, 354385 bytes).
 PDF statistics:
- 267 PDF objects out of 1000 (max. 8388607)
- 196 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
- 51789 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 287 PDF objects out of 1000 (max. 8388607)
+ 213 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 51797 words of extra memory for PDF output out of 61914 (max. 10000000)
 
