@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  29 JUN 2025 22:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  14 JUL 2025 13:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1197,37 +1197,42 @@ LaTeX Warning: Reference `' on page 2 undefined on input line 154.
 l/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/
 2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
 
-[3]
+[3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 
-[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 353.
-
+[4]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 353.
+(hyperref)                removing `math shift' on input line 335.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 353.
+(hyperref)                removing `\new@ifnextchar' on input line 335.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 353.
+(hyperref)                removing `subscript' on input line 335.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 335.
 
 
 
 [5]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
+29.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
 
 [6]
 
-[7]
+[7{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
+Missing character: There is no d in font msbm10!
+
 
 [8]
-
-[9]
-Overfull \hbox (5.27805pt too wide) in paragraph at lines 578--580
+Overfull \hbox (5.27805pt too wide) in paragraph at lines 575--577
 \T1/lmr/m/n/10.95 (-20) and $\OML/lmm/m/it/10.95 '[]\OT1/lmr/m/n/10.95 (-20) (\
 OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 1/lmr/m/n/10.95 (-20) ^^H[](\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20
@@ -1244,15 +1249,15 @@ OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 
 
 
+[9]
+
 [10]
 
 [11]
 
 [12]
 
-[13]
-
-[14] (./thesis.bbl
+[13] (./thesis.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
 .
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
@@ -1264,7 +1269,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 )
 
-[15
+[14
 
 ] (./thesis.aux)
  ***********
@@ -1279,11 +1284,11 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 31145 strings out of 473190
- 619280 string characters out of 5715801
- 1255661 words of memory out of 5000000
- 53575 multiletter control sequences out of 15000+600000
- 656285 words of font info for 228 fonts, out of 8000000 for 9000
+ 31171 strings out of 473190
+ 620106 string characters out of 5715801
+ 1251661 words of memory out of 5000000
+ 53609 multiletter control sequences out of 15000+600000
+ 655844 words of font info for 222 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,12n,107p,10901b,968s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
@@ -1302,10 +1307,10 @@ ype1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/publi
 c/lm/lmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (15 pages, 354385 bytes).
+Output written on thesis.pdf (14 pages, 355360 bytes).
 PDF statistics:
- 287 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
- 51797 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 291 PDF objects out of 1000 (max. 8388607)
+ 223 compressed objects within 3 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 53861 words of extra memory for PDF output out of 61914 (max. 10000000)
 
