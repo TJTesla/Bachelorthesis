@@ -82,6 +82,7 @@
 
 \usepackage{multicol}
 
+\usepackage{todonotes}
 
 % Custom commands
 \newcommand{\GFC}{\mathsf{GF}(\mathsf{C})}
@@ -89,6 +90,8 @@
 \newcommand{\gd}[1]{\operatorname{gd}(#1)}
 \newcommand{\RCR}{\operatorname{RCR}}
 \newcommand{\disjunctiveGFC}{\operatorname{disjunctive-\GFC}}
+\newcommand{\set}{\operatorname{set}}
+\newcommand{\ipo}{i+1\operatorname{mod}}
 
 \renewcommand{\theta}{\vartheta}
 
@@ -138,6 +141,7 @@
 \section{Relational Colour Refinement for structures with functions}
 
 \subsection{Naive Encoding of functions}
+\label{Sec::NaiveEncodingOfFunctions}
 
 A simple way to apply relational colour refinement to non-relational structures is, to encode the functions as relations.
 Formally we transform a signature $\sigma$ that includes function symbols to a new signature $\sigma'$: 
@@ -656,7 +660,7 @@ From the proof, we know that $\theta_\psi$ is of the form
 	\land & E^{k',\ell'}_g(f^{k+p}(x)) \land \bigwedge_{\hat{\ell}<\ell'}g^{k'}(f^{k+p}(x))\neq g^{k'+\hat\ell}(f^{k+p}(x))
 \end{align*}
 and with $\mathcal I(2,4)=\{(1,1,0),(0,1,0), (0,2,0)\}$ we can analogous find that $\theta_\psi$ is equal to
-\emph{Das ist ja eine Disjunktion mit 3*3=9 Formeln die jeweils etwa eine Zeile lang sind. Sollte ich die trotzdem komplett aufschreiben?}
+\todo{Das ist ja eine Disjunktion mit 3*3=9 Formeln die jeweils etwa eine Zeile lang sind. Sollte ich die trotzdem komplett aufschreiben?}
 
 This now allows us to proof the logical characterisation of our Colour Refinement Algorithm.
 
@@ -752,7 +756,7 @@ This now allows us to proof the logical characterisation of our Colour Refinemen
 	Using \cite{scheidt2025ColorRefinement}, we thus know that $\RCR$ distinguishes $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$ and by definition we can deduce that $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$.
 \end{proof}
 
-\emph{Hier das selbige Spiel bzgl. eine Beispiels. Ein vollständiges Beispiel wäre vermutlich ziemlich lang, die Konstruktion wird ja leider exponentiell groß. Sollte ich dann trotzdem ein vollständiges Beispiel hier aufführen? Oder reicht es die Sachen mit nem $\bigvee$ bzw. $\bigwedge$ zusammenzufassen? Zumindest die Konstruktion mit den $\operatorname{Parts}$ sollte man vllt noch einmal anschneiden?}
+\todo{Hier das selbige Spiel bzgl. eine Beispiels. Ein vollständiges Beispiel wäre vermutlich ziemlich lang, die Konstruktion wird ja leider exponentiell groß. Sollte ich dann trotzdem ein vollständiges Beispiel hier aufführen? Oder reicht es die Sachen mit nem $\bigvee$ bzw. $\bigwedge$ zusammenzufassen? Zumindest die Konstruktion mit den $\operatorname{Parts}$ sollte man vllt noch einmal anschneiden?}
 
 
 \subsection{Characterisation through homomorphism counting}
@@ -765,8 +769,120 @@ We begin with the naive encoding of functions.
 
 \subsubsection{Naive Encoding of functions}
 
+By definition we have, that two structures $\mathfrak A$ and $\mathfrak B$ of signature $\sigma$ are distinguished by nRCR if, and only if, RCR distinguishes the two encoded structures $\mathfrak A'$ and $\mathfrak B'$ of signature $\sigma'$.
+With \cite{scheidt2025ColorRefinement} this is equivalent to the existence of an acyclic structure $\mathfrak C'$ of signature $\sigma'$ with $\hom(\mathfrak C',\mathfrak A')\neq \hom(\mathfrak C',\mathfrak B')$.
+Therefore, the last missing step is, to prove that the latter is equivalent to there being an acyclic structure $\mathfrak C$ of signature $\sigma$ with $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
 
+For our application it is sensible to define acyclic structures with functions with respect to the encoding.
+That is, a structure $\mathfrak C$ of a signature $\sigma$, that may contain function symbols of arbitrary arity, is acyclic, if, and only if, its encoding $\mathfrak C'$ of signature $\sigma'$, which is relational, is acyclic.
 
+However, when we try to decode $\mathfrak C'$ to the signature $\sigma$, we notice that this may not be possible.
+Concretely, for a function symbol $f\in\sigma$ and corresponding $R_f\in\sigma'$, there may be $(\mathbf x y),(\mathbf x z)\in R_f$ with $y\neq z$.
+This would prevent a direct decryption.
+
+\begin{definition}[Function-suitable]
+	Let $\sigma$ be signature with functions of arbitrary arity, $\mathfrak A$ a structure of signature $\sigma$ and let $\sigma'$ and $\mathfrak A'$ be their encodings, as defined in section \ref{Sec::NaiveEncodingOfFunctions}.
+	We then call $\mathfrak A'$ function-suitable, if for every function symbol $f\in\sigma$ of arity $k$, corresponding $R_f\in\sigma'$ of arity $k+1$ and for every $k$ tuple $\mathbf x$, there is exactly one $y$, such that $(\mathbf x y)\in R_f$.
+\end{definition}
+
+We will now prove that we can obtain a function-suitable, acyclic structure with the same homomorphism count from an acyclic structure.
+
+\begin{lemma}
+	Let $\mathfrak A$ and $\mathfrak B$ be structures of signature $\sigma$ and $\mathfrak A'$, $\mathfrak B'$ and $\sigma'$ the respective encodings.
+	If there is an acyclic structure $\mathfrak C'$ of signature $\sigma'$ with $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$, then we can construct a function-suitable acyclic structure $\mathfrak C''$ of signature $\sigma'$ such that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$.
+\end{lemma}
+\begin{proof}
+	We will give a procedure, to iteratively remove collisions of the form $(\mathbf x y),(\mathbf x z)\in R_f$ for all function symbols $f\in\sigma$.
+	The procedure will reduce the number of elements by one, will keep the acyclicity property and will result in a structure with the same amount of homomorphisms to $\mathfrak A'$ and $\mathfrak B'$.
+	Thus, by continuously applying that procedure to all collisions, we will get $\mathfrak C''$.
+	The algorithm must terminate, as the number of elements strictly decreases and we only consider finite structures.
+	
+	The remainder of this proof will be dedicated to describing the procedure and proving the above claims.
+	Assume that there is a function symbol $f\in \sigma$ and two different tuples $(\mathbf x y),(\mathbf x z)\in R_f^{\mathfrak C'}$. 
+	Our goal will be to construct a structure $\mathfrak C''$ of signature $\sigma'$ with the following properties:
+	\begin{itemize}
+		\item[a.] $\Vert \mathfrak C'' \Vert = \Vert \mathfrak C'\Vert -1$
+		\item[b.] $\mathfrak C''$ is acyclic
+		\item[c.] $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$.
+	\end{itemize}
+	We define the function $\chi : \mathbf{C'}\to\mathbf{C''}$ which will map tuples of $\mathfrak C'$ to tuples of $\mathfrak C''$ with the same arity.
+	Concretely, for an arbitrary tuple $\mathbf c\in \mathbf{C'}$ of arity $k$ and for every $i\in[k]$, we have
+	$$\chi(\mathbf c)_i \coloneqq \begin{cases}
+		c_i & \text{if } c_i\notin \{y,z\} \\
+		v_{y,z} & \text{if } c_i \in \{y,z\}
+	\end{cases}$$
+	for a new element $v_{y,z}$.
+	In words, we replace every occurrence of $y$ and $z$ by $v_{y,z}$, while letting everything else stay the same.
+	Now we can define 
+	$$\mathfrak C'' \coloneqq ((C' \setminus \{y,z\})\cup \{v_{y,z}\}, \sigma),$$
+	where for all $R\in\sigma'$ we have $R^{\mathfrak C''}\coloneqq \{\chi(\mathbf c) : \mathbf c\in R^{\mathfrak C'}\}$.
+	We will now proceed by proving the above properties.
+	
+	\textbf{Property a.:}
+	This property follows directly from the definition of $C''$.
+	We have $y\neq z$, $y,z\in C'$ and thus $\vert C'\setminus \{y,z\}\vert = \vert C'\vert -2$.
+	Furthermore, we have $v_{y,z}\notin C'$ and therefore $\vert (C'\setminus \{y,z\})\cup \{v_{y,z}\}\vert = \vert C' \vert -1$.
+	This was to be shown.
+	
+	\textbf{Property b.:}
+	To show that $\mathfrak C''$ is acyclic, we first will define an undirected graph $J''$, will prove that it is connected and cycle free, thus a tree, and that it fulfils the join tree property for $\mathfrak C''$.
+	By the assumption we know that $\mathfrak C'$ is acyclic and thus has a join tree $J'$.
+	We further notice that $\mathbf{C''}=\{\chi(\mathbf c) : \mathbf c\in \mathbf{C'}\}$.
+	Now we define $V(J'')\coloneqq \mathbf{C''}$ and $E(J'')\coloneqq \{\{\chi(\mathbf u),\chi(\mathbf v)\} : \{\mathbf u,\mathbf v\}\in E(J')\}$.
+	
+	\begin{claim}
+		$J''$ is connected.
+	\end{claim}
+	\begin{proof}
+		Consider $\mathbf u,\mathbf v\in V(J'')$.
+		Then there are $\mathbf a,\mathbf b\in V(J')$, such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
+		By assumption, $J'$ is a tree, so there are $\mathbf a_0,\mathbf a_1,\dots,\mathbf a_k$ with $\mathbf a_0=\mathbf a$, $\mathbf a_k=\mathbf b$ and $\{\mathbf a_{i-1},\mathbf a_{i}\}\in E(J')$ for all $i\in [k]$.
+		By definition, we have $\chi(\mathbf a_0),\chi(\mathbf a_1),\dots,\chi(\mathbf a_k)\in V(J'')$ with $\chi(\mathbf a_0)=\chi(\mathbf a)=\mathbf u$, $\chi(\mathbf a_k)=\chi(\mathbf b)=\mathbf v$ and $\{\chi(\mathbf a_{i-1}),\chi(\mathbf a_i)\}\in E(J'')$ for all $i\in[k]$.
+		Thus $\mathbf u$ and $\mathbf v$ are connected.
+	\end{proof}
+	
+	In the following, for an arbitrary $e \in C'$, we define the set $V_e\coloneqq \{\mathbf c\in V(J') : e\in \mathbf c\}$.
+	One can see that $V(J'_e)=V_e$, where $J'_e$ is the subgraph of $J'$, induced by all elements containing $e$.
+	
+	\begin{claim}
+		$J''$ is cycle-free.
+	\end{claim}
+	\begin{proof}
+		Assume that there were $\mathbf u_0,\mathbf u_1,\dots,\mathbf u_k\in V(J'')$ with $\{\mathbf u_{i-1},\mathbf u_i\}\in E(J'')$ for all $i\in [k]$ and $\{\mathbf u_k,\mathbf u_0\}\in E(J'')$.
+		We now define directed edges such that $e_0=(\mathbf u_0,\mathbf u_1)$, $e_1=(\mathbf u_1,\mathbf u_2)$, $\dots$, $e_k=(\mathbf u_k,\mathbf u_0)$.
+		For every edge $e_i$ choose two elements $\mathbf a_i,\mathbf b_i\in V(J')$ such that $\{\mathbf a,\mathbf b\}\in E(J')$, $\chi(\mathbf a_i)=\mathbf u_i$ and $\chi(\mathbf b_i)=\mathbf u_{\ipo k}$.
+		These elements must exist by the definition of $E(J'')$.
+		
+		We now prove that there exists a cycle in $J'$, which would contradict our assumption of $J'$ being a join tree for $\mathfrak C'$.
+		To show this, we prove that for all $i\in\{0\}\cup[k]$, the elements $\mathbf b_i$ and $\mathbf a_{\ipo k}$ are connected in $J'$.
+		We see that $\chi(\mathbf b_i)=\mathbf u_{\ipo k} = \chi(\mathbf a_{\ipo k})$.
+		
+		If there is an $c\in \set(\mathbf u_{\ipo k})$ with $c\neq v_{y,z}$, then by definition of $\chi$, we have $c\in \set(\mathbf b_i)\cap \set(\mathbf a_{\ipo k})$.
+		Therefore $\mathbf b_i,\mathbf a_{\ipo k}\in V_c$ and because $J'$ is a join tree, $\mathbf b_i$ and $\mathbf a_{\ipo k}$ have to be connected.
+		
+		If $\set(\mathbf u_{\ipo k})=\{v_{y,z}\}$, we have four possible cases.
+		If $y\in \set(\mathbf b_i)\cap \set(\mathbf a_{\ipo k})$ or $z\in \set(\mathbf b_i)\cap \set(\mathbf a_{\ipo k})$, then we can do the same as before by setting $c=y$ or $c=z$, respectively.
+		Otherwise we have $y\in\set(\mathbf b_i)$ and $z\in \set(\mathbf a_{\ipo k})$, or $z\in\set(\mathbf b_i)$ and $y\in \set(\mathbf a_{\ipo k})$.
+		We will only consider the former option, as the latter can be proven analogously.
+		From our beginning assumption we know that $(\mathbf xy),(\mathbf xz)\in R_f$. Choose some $x\in\mathbf x$, and $(\mathbf xy),(\mathbf xz)\in V_x$ follows.
+		Furthermore, we have $\mathbf b_i,(\mathbf xz)\in V_y$ and $\mathbf a_{\ipo k},(\mathbf xz)\in V_z$.
+		Since $J'$ is a join tree, we thus know that $\mathbf b_i$ is connected with $(\mathbf xy)$, which in turn is connected with $(\mathbf xz)$, which again is connected with $\mathbf a_{\ipo k}$.
+		Therefore $\mathbf b_i$ and $\mathbf a_{\ipo k}$ are connected.
+		
+		Thus we have found a cycle in $J'$, which is a contradiction to it being a join tree.
+		Therefore our assumption of the existence of the elements $\mathbf u_0,\mathbf u_1,\dots,\mathbf u_k$ has to be false.
+	\end{proof}
+	
+	The last missing piece to prove the acyclicity of $\mathfrak C''$ is to show that $J''$ fulfils the join tree property.
+	That is, for any $v\in C''$, the set $\{\mathbf c\in V(J'') : v\in\set(\mathbf c)\}$ induces a connected subgraph of $J''$.
+	
+	\begin{claim}
+		$J''$ is a valid join tree.
+	\end{claim}
+	\begin{proof}
+		content...
+	\end{proof}
+\end{proof}
 
 \section {Relational Colour Refinement for symmetric structures}
 
