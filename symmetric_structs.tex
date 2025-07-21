@@ -1,0 +1,69 @@
+\section {Relational Colour Refinement for symmetric structures}
+
+One very interesting subclass of relational structures is the class of symmetric structures.
+A special case of these are for example undirected graphs, as their edge relations are symmetric.
+This notion of symmetry can be generalized to any relational signature.
+
+\begin{definition}[Symmetric Structures]
+	Let $\sigma$ be a relational signature.
+	A structure $\mathfrak A$ of signature $\sigma$ is a symmetric structure, if for every relation and every tuple in those relations, the order of the elements is irrelevant.
+	This means, that every relation $R$ with arity $k$ is a subset of all possible subsets of $A$ with exactly $k$ elements.
+	Formally, we have
+	$$R\subseteq \binom{A}{k}.$$
+\end{definition}
+An equivalent characterisation uses the symmetric groups $\mathcal S_k$.
+We call a $\sigma$ structure $\mathfrak A$ symmetric, if for every $R\in \sigma$ of arity $k$, every $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)\in R^{\mathfrak A}$ and every $k$-permutation $\pi\in \mathcal S_k$, we have that
+$$(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)})\in R^{\mathfrak A}.$$
+In the following, we will use $\pi(\mathbf x)$ as a shorthand notation for $(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)})$.
+
+As symmetric structures are a subset of relational structures, the results from \cite{scheidt2025ColorRefinement} obviously apply to them.
+Thus, we have that the following three statements are equivalent for two symmetric $\sigma$ structures $\mathfrak A$ and $\mathfrak B$:
+\begin{enumerate}
+	\item $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$.
+	\item There exists a sentence $\phi\in\GFC$, such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+	\item There exists an acyclic $\sigma$ structure $\mathfrak C$, such that $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
+\end{enumerate}
+However, as we restricted the class of structures for $\mathfrak A$ and $\mathfrak B$, this poses the question, whether the same can be done to the acyclic structures.
+Concretely, we want to investigate, whether the first statement is also equivalent to there being an acyclic, symmetric $\sigma$ structure, such that it has a different homomorphism count to $\mathfrak A$ than to $\mathfrak B$.
+
+As we will prove in the following, it is indeed the case that we can restrict the class of acyclic structures to only include structures that acyclic and symmetric.
+However, before we prove this, we have to show a lemma which will be used in the proof.
+As a reminder on notation, for a $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)$ a homomorphism $\phi$ and a permutation $\pi$ we write $\phi(\mathbf x)$ for $(\phi(x_1),\phi(x_2),\dots,\phi(x_k))$ and $\pi(\mathbf x)$ for $(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)})$.
+\begin{lemma}
+	Let $\pi\in\mathcal S_k$, $\phi$ be a homomorphism, $R$ a $k$-ary relation and $\mathbf x\in R$.
+	Then $\phi(\pi(\mathbf x))=\pi(\phi(\mathbf x))$.
+\end{lemma}
+\begin{proof}
+	We prove this by contradiction.
+	Assume the contrary.
+	Then there exists an $i\in[k]$, such that $\phi(\pi(\mathbf x))_i\neq \pi(\phi(\mathbf x))_i$.
+	Note that the definitions of $\phi(\pi(\mathbf x))$ and $\pi(\phi(\mathbf x))$ are 
+	$$\phi(\pi(\mathbf x)) = (\phi(x_{\pi(1)}), \phi(x_{\pi(2)}),\dots,\phi(x_{\pi(k)}))$$
+	and
+	$$\pi(\phi(\mathbf x)) = (\phi(\mathbf x)_{\pi(1)},\phi(\mathbf x)_{\pi(2)},\dots,\phi(\mathbf x)_{\pi(k)}).$$
+	From these, we directly get
+	$$\phi(\pi(\mathbf x))_i=\phi(x_{\pi(i)})=(\phi(x_1),\phi(x_2),\dots,\phi(x_2))_{\pi(i)}=\phi(\mathbf x)_{\pi(i)}=\pi(\phi(\mathbf x))_i.$$
+	Contradiction!
+	Therefore the lemma must hold.
+\end{proof}
+We now prove the above claim:
+\begin{theorem}
+	Let $\sigma$ be a relational signature and $\mathfrak A$ and $\mathfrak B$ be two $\sigma$ structures.
+	Then the following two statements are equivalent:
+	\begin{enumerate}
+		\item $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$.
+		\item There exists an acyclic, symmetric $\sigma$ structure $\mathfrak C$ with $\hom(\mathfrak C,\mathfrak A)\neq \hom(\mathfrak C,\mathfrak B)$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	We first prove that \textit{2.} implies \text{1.}.
+	Let $\mathfrak C$ be a acyclic, symmetric $\sigma$ structure with $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
+	As $\mathfrak C$ is acyclic, we can apply \ref{} and get that $\RCR$ must distinguish $\mathfrak A$ and $\mathfrak B$.
+	
+	We now prove that \textit{1.} implies \textit{2.}.
+	Assume that $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$.
+	From \ref{} we know that there exists an acyclic structure $\mathfrak C'$ with $\hom(\mathfrak C',\mathfrak A)\neq \hom(\mathfrak C',\mathfrak B)$.
+\end{proof}
+
+
+
