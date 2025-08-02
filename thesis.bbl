@@ -1,10 +1,97 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{babai1980RandomGraph}
+L{\'a}szl{\'o} Babai, Paul Erd\H{o}s, and Stanley~M. Selkow.
+\newblock Random {{Graph Isomorphism}}.
+\newblock {\em SIAM Journal on Computing}, 9(3):628--635, August 1980.
+\newblock \href {https://doi.org/10.1137/0209047} {\path{doi:10.1137/0209047}}.
+
+\bibitem{berkholz2017TightLowera}
+Christoph Berkholz, Paul Bonsma, and Martin Grohe.
+\newblock Tight {{Lower}} and {{Upper Bounds}} for the {{Complexity}} of
+  {{Canonical Colour Refinement}}.
+\newblock {\em Theory of Computing Systems}, 60(4):581--614, May 2017.
+\newblock \href {https://doi.org/10.1007/s00224-016-9686-0}
+  {\path{doi:10.1007/s00224-016-9686-0}}.
+
+\bibitem{cai1992OptimalLower}
+Jin-Yi Cai, Martin F{\"u}rer, and Neil Immerman.
+\newblock An optimal lower bound on the number of variables for graph
+  identification.
+\newblock {\em Combinatorica}, 12(4):389--410, December 1992.
+\newblock \href {https://doi.org/10.1007/BF01305232}
+  {\path{doi:10.1007/BF01305232}}.
+
+\bibitem{dell2018LovaszMeets}
+Holger Dell, Martin Grohe, and Gaurav Rattan.
+\newblock Lov{\'a}sz {{Meets Weisfeiler}} and {{Leman}}, May 2018.
+\newblock \href {https://arxiv.org/abs/1802.08876} {\path{arXiv:1802.08876}},
+  \href {https://doi.org/10.48550/arXiv.1802.08876}
+  {\path{doi:10.48550/arXiv.1802.08876}}.
+
+\bibitem{dvorak2010RecognizingGraphsa}
+Zden{\v e}k Dvo{\v r}{\'a}k.
+\newblock On recognizing graphs by numbers of homomorphisms.
+\newblock {\em Journal of Graph Theory}, 64(4):330--342, 2010.
+\newblock \href {https://doi.org/10.1002/jgt.20461}
+  {\path{doi:10.1002/jgt.20461}}.
+
+\bibitem{grohe2021ColorRefinement}
+Martin Grohe, Kristian Kersting, Martin Mladenov, and Pascal Schweitzer.
+\newblock Color {{Refinement}} and {{Its Applications}}.
+\newblock August 2021.
+\newblock \href {https://doi.org/10.7551/mitpress/10548.003.0023}
+  {\path{doi:10.7551/mitpress/10548.003.0023}}.
+
+\bibitem{grohe2014DimensionReduction}
+Martin Grohe, Kristian Kersting, Martin Mladenov, and Erkal Selman.
+\newblock Dimension {{Reduction}} via {{Colour Refinement}}.
+\newblock In Andreas~S. Schulz and Dorothea Wagner, editors, {\em Algorithms -
+  {{ESA}} 2014}, pages 505--516, Berlin, Heidelberg, 2014. Springer.
+\newblock \href {https://doi.org/10.1007/978-3-662-44777-2_42}
+  {\path{doi:10.1007/978-3-662-44777-2_42}}.
+
+\bibitem{grohe2020GraphIsomorphism}
+Martin Grohe and Pascal Schweitzer.
+\newblock The graph isomorphism problem.
+\newblock {\em Commun. ACM}, 63(11):128--134, October 2020.
+\newblock \href {https://doi.org/10.1145/3372123} {\path{doi:10.1145/3372123}}.
+
+\bibitem{immerman1990DescribingGraphs}
+Neil Immerman and Eric Lander.
+\newblock Describing {{Graphs}}: {{A First-Order Approach}} to {{Graph
+  Canonization}}.
+\newblock In Alan~L. Selman, editor, {\em Complexity {{Theory Retrospective}}:
+  {{In Honor}} of {{Juris Hartmanis}} on the {{Occasion}} of {{His Sixtieth
+  Birthday}}, {{July}} 5, 1988}, pages 59--81. Springer, New York, NY, 1990.
+\newblock \href {https://doi.org/10.1007/978-1-4612-4478-3_5}
+  {\path{doi:10.1007/978-1-4612-4478-3_5}}.
+
+\bibitem{morgan1965GenerationUnique}
+H.~L. Morgan.
+\newblock The {{Generation}} of a {{Unique Machine Description}} for {{Chemical
+  Structures-A Technique Developed}} at {{Chemical Abstracts Service}}.
+\newblock {\em Journal of Chemical Documentation}, 5(2):107--113, May 1965.
+\newblock \href {https://doi.org/10.1021/c160017a018}
+  {\path{doi:10.1021/c160017a018}}.
 
 \bibitem{scheidt2025ColorRefinement}
 Benjamin Scheidt and Nicole Schweikardt.
 \newblock Color {{Refinement}} for {{Relational Structures}}, January 2025.
-\newblock \href {http://arxiv.org/abs/2407.16022} {\path{arXiv:2407.16022}},
+\newblock \href {https://arxiv.org/abs/2407.16022} {\path{arXiv:2407.16022}},
   \href {https://doi.org/10.48550/arXiv.2407.16022}
   {\path{doi:10.48550/arXiv.2407.16022}}.
+
+\bibitem{vishwanathan2010graph}
+S~Vichy~N Vishwanathan, Nicol~N Schraudolph, Risi Kondor, and Karsten~M
+  Borgwardt.
+\newblock Graph kernels.
+\newblock {\em The Journal of Machine Learning Research}, 11:1201--1242, 2010.
+
+\bibitem{weisfeiler1968reduction}
+Boris Weisfeiler and Andrei Leman.
+\newblock The reduction of a graph to canonical form and the algebra which
+  appears therein.
+\newblock {\em nti, Series}, 2(9):12--16, 1968.
 
 \end{thebibliography}

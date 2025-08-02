@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2022)
+This is BibTeX, Version 0.99d (TeX Live 2025)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesis.aux
 The style file: plainurl.bst
@@ -8,44 +8,46 @@ Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
-You've used 1 entry,
-            2882 wiz_defined-function locations,
-            631 strings with 5249 characters,
-and the built_in function-call counts, 424 in all, are:
-= -- 38
-> -- 14
-< -- 0
-+ -- 5
-- -- 4
-* -- 28
-:= -- 80
-add.period$ -- 3
-call.type$ -- 1
-change.case$ -- 5
+Warning--empty journal in grohe2021ColorRefinement
+You've used 13 entries,
+            2943 wiz_defined-function locations,
+            745 strings with 8010 characters,
+and the built_in function-call counts, 6611 in all, are:
+= -- 719
+> -- 241
+< -- 2
++ -- 88
+- -- 71
+* -- 443
+:= -- 948
+add.period$ -- 50
+call.type$ -- 13
+change.case$ -- 73
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 7
-empty$ -- 41
-format.name$ -- 4
-if$ -- 103
+cite$ -- 14
+duplicate$ -- 157
+empty$ -- 588
+format.name$ -- 71
+if$ -- 1668
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 8
-num.names$ -- 2
-pop$ -- 14
+int.to.str$ -- 13
+missing$ -- 11
+newline$ -- 77
+num.names$ -- 30
+pop$ -- 138
 preamble$ -- 1
-purify$ -- 4
+purify$ -- 60
 quote$ -- 0
-skip$ -- 29
+skip$ -- 427
 stack$ -- 0
-substring$ -- 5
-swap$ -- 5
-text.length$ -- 0
+substring$ -- 347
+swap$ -- 54
+text.length$ -- 24
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 4
-warning$ -- 0
-while$ -- 2
-width$ -- 2
-write$ -- 13
+type$ -- 52
+warning$ -- 1
+while$ -- 50
+width$ -- 15
+write$ -- 165
+(There was 1 warning)

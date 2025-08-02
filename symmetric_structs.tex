@@ -8,7 +8,7 @@ This notion of symmetry can be generalized to any relational signature.
 	Let $\sigma$ be a relational signature.
 	A structure $\mathfrak A$ of signature $\sigma$ is a symmetric structure, if for every relation and every tuple in those relations, the order of the elements is irrelevant.
 	This means, that every relation $R$ with arity $k$ is a subset of all possible subsets of $A$ with exactly $k$ elements.
-	Formally, we have
+	Formally, that means
 	$$R\subseteq \binom{A}{k}.$$
 \end{definition}
 An equivalent characterisation uses the symmetric groups $\mathcal S_k$.
@@ -26,12 +26,13 @@ Thus, we have that the following three statements are equivalent for two symmetr
 However, as we restricted the class of structures for $\mathfrak A$ and $\mathfrak B$, this poses the question, whether the same can be done to the acyclic structures.
 Concretely, we want to investigate, whether the first statement is also equivalent to there being an acyclic, symmetric $\sigma$ structure, such that it has a different homomorphism count to $\mathfrak A$ than to $\mathfrak B$.
 
-As we will prove in the following, it is indeed the case that we can restrict the class of acyclic structures to only include structures that acyclic and symmetric.
+As we will prove in the following, it is indeed the case that we can restrict the class of acyclic structures to only include structures that are acyclic and symmetric.
 However, before we prove this, we have to show a lemma which will be used in the proof.
-As a reminder on notation, for a $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)$ a homomorphism $\phi$ and a permutation $\pi$ we write $\phi(\mathbf x)$ for $(\phi(x_1),\phi(x_2),\dots,\phi(x_k))$ and $\pi(\mathbf x)$ for $(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)})$.
+As a reminder on notation, for a $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)$, a homomorphism $\phi$ and a permutation $\pi$, we write $\phi(\mathbf x)$ for $(\phi(x_1),\phi(x_2),\dots,\phi(x_k))$ and $\pi(\mathbf x)$ for $(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)})$.
 \begin{lemma}
-	Let $\pi\in\mathcal S_k$, $\phi$ be a homomorphism, $R$ a $k$-ary relation and $\mathbf x\in R$.
+	Let $\pi\in\mathcal S_k$, $\phi$ be a homomorphism, $R$ a relation of arity $k$ and $\mathbf x=(x_1,x_2,\dots,x_k)\in R$.
 	Then $\phi(\pi(\mathbf x))=\pi(\phi(\mathbf x))$.
+	\label{HomAndPermutCommute}
 \end{lemma}
 \begin{proof}
 	We prove this by contradiction.
@@ -56,14 +57,102 @@ We now prove the above claim:
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	We first prove that \textit{2.} implies \text{1.}.
-	Let $\mathfrak C$ be a acyclic, symmetric $\sigma$ structure with $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
-	As $\mathfrak C$ is acyclic, we can apply \ref{} and get that $\RCR$ must distinguish $\mathfrak A$ and $\mathfrak B$.
+	We first prove that \textit{2.} implies \textit{1.}
+	Let $\mathfrak C$ be an acyclic, symmetric $\sigma$ structure with $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
+	As $\mathfrak C$ is acyclic, we can apply the equivalence seen in \ref{} and get that $\RCR$ must distinguish $\mathfrak A$ and $\mathfrak B$.
 	
-	We now prove that \textit{1.} implies \textit{2.}.
+	We now prove that \textit{1.} implies \textit{2.}
 	Assume that $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$.
 	From \ref{} we know that there exists an acyclic structure $\mathfrak C'$ with $\hom(\mathfrak C',\mathfrak A)\neq \hom(\mathfrak C',\mathfrak B)$.
+	Our goal will be to construct a $\sigma$ structure $\mathfrak C$ from $\mathfrak C'$ that is both acyclic and symmetric.
+	Informally, $\mathfrak C'$ will have the same elements as $\mathfrak C$ and for every tuple that appears in some relation, we will add all possible permutations of that tuple to the relation as well.
+	Formally, we define $\mathfrak C\coloneqq(C',\sigma)$ and for all $R\in\sigma$ with arity $k$, we have
+	$$R^{\mathfrak C}\coloneqq \{(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)}) : \text{for every } (x_1,x_2,\dots,x_k)\in R^{\mathfrak C'} \text{ and every } \pi\in \mathcal S_k\}.$$
+	From the second characterisation of symmetric structures given above, it is obvious that $\mathfrak C$ is symmetric.
+	\begin{claim}
+		$\mathfrak C$ is acyclic.
+	\end{claim}
+	\begin{proof}
+		We define a join-tree $J$ for $\mathfrak C$.
+		Since $\mathfrak C'$ is acyclic, we have a join-tree $J'$ for $\mathfrak C'$.
+		From the definition we know that $V(J)=\mathbf C$, thus we only have to define the set of edges.
+		Let $\mathbf x\in V(J)\setminus V(J')$.
+		From the construction there exists a permutation $\pi_{\mathbf x}$, such that $\pi_{\mathbf x}(\mathbf x)\in V(J')$.
+		We now define $E(J)\coloneqq E(J')\cup \{\{\pi_{\mathbf x}(\mathbf x), \mathbf x\} : \mathbf x\in \mathbf C \setminus \mathbf{C'}\}$.
+		This construction can be seen in figure \ref{SymmetricJoinTreeConstruction}.
+		
+		\begin{figure}
+			\centering
+			\begin{multicols}{2}
+				\begin{tikzpicture}[node distance=1cm]
+					\node (x) {$(a,b,c)$};
+					\node[left=of x, xshift=-1.5cm, yshift=0.1cm] (label) {$J'$:};
+					\node[above right=of x, yshift=0.5cm] (upperDots) {$\dots$};
+					\node[below left=of x, yshift=-0.5cm] (lowerDots) {$\dots$};
+					
+					\draw
+					(x) edge[-, thick] node{} (upperDots)
+					(x) edge[-, thick] node{} (lowerDots);
+				\end{tikzpicture}
+				\begin{tikzpicture}[node distance=1cm]
+					\node (abc) {$(a,b,c)$};
+					\node[above right=of abc, yshift=0.5cm] (upperDots) {$\dots$};
+					\node[below left=of abc, yshift=-0.5cm] (lowerDots) {$\dots$};
+	
+					\node[below=of abc, xshift=0.2cm] (acb) {$(a,c,b)$};
+					\node[below right=of abc] (bac) {$(b,a,c)$};
+					\node[right=of abc, yshift=-0.2cm] (bca) {$(b,c,a)$};
+					\node[left=of abc, yshift=0.5cm] (cab) {$(c,a,b)$};
+					\node[above=of abc, xshift=-0.5cm] (cba) {$(c,b,a)$};
+					
+					\node[left=of abc, xshift=-1.5cm, yshift=0.1cm] (label) {$J$:};
+					
+					\draw
+					(abc) edge[-, thick] node{} (upperDots)
+					(abc) edge[-, thick] node{} (lowerDots)
+					(abc) edge[-, thick] node{} (acb)
+					(abc) edge[-, thick] node{} (bac)
+					(abc) edge[-, thick] node{} (bca)
+					(abc) edge[-, thick] node{} (cab)
+					(abc) edge[-, thick] node{} (cba);
+				\end{tikzpicture}
+			\end{multicols}
+			\caption{A section from the join tree $J'$ and the join tree $J$ generated from it. We consider a tuple $\mathbf x=(a,b,c)$, for which no other permutation appears in $\mathbf{C'}$.}
+			\label{SymmetricJoinTreeConstruction}
+		\end{figure}
+		
+		The connectedness and cycle-freeness follows directly from the fact that $J'$ is also a tree.
+		As such, it only remains to show the join-tree property.
+		Consider an arbitrary $v\in C$.
+		Since $C=C'$, we have that $v\in C'$ and the set of all $\mathbf x\in \mathbf{C'}$ with $v\in \set(\mathbf x)$ induces a connected subgraph.
+		Let $\mathbf x\in \mathbf C\setminus \mathbf{C'}$ and $v\in \set(\mathbf x)$.
+		Then $\pi_{\mathbf x}(\mathbf x)\in \mathbf{C'}$ and $\{\pi_{\mathbf x(\mathbf x)},\mathbf x\}\in E(J)$, thus $\mathbf x$ is also connected and the set $\{\mathbf x\in V(J) : v\in \set(\mathbf x)\}$ also induces a connected subgraph.
+		This was to be shown.
+	\end{proof}
+	
+	It now remains to prove, that $\mathfrak C$ also has a different number of homomorphisms to $\mathfrak A$, than to $\mathfrak B$.
+	In fact, we will show that $\mathfrak C$ and $\mathfrak C'$ have exactly the same homomorphisms to $\mathfrak A$ and $\mathfrak B$, respectively.
+	Formally, we will prove that $\Hom(\mathfrak C',\mathfrak A)=\Hom(\mathfrak C,\mathfrak A)$ and $\Hom(\mathfrak C',\mathfrak B)=\Hom(\mathfrak C,\mathfrak B)$.
+	However, we will only prove the claim for $\mathfrak A$, as the case for $\mathfrak B$ can be proven completely analogously.
+	
+	Let $\phi\in \Hom(\mathfrak C',\mathfrak A)$.
+	Then for every $R\in \sigma$, we have that if $\mathbf x\in R^{\mathfrak C'}$, then $\phi(\mathbf x)\in R^{\mathfrak A}$.
+	Now consider $\mathbf x\in R^{\mathfrak C}$ for a $R\in \sigma$ with arity $k$ and we will proceed with a case distinction.
+	If $\mathbf x\in \mathbf{C'}$, then we have $\mathbf x\in R^{\mathfrak C'}$ and by assumption $\phi(\mathbf x)\in R^{\mathfrak A}$.
+	If $\mathbf x\in \mathbf C\setminus\mathbf{C'}$, then there must be a $\pi\in \mathcal S_k$, such that $\pi(\mathbf x)\in \mathbf{C'}$ and further $\pi(\mathbf x)\in R^{\mathfrak C'}$.
+	Then by assumption we have that $\phi(\pi(\mathbf x))\in R^{\mathfrak A}$.
+	Using Lemma \ref{HomAndPermutCommute}, we know that $\phi(\pi(\mathbf x))=\pi(\phi(\mathbf x))\in R^{\mathfrak A}$.
+	Now let $\pi'\in \mathcal S_k$, such that $\pi'\circ\pi=\operatorname{id}\in \mathcal S_k$.
+	As $\mathfrak A$ is symmetric, we know that $\pi'(\pi(\varphi(\mathbf x)))\in R^{\mathfrak A}$ and further we get that $\pi'(\pi(\varphi(\mathbf x)))=\phi(\mathbf x)$.
+	Therefore $\phi(\mathbf x)\in R^{\mathfrak A}$ and $\phi\in\Hom(\mathfrak C,\mathfrak A)$ follows.
+	
+	Now let $\phi\notin\Hom(\mathfrak C',\mathfrak A)$.
+	Then there is a $R\in\sigma$ with arity $k$ and a $\mathbf x\in R^{\mathfrak C'}$ with $\phi(\mathbf x)\notin R^{\mathfrak A}$.
+	From the definition we get that $\mathbf x\in \mathbf{C}$ and thus $\mathbf x \in R^{\mathfrak C}$ and from the assumption we get that $\phi(\mathbf x)\notin R^{\mathfrak A}$.
+	Therefore $\phi\notin \Hom(\mathfrak C,\mathfrak A)$.
 \end{proof}
+
+With this we have proven that it is possible to only consider symmetric acyclic structures with a different homomorphism count, when trying to distinguish symmetric structures.
 
 
 
