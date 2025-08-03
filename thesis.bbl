@@ -14,6 +14,24 @@ Christoph Berkholz, Paul Bonsma, and Martin Grohe.
 \newblock \href {https://doi.org/10.1007/s00224-016-9686-0}
   {\path{doi:10.1007/s00224-016-9686-0}}.
 
+\bibitem{boker2019ColorRefinement}
+Jan B{\"o}ker.
+\newblock Color {{Refinement}}, {{Homomorphisms}}, and {{Hypergraphs}}.
+\newblock In Ignasi Sau and Dimitrios~M. Thilikos, editors, {\em
+  Graph-{{Theoretic Concepts}} in {{Computer Science}}}, pages 338--350, Cham,
+  2019. Springer International Publishing.
+\newblock \href {https://doi.org/10.1007/978-3-030-30786-8_26}
+  {\path{doi:10.1007/978-3-030-30786-8_26}}.
+
+\bibitem{butti2021FractionalHomomorphism}
+Silvia Butti and Victor Dalmau.
+\newblock Fractional homomorphism, {{Weisfeiler-Leman}} invariance, and the
+  {{Sherali-Adams}} hierarchy for the {{Constraint Satisfaction Problem}}, July
+  2021.
+\newblock \href {https://arxiv.org/abs/2107.02956} {\path{arXiv:2107.02956}},
+  \href {https://doi.org/10.48550/arXiv.2107.02956}
+  {\path{doi:10.48550/arXiv.2107.02956}}.
+
 \bibitem{cai1992OptimalLower}
 Jin-Yi Cai, Martin F{\"u}rer, and Neil Immerman.
 \newblock An optimal lower bound on the number of variables for graph
@@ -74,6 +92,14 @@ H.~L. Morgan.
 \newblock {\em Journal of Chemical Documentation}, 5(2):107--113, May 1965.
 \newblock \href {https://doi.org/10.1021/c160017a018}
   {\path{doi:10.1021/c160017a018}}.
+
+\bibitem{scheidt2023CountingHomomorphisms}
+Benjamin Scheidt and Nicole Schweikardt.
+\newblock Counting {{Homomorphisms}} from {{Hypergraphs}} of {{Bounded
+  Generalised Hypertree Width}}: {{A Logical Characterisation}}, August 2023.
+\newblock \href {https://arxiv.org/abs/2303.10980} {\path{arXiv:2303.10980}},
+  \href {https://doi.org/10.48550/arXiv.2303.10980}
+  {\path{doi:10.48550/arXiv.2303.10980}}.
 
 \bibitem{scheidt2025ColorRefinement}
 Benjamin Scheidt and Nicole Schweikardt.

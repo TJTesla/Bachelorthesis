@@ -9,45 +9,45 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
 Warning--empty journal in grohe2021ColorRefinement
-You've used 13 entries,
+You've used 16 entries,
             2943 wiz_defined-function locations,
-            745 strings with 8010 characters,
-and the built_in function-call counts, 6611 in all, are:
-= -- 719
-> -- 241
-< -- 2
-+ -- 88
-- -- 71
-* -- 443
-:= -- 948
-add.period$ -- 50
-call.type$ -- 13
-change.case$ -- 73
+            770 strings with 8822 characters,
+and the built_in function-call counts, 8042 in all, are:
+= -- 877
+> -- 285
+< -- 3
++ -- 103
+- -- 83
+* -- 529
+:= -- 1134
+add.period$ -- 61
+call.type$ -- 16
+change.case$ -- 87
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 157
-empty$ -- 588
-format.name$ -- 71
-if$ -- 1668
+cite$ -- 17
+duplicate$ -- 194
+empty$ -- 728
+format.name$ -- 83
+if$ -- 2049
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 11
-newline$ -- 77
-num.names$ -- 30
-pop$ -- 138
+int.to.str$ -- 16
+missing$ -- 12
+newline$ -- 93
+num.names$ -- 38
+pop$ -- 179
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 71
 quote$ -- 0
-skip$ -- 427
+skip$ -- 531
 stack$ -- 0
-substring$ -- 347
-swap$ -- 54
-text.length$ -- 24
+substring$ -- 400
+swap$ -- 76
+text.length$ -- 31
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
+type$ -- 64
 warning$ -- 1
-while$ -- 50
-width$ -- 15
-write$ -- 165
+while$ -- 60
+width$ -- 18
+write$ -- 202
 (There was 1 warning)
