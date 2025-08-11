@@ -1,5 +1,12 @@
 \begin{thebibliography}{10}
 
+\bibitem{babai2016GraphIsomorphism}
+L{\'a}szl{\'o} Babai.
+\newblock Graph {{Isomorphism}} in {{Quasipolynomial Time}}, January 2016.
+\newblock \href {https://arxiv.org/abs/1512.03547} {\path{arXiv:1512.03547}},
+  \href {https://doi.org/10.48550/arXiv.1512.03547}
+  {\path{doi:10.48550/arXiv.1512.03547}}.
+
 \bibitem{babai1980RandomGraph}
 L{\'a}szl{\'o} Babai, Paul Erd\H{o}s, and Stanley~M. Selkow.
 \newblock Random {{Graph Isomorphism}}.
@@ -92,6 +99,13 @@ H.~L. Morgan.
 \newblock {\em Journal of Chemical Documentation}, 5(2):107--113, May 1965.
 \newblock \href {https://doi.org/10.1021/c160017a018}
   {\path{doi:10.1021/c160017a018}}.
+
+\bibitem{ray1957FindingChemical}
+Louis~C. Ray and Russell~A. Kirsch.
+\newblock Finding {{Chemical Records}} by {{Digital Computers}}.
+\newblock {\em Science}, 126(3278):814--819, October 1957.
+\newblock \href {https://doi.org/10.1126/science.126.3278.814}
+  {\path{doi:10.1126/science.126.3278.814}}.
 
 \bibitem{scheidt2023CountingHomomorphisms}
 Benjamin Scheidt and Nicole Schweikardt.
