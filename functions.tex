@@ -105,6 +105,7 @@ A method that allows for the nesting of terms will be described in the following
 
 
 \subsection{Using the transitive expansion} 
+\label{sec:TransitiveExpansion}
 
 As a first remark we note that we only consider unary functions in this section.
 The key idea will be, to encode a function $f$ as a family of relations, which then can capture the notion of nesting function applications.
@@ -619,50 +620,133 @@ This now allows us to proof the logical characterisation of our Colour Refinemen
 	Using \cite{scheidt2025ColorRefinement}, we thus know that $\RCR$ distinguishes $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$ and by definition we can deduce that $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$.
 \end{proof}
 
-\todo{Hier das selbige Spiel bzgl. eine Beispiels. Ein vollständiges Beispiel wäre vermutlich ziemlich lang, die Konstruktion wird ja leider exponentiell groß. Sollte ich dann trotzdem ein vollständiges Beispiel hier aufführen? Oder reicht es die Sachen mit nem $\bigvee$ bzw. $\bigwedge$ zusammenzufassen? Zumindest die Konstruktion mit den $\operatorname{Parts}$ sollte man vllt noch einmal anschneiden?}
+% \todo{Hier das selbige Spiel bzgl. eine Beispiels. Ein vollständiges Beispiel wäre vermutlich ziemlich lang, die Konstruktion wird ja leider exponentiell groß. Sollte ich dann trotzdem ein vollständiges Beispiel hier aufführen? Oder reicht es die Sachen mit nem $\bigvee$ bzw. $\bigwedge$ zusammenzufassen? Zumindest die Konstruktion mit den $\operatorname{Parts}$ sollte man vllt noch einmal anschneiden?}
 
 
 \subsection{Characterisation through homomorphism counting}
 
-One of the most interesting aspects of classical, as well as Relational Colour Refinement is that aside from its logical characterisation, it can be characterised by counting homomorphisms from certain structures.
+One very interesting property of classical, as well as Relational Colour Refinement is that aside from its logical characterisation, it can be characterised by counting homomorphisms from certain structures.
 As we showed, the logical characterisation has two possible extensions to structures with functions.
 Thus we now want to consider, whether those extensions can also be characterised by counting homomorphisms.
 
-We begin with the naive encoding of functions.
+In the following we will see that, using the two established approaches, it is in general not possible, to find acyclic structures with functions that divide two structures by homomorphism count.
+We will concentrate on the encoding defined in section \ref{Sec::NaiveEncodingOfFunctions}, where we will show one positive and one negative result.
+Afterwards, we will widen the negative results to show that a corresponding characterisation for the encoding from section \ref{sec:TransitiveExpansion} cannot exist as well.
 
-\subsubsection{Naive Encoding of functions}
+\subsubsection{Acyclic structures cannot characterise naive RCR}
 
-By definition we have, that two structures $\mathfrak A$ and $\mathfrak B$ of signature $\sigma$ are distinguished by nRCR if, and only if, RCR distinguishes the two encoded structures $\mathfrak A'$ and $\mathfrak B'$ of signature $\sigma'$.
-With \cite{scheidt2025ColorRefinement} this is equivalent to the existence of an acyclic structure $\mathfrak C'$ of signature $\sigma'$ with $\hom(\mathfrak C',\mathfrak A')\neq \hom(\mathfrak C',\mathfrak B')$.
-Therefore, the last missing step is, to prove that the latter is equivalent to there being an acyclic structure $\mathfrak C$ of signature $\sigma$ with $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
+To begin, let us define two concepts for relational structures that encode a non-relational structure.
 
-For our application it is sensible to define acyclic structures with functions with respect to the encoding.
-That is, a structure $\mathfrak C$ of a signature $\sigma$, that may contain function symbols of arbitrary arity, is acyclic, if, and only if, its encoding $\mathfrak C'$ of signature $\sigma'$, which is relational, is acyclic.
-
-However, when we try to decode $\mathfrak C'$ to the signature $\sigma$, we notice that this may not be possible.
-Concretely, for a function symbol $f\in\sigma$ and corresponding $R_f\in\sigma'$, there may be $(\mathbf x y),(\mathbf x z)\in R_f$ with $y\neq z$.
-This would prevent a direct decryption.
-
-\begin{definition}[Function-suitable]
-	Let $\sigma$ be signature with functions of arbitrary arity, $\mathfrak A$ a structure of signature $\sigma$ and let $\sigma'$ and $\mathfrak A'$ be their encodings, as defined in section \ref{Sec::NaiveEncodingOfFunctions}.
-	We then call $\mathfrak A'$ function-suitable, if for every function symbol $f\in\sigma$ of arity $k$, corresponding $R_f\in\sigma'$ of arity $k+1$ and for every $k$ tuple $\mathbf x$, there is exactly one $y$, such that $(\mathbf x y)\in R_f$.
+\begin{definition}[Total structures]
+	\label{def:TotalStructures}
+	Let $\sigma\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature where $\sigma_{\operatorname{Func}}$ contains exactly all functional symbols and is not empty.
+	Now let $\sigma'$ be the relational encoding of $\sigma$ and let $\mathfrak A'$ ba a $\sigma'$-structure.
+	We call $\mathfrak A'$ total, if for every $R_{f}\in\widehat{\sigma}$ with arity $n+1$ where $f\in \sigma_{\operatorname{Func}}$ has arity $n$, we have that for every $n$-ary tuple $\mathbf x$ there is a $y$ such that $(\mathbf xy)\in R^{\mathfrak A'}_{f}$.
 \end{definition}
 
-We will now prove that we can obtain a function-suitable, acyclic structure with the same homomorphism count from an acyclic structure.
+Total structures therefore capture the notion that every relation that encodes a function is defined for the complete value-domain.
+However, functions also only valuate to exactly one value.
+This idea is captured by the following definition.
+
+\begin{definition}[Functional structures]
+	We define $\sigma$, $\sigma'$ and $\mathfrak A'$ exactly as in definition \ref{def:TotalStructures}.
+	We call $\mathfrak A'$ functional, if for every $R_{f}\in\widehat{\sigma}$ with arity $n+1$ where $f\in \sigma_{\operatorname{Func}}$ has arity $n$, we have that if $(\mathbf xy)\in R^{\mathfrak A'}_{f}$ there is no $y'\neq y$ such that $(\mathbf xy')\in R^{\mathfrak A'}_{f}$.
+\end{definition}
+
+A graphical representation of total and functional structures can be found in figure \ref{fig:totalAndFunctionalStructs}.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{pictures/totalAndFunctionalStructs}
+	\caption{Examples for a total and functional ($\mathfrak A$), a total and not-functional ($\mathfrak B$), a not-total but functional ($\mathfrak C$) and a not-total and not-functional structure ($\mathfrak D$), where $\sigma=\{f/1\}$ and thus $\sigma'=\{R_f/2\}$.}
+	\label{fig:totalAndFunctionalStructs}
+\end{figure}
+
+To continue, we have to define what it means to be acyclic for a structure with functions.
+
+\begin{definition}[Acyclic, non-relational structures]
+	Let $\sigma$ be a signature with function-symbols and $\sigma'$ its encoding as it is defined in section \ref{Sec::NaiveEncodingOfFunctions}.
+	Let $\mathfrak C$ be a $\sigma$-structure and $\mathfrak C'$ be its encoding of signature $\sigma'$.
+	We then call $\mathfrak C$ acyclic, if $\mathfrak C'$ is acyclic, with respect to acyclicity as it is defined in definition \ref{}.
+\end{definition}
+
+We now want to find the equivalence between the existence of an acyclic structure with functions and an encoding of an acyclic structure with the above properties (with respect to homomorphism counting).
+
+\begin{lemma}
+	Let $\sigma$ be a signature with function-symbols and $\sigma'$ be the relational encoding of it.
+	Let $\mathfrak A$ and $\mathfrak B$ be $\sigma$-structures and $\mathfrak A'$ and $\mathfrak B'$ be their respective encodings of signature $\sigma'$.
+	Then the two following statements are equivalent.
+	\begin{enumerate}
+		\item There exists an acyclic structure $\mathfrak C$ of signature $\sigma$ such that $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
+		\item There exists an acyclic, total and functional structure $\mathfrak C'$ of signature $\sigma'$ such that $\hom(\mathfrak C',\mathfrak A')\neq \hom(\mathfrak C',\mathfrak B')$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	We begin by proving that \emph{1.} implies \emph{2.}.
+	Let $\mathfrak C$ be such a $\sigma$-structure.
+	Now let $\mathfrak C'$ be its encoding as a $\sigma'$-structure.
+	By definition is $\mathfrak C'$ acyclic and when considering the definition of the encoding, we find that it also has to be total and functional.
+	Furthermore we have $\Hom(\mathfrak C,\mathfrak A)=\Hom(\mathfrak C',\mathfrak A')$ and respectively with $\mathfrak B$ and $\mathfrak B'$.
+	
+	Let $\phi\in\Hom(\mathfrak C,\mathfrak A)$. 
+	We show that $\phi\in\Hom(\mathfrak C',\mathfrak A')$.
+	Let $(\mathbf xy)\in R^{\mathfrak C'}_f$ for a function-symbol $f\in\sigma$.
+	Then by definition of the encoding $f^{\mathfrak C}(\mathbf x)=y$ and then $f^{\mathfrak A}(\phi(\mathbf x))=\phi(f^{\mathfrak C}(\mathbf x))=\phi(y)$.
+	Thus we have that $(\phi(\mathbf x)\phi(y))\in R_f^{\mathfrak A'}$, but this is equal to $\phi(\mathbf xy)\in R_f^{\mathfrak A'}$.
+	Let $\mathbf x\in R^{\mathfrak C'}$ where $R\neq R_f$ for all function symbols $f\in\sigma$.
+	Then we have that $R^{\mathfrak C'}=R^{\mathfrak C}$ and $R^{\mathfrak A}=R^{\mathfrak A'}$. 
+	Therefore because $\mathbf x\in R^{\mathfrak C}$, we have $\phi(\mathbf x)\in R^{\mathfrak A}=R^{\mathfrak A'}$. 
+	This was to be shown
+	
+	Let $\phi\in \Hom(\mathfrak C',\mathfrak A')$.
+	We show that $\phi\in\Hom(\mathfrak C,\mathfrak A)$.
+	Let $\mathbf x\in R^{\mathfrak C}$ for a relational-symbol $R$.
+	By the construction of the encoding we know that $R^{\mathfrak C}=R^{\mathfrak C'}$ and $R^{\mathfrak A'}=R^{\mathfrak A}$ and with the same argument as before we can conclude that $\phi(\mathbf x)\in R^{\mathfrak A}$.
+	Let $\mathbf x$ and $y$ be such that $f^{\mathfrak C}(\mathbf x)=y$.
+	Then by construction we know that $(\mathbf xy)\in R_f^{\mathfrak C'}$.
+	Because $\phi$ is a homomorphism we also know that $\phi(\mathbf xy)\in R_f^{\mathfrak A'}$ and because $\mathfrak A'$ is also an encoding we have that $f^{\mathfrak A}(\phi(\mathbf x))=\phi(y)=\phi(f^{\mathfrak C}(\mathbf x))$.
+	This was to be shown.
+	$\mathfrak A$ and $\mathfrak A'$ can be replaced by $\mathfrak B$ and $\mathfrak B'$, respectively, to get the analogous result for the other structure.
+	
+	We now show that \emph{2.} implies \emph{1.}.
+	Let $\mathfrak C'$ be an acyclic, total and functional $\sigma'$-structure.
+	We can now construct a $\sigma$-structure $\mathfrak C$ by decoding $\mathfrak C'$ and will also get that $\Hom(\mathfrak C',\mathfrak A')=\Hom(\mathfrak C,\mathfrak A)$.
+	For a relation-symbol $R\in\sigma$ we can define $R^{\mathfrak C}\coloneqq R^{\mathfrak C'}$.
+	For a function-symbol $f\in\sigma$ we can define $f^{\mathfrak C}$ as follows: 
+	Let $f$ be of arity $n$. Then for a $n$-ary tuple $\mathbf x$ there must be a $y$ such that $(\mathbf xy)\in R_f^{\mathfrak C'}$ because $\mathfrak C'$ is total and there must be exactly one such $y$ because $\mathfrak C'$ is functional.
+	Therefore we define $f^{\mathfrak C}(\mathbf x)=y$.
+	The claim that the sets of homomorphisms is equal can be verified using exactly the same arguments as in the analogous proof of the other direction.
+\end{proof}
+
+We can now continue to put this in relation to the statement regarding RCR.
+We have that naive RCR distinguishes two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ if, and only if, RCR distinguishes the encodings $\mathfrak A'$ and $\mathfrak B'$ of signature $\sigma'$.
+Due to the results of \cite{scheidt2025ColorRefinement} this is the case if, and only if, there is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
+We would like to achieve the result that this is equivalent to there being an acyclic $\sigma$ structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by homomorphism count (however this will not be the case).
+By the above lemma, this is equivalent to there being an acyclic, total and functional $\sigma'$-structure $\mathfrak C''$ that distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
+Our goal will therefore be, to study the relationship between the two following statements.
+\begin{enumerate}
+	\item There is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
+	\item There is an acyclic, total and functional $\sigma'$-structure $\mathfrak C''$ such that $\hom(\mathfrak C'',\mathfrak A')\neq\hom(\mathfrak C'',\mathfrak B')$.
+\end{enumerate}
+
+It is obvious that \emph{2.} implies \emph{1.}, however the other direction will not hold in general.
+In fact, we will be able to construct a functional structure from $\mathfrak C'$, but totality will not be able to be constructed.
+We will in the following prove the former claim and then show the latter claim, using a family of counterexamples.
 
 \begin{lemma}
 	Let $\mathfrak A$ and $\mathfrak B$ be structures of signature $\sigma$ and $\mathfrak A'$, $\mathfrak B'$ and $\sigma'$ the respective encodings.
-	If there is an acyclic structure $\mathfrak C'$ of signature $\sigma'$ with $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$, then we can construct a function-suitable acyclic structure $\mathfrak C''$ of signature $\sigma'$ such that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$.
+	If there is an acyclic structure $\mathfrak C'$ of signature $\sigma'$ with $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$, then we can construct a functional, acyclic structure $\mathfrak C''$ of signature $\sigma'$ such that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$.
 \end{lemma}
 \begin{proof}
-	We will give a procedure, to iteratively remove collisions of the form $(\mathbf x y),(\mathbf x z)\in R_f$ for all function symbols $f\in\sigma$.
+	The proof for the above lemma will work as follows.
+	If $\mathfrak C'$ is not functional, then there is a function-symbol $f\in\sigma$ and two different tuples $(\mathbf xy),(\mathbf xz)\in R^{\mathfrak C'}_f$, we call this a collision.
+	We will give a procedure, to iteratively remove such collisions.
 	The procedure will reduce the number of elements by one, will keep the acyclicity property and will result in a structure with the same amount of homomorphisms to $\mathfrak A'$ and $\mathfrak B'$.
 	Thus, by continuously applying that procedure to all collisions, we will get $\mathfrak C''$.
 	The algorithm must terminate, as the number of elements strictly decreases and we only consider finite structures.
 	
 	The remainder of this proof will be dedicated to describing the procedure and proving the above claims.
 	Assume that there is a function symbol $f\in \sigma$ and two different tuples $(\mathbf x y),(\mathbf x z)\in R_f^{\mathfrak C'}$. 
-	Our goal will be to construct a structure $\mathfrak C''$ of signature $\sigma'$ with the following properties:
+	Our goal will be to construct a structure $\mathfrak C''$ of signature $\sigma'$ without this particular collision and with the following properties:
 	\begin{itemize}
 		\item[a.] $\Vert \mathfrak C'' \Vert = \Vert \mathfrak C'\Vert -1$
 		\item[b.] $\mathfrak C''$ is acyclic
@@ -681,13 +765,13 @@ We will now prove that we can obtain a function-suitable, acyclic structure with
 	where for all $R\in\sigma'$ we have $R^{\mathfrak C''}\coloneqq \{\chi(\mathbf c) : \mathbf c\in R^{\mathfrak C'}\}$.
 	We will now proceed by proving the above properties.
 	
-	\textbf{Property a.:}
+	\paragraph{Property a.:}
 	This property follows directly from the definition of $C''$.
 	We have $y\neq z$, $y,z\in C'$ and thus $\vert C'\setminus \{y,z\}\vert = \vert C'\vert -2$.
 	Furthermore, we have $v_{y,z}\notin C'$ and therefore $\vert (C'\setminus \{y,z\})\cup \{v_{y,z}\}\vert = \vert C' \vert -1$.
 	This was to be shown.
 	
-	\textbf{Property b.:}
+	\paragraph{Property b.:}
 	To show that $\mathfrak C''$ is acyclic, we first will define an undirected graph $J''$, will prove that it is connected and cycle free, thus a tree, and that it fulfils the join tree property for $\mathfrak C''$.
 	By the assumption we know that $\mathfrak C'$ is acyclic and thus has a join tree $J'$.
 	We further notice that $\mathbf{C''}=\{\chi(\mathbf c) : \mathbf c\in \mathbf{C'}\}$.
@@ -712,15 +796,15 @@ We will now prove that we can obtain a function-suitable, acyclic structure with
 	\end{claim}
 	\begin{proof}
 		Assume that there were $\mathbf u_0,\mathbf u_1,\dots,\mathbf u_k\in V(J'')$ with $\{\mathbf u_{i-1},\mathbf u_i\}\in E(J'')$ for all $i\in [k]$ and $\{\mathbf u_k,\mathbf u_0\}\in E(J'')$.
-		We now define directed edges such that $e_0=(\mathbf u_0,\mathbf u_1)$, $e_1=(\mathbf u_1,\mathbf u_2)$, $\dots$, $e_k=(\mathbf u_k,\mathbf u_0)$.
-		For every edge $e_i$ choose two elements $\mathbf a_i,\mathbf b_i\in V(J')$ such that $\{\mathbf a,\mathbf b\}\in E(J')$, $\chi(\mathbf a_i)=\mathbf u_i$ and $\chi(\mathbf b_i)=\mathbf u_{\ipo k}$.
+		We now define directed edges such that $e_0=(\mathbf u_0,\mathbf u_1)$, $e_1=(\mathbf u_1,\mathbf u_2)$, $\dots$, $e_k=(\mathbf u_k,\mathbf u_0)$, therefore we have $e_i=(\mathbf u_i, \mathbf u_{\ipo k})$.
+		For every edge $e_i$ choose two elements $\mathbf a_i,\mathbf b_i\in V(J')$ such that $\{\mathbf a_i,\mathbf b_i\}\in E(J')$, $\chi(\mathbf a_i)=\mathbf u_i$ and $\chi(\mathbf b_i)=\mathbf u_{\ipo k}$.
 		These elements must exist by the definition of $E(J'')$.
 		
 		We now prove that there exists a cycle in $J'$, which would contradict our assumption of $J'$ being a join tree for $\mathfrak C'$.
 		To show this, we prove that for all $i\in\{0\}\cup[k]$, the elements $\mathbf b_i$ and $\mathbf a_{\ipo k}$ are connected in $J'$.
 		We see that $\chi(\mathbf b_i)=\mathbf u_{\ipo k} = \chi(\mathbf a_{\ipo k})$.
 		
-		If there is an $c\in \set(\mathbf u_{\ipo k})$ with $c\neq v_{y,z}$, then by definition of $\chi$, we have $c\in \set(\mathbf b_i)\cap \set(\mathbf a_{\ipo k})$.
+		If there is a $c\in \set(\mathbf u_{\ipo k})$ with $c\neq v_{y,z}$, then by definition of $\chi$, we have $c\in \set(\mathbf b_i)\cap \set(\mathbf a_{\ipo k})$.
 		Therefore $\mathbf b_i,\mathbf a_{\ipo k}\in V_c$ and because $J'$ is a join tree, $\mathbf b_i$ and $\mathbf a_{\ipo k}$ have to be connected.
 		
 		If $\set(\mathbf u_{\ipo k})=\{v_{y,z}\}$, we have four possible cases.
@@ -728,7 +812,7 @@ We will now prove that we can obtain a function-suitable, acyclic structure with
 		Otherwise we have $y\in\set(\mathbf b_i)$ and $z\in \set(\mathbf a_{\ipo k})$, or $z\in\set(\mathbf b_i)$ and $y\in \set(\mathbf a_{\ipo k})$.
 		We will only consider the former option, as the latter can be proven analogously.
 		From our beginning assumption we know that $(\mathbf xy),(\mathbf xz)\in R_f$. Choose some $x\in\mathbf x$, and $(\mathbf xy),(\mathbf xz)\in V_x$ follows.
-		Furthermore, we have $\mathbf b_i,(\mathbf xz)\in V_y$ and $\mathbf a_{\ipo k},(\mathbf xz)\in V_z$.
+		Furthermore, we have $\mathbf b_i,(\mathbf xy)\in V_y$ and $\mathbf a_{\ipo k},(\mathbf xz)\in V_z$.
 		Since $J'$ is a join tree, we thus know that $\mathbf b_i$ is connected with $(\mathbf xy)$, which in turn is connected with $(\mathbf xz)$, which again is connected with $\mathbf a_{\ipo k}$.
 		Therefore $\mathbf b_i$ and $\mathbf a_{\ipo k}$ are connected.
 		
@@ -737,12 +821,121 @@ We will now prove that we can obtain a function-suitable, acyclic structure with
 	\end{proof}
 	
 	The last missing piece to prove the acyclicity of $\mathfrak C''$ is to show that $J''$ fulfils the join tree property.
-	That is, for any $v\in C''$, the set $\{\mathbf c\in V(J'') : v\in\set(\mathbf c)\}$ induces a connected subgraph of $J''$.
+	That is, for any $c\in C''$, the set $\{\mathbf c\in V(J'') : c\in\set(\mathbf c)\}$ induces a connected subgraph of $J''$.
 	
 	\begin{claim}
 		$J''$ is a valid join tree.
 	\end{claim}
 	\begin{proof}
-		content...
+		Consider any $c\in C''$ and two elements $\mathbf u$ and $\mathbf v$ from the set $S\coloneqq \{\mathbf c \in V(J'') : c\in \set(\mathbf c)\}$.
+		We show that there is a path from $\mathbf u$ to $\mathbf v$ in $S$.
+		If $v\neq v_{y,z}$, then $v\in C'$, thus consider $V_c$.
+		By definition there are $\mathbf a,\mathbf b\in V_c$ such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
+		Because $J'$ is a join tree, $V_c$ must induce a connected subtree.
+		Thus there must be $\mathbf a_0,\dots,\mathbf a_k\in V_c$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=\mathbf b$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
+		By definition we then get, that there must be $\chi(\mathbf a_0),\chi(\mathbf a_k)\in S$ and we get $\chi(\mathbf a_0)=\chi(\mathbf a)=\mathbf u$, $\chi(\mathbf a_k)=\chi(\mathbf b)=\mathbf v$ and $\{\chi(\mathbf a_{i-1},\mathbf a_i)\}\in E(J''))$ for all $i\in[k]$.
+		Therefore, $\mathbf u$ and $\mathbf v$ are connected in $S$.
+		
+		If $v=v_{y,z}$, we again define $\mathbf a,\mathbf b\in V(J')$ such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
+		If $\mathbf a,\mathbf b\in V_y$ or $\mathbf a,\mathbf b\in V_z$, then we can proceed exactly as in the former case with $v=y$ or $v=z$, respectively.
+		If that is not the case, then either $\mathbf a\in V_y and \mathbf b\in V_z$, or the other way round.
+		We will only prove the former case, as the latter case can proven analogously.
+		Since the following will depend on it, we will now prove the following equality: $S=\{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
+		
+		$\supseteq$:
+		Let $\mathbf u \in \{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
+		We then get that $\mathbf u = \chi(\mathbf a)$ for an $\mathbf a\in V(J')$.
+		From the definition it follows that $y\in \set(\mathbf a)$ or $z\in \set(\mathbf a)$ has to hold.
+		Thus we get that $v_{y,z}\in \set(\chi(\mathbf a))=\set(\mathbf u)$ and therefore $\mathbf u\in S$ has to hold.
+		
+		$\subseteq$:
+		Let $\mathbf u\in S$, then $v_{y,z}\in \set(\mathbf u)$ follows.
+		By definition there must exist an $\mathbf a \in V(J')$ such that $\chi(\mathbf a)=\mathbf u$ and $y\in \set(\mathbf a)$ or $z\in \set(\mathbf a)$ has to hold.
+		Thus we get $\chi(\mathbf a)=\mathbf u\in \{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$
+		
+		It is obvious that $(\mathbf xy)\in V_y$ and $(\mathbf xz)\in V_z$.
+		We now get a path in $V_y$ with the elements $\mathbf a_0,\dots,\mathbf a_k\in V_b$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=(\mathbf xy)$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
+		We also get a path in $V_z$ with the elements $\mathbf b_0,\dots,\mathbf b_\ell\in V_z$ such that $\mathbf b_0=(\mathbf xz)$, $\mathbf b_\ell = \mathbf b$ and $\{\mathbf b_{i-1},\mathbf b_i\}\in E(J')$.
+		Therefore with the above equation, we have two paths in $S$: $\chi(\mathbf a_0),\dots,\chi(\mathbf a_k)$ and $\chi(\mathbf b_0),\dots,\chi(\mathbf b_\ell)$, where $\chi(\mathbf a_0)=\mathbf u$ and $\chi(\mathbf b_\ell)=\mathbf v$.
+		Now we have that $\chi(\mathbf a_k)=\chi((\mathbf xy))=(\mathbf x'v_{y,z})=\chi((\mathbf xz))=\chi(\mathbf b_0)$.
+		Therefore, we get one path from $\mathbf u$ to $\mathbf v$ in $S$.
 	\end{proof}
+	
+	\paragraph{Property c.:}
+	To show that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$, we will give a mapping $\pi : \Hom(\mathfrak C',\mathfrak A')\to\Hom(\mathfrak C'',\mathfrak A')$ from homomorphisms from $\mathfrak C'$ to $\mathfrak A'$ to homomorphisms from $\mathfrak C''$ to $\mathfrak A'$.
+	We will then show that $\pi$ is a bijection, from which follows that both sets have the same cardinality, which then proves the claim for $\mathfrak A'$.
+	For $\mathfrak B'$, the prove is completely analogous, which is why it will be omitted.
+	Let $\phi\in \Hom(\mathfrak C',\mathfrak A')$.
+	We now define $\phi'\coloneqq \pi(\phi)$ as
+	$$
+	\phi'(x)=
+	\begin{cases}
+		\phi(x) & \text{if } x\neq v_{y,z} \\
+		\phi(y) & \text{if } x = v_{y,z}.
+	\end{cases}
+	$$
+	In the following we will be using that for any $\phi\in\Hom(\mathfrak C',\mathfrak A')$, we have that $\phi(y)=\phi(z)$.
+	Otherwise, from $(\mathbf xy),(\mathbf xz)\in R_f^{\mathfrak C'}$, it follows that $(\phi(\mathbf x)\phi(y)),(\phi(\mathbf x)\phi(z))\in R_f^{\mathfrak A'}$ for two different tuples $(\phi(\mathbf x)\phi(y))$ and $(\phi(\mathbf x)\phi(z))$.
+	However, this would contradict that, by definition of the encoding, $\mathfrak A'$ is functional.
+	
+	\begin{claim}
+		For all $\phi\in \Hom(\mathfrak C',\mathfrak A')$, we have $\pi(\phi)\in\Hom(\mathfrak C'',\mathfrak A')$.
+	\end{claim}
+	\begin{proof}
+		Let $\phi\in\Hom(\mathfrak C',\mathfrak A')$ and $\phi'\coloneqq \pi(\phi)$.
+		Consider a relation-symbol $R$ and a tuple $\mathbf c \in R^{\mathfrak C''}$.
+		If $v_{y,z}\notin\set(\mathbf c)$, then $\chi(\mathbf c)=\mathbf c$, $\phi(\mathbf c)=\phi'(\mathbf c)$ and $\mathbf c\in R^{\mathfrak C'}$ follows.
+		Then we get $\phi(\mathbf c)\in R^{\mathfrak A'}$ and further $\phi'(\mathbf c)\in R^{\mathfrak A'}$.
+		
+		If $v_{y,z}\in\set(\mathbf c)$, then there exists a $\mathbf c'\in R^{\mathfrak C'}$ such that $\chi(\mathbf c')=\mathbf c$. 
+		We thus get $\phi(\mathbf c')\in R^{\mathfrak A'}$.
+		We also have that $\phi(\mathbf c')=\phi'(\mathbf c)$, because for all $x \in \set(\mathbf c)\setminus \{v_{y,z}\}$, we also have $x\in\set(\mathbf c')$ and $\phi(x)=\phi'(x)$.
+		For $v_{y,z}$ we have that $\phi'(v_{y,z})=\phi(y)=\phi(z)$.
+		Therefore, $\phi'(\mathbf c)\in R^{\mathfrak A'}$ follows, which was to be shown.
+	\end{proof}
+	
+	This shows that $\pi$ is correctly defined as a mapping between homomorphisms.
+	The two following proofs will show that $\pi$ is bijective.
+	
+	\begin{claim}
+		$\pi$ is injective.
+	\end{claim}
+	\begin{proof}
+		Let $\phi_1,\phi_2\in\Hom(\mathfrak C',\mathfrak A')$, $\phi_1\neq\phi_2$ and define $\phi_1'\coloneqq \pi(\phi_1)$ and $\phi_2'\coloneqq \pi(\phi_2)$.
+		Our goal is to show that $\phi_1'\neq \phi_2'$.
+		There has to be a $u\in C'$ such that $\phi_1(u)\neq\phi_2(u)$, otherwise they would be the same function.
+		We now do a case distinction.
+		
+		\emph{Case 1:} $u\notin\{y,z\}$. Then we have
+		$$\phi_1'(u)=\phi_1(u)\neq \phi_2(u)=\phi_2'(u).$$
+		\emph{Case 2:} $u\in \{y,z\}$. Then we have 
+		$$\phi_1'(v_{y,z})=\phi_1(y)=\phi_1(z)=\phi_1(u)\neq \phi_2(u)=\phi_2(z)=\phi_2(y)=\phi_2'(v_{y,z}).$$
+		In both cases we thus have found an element that gets mapped differently, thus $\phi_1'\neq\phi_2'$ must follow.
+	\end{proof}
+	
+	\begin{claim}
+		$\pi$ is surjective.
+	\end{claim}
+	\begin{proof}
+		Let $\phi'\in\Hom(\mathfrak C'',\mathfrak A')$.
+		We now construct a $\phi\in\Hom(\mathfrak C',\mathfrak A')$ such that $\pi(\phi)=\phi'$.
+		We define
+		$$
+		\phi(x)=
+		\begin{cases}
+			\phi'(x) & \text{if } x \notin \{y,z\} \\
+			\phi'(v_{y,z}) & \text{if } x \in \{y,z\}.
+		\end{cases}
+		$$
+		Using that $\psi(y)=\psi(z)$ for all $\psi\in\Hom(\mathfrak C',\mathfrak A')$, it can easily be verified that $\pi(\phi)=\phi'$.
+		We now only have to show that $\phi\in\Hom(\mathfrak C',\mathfrak A')$. 
+		Let $\mathbf c\in R^{\mathfrak C'}$ for a relation-symbol $R$.
+		We now define $\mathbf c'\coloneqq \chi(\mathbf c)$ and get by construction that $\mathbf c'\in R^{\mathfrak C''}$.
+		Because we know that $\phi'$ is a homomorphism, it follows that $\phi'(\mathbf c')\in R^{\mathfrak A'}$.
+		But since $\phi'(a)=\phi(a)$ for all $a\notin \{y,z,v_{y,z}\}$ and $\phi'(v_{y,z})=\phi(y)=\phi(z)$, it follows that $\phi'(\mathbf c')=\phi(\mathbf c)$.
+		Therefore $\phi(\mathbf c)\in R^{\mathfrak A'}$.
+	\end{proof}
+	
+	We now have proved all properties.
+	Therefore we have devised a procedure, to iteratively construct a functional, acyclic structure, that divides $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
 \end{proof}

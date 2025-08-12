@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  11 AUG 2025 17:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  12 AUG 2025 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1237,19 +1237,19 @@ LaTeX Warning: Reference `' on page 5 undefined on input line 19.
 [6{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 201.
+(hyperref)                removing `math shift' on input line 202.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 201.
+(hyperref)                removing `\new@ifnextchar' on input line 202.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 201.
+(hyperref)                removing `subscript' on input line 202.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 201.
+(hyperref)                removing `math shift' on input line 202.
 
 
 
@@ -1257,7 +1257,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 [8]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-95.
+96.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1269,7 +1269,7 @@ Missing character: There is no d in font msbm10!
 [10]
 
 [11]
-Overfull \hbox (5.27805pt too wide) in paragraph at lines 441--443
+Overfull \hbox (5.27805pt too wide) in paragraph at lines 442--444
 \T1/lmr/m/n/10.95 (-20) and $\OML/lmm/m/it/10.95 '[]\OT1/lmr/m/n/10.95 (-20) (\
 OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 1/lmr/m/n/10.95 (-20) ^^H[](\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20
@@ -1289,22 +1289,22 @@ OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 [12]
 
 [13]
-Overfull \hbox (7.02443pt too wide) in paragraph at lines 525--525
+Overfull \hbox (7.02443pt too wide) in paragraph at lines 526--526
 \T1/lmr/m/n/10.95 (-20) Formeln 
  []
 
 
-Overfull \hbox (16.3568pt too wide) in paragraph at lines 525--525
+Overfull \hbox (16.3568pt too wide) in paragraph at lines 526--526
 \T1/lmr/m/n/10.95 (-20) schreiben?[]  
  []
 
 
-Overfull \hbox (7.02443pt too wide) in paragraph at lines 525--525
+Overfull \hbox (7.02443pt too wide) in paragraph at lines 526--526
 \T1/lmr/m/n/10.95 (-20) Formeln 
  []
 
 
-Overfull \hbox (16.3568pt too wide) in paragraph at lines 525--525
+Overfull \hbox (16.3568pt too wide) in paragraph at lines 526--526
 \T1/lmr/m/n/10.95 (-20) schreiben?[]  
  []
 
@@ -1313,83 +1313,40 @@ Overfull \hbox (16.3568pt too wide) in paragraph at lines 525--525
 [14]
 
 [15]
-Overfull \hbox (10.07509pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) Beispiels. 
- []
+<pictures/totalAndFunctionalStructs.jpeg, id=212, 1823.81375pt x 742.775pt>
+File: pictures/totalAndFunctionalStructs.jpeg Graphic file (type jpg)
+<use pictures/totalAndFunctionalStructs.jpeg>
+Package pdftex.def Info: pictures/totalAndFunctionalStructs.jpeg  used on input
+ line 659.
+(pdftex.def)             Requested size: 478.00635pt x 194.66968pt.
 
 
-Overfull \hbox (4.98575pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) Beispiel 
- []
-
-
-Overfull \hbox (4.98575pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) Beispiel 
- []
-
-
-Overfull \hbox (2.88324pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) führen? 
- []
-
-
-Overfull \hbox (1.19424pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) Sachen 
- []
-
-
-Overfull \hbox (0.58824pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) fassen? 
- []
-
-
-Overfull \hbox (10.07509pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) Beispiels. 
- []
-
-
-Overfull \hbox (4.98575pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) Beispiel 
- []
-
-
-Overfull \hbox (4.98575pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) Beispiel 
- []
-
-
-Overfull \hbox (2.88324pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) führen? 
- []
-
-
-Overfull \hbox (1.19424pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) Sachen 
- []
-
-
-Overfull \hbox (0.58824pt too wide) in paragraph at lines 622--622
-\T1/lmr/m/n/10.95 (-20) fassen? 
- []
+LaTeX Warning: Reference `' on page 16 undefined on input line 669.
 
 
 
 [16]
 
-[17]) (./symmetric_structs.tex
+[17 <./pictures/totalAndFunctionalStructs.jpeg>]
 
 [18]
 
-LaTeX Warning: Reference `' on page 19 undefined on input line 64.
+[19]
+
+[20]) (./symmetric_structs.tex
+
+[21]
+
+LaTeX Warning: Reference `' on page 22 undefined on input line 64.
 
 
-LaTeX Warning: Reference `' on page 19 undefined on input line 68.
+LaTeX Warning: Reference `' on page 22 undefined on input line 68.
 
 
 
-[19])
+[22])
 
-[20] (./thesis.bbl
+[23] (./thesis.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
 .
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
@@ -1401,11 +1358,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-[21
+[24
 
 ])
 
-[22] (./thesis.aux)
+[25] (./thesis.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -1418,13 +1375,13 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32010 strings out of 473190
- 636462 string characters out of 5715801
+ 32088 strings out of 473190
+ 638157 string characters out of 5715801
  1264123 words of memory out of 5000000
- 54320 multiletter control sequences out of 15000+600000
- 658721 words of font info for 251 fonts, out of 8000000 for 9000
+ 54345 multiletter control sequences out of 15000+600000
+ 660401 words of font info for 268 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,13n,107p,10901b,1105s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,13n,107p,10901b,1107s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texli
@@ -1442,10 +1399,10 @@ fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/l
 ocal/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texli
 ve/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (22 pages, 419645 bytes).
+Output written on thesis.pdf (25 pages, 813536 bytes).
 PDF statistics:
- 436 PDF objects out of 1000 (max. 8388607)
- 357 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
- 53861 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 474 PDF objects out of 1000 (max. 8388607)
+ 391 compressed objects within 4 object streams
+ 110 named destinations out of 1000 (max. 500000)
+ 53866 words of extra memory for PDF output out of 61914 (max. 10000000)
 
