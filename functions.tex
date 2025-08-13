@@ -620,7 +620,7 @@ This now allows us to proof the logical characterisation of our Colour Refinemen
 	Using \cite{scheidt2025ColorRefinement}, we thus know that $\RCR$ distinguishes $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$ and by definition we can deduce that $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$.
 \end{proof}
 
-% \todo{Hier das selbige Spiel bzgl. eine Beispiels. Ein vollständiges Beispiel wäre vermutlich ziemlich lang, die Konstruktion wird ja leider exponentiell groß. Sollte ich dann trotzdem ein vollständiges Beispiel hier aufführen? Oder reicht es die Sachen mit nem $\bigvee$ bzw. $\bigwedge$ zusammenzufassen? Zumindest die Konstruktion mit den $\operatorname{Parts}$ sollte man vllt noch einmal anschneiden?}
+\todo{Hier das selbige Spiel bzgl. eine Beispiels. Ein vollständiges Beispiel wäre vermutlich ziemlich lang, die Konstruktion wird ja leider exponentiell groß. Sollte ich dann trotzdem ein vollständiges Beispiel hier aufführen? Oder reicht es die Sachen mit nem $\bigvee$ bzw. $\bigwedge$ zusammenzufassen? Zumindest die Konstruktion mit den $\operatorname{Parts}$ sollte man vllt noch einmal anschneiden?}
 
 
 \subsection{Characterisation through homomorphism counting}
@@ -634,6 +634,7 @@ We will concentrate on the encoding defined in section \ref{Sec::NaiveEncodingOf
 Afterwards, we will widen the negative results to show that a corresponding characterisation for the encoding from section \ref{sec:TransitiveExpansion} cannot exist as well.
 
 \subsubsection{Acyclic structures cannot characterise naive RCR}
+\label{sec:AcycStrucNotnRCR}
 
 To begin, let us define two concepts for relational structures that encode a non-relational structure.
 
@@ -679,6 +680,7 @@ We now want to find the equivalence between the existence of an acyclic structur
 		\item There exists an acyclic structure $\mathfrak C$ of signature $\sigma$ such that $\hom(\mathfrak C,\mathfrak A)\neq\hom(\mathfrak C,\mathfrak B)$.
 		\item There exists an acyclic, total and functional structure $\mathfrak C'$ of signature $\sigma'$ such that $\hom(\mathfrak C',\mathfrak A')\neq \hom(\mathfrak C',\mathfrak B')$.
 	\end{enumerate}
+	\label{lem:acycTotalAndFunctionalEquivAcyc}
 \end{lemma}
 \begin{proof}
 	We begin by proving that \emph{1.} implies \emph{2.}.
@@ -735,6 +737,7 @@ We will in the following prove the former claim and then show the latter claim, 
 \begin{lemma}
 	Let $\mathfrak A$ and $\mathfrak B$ be structures of signature $\sigma$ and $\mathfrak A'$, $\mathfrak B'$ and $\sigma'$ the respective encodings.
 	If there is an acyclic structure $\mathfrak C'$ of signature $\sigma'$ with $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$, then we can construct a functional, acyclic structure $\mathfrak C''$ of signature $\sigma'$ such that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$.
+	\label{lem:constructionOfFunctionalStruct}
 \end{lemma}
 \begin{proof}
 	The proof for the above lemma will work as follows.
@@ -910,7 +913,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		$$\phi_1'(u)=\phi_1(u)\neq \phi_2(u)=\phi_2'(u).$$
 		\emph{Case 2:} $u\in \{y,z\}$. Then we have 
 		$$\phi_1'(v_{y,z})=\phi_1(y)=\phi_1(z)=\phi_1(u)\neq \phi_2(u)=\phi_2(z)=\phi_2(y)=\phi_2'(v_{y,z}).$$
-		In both cases we thus have found an element that gets mapped differently, thus $\phi_1'\neq\phi_2'$ must follow.
+		In both cases we have found an element that gets mapped differently, thus $\phi_1'\neq\phi_2'$ must follow.
 	\end{proof}
 	
 	\begin{claim}
@@ -937,5 +940,105 @@ We will in the following prove the former claim and then show the latter claim, 
 	\end{proof}
 	
 	We now have proved all properties.
-	Therefore we have devised a procedure, to iteratively construct a functional, acyclic structure, that divides $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
+	Therefore, we showed that it is possible to eliminate collisions, while keeping the number of homomorphisms to $\mathfrak A'$ and $\mathfrak B'$ the same and reducing the number of elements by one and still have an acyclic structure.
+	We thus can apply this procedure to any collision, until there are no collisions left, but then the structure is functional.
 \end{proof}
+
+From the above lemma we get that given an acyclic, distinguishing structure we can construct a new structure, which is also acyclic and distinguishing but in addition also functional.
+One example how this can be applied can be seen in figure \ref{fig:constructFunctionalStruct}.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{pictures/constructFunctionalStruct}
+	\caption{Two successive applications of the procedure described in the proof of lemma \ref{lem:constructionOfFunctionalStruct}. The arrows represent a binary relation $R_f$, which encodes a unary function $f$.}
+	\label{fig:constructFunctionalStruct}
+\end{figure}
+
+Now that we have proved that it is generally possible to enforce a distinguishing, acyclic structure to be functional, we now want to proceed to the proof that totality cannot be enforced.
+This proof will work as follows.
+We will give two families of structures over the signature $\sigma=\{E/2,f/1\}$. 
+Any two elements from these families with the same size can be distinguished by naive RCR, thus there exists an acyclic structure that distinguishes them by homomorphism count.
+Therefore the first statement from above is true.
+However, we will then prove that there cannot be an acyclic and total structure that also distinguishes them by homomorphism count.
+In the following we will be using $\mathbb N_{\geq x}$ for the subset of the natural numbers $\mathbb N \setminus \{0, 1, \dots, x-1\}$.
+
+Let $(\mathfrak A_i)_{i\in \mathbb N_{\geq 4}}$ be a family of $\sigma$-structures, defined as $\mathfrak A_n=(A_n, \operatorname E^{\mathfrak A_n}, f^{\mathfrak A_n})$, where $A_n=[n]$, $\operatorname E^{\mathfrak A_n}=\{(i, i+1), (i+1, i) : i\in [n-2]\}$ and $f^{\mathfrak A_n}=\{ i \mapsto \ipo n-1 : i \in [n-1]\}\cup \{n \mapsto n-1\}$.
+Let $(\mathfrak B_i)_{i\in \mathbb N_{\geq 4}}$ also be a family of $\sigma$-structures, defined as $\mathfrak B_n=(B_n, \operatorname E^{\mathfrak B_n},f^{\mathfrak B_n})$, where $B_n=[n]$, $\operatorname E^{\mathfrak B_n}=\{(i, i+1), (i+1, i) : i \in [n-1]\}$ and $f^{\mathfrak B_n}=\{i \mapsto \ipo n : i \in [n]\}$.
+Graphical representations for a few examples of these structures can be seen in figure \ref{fig:exmaplesFamilies}.
+
+\begin{figure}
+	\includegraphics[width=\textwidth]{pictures/examplesFamilies}
+	\caption{Examples for the structures $\mathfrak A_4$, $\mathfrak A_5$, $\mathfrak B_4$ and $\mathfrak B_5$. The blue edges represent the binary relation $\operatorname E$, while the red arrows constitute the unary function $f$.}
+	\label{fig:exmaplesFamilies}
+\end{figure}
+
+For every $n\in\mathbb N_{\geq 4}$ it is clear that naive RCR distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
+The formula 
+$$\phi_n=\exists^{\geq 2\cdot (n-1)}(x,y). \operatorname E(x,y).$$
+distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ and using the definition of naive RCR and theorem \ref{}, this is equivalent to naive RCR distinguishing $\mathfrak A_n$ and $\mathfrak B_n$.
+It now only remains to show that there cannot be a total and acyclic structure that distinguishes the encodings $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
+
+\begin{lemma}
+	Let $n\in\mathbb N_{\geq 4}$ and let $\mathfrak C_n'$ be an acyclic $\sigma'$-structure that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
+	Then $\mathfrak C_n'$ cannot be both acyclic and total.
+	\label{lem:totalityNotEnforcable}
+\end{lemma}
+\begin{proof}
+	Using basic boolean equivalences we prove the equivalent statement that if $\mathfrak C_n'$ is total, than it either is not distinguishing or not acyclic.
+	As such, let $\mathfrak C_n'$ be a total $\sigma'$-structure
+	
+	We observe that if $\mathfrak C_n'$ contains $R_f$-loops, that is an element $x\in C_n'$ such that $(x, x)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ is not distinguishing.
+	In fact, then we have $\hom(\mathfrak C_n',\mathfrak A_n')=\hom(\mathfrak C_n',\mathfrak B_n')=0$.
+	Otherwise, there would exist a homomorphism $\phi$ to either $\mathfrak A_n'$ or $\mathfrak B_n'$.
+	Let $c\in C_n'$ be such that $(c,c)\in R_f^{\mathfrak C_n'}$.
+	Then we would have $(\phi(c),\phi(c))\in R_f^{\mathfrak A_n'}$ or $(\phi(c),\phi(c))\in R_f^{\mathfrak B_n'}$, respectively.
+	But in either structure, there does not exist such a loop.
+	
+	Using similar arguments, we can reason that if $\mathfrak C_n'$ contains $R_f$-2-cycles, that is two elements $c$ and $d$ such that $(c, d), (d, c)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ cannot be distinguishing, as it does not have any homomorphisms to neither $\mathfrak A_n'$ nor $\mathfrak B_n'$.
+	Otherwise there again would be a homomorphism $\phi$ to either $\mathfrak A_n'$ or $\mathfrak B_n'$.
+	Let $c,d\in C_n'$ form such a $R_f$-2-cycle.
+	Then we would have $(\phi(c),\phi(d)),(\phi(d),\phi(c))\in R_f^{\mathfrak A_n'}$ or $(\phi(c),\phi(d)),(\phi(d),\phi(c))\in R_f^{\mathfrak B_n'}$, respectively.
+	But in either structure there does not exist such a 2-cycle.
+	
+	From the two observations above it follows that if $\mathfrak C_n'$ has cardinality $1$ or $2$, then it cannot be distinguishing, as it is total and therefore would need to contain either $R_f$-loops or $R_f$-2-cycles.
+	When now considering that $\mathfrak C_n'$ is total, thus for every $c$ there is a $d$ such that $(c,d)\in R_f^{\mathfrak C_n'}$, it is obvious that $\mathfrak C_n'$ must contain a $R_f$ cycle of size grater than $2$.
+	Thus the Gaifman-Graph of $\mathfrak C_n'$ is not acyclic. 
+	As it can be found in \cite{scheidt2025ColorRefinement} and \cite{brault-baron2014HypergraphAcyclicity}, this is equivalent to $\mathfrak C_n'$ itself not being ($\alpha$-)acyclic.
+	So if $\mathfrak C_n'$ is total and does not contain $R_f$-loops and $R_f$-2-cycles, then it cannot be acyclic.
+\end{proof}
+
+We thus have showed that there cannot exist an acylic and total $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
+However, in lemma \ref{lem:acycTotalAndFunctionalEquivAcyc} we showed that the existence of an acyclic, total and functional $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ is equivalent to the existence of an acyclic $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
+Since there is no acyclic and total $\mathfrak C_n'$, there also is no acyclic, total and functional $\mathfrak C_n''$ that distinguishes, and therefore there is no $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ by homomorphism count.
+Let us formalize our findings.
+
+\begin{theorem}
+	Let $\sigma$ be a signature that contains function-symbols, $\mathfrak A$ and $\mathfrak B$ two $\sigma$-structures and let $\sigma'$, $\mathfrak A'$ and $\mathfrak B'$ their respective encodings.
+	No consider the following statements:
+	\begin{enumerate}
+		\item Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
+		\item There exists an acyclic and functional $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
+		\item There exists an acyclic $\sigma$-structure $\mathfrak C$ such that $\hom(\mathfrak C,\mathfrak A)\neq \hom(\mathfrak C,\mathfrak B)$.
+	\end{enumerate}
+	Then statement 1. is equivalent to statement 2., but while statement 3. implies statement 1., the converse does not hold.
+	\label{thm:nRCRNotCharacByHomCount}
+\end{theorem}
+\begin{proof}
+	\textbf{\emph{1.} is equivalent to \emph{2.}}
+	Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
+	Using lemma \ref{lem:constructionOfFunctionalStruct}, we then can construct an acyclic and function $\sigma'$-structure that also distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
+
+	\textbf{\emph{3.} implies \emph{1.}}
+	The existence of such a $\sigma$-structure is, by lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings.
+	Using theorem \ref{} this implies that RCR distinguishes the encodings and by definition this means that naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
+	
+	\textbf{\emph{1.} does not imply \emph{3.}}
+	Statement \emph{3.} is equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings by homomorphism count.
+	However as we showed in lemma \ref{lem:totalityNotEnforcable}, this is not implied by the existence of just an acyclic $\sigma'$-structure which distinguishes, which is however equivalent to statement \emph{1.}.
+\end{proof}
+
+We found that naive RCR cannot be characterised by acyclic structures, as functions inherently result in cycles. 
+When prohibiting loops and 2-cycles, which would not violate the acyclicity, there thus have to be larger cycles which result in the structure not being acyclic.
+The notion of acyclicity with respect to distinguishing by homomorphism count that was used here is therefore strictly weaker than naive RCR.
+However, there could be other classes of structures, which characterises naive RCR in the desired way.
+
+

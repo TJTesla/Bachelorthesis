@@ -30,6 +30,13 @@ Jan B{\"o}ker.
 \newblock \href {https://doi.org/10.1007/978-3-030-30786-8_26}
   {\path{doi:10.1007/978-3-030-30786-8_26}}.
 
+\bibitem{brault-baron2014HypergraphAcyclicity}
+Johann {Brault-Baron}.
+\newblock Hypergraph {{Acyclicity Revisited}}, March 2014.
+\newblock \href {https://arxiv.org/abs/1403.7076} {\path{arXiv:1403.7076}},
+  \href {https://doi.org/10.48550/arXiv.1403.7076}
+  {\path{doi:10.48550/arXiv.1403.7076}}.
+
 \bibitem{butti2021FractionalHomomorphism}
 Silvia Butti and Victor Dalmau.
 \newblock Fractional homomorphism, {{Weisfeiler-Leman}} invariance, and the

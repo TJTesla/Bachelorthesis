@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  12 AUG 2025 17:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  13 AUG 2025 14:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1220,11 +1220,8 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-euf.cfg
 File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
-)
-
-LaTeX Warning: Reference `' on page 4 undefined on input line 100.
-
-) (./functions.tex
+))
+(./functions.tex
 
 [4]
 
@@ -1313,15 +1310,73 @@ Overfull \hbox (16.3568pt too wide) in paragraph at lines 526--526
 [14]
 
 [15]
-<pictures/totalAndFunctionalStructs.jpeg, id=212, 1823.81375pt x 742.775pt>
+Overfull \hbox (10.07509pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) Beispiels. 
+ []
+
+
+Overfull \hbox (4.98575pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) Beispiel 
+ []
+
+
+Overfull \hbox (4.98575pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) Beispiel 
+ []
+
+
+Overfull \hbox (2.88324pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) führen? 
+ []
+
+
+Overfull \hbox (1.19424pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) Sachen 
+ []
+
+
+Overfull \hbox (0.58824pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) fassen? 
+ []
+
+
+Overfull \hbox (10.07509pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) Beispiels. 
+ []
+
+
+Overfull \hbox (4.98575pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) Beispiel 
+ []
+
+
+Overfull \hbox (4.98575pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) Beispiel 
+ []
+
+
+Overfull \hbox (2.88324pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) führen? 
+ []
+
+
+Overfull \hbox (1.19424pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) Sachen 
+ []
+
+
+Overfull \hbox (0.58824pt too wide) in paragraph at lines 623--623
+\T1/lmr/m/n/10.95 (-20) fassen? 
+ []
+
+<pictures/totalAndFunctionalStructs.jpeg, id=214, 1823.81375pt x 742.775pt>
 File: pictures/totalAndFunctionalStructs.jpeg Graphic file (type jpg)
 <use pictures/totalAndFunctionalStructs.jpeg>
 Package pdftex.def Info: pictures/totalAndFunctionalStructs.jpeg  used on input
- line 659.
+ line 660.
 (pdftex.def)             Requested size: 478.00635pt x 194.66968pt.
 
-
-LaTeX Warning: Reference `' on page 16 undefined on input line 669.
+LaTeX Warning: Reference `' on page 16 undefined on input line 670.
 
 
 
@@ -1333,20 +1388,48 @@ LaTeX Warning: Reference `' on page 16 undefined on input line 669.
 
 [19]
 
-[20]) (./symmetric_structs.tex
-
-[21]
-
-LaTeX Warning: Reference `' on page 22 undefined on input line 64.
-
-
-LaTeX Warning: Reference `' on page 22 undefined on input line 68.
-
+[20]
+<pictures/constructFunctionalStruct.jpeg, id=263, 1702.36pt x 588.1975pt>
+File: pictures/constructFunctionalStruct.jpeg Graphic file (type jpg)
+<use pictures/constructFunctionalStruct.jpeg>
+Package pdftex.def Info: pictures/constructFunctionalStruct.jpeg  used on input
+ line 951.
+(pdftex.def)             Requested size: 478.00635pt x 165.16087pt.
 
 
-[22])
+[21 <./pictures/constructFunctionalStruct.jpeg>]
+<pictures/examplesFamilies.jpeg, id=273, 1457.445pt x 972.63374pt>
+File: pictures/examplesFamilies.jpeg Graphic file (type jpg)
+<use pictures/examplesFamilies.jpeg>
+Package pdftex.def Info: pictures/examplesFamilies.jpeg  used on input line 969
+.
+(pdftex.def)             Requested size: 478.00635pt x 318.99625pt.
 
-[23] (./thesis.bbl
+
+LaTeX Warning: Reference `' on page 22 undefined on input line 977.
+
+
+
+[22 <./pictures/examplesFamilies.jpeg>]
+
+LaTeX Warning: Reference `' on page 23 undefined on input line 1032.
+
+) (./symmetric_structs.tex
+
+[23]
+
+[24]
+
+LaTeX Warning: Reference `' on page 25 undefined on input line 64.
+
+
+LaTeX Warning: Reference `' on page 25 undefined on input line 68.
+
+
+
+[25])
+
+[26] (./thesis.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
 .
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
@@ -1358,11 +1441,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-[24
+[27
 
 ])
 
-[25] (./thesis.aux)
+[28] (./thesis.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -1375,34 +1458,35 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 32088 strings out of 473190
- 638157 string characters out of 5715801
- 1264123 words of memory out of 5000000
- 54345 multiletter control sequences out of 15000+600000
- 660401 words of font info for 268 fonts, out of 8000000 for 9000
+ 32168 strings out of 473190
+ 640459 string characters out of 5715801
+ 1266123 words of memory out of 5000000
+ 54404 multiletter control sequences out of 15000+600000
+ 665201 words of font info for 273 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,13n,107p,10901b,1107s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,13n,107p,10901b,1106s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/te
-xmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2025/texmf-dist/f
-onts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/
-public/lm/lmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/l
-mr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></
-usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/te
-xlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/t
-exmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2025/texmf-dist/
-fonts/type1/public/lm/lmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
-1/public/lm/lmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public
-/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.
-pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/l
-ocal/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (25 pages, 813536 bytes).
+ve/2025/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2025/t
+exmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/texmf-dist/
+fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
+1/public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm
+/lmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb>
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local
+/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/202
+5/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist
+/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
+e1/public/lm/lmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/
+lm/lmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy1
+0.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr
+/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texl
+ive/2025/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/t
+exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis.pdf (28 pages, 1614531 bytes).
 PDF statistics:
- 474 PDF objects out of 1000 (max. 8388607)
- 391 compressed objects within 4 object streams
- 110 named destinations out of 1000 (max. 500000)
- 53866 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 519 PDF objects out of 1000 (max. 8388607)
+ 427 compressed objects within 5 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 55924 words of extra memory for PDF output out of 61914 (max. 10000000)
 
