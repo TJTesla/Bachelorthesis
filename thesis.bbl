@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{abiteboul1996FoundationsDatabases}
+Serge Abiteboul, Richard Hull, and Victor Vianu.
+\newblock {\em Foundations of Databases}.
+\newblock Addison-Wesley, Reading, Mass., reprinted with corr edition, 1996.
+
 \bibitem{babai2016GraphIsomorphism}
 L{\'a}szl{\'o} Babai.
 \newblock Graph {{Isomorphism}} in {{Quasipolynomial Time}}, January 2016.
@@ -67,6 +72,13 @@ Zden{\v e}k Dvo{\v r}{\'a}k.
 \newblock {\em Journal of Graph Theory}, 64(4):330--342, 2010.
 \newblock \href {https://doi.org/10.1002/jgt.20461}
   {\path{doi:10.1002/jgt.20461}}.
+
+\bibitem{gradel1999RestrainingPower}
+Erich Gr{\"a}del.
+\newblock On the {{Restraining Power}} of {{Guards}}.
+\newblock {\em The Journal of Symbolic Logic}, 64(4):1719--1742, 1999.
+\newblock \href {https://arxiv.org/abs/2586808} {\path{arXiv:2586808}}, \href
+  {https://doi.org/10.2307/2586808} {\path{doi:10.2307/2586808}}.
 
 \bibitem{grohe2021ColorRefinement}
 Martin Grohe, Kristian Kersting, Martin Mladenov, and Pascal Schweitzer.

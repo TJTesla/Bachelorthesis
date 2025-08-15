@@ -1,108 +1,33 @@
 \section{Relational Colour Refinement for structures with functions}
 \label{sec:RelationalColourRefinemetForStructuresWithFunctions}
 
+Many interesting structures use functions.
+For example all algebraic signatures include function-symbols for addition and multiplication, but also constants, which are understood as $0$-ary functions.
+As Colour Refinement, and variants of it, have shown to be very useful in multiple applications, a similar method for structures with functions seems desirable.
+This section aims to apply the results from \cite{scheidt2025ColorRefinement}, which were discussed in the previous section to such classes of structures.
+We will define two different approaches of Colour Refinement Algorithms.
+Both will encode structures and signatures with functions as relational structures and relational signatures, respectively.
+On these relational structures the already discussed Relational Colour Refinement can be applied.
+We then study, whether the non-relational signatures can also be used in the characterisations.
+Concretely, can we use functions in the formulae which form the logic that characterises the algorithms, if such a logic exists?
+To what extend can these functions be used and what restrictions apply?
+The same will be done for the characterisation by homomorphism counting.
+Can we use the encodings to define acyclic, non-relational structures, and can the classes of those characterise the algorithms by homomorphism counting?
+We will begin by defining both approaches and then comparing those with a simple example.
+Afterwards we will look at the logical characterisation and end with the characterisation by homomorphism counting.
+
+
 \subsection{Naive Encoding of functions}
 \label{Sec::NaiveEncodingOfFunctions}
 
-A simple way to apply relational colour refinement to non-relational structures is, to encode the functions as relations.
-Formally we transform a signature $\sigma$ that includes function symbols to a new signature $\sigma'$: 
+The simplest form to transform a non-relational structure to a relational one is to simply interpret functions as relations as follows.
 For every relation symbol $R\in \sigma$, we introduce a relation symbol $R\in \sigma'$ with the same arity and for every function symbol $f\in\sigma$ with arity $k$, we introduce a relational symbol $R_f\in\sigma'$ of arity $k+1$.
-
 Semantically, a structure $\mathfrak A$ of signature $\sigma$ can then be encoded as a structure $\mathfrak A'$ of signature $\sigma'$ and with the same universe as $\mathfrak A$. 
 For every relational symbol $R\in\sigma$ we set $R^{\mathfrak A'}\coloneqq R^{\mathfrak A}$ and for every function symbol $f\in\sigma$ of arity $k$ there exists a relation symbol $R_f\in\sigma'$ and we set $R_f^{\mathfrak A}\coloneqq \{\mathbf xy : f^{\mathfrak A}(\mathbf x)=y\}$ where $\mathbf x$ is a tuple of arity $k$.
 
 This procedure encodes a non-relational structure as a relational one, on which Relational Colour Refinement can now be performed.
 As such we say, that the Naive Relational Colour Refinement (nRCR) distinguishes two structures $\mathfrak A$ and $\mathfrak B$ if, and only if, RCR distinguishes their naive encodings $\mathfrak A'$ and $\mathfrak B'$.
-However, this results in a very weak logical characterisation, that does not allow nesting of terms, namely the nesting-free-fragment of $\GFC$.
-
-\begin{definition}[$\mathsf{nfGF}(\mathsf C)$]
-	Consider the definition of $\GFC$ given in \ref{}.
-	We obtain the nesting-free fragment, by allowing $f(\mathbf x)=y$ as a further atomic formula.
-	Concretely, the only allowed atomic formulae are of the form $R(x_1,\dots,x_\ell)$, $x=y$ and $f(x_1,\dots,x_\ell)=y$, where $f$ has arity $\ell$, $\free{f(x_1,\dots,x_\ell)=y}=\{x_1,\dots,x_\ell\}$ and $\gd{f(\mathbf x)=y}=0$.
-	
-	The remaining definitions stay the same.
-\end{definition}
-
-\begin{theorem}
-	\label{thm:ThmA}
-	The two following statements are equivalent:
-	\begin{enumerate}
-		\item nRCR distinguishes $\mathfrak A$ and $\mathfrak B$.
-		\item There exists a sentence $\phi\in \mathsf{nfGF}(\mathsf C)$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
-	\end{enumerate}
-\end{theorem}
-\begin{proof}
-	1. $\Rightarrow$ 2.:
-	By definition, $\mathfrak A$ and $\mathfrak B$ are distinguished by nRCR if, and only if, $\mathfrak A'$ and $\mathfrak B'$ are distinguished by RCR.
-	Using the result of \cite{scheidt2025ColorRefinement}, we obtain a sentence $\varphi'\in\GFC$ that distinguishes the encoded structures.
-	Via a structural induction on the formula, we can now translate $\varphi'$ into a formula $\phi\in \mathsf{nfGF}(\mathsf C)$
-	This can be achieved by replacing formulae $R_f(x_1,\dots,x_\ell,y)$ by $f(x_1,\dots,x_\ell)=y$ for function symbols $f\in\sigma$ and letting everything else stay the same.
-	
-	2. $\Rightarrow$ 1.:
-	When considering $\mathsf{nfGF}(\mathsf C)$, one can find that the transformation done at the end of the first direction can be applied in reverse.
-	This then leads to a distinguishing sentence in $\GFC$ and with \cite{scheidt2025ColorRefinement} to a distinguishing colouring of the encoded structures, which by definition is a distinguishing colouring for the structures themselves.
-\end{proof}
-
-While the above theorem results in a nice characterisation of the naive encoding, the nesting of terms is often very desired when using functions.
-However, it can be shown that nesting is too powerful for the naive encoding.
-
-Consider the two structures $\mathfrak A$ and $\mathfrak B$ of signature $\sigma=\{f/1\}$ which can be seen in \cref{NaiveEncodingCounterexample}.
-Formally they are defined as $\mathfrak A=(A,f^{\mathfrak A})$ and $\mathfrak B = (B, f^{\mathfrak B})$ where
-
-\begin{alignat*}{4}
-	A=&\{a_1,a_2,a_3,a_4,a_5,a_6\}, &&  && B=&&\{b_1,b_2,b_3,b_4,b_5,b_6\},\\
-	f^{\mathfrak A}=&\{a_1\mapsto a_2, a_2\mapsto a_3, a_3 \mapsto a_1, && \qquad \text{and} \qquad && f^{\mathfrak B}=&&\{b_1 \mapsto b_2, b_2 \mapsto b_3, b_3 \mapsto b_4, \\
-	&\phantom{\{} a_4\mapsto a_5, a_5\mapsto a_6, a_6\mapsto a_4 \} &&  && && \phantom{\{} b_4 \mapsto b_5, b_5 \mapsto b_6, b_6 \mapsto b_1\}
-\end{alignat*}
-
-\begin{figure}
-	\centering
-	\begin{multicols}{2}
-		\begin{tikzpicture}
-			\node[state] (a1) {$a_1$};
-			\node[left=of a1, xshift=-0.5cm] (label) {$\mathfrak A$:};
-			\node[state, below left=of a1] (a3) {$a_3$};
-			\node[state, below right=of a1] (a2) {$a_2$};
-			\node[state, below =of a3] (a4) {$a_4$};
-			\node[state, below =of a2] (a5) {$a_5$};
-			\node[state, below left=of a5] (a6) {$a_6$};
-			\draw 
-			(a1) edge[->, above] node{$f^{\mathfrak A}$} (a2)
-			(a2) edge[->, below] node{$f^{\mathfrak A}$} (a3)
-			(a3) edge[->, above] node{$f^{\mathfrak A}$} (a1)
-			(a4) edge[->, above] node{$f^{\mathfrak A}$} (a5)
-			(a5) edge[->, below] node{$f^{\mathfrak A}$} (a6)
-			(a6) edge[->, below] node{$f^{\mathfrak A}$} (a4);
-		\end{tikzpicture}
-		\begin{tikzpicture}
-			\node[state] (b1) {$b_1$};
-			\node[left=of b1, xshift=-0.5cm] (label) {$\mathfrak B$:};
-			\node[state, below left=of b1] (b6) {$b_6$};
-			\node[state, below right=of b1] (b2) {$b_2$};
-			\node[state, below =of b2] (b3) {$b_3$};
-			\node[state, below =of b6] (b5) {$b_5$};
-			\node[state, below left=of b3] (b4) {$b_4$};
-			\draw 
-			(b1) edge[->, above] node{$f^{\mathfrak B}$} (b2)
-			(b2) edge[->, right] node{$f^{\mathfrak B}$} (b3)
-			(b3) edge[->, below] node{$f^{\mathfrak B}$} (b4)
-			(b4) edge[->, below] node{$f^{\mathfrak B}$} (b5)
-			(b5) edge[->, left] node{$f^{\mathfrak B}$} (b6)
-			(b6) edge[->, above] node{$f^{\mathfrak B}$} (b1);
-		\end{tikzpicture}
-	\end{multicols}
-	
-	\caption{Two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ which can be distinguished by $\GFC$, but not by $\operatorname{nRCR}$.}
-	\label{NaiveEncodingCounterexample}
-\end{figure}
-
-Consider the formula $\phi=\exists^{\geq 1} x.(f(f(f(x)))=x)$ which utilizes term nesting to find a cycle of length three.
-It is obvious that $\mathfrak A \models \phi$ and $\mathfrak B\not\models \phi$.
-However, when encoding the two structures with the naive method described above, one finds that nRCR cannot distinguish them.
-Therefore, term nesting is too powerful for the naive encoding.
-
-A method that allows for the nesting of terms will be described in the following section.
-
+However, this results in a very weak logical characterisation, that does not allow nesting of terms, namely the nesting-free-fragment of $\GFC$, which we will discuss later.
 
 \subsection{Using the transitive expansion} 
 \label{sec:TransitiveExpansion}
@@ -151,7 +76,7 @@ The definitions of all $\operatorname{Eq}^{\widetilde{\mathfrak A}}_{\alpha,\bet
 		\begin{tikzpicture}[node distance=3cm]
 			\node[state] (a) {$a$};
 			\node[state, right=of a] (b) {$b$};
-			\node[left=of a1, xshift=2cm] (label) {$\mathfrak A$:};
+			\node[left=of a, xshift=2cm] (label) {$\mathfrak A$:};
 			\draw 
 			(a) edge[->, thick, above, bend left] node{$f$} (b)
 			(b) edge[->, thick, below, bend left] node{$f$} (a)
@@ -161,7 +86,7 @@ The definitions of all $\operatorname{Eq}^{\widetilde{\mathfrak A}}_{\alpha,\bet
 		\begin{tikzpicture}[node distance=3cm]
 			\node[state] (a) {$a$};
 			\node[state, right=of a] (b) {$b$};
-			\node[left=of a1, xshift=2cm] (label) {$\widetilde{\mathfrak A}$:};
+			\node[left=of a, xshift=2cm] (label) {$\widetilde{\mathfrak A}$:};
 			\draw 
 			(a) edge[->, thick, above, bend left, rwth-blue] node{\phantom{$f$}} (b)
 			(b) edge[->, thick, below, bend left, rwth-blue] node{} (a)
@@ -181,7 +106,66 @@ We can now define $\RCR$ for signatures that include unary function symbols.
 	We say that $\mathfrak A$ and $\mathfrak B$ are being distinguished by RCR with alternation depth $k$ ($\RCR_k$), if $\Vert\mathfrak A\Vert\neq \Vert \mathfrak B\Vert$ or the transitive expansions with alternation depth $k$, $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$, are being distinguished by $\RCR$.
 \end{definition}
 
-To show that this definition may be sensible, we want to see, whether $\RCR_1$ distinguishes the structures $\mathfrak A$ and $\mathfrak B$ from \cref{NaiveEncodingCounterexample}.
+Just like nRCR, this algorithm allows for a logical characterisation, which will be investigated later.
+
+\subsection{Naive RCR versus $\RCR_k$}
+
+We first want to discuss both of the given definitions and will see that $\RCR_k$ is stronger.
+
+Consider the two structures $\mathfrak A$ and $\mathfrak B$ of signature $\sigma=\{f/1\}$ which can be seen in \cref{nRCRvsRCRk}.
+Formally they are defined as $\mathfrak A=(A,f^{\mathfrak A})$ and $\mathfrak B = (B, f^{\mathfrak B})$ where
+
+\begin{alignat*}{4}
+	A=&\{a_1,a_2,a_3,a_4,a_5,a_6\}, &&  && B=&&\{b_1,b_2,b_3,b_4,b_5,b_6\},\\
+	f^{\mathfrak A}=&\{a_1\mapsto a_2, a_2\mapsto a_3, a_3 \mapsto a_1, && \qquad \text{and} \qquad && f^{\mathfrak B}=&&\{b_1 \mapsto b_2, b_2 \mapsto b_3, b_3 \mapsto b_4, \\
+	&\phantom{\{} a_4\mapsto a_5, a_5\mapsto a_6, a_6\mapsto a_4 \} &&  && && \phantom{\{} b_4 \mapsto b_5, b_5 \mapsto b_6, b_6 \mapsto b_1\}
+\end{alignat*}
+
+\begin{figure}
+	\centering
+	\begin{multicols}{2}
+		\begin{tikzpicture}
+			\node[state] (a1) {$a_1$};
+			\node[left=of a1, xshift=-0.5cm] (label) {$\mathfrak A$:};
+			\node[state, below left=of a1] (a3) {$a_3$};
+			\node[state, below right=of a1] (a2) {$a_2$};
+			\node[state, below =of a3] (a4) {$a_4$};
+			\node[state, below =of a2] (a5) {$a_5$};
+			\node[state, below left=of a5] (a6) {$a_6$};
+			\draw 
+			(a1) edge[->, above] node{$f^{\mathfrak A}$} (a2)
+			(a2) edge[->, below] node{$f^{\mathfrak A}$} (a3)
+			(a3) edge[->, above] node{$f^{\mathfrak A}$} (a1)
+			(a4) edge[->, above] node{$f^{\mathfrak A}$} (a5)
+			(a5) edge[->, below] node{$f^{\mathfrak A}$} (a6)
+			(a6) edge[->, below] node{$f^{\mathfrak A}$} (a4);
+		\end{tikzpicture}
+		\begin{tikzpicture}
+			\node[state] (b1) {$b_1$};
+			\node[left=of b1, xshift=-0.5cm] (label) {$\mathfrak B$:};
+			\node[state, below left=of b1] (b6) {$b_6$};
+			\node[state, below right=of b1] (b2) {$b_2$};
+			\node[state, below =of b2] (b3) {$b_3$};
+			\node[state, below =of b6] (b5) {$b_5$};
+			\node[state, below left=of b3] (b4) {$b_4$};
+			\draw 
+			(b1) edge[->, above] node{$f^{\mathfrak B}$} (b2)
+			(b2) edge[->, right] node{$f^{\mathfrak B}$} (b3)
+			(b3) edge[->, below] node{$f^{\mathfrak B}$} (b4)
+			(b4) edge[->, below] node{$f^{\mathfrak B}$} (b5)
+			(b5) edge[->, left] node{$f^{\mathfrak B}$} (b6)
+			(b6) edge[->, above] node{$f^{\mathfrak B}$} (b1);
+		\end{tikzpicture}
+	\end{multicols}
+	
+	\caption{Two $\{f/1\}$-structures $\mathfrak A$ and $\mathfrak B$ which are not distinguished by naive RCR, but by $\RCR_k$.}
+	\label{nRCRvsRCRk}
+\end{figure}
+
+When applying nRCR to these structures, we find that they cannot be distinguished.
+This can also be seen when considering the encodings $\mathfrak A'$ and $\mathfrak B'$, which represent directed, regular graphs, which also cannot be distinguished by classical Colour Refinement.
+
+We now want to see, whether $\RCR_1$ distinguishes the structures $\mathfrak A$ and $\mathfrak B$ from \cref{nRCRvsRCRk}.
 First we compute $\widetilde\sigma$ as $\{\operatorname{Eq}_{f^i,f^j}, \operatorname{Eq}_{f^i,\operatorname{id}}, \operatorname{Eq}_{\operatorname{id},f^j} : 0\leq i,j \leq 6\}\cup\{\operatorname{Eq}_{\operatorname{id},\operatorname{id}}\}$. 
 For easier readability, we will only give the definitions for the symbols in $\{\operatorname{Eq}_{f^i,\operatorname{id}} : 0 \leq i \leq n\}$. 
 In fact, we find that 
@@ -193,11 +177,59 @@ Notice that $\operatorname{Eq}_{f^0,\operatorname{id}}^{\widetilde{\mathfrak A}}
 Therefore the sentence 
 $$\exists^{\geq 6}(x,y).\left(\operatorname{Eq}_{f^1,\operatorname{id}}(x,y) \land \operatorname{Eq}_{f^4,\operatorname{id}}(x,y)\right)\in \GFC$$ 
 is satisfied by $\widetilde{\mathfrak A}$, but not $\widetilde{\mathfrak B}$.
-Furthermore, consider the formula $\phi=\exists^{\geq 1} x.(f(f(f(x)))=x)$ that has been to used to distinguish $\mathfrak A$ and $\mathfrak B$.
-We can easily derive another formula $\phi'\in \GFC$ to distinguish the transitive expansions, namely $\phi'=\exists^{\geq 1} x. \operatorname{Eq}_{f^3, \operatorname{id}}(x, x)$.
+We can easily derive another formula $\phi'\in \GFC$ to distinguish the transitive expansions, for example $\phi'=\exists^{\geq 1} x. \operatorname{Eq}_{f^3, \operatorname{id}}(x, x)$.
 
-We see that this procedure distinguishes structures that were not distinguished by nRCR.
-In the following, we want to investigate how much stronger this new algorithm is, by finding a logic that characterises it.
+We see that $RCR_k$ distinguishes structures that were not distinguished by nRCR.
+
+\subsection{Characterisation through logic}
+
+In this section we will discuss, how the above approaches of Colour Refinement for non-relational structures can be characterised by logic.
+We will see that for both cases we will get a logic which extends the given definition of $\GFC$, see definition \ref{}, but restricts the usage of functions inside of terms.
+
+\subsubsection{Characterising naive RCR using logic} 
+
+The nRCR algorithm will be characterised by the following logic $\mathsf{nfGF}(\mathsf C)$, which uses functions exactly as relation.
+That is, nesting of functions in forbidden and only the usage as $f(\mathbf x)=y$ is allowed.
+This is analogous to the encoding used in nRCR, which leads to the characterisation of nRCR by $\mathsf{nfGF}(\mathsf C)$, which will also prove in the following.
+
+\begin{definition}[$\mathsf{nfGF}(\mathsf C)$]
+	Consider the definition of $\GFC$ given in \ref{}.
+	We obtain the nesting-free fragment, by allowing $f(\mathbf x)=y$ as a further atomic formula.
+	Concretely, the only allowed atomic formulae are of the form $R(x_1,\dots,x_\ell)$, $x=y$ and $f(x_1,\dots,x_\ell)=y$, where $f$ has arity $\ell$, $\free{f(x_1,\dots,x_\ell)=y}=\{x_1,\dots,x_\ell\}$ and $\gd{f(\mathbf x)=y}=0$.
+	
+	The remaining definitions stay the same.
+\end{definition}
+
+We now define that nRCR and $\mathsf{nfGF}(\mathsf C)$ can distinguish exactly the same structures.
+
+\begin{theorem}
+	\label{thm:ThmA}
+	The two following statements are equivalent:
+	\begin{enumerate}
+		\item nRCR distinguishes $\mathfrak A$ and $\mathfrak B$.
+		\item There exists a sentence $\phi\in \mathsf{nfGF}(\mathsf C)$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	1. $\Rightarrow$ 2.:
+	By definition, $\mathfrak A$ and $\mathfrak B$ are distinguished by nRCR if, and only if, $\mathfrak A'$ and $\mathfrak B'$ are distinguished by RCR.
+	Using the result of \cite{scheidt2025ColorRefinement}, we obtain a sentence $\varphi'\in\GFC$ that distinguishes the encoded structures.
+	Via a structural induction on the formula, we can now translate $\varphi'$ into a formula $\phi\in \mathsf{nfGF}(\mathsf C)$
+	This can be achieved by replacing formulae $R_f(x_1,\dots,x_\ell,y)$ by $f(x_1,\dots,x_\ell)=y$ for function symbols $f\in\sigma$ and letting everything else stay the same.
+	
+	2. $\Rightarrow$ 1.:
+	When considering $\mathsf{nfGF}(\mathsf C)$, one can find that the transformation done at the end of the first direction can be applied in reverse.
+	This then leads to a distinguishing sentence in $\GFC$ and with \cite{scheidt2025ColorRefinement} to a distinguishing colouring of the encoded structures, which by definition is a distinguishing colouring for the structures themselves.
+\end{proof}
+
+While the above theorem results in a nice characterisation of the naive encoding, the nesting of terms is often very desired when using functions.
+However, it can be shown that nesting is too powerful for the naive encoding.
+
+Consider the structures $\mathfrak A$ and $\mathfrak B$ from figure \ref{nRCRvsRCRk} and the formula $\phi=\exists^{\geq 1} x.(f(f(f(x)))=x)$ which utilizes term nesting to find a cycle of length three.
+It is obvious that $\mathfrak A \models \phi$ and $\mathfrak B\not\models \phi$.
+However, as it was discussed above, one finds that nRCR cannot distinguish them.
+Therefore, term nesting is too powerful for the naive encoding.
+
 
 \subsubsection{Logical characterisation of $\RCR_k$}
 
@@ -522,10 +554,9 @@ From the proof, we know that $\theta_\psi$ is of the form
 	\land & g^{k'}(f^{k+p}(x))=g^{k'+\ell'}(f^{k+p}(x)) \land g^{k'+p'}(f^{k+p}(x)) = y \\
 	\land & E^{k',\ell'}_g(f^{k+p}(x)) \land \bigwedge_{\hat{\ell}<\ell'}g^{k'}(f^{k+p}(x))\neq g^{k'+\hat\ell}(f^{k+p}(x))
 \end{align*}
-and with $\mathcal I(2,4)=\{(1,1,0),(0,1,0), (0,2,0)\}$ we can analogous find that $\theta_\psi$ is equal to
-\todo{Das ist ja eine Disjunktion mit 3*3=9 Formeln die jeweils etwa eine Zeile lang sind. Sollte ich die trotzdem komplett aufschreiben?}
+and with $\mathcal I(2,4)=\{(1,1,0),(0,1,0), (0,2,0)\}$ we can analogous find $\theta_\psi$.
 
-This now allows us to proof the logical characterisation of our Colour Refinement Algorithm.
+This now allows us to prove the logical characterisation of our Colour Refinement Algorithm.
 
 \begin{theorem}
 	\label{thm:ThmB}
@@ -620,8 +651,7 @@ This now allows us to proof the logical characterisation of our Colour Refinemen
 	Using \cite{scheidt2025ColorRefinement}, we thus know that $\RCR$ distinguishes $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$ and by definition we can deduce that $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$.
 \end{proof}
 
-\todo{Hier das selbige Spiel bzgl. eine Beispiels. Ein vollständiges Beispiel wäre vermutlich ziemlich lang, die Konstruktion wird ja leider exponentiell groß. Sollte ich dann trotzdem ein vollständiges Beispiel hier aufführen? Oder reicht es die Sachen mit nem $\bigvee$ bzw. $\bigwedge$ zusammenzufassen? Zumindest die Konstruktion mit den $\operatorname{Parts}$ sollte man vllt noch einmal anschneiden?}
-
+We thus can characterise $\RCR_k$ with the logic $\GFC_k$.
 
 \subsection{Characterisation through homomorphism counting}
 
@@ -631,10 +661,6 @@ Thus we now want to consider, whether those extensions can also be characterised
 
 In the following we will see that, using the two established approaches, it is in general not possible, to find acyclic structures with functions that divide two structures by homomorphism count.
 We will concentrate on the encoding defined in section \ref{Sec::NaiveEncodingOfFunctions}, where we will show one positive and one negative result.
-Afterwards, we will widen the negative results to show that a corresponding characterisation for the encoding from section \ref{sec:TransitiveExpansion} cannot exist as well.
-
-\subsubsection{Acyclic structures cannot characterise naive RCR}
-\label{sec:AcycStrucNotnRCR}
 
 To begin, let us define two concepts for relational structures that encode a non-relational structure.
 
@@ -657,7 +683,43 @@ This idea is captured by the following definition.
 A graphical representation of total and functional structures can be found in figure \ref{fig:totalAndFunctionalStructs}.
 
 \begin{figure}
-	\includegraphics[width=\textwidth]{pictures/totalAndFunctionalStructs}
+	\centering
+	\begin{multicols}{2}
+		\begin{tikzpicture}[node distance=3cm]
+			\node[state] (a) {$a_1$};
+			\node[state, right=of a] (b) {$a_2$};
+			\node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak A$:};
+			\draw 
+			(a) edge[->, thick, above, bend left] node{$R_f$} (b)
+			(b) edge[->, thick, below, bend left] node{$R_f$} (a);
+		\end{tikzpicture}
+		\begin{tikzpicture}[node distance=3cm]
+			\node[state] (a) {$b_1$};
+			\node[state, right=of a] (b) {$b_2$};
+			\node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak B$:};
+			\draw 
+			(a) edge[->, thick, above, bend left] node{$R_f$} (b)
+			(b) edge[->, thick, below, bend left] node{$R_f$} (a)
+			(a) edge[->, thick, loop left] node{$R_f$} (a);
+		\end{tikzpicture}
+	\end{multicols}
+	\begin{multicols}{2}
+		\begin{tikzpicture}[node distance=3cm]
+			\node[state] (a) {$c_1$};
+			\node[state, right=of a] (b) {$c_2$};
+			\node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak C$:};
+			\draw 
+			(a) edge[->, thick, above, bend left] node{$R_f$} (b);
+		\end{tikzpicture}
+		\begin{tikzpicture}[node distance=3cm]
+			\node[state] (a) {$d_1$};
+			\node[state, right=of a] (b) {$d_2$};
+			\node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak D$:};
+			\draw 
+			(a) edge[->, thick, above, bend left] node{$R_f$} (b)
+			(a) edge[->, thick, loop left] node{$R_f$} (a);
+		\end{tikzpicture}
+	\end{multicols}
 	\caption{Examples for a total and functional ($\mathfrak A$), a total and not-functional ($\mathfrak B$), a not-total but functional ($\mathfrak C$) and a not-total and not-functional structure ($\mathfrak D$), where $\sigma=\{f/1\}$ and thus $\sigma'=\{R_f/2\}$.}
 	\label{fig:totalAndFunctionalStructs}
 \end{figure}
@@ -768,13 +830,13 @@ We will in the following prove the former claim and then show the latter claim, 
 	where for all $R\in\sigma'$ we have $R^{\mathfrak C''}\coloneqq \{\chi(\mathbf c) : \mathbf c\in R^{\mathfrak C'}\}$.
 	We will now proceed by proving the above properties.
 	
-	\paragraph{Property a.:}
+	\paragraph*{Property a.:}
 	This property follows directly from the definition of $C''$.
 	We have $y\neq z$, $y,z\in C'$ and thus $\vert C'\setminus \{y,z\}\vert = \vert C'\vert -2$.
 	Furthermore, we have $v_{y,z}\notin C'$ and therefore $\vert (C'\setminus \{y,z\})\cup \{v_{y,z}\}\vert = \vert C' \vert -1$.
 	This was to be shown.
 	
-	\paragraph{Property b.:}
+	\paragraph*{Property b.:}
 	To show that $\mathfrak C''$ is acyclic, we first will define an undirected graph $J''$, will prove that it is connected and cycle free, thus a tree, and that it fulfils the join tree property for $\mathfrak C''$.
 	By the assumption we know that $\mathfrak C'$ is acyclic and thus has a join tree $J'$.
 	We further notice that $\mathbf{C''}=\{\chi(\mathbf c) : \mathbf c\in \mathbf{C'}\}$.
@@ -864,7 +926,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		Therefore, we get one path from $\mathbf u$ to $\mathbf v$ in $S$.
 	\end{proof}
 	
-	\paragraph{Property c.:}
+	\paragraph*{Property c.:}
 	To show that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$, we will give a mapping $\pi : \Hom(\mathfrak C',\mathfrak A')\to\Hom(\mathfrak C'',\mathfrak A')$ from homomorphisms from $\mathfrak C'$ to $\mathfrak A'$ to homomorphisms from $\mathfrak C''$ to $\mathfrak A'$.
 	We will then show that $\pi$ is a bijection, from which follows that both sets have the same cardinality, which then proves the claim for $\mathfrak A'$.
 	For $\mathfrak B'$, the prove is completely analogous, which is why it will be omitted.
@@ -948,7 +1010,39 @@ From the above lemma we get that given an acyclic, distinguishing structure we c
 One example how this can be applied can be seen in figure \ref{fig:constructFunctionalStruct}.
 
 \begin{figure}
-	\includegraphics[width=\textwidth]{pictures/constructFunctionalStruct}
+	\centering
+	\begin{tikzpicture}[node distance=0.75cm]
+		\node[state] (a1) at (0, 0) {$a$};
+		\node[state, below=of a1, xshift=-1.2cm, yshift=-1cm] (b1) {$b$};
+		\node[state, below=of a1, xshift=1.2cm, yshift=-1cm] (c1) {$c$};
+		\node[state, below=of b1, yshift=-1cm] (d1) {$d$};
+		\node[state, below=of c1, yshift=-1cm] (e1) {$e$};
+		\draw 
+		(a1) edge[->, thick] (b1)
+		(a1) edge[->, thick] (c1)
+		(b1) edge[->, thick] (d1)
+		(c1) edge[->, thick] (e1);
+		
+		\node[] (arrow1) at (3, -2.75) {\huge $\Rightarrow$};
+		
+		\node[state] (a2) at (6, 0) {$a$};
+		\node[state, below=of a2, yshift=-1cm] (vbc2) {$v_{b,c}$};
+		\node[state, below=of vbc2, xshift=-1.2cm, yshift=-1cm] (d2) {$d$};
+		\node[state, below=of vbc2, xshift=1.2cm, yshift=-1cm] (e2) {$e$};
+		\draw 
+		(a2) edge[->, thick] (vbc2)
+		(vbc2) edge[->, thick] (d2)
+		(vbc2) edge[->, thick] (e2);
+		
+		\node[] (arrow1) at (9, -2.75) {\huge $\Rightarrow$};
+		
+		\node[state] (a3) at (12, 0) {$a$};
+		\node[state, below=of a3, yshift=-1cm] (vbc3) {$v_{b,c}$};
+		\node[state, below=of vbc3, yshift=-1cm] (vde3) {$v_{d,e}$};
+		\draw 
+		(a3) edge[->, thick] (vbc3)
+		(vbc3) edge[->, thick] (vde3);
+	\end{tikzpicture}
 	\caption{Two successive applications of the procedure described in the proof of lemma \ref{lem:constructionOfFunctionalStruct}. The arrows represent a binary relation $R_f$, which encodes a unary function $f$.}
 	\label{fig:constructFunctionalStruct}
 \end{figure}
@@ -965,8 +1059,78 @@ Let $(\mathfrak A_i)_{i\in \mathbb N_{\geq 4}}$ be a family of $\sigma$-structur
 Let $(\mathfrak B_i)_{i\in \mathbb N_{\geq 4}}$ also be a family of $\sigma$-structures, defined as $\mathfrak B_n=(B_n, \operatorname E^{\mathfrak B_n},f^{\mathfrak B_n})$, where $B_n=[n]$, $\operatorname E^{\mathfrak B_n}=\{(i, i+1), (i+1, i) : i \in [n-1]\}$ and $f^{\mathfrak B_n}=\{i \mapsto \ipo n : i \in [n]\}$.
 Graphical representations for a few examples of these structures can be seen in figure \ref{fig:exmaplesFamilies}.
 
-\begin{figure}
-	\includegraphics[width=\textwidth]{pictures/examplesFamilies}
+\begin{figure}[t!]
+	\centering
+	\begin{multicols}{2}
+		\begin{tikzpicture}[node distance=1cm]
+			\node[state] (1) {$1$};
+			\node[state, below =of 1, xshift=-0.5cm] (2) {$2$};
+			\node[state, below =of 2, xshift=-0.5cm] (3) {$3$};
+			\node[state, right =of 3] (4) {$4$};
+			\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak A_4$:};
+			\draw
+			(1) edge[-, thick, rwth-blue] (2)
+			(2) edge[-, thick, rwth-blue] (3)
+			(1) edge[->, thick, bend left, rwth-red] (2)
+			(2) edge[->, thick, bend left, rwth-red] (3)
+			(3) edge[->, thick, bend left, rwth-red] (1)
+			(4) edge[->, thick, rwth-red] (3);
+		\end{tikzpicture}
+		
+		\begin{tikzpicture}[node distance=1cm]
+			\node[state] (1) {$1$};
+			\node[state, below =of 1, xshift=-0.5cm] (2) {$2$};
+			\node[state, below =of 2, xshift=-0.5cm] (3) {$3$};
+			\node[state, below =of 3, xshift=-0.5cm] (4) {$4$};
+			\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak B_4$:};
+			\draw
+			(1) edge[-, thick, rwth-blue] (2)
+			(2) edge[-, thick, rwth-blue] (3)
+			(3) edge[-, thick, rwth-blue] (4)
+			(1) edge[->, thick, bend left, rwth-red] (2)
+			(2) edge[->, thick, bend left, rwth-red] (3)
+			(3) edge[->, thick, bend left, rwth-red] (4)
+			(4) edge[->, thick, bend left, rwth-red] (1);
+		\end{tikzpicture}
+	\end{multicols}
+	\begin{multicols}{2}
+		\begin{tikzpicture}[node distance=1cm]
+			\node[state] (1) {$1$};
+			\node[state, below =of 1, xshift=-0.5cm] (2) {$2$};
+			\node[state, below =of 2, xshift=-0.5cm] (3) {$3$};
+			\node[state, below =of 3, xshift=-0.5cm] (4) {$4$};
+			\node[state, right =of 4] (5) {$5$};
+			\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak A_5$:};
+			\draw
+			(1) edge[-, thick, rwth-blue] (2)
+			(2) edge[-, thick, rwth-blue] (3)
+			(3) edge[-, thick, rwth-blue] (4)
+			(1) edge[->, thick, bend left, rwth-red] (2)
+			(2) edge[->, thick, bend left, rwth-red] (3)
+			(3) edge[->, thick, bend left, rwth-red] (4)
+			(4) edge[->, thick, bend left, rwth-red] (1)
+			(5) edge[->, thick, rwth-red] (4);
+		\end{tikzpicture}
+		
+		\begin{tikzpicture}[node distance=1cm]
+			\node[state] (1) {$1$};
+			\node[state, below =of 1, xshift=-0.5cm] (2) {$2$};
+			\node[state, below =of 2, xshift=-0.5cm] (3) {$3$};
+			\node[state, below =of 3, xshift=-0.5cm] (4) {$4$};
+			\node[state, below =of 4, xshift=-0.5cm] (5) {$5$};
+			\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak B_5$:};
+			\draw
+			(1) edge[-, thick, rwth-blue] (2)
+			(2) edge[-, thick, rwth-blue] (3)
+			(3) edge[-, thick, rwth-blue] (4)
+			(4) edge[-, thick, rwth-blue] (5)
+			(1) edge[->, thick, bend left, rwth-red] (2)
+			(2) edge[->, thick, bend left, rwth-red] (3)
+			(3) edge[->, thick, bend left, rwth-red] (4)
+			(4) edge[->, thick, bend left, rwth-red] (5)
+			(5) edge[->, thick, bend left, rwth-red] (1);
+		\end{tikzpicture}
+	\end{multicols}
 	\caption{Examples for the structures $\mathfrak A_4$, $\mathfrak A_5$, $\mathfrak B_4$ and $\mathfrak B_5$. The blue edges represent the binary relation $\operatorname E$, while the red arrows constitute the unary function $f$.}
 	\label{fig:exmaplesFamilies}
 \end{figure}
@@ -984,7 +1148,7 @@ It now only remains to show that there cannot be a total and acyclic structure t
 \end{lemma}
 \begin{proof}
 	Using basic boolean equivalences we prove the equivalent statement that if $\mathfrak C_n'$ is total, than it either is not distinguishing or not acyclic.
-	As such, let $\mathfrak C_n'$ be a total $\sigma'$-structure
+	As such, let $\mathfrak C_n'$ be a total $\sigma'$-structure.
 	
 	We observe that if $\mathfrak C_n'$ contains $R_f$-loops, that is an element $x\in C_n'$ such that $(x, x)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ is not distinguishing.
 	In fact, then we have $\hom(\mathfrak C_n',\mathfrak A_n')=\hom(\mathfrak C_n',\mathfrak B_n')=0$.
