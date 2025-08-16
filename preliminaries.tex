@@ -1,0 +1,32 @@
+\section{Preliminaries}
+\label{sec:Preliminaries}
+
+% Tuple notation
+Let $A$ be a set.
+Then any $a_1,\dots, a_k\in A$ form a tuple with arity $k$ of the form $\mathbf a=(a_1,\dots,a_k)$ and with $\mathbf a_n$ we denote $a_n$.
+For any function $f:A\to B$, we write $f(\mathbf a)$ for $(f(a_1),\dots,f(a_k))$.
+As a special case, if $\pi$ is a permutation, that is $\pi\in \mathcal S_k$, where $\mathcal S_k$ is the symmetric group for $k$ elements, then $\pi(\mathbf a)$ means $(a_{\pi(1)},\dots,a_{\pi(k)})$.
+For a set $A$ and a $k\in \mathbb N$, we write $\binom{A}{k}$, to denote all subsets of $A$ with cardinality exactly $k$.
+Usually, sets are denoted by uppercase, elements from sets as lowercase, and tuples as boldface and lowercase Latin letters.
+
+% Natural numbers
+By $\mathbb N$ we mean the set of natural numbers, including $0$, and with $\mathbb N_{\geq k}$ for a $k\in \mathbb N$, we denote the set $\{k,k+1,\dots\}=\mathbb N \setminus \{0,\dots,k\}$.
+
+% Multisets
+A multiset $\mathcal M$ is a set $A$ with a function $\operatorname{mult}_{\mathcal M}:A\to \mathbb N_{\geq 1}$.
+This denotes, that for every $a\in A$, there are exactly $\operatorname{mult}_{\mathcal M}(a)$ many copies.
+We also write multisets as $\multiset{\dots}$.
+As an example, the multiset $\mathcal M = \multiset{a, b, b}$ is equivalent to the set $A=\{a,b\}$, together with the function $\operatorname{mult}_{\mathcal M}=\{a\mapsto 1, b\mapsto 2\}$.
+
+% Signatures and Structures and Graphs
+A signature is a set of relation and function symbols, paired with an arity for every symbol.
+We write relation-symbols as uppercase and function-symbols as lower case letters.
+For example, $\sigma=\{R/2, T/3, f/3\}$ represents a signature with a relation-symbol $R$ with arity $R$, a relation-symbol $T$ with arity $3$ and a function-symbol $f$ with arity $3$.
+For a signature $\sigma$ we have that a $\sigma$-structure $\mathfrak A$ is a tuple $(A,\sigma)$ where $A$, called the universe, is a set of elements and for every $k$-ary relation-symbol $R\in \sigma$ and every $\ell$-ary function-symbol $f\in \sigma$, there is a relation $R^{\mathfrak A}\subseteq A^k$ and a function $f^{\mathfrak A}:A^\ell \to A$.
+We define $\vert \mathfrak A\vert =\vert A \vert$.
+A structure is always written as an uppercase Fraktur letter, its universe is written using the same uppercase normal letter, and the letter written boldface denotes the set of all tuples.
+As an example, $\mathfrak A$ is a structure, $A$ is its universe and $\mathbf A$ is the set of its tuples, formally $\{\mathbf a : \mathbf a \in R^{\mathfrak A} \text{ for a } R\in\sigma\}$.
+A graph $G$ has a set of vertices, called 
+If not specified, we only talk about finite signatures and finite universes.
+
+% Colour Refinement (Basic logic (C^2), Hom/hom)
