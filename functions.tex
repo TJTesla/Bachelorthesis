@@ -667,10 +667,10 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 
 We thus can characterise $\RCR_k$ with the logic $\GFC_k$.
 
-\subsection{Characterisation through homomorphism counting}
+\subsection{Characterisation Through Homomorphism Counting}
 
 One very interesting property of classical, as well as Relational Colour Refinement is that aside from its logical characterisation, it can be characterised by counting homomorphisms from certain structures.
-As we showed, the logical characterisation has two possible extensions to structures with functions.
+As we showed, the logical characterisation of Relational Colour Refinement has two possible extensions to structures with functions.
 Thus we now want to consider, whether those extensions can also be characterised by counting homomorphisms.
 
 In the following we will see that, using the two established approaches, it is in general not possible, to find acyclic structures with functions that divide two structures by homomorphism count.
@@ -680,8 +680,8 @@ To begin, let us define two concepts for relational structures that encode a non
 
 \begin{definition}[Total structures]
 	\label{def:TotalStructures}
-	Let $\sigma\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature where $\sigma_{\operatorname{Func}}$ contains exactly all functional symbols and is not empty.
-	Now let $\sigma'$ be the relational encoding of $\sigma$ and let $\mathfrak A'$ ba a $\sigma'$-structure.
+	Let $\sigma\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature where $\sigma_{\operatorname{Func}}$ contains exactly all function-symbols and is not empty.
+	Now let $\sigma'$ be the relational encoding of $\sigma$ and let $\mathfrak A'$ be a $\sigma'$-structure.
 	We call $\mathfrak A'$ total, if for every $R_{f}\in\widehat{\sigma}$ with arity $n+1$ where $f\in \sigma_{\operatorname{Func}}$ has arity $n$, we have that for every $n$-ary tuple $\mathbf x$ there is a $y$ such that $(\mathbf xy)\in R^{\mathfrak A'}_{f}$.
 \end{definition}
 
@@ -695,55 +695,65 @@ This idea is captured by the following definition.
 \end{definition}
 
 A graphical representation of total and functional structures can be found in figure \ref{fig:totalAndFunctionalStructs}.
-
 \begin{figure}
 	\centering
-	\begin{multicols}{2}
-		\begin{tikzpicture}[node distance=3cm]
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\begin{tikzpicture}[node distance=4cm]
 			\node[state] (a) {$a_1$};
 			\node[state, right=of a] (b) {$a_2$};
-			\node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak A$:};
+			% \node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak A$:};
 			\draw 
 			(a) edge[->, thick, above, bend left] node{$R_f$} (b)
 			(b) edge[->, thick, below, bend left] node{$R_f$} (a);
 		\end{tikzpicture}
-		\begin{tikzpicture}[node distance=3cm]
+		\caption{A total and functional structure.}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\begin{tikzpicture}[node distance=4cm]
 			\node[state] (a) {$b_1$};
 			\node[state, right=of a] (b) {$b_2$};
-			\node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak B$:};
+			% \node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak B$:};
 			\draw 
 			(a) edge[->, thick, above, bend left] node{$R_f$} (b)
 			(b) edge[->, thick, below, bend left] node{$R_f$} (a)
 			(a) edge[->, thick, loop left] node{$R_f$} (a);
 		\end{tikzpicture}
-	\end{multicols}
-	\begin{multicols}{2}
-		\begin{tikzpicture}[node distance=3cm]
+		\caption{A total and not-functional structure.}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\begin{tikzpicture}[node distance=4cm]
 			\node[state] (a) {$c_1$};
 			\node[state, right=of a] (b) {$c_2$};
-			\node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak C$:};
+			% \node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak C$:};
 			\draw 
 			(a) edge[->, thick, above, bend left] node{$R_f$} (b);
 		\end{tikzpicture}
-		\begin{tikzpicture}[node distance=3cm]
+		\caption{A not-total, but functional structure.}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\begin{tikzpicture}[node distance=4cm]
 			\node[state] (a) {$d_1$};
 			\node[state, right=of a] (b) {$d_2$};
-			\node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak D$:};
+			% \node[left=of a, xshift=2cm, yshift=1cm] (label) {$\mathfrak D$:};
 			\draw 
 			(a) edge[->, thick, above, bend left] node{$R_f$} (b)
 			(a) edge[->, thick, loop left] node{$R_f$} (a);
 		\end{tikzpicture}
-	\end{multicols}
-	\caption{Examples for a total and functional ($\mathfrak A$), a total and not-functional ($\mathfrak B$), a not-total but functional ($\mathfrak C$) and a not-total and not-functional structure ($\mathfrak D$), where $\sigma=\{f/1\}$ and thus $\sigma'=\{R_f/2\}$.}
+		\caption{A not-total and not-functional structure.}
+	\end{subfigure}
+	\caption{Examples for different combinations of total and functional structures with $\sigma=\{f/1\}$ and thus $\sigma'=\{R_f/2\}$.}
 	\label{fig:totalAndFunctionalStructs}
 \end{figure}
-
 To continue, we have to define what it means to be acyclic for a structure with functions.
 
 \begin{definition}[Acyclic, non-relational structures]
 	Let $\sigma$ be a signature with function-symbols and $\sigma'$ its encoding as it is defined in section \ref{Sec::NaiveEncodingOfFunctions}.
 	Let $\mathfrak C$ be a $\sigma$-structure and $\mathfrak C'$ be its encoding of signature $\sigma'$.
-	We then call $\mathfrak C$ acyclic, if $\mathfrak C'$ is acyclic, with respect to acyclicity as it is defined in definition \ref{}.
+	We then call $\mathfrak C$ acyclic, if $\mathfrak C'$ is acyclic, with respect to acyclicity as it is defined in definition \ref{def:alphaAcyclic}.
 \end{definition}
 
 We now want to find the equivalence between the existence of an acyclic structure with functions and an encoding of an acyclic structure with the above properties (with respect to homomorphism counting).
@@ -762,7 +772,7 @@ We now want to find the equivalence between the existence of an acyclic structur
 	We begin by proving that \emph{1.} implies \emph{2.}.
 	Let $\mathfrak C$ be such a $\sigma$-structure.
 	Now let $\mathfrak C'$ be its encoding as a $\sigma'$-structure.
-	By definition is $\mathfrak C'$ acyclic and when considering the definition of the encoding, we find that it also has to be total and functional.
+	By definition $\mathfrak C'$ is acyclic and when considering the definition of the encoding, we find that it also has to be total and functional.
 	Furthermore we have $\Hom(\mathfrak C,\mathfrak A)=\Hom(\mathfrak C',\mathfrak A')$ and respectively with $\mathfrak B$ and $\mathfrak B'$.
 	
 	Let $\phi\in\Hom(\mathfrak C,\mathfrak A)$. 
@@ -799,7 +809,7 @@ We can now continue to put this in relation to the statement regarding RCR.
 We have that naive RCR distinguishes two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ if, and only if, RCR distinguishes the encodings $\mathfrak A'$ and $\mathfrak B'$ of signature $\sigma'$.
 Due to the results of \cite{scheidt2025ColorRefinement} this is the case if, and only if, there is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
 We would like to achieve the result that this is equivalent to there being an acyclic $\sigma$ structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by homomorphism count (however this will not be the case).
-By the above lemma, this is equivalent to there being an acyclic, total and functional $\sigma'$-structure $\mathfrak C''$ that distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
+By the above lemma, the latter is equivalent to there being an acyclic, total and functional $\sigma'$-structure $\mathfrak C''$ that distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
 Our goal will therefore be, to study the relationship between the two following statements.
 \begin{enumerate}
 	\item There is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
@@ -818,13 +828,13 @@ We will in the following prove the former claim and then show the latter claim, 
 \begin{proof}
 	The proof for the above lemma will work as follows.
 	If $\mathfrak C'$ is not functional, then there is a function-symbol $f\in\sigma$ and two different tuples $(\mathbf xy),(\mathbf xz)\in R^{\mathfrak C'}_f$, we call this a collision.
-	We will give a procedure, to iteratively remove such collisions.
-	The procedure will reduce the number of elements by one, will keep the acyclicity property and will result in a structure with the same amount of homomorphisms to $\mathfrak A'$ and $\mathfrak B'$.
+	We will give a procedure to iteratively remove such collisions.
+	The procedure will reduce the number of elements by one, will keep the acyclicity property and will result in a structure with the same amount of homomorphisms to $\mathfrak A'$ and $\mathfrak B'$, respectively.
 	Thus, by continuously applying that procedure to all collisions, we will get $\mathfrak C''$.
 	The algorithm must terminate, as the number of elements strictly decreases and we only consider finite structures.
 	
 	The remainder of this proof will be dedicated to describing the procedure and proving the above claims.
-	Assume that there is a function symbol $f\in \sigma$ and two different tuples $(\mathbf x y),(\mathbf x z)\in R_f^{\mathfrak C'}$. 
+	Assume that there is a function-symbol $f\in \sigma$ and two different tuples $(\mathbf x y),(\mathbf x z)\in R_f^{\mathfrak C'}$. 
 	Our goal will be to construct a structure $\mathfrak C''$ of signature $\sigma'$ without this particular collision and with the following properties:
 	\begin{itemize}
 		\item[a.] $\vert \mathfrak C'' \vert = \vert \mathfrak C'\vert -1$
@@ -834,8 +844,8 @@ We will in the following prove the former claim and then show the latter claim, 
 	We define the function $\chi : \mathbf{C'}\to\mathbf{C''}$ which will map tuples of $\mathfrak C'$ to tuples of $\mathfrak C''$ with the same arity.
 	Concretely, for an arbitrary tuple $\mathbf c\in \mathbf{C'}$ of arity $k$ and for every $i\in[k]$, we have
 	$$\chi(\mathbf c)_i \coloneqq \begin{cases}
-		c_i & \text{if } c_i\notin \{y,z\} \\
-		v_{y,z} & \text{if } c_i \in \{y,z\}
+		\mathbf c_i & \text{if } \mathbf c_i\notin \{y,z\} \\
+		v_{y,z} & \text{if } \mathbf c_i \in \{y,z\}
 	\end{cases}$$
 	for a new element $v_{y,z}$.
 	In words, we replace every occurrence of $y$ and $z$ by $v_{y,z}$, while letting everything else stay the same.
@@ -908,7 +918,7 @@ We will in the following prove the former claim and then show the latter claim, 
 	\begin{proof}
 		Consider any $c\in C''$ and two elements $\mathbf u$ and $\mathbf v$ from the set $S\coloneqq \{\mathbf c \in V(J'') : c\in \set(\mathbf c)\}$.
 		We show that there is a path from $\mathbf u$ to $\mathbf v$ in $S$.
-		If $v\neq v_{y,z}$, then $v\in C'$, thus consider $V_c$.
+		If $c\neq v_{y,z}$, then $c\in C'$, thus consider $V_c$.
 		By definition there are $\mathbf a,\mathbf b\in V_c$ such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
 		Because $J'$ is a join tree, $V_c$ must induce a connected subtree.
 		Thus there must be $\mathbf a_0,\dots,\mathbf a_k\in V_c$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=\mathbf b$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
@@ -917,7 +927,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		
 		If $v=v_{y,z}$, we again define $\mathbf a,\mathbf b\in V(J')$ such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
 		If $\mathbf a,\mathbf b\in V_y$ or $\mathbf a,\mathbf b\in V_z$, then we can proceed exactly as in the former case with $v=y$ or $v=z$, respectively.
-		If that is not the case, then either $\mathbf a\in V_y and \mathbf b\in V_z$, or the other way round.
+		If that is not the case, then either $\mathbf a\in V_y$ and $\mathbf b\in V_z$, or the other way round.
 		We will only prove the former case, as the latter case can proven analogously.
 		Since the following will depend on it, we will now prove the following equality: $S=\{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
 		
@@ -930,10 +940,10 @@ We will in the following prove the former claim and then show the latter claim, 
 		$\subseteq$:
 		Let $\mathbf u\in S$, then $v_{y,z}\in \set(\mathbf u)$ follows.
 		By definition there must exist an $\mathbf a \in V(J')$ such that $\chi(\mathbf a)=\mathbf u$ and $y\in \set(\mathbf a)$ or $z\in \set(\mathbf a)$ has to hold.
-		Thus we get $\chi(\mathbf a)=\mathbf u\in \{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$
+		Thus we get $\chi(\mathbf a)=\mathbf u\in \{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
 		
 		It is obvious that $(\mathbf xy)\in V_y$ and $(\mathbf xz)\in V_z$.
-		We now get a path in $V_y$ with the elements $\mathbf a_0,\dots,\mathbf a_k\in V_b$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=(\mathbf xy)$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
+		We now get a path in $V_y$ with the elements $\mathbf a_0,\dots,\mathbf a_k\in V_y$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=(\mathbf xy)$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
 		We also get a path in $V_z$ with the elements $\mathbf b_0,\dots,\mathbf b_\ell\in V_z$ such that $\mathbf b_0=(\mathbf xz)$, $\mathbf b_\ell = \mathbf b$ and $\{\mathbf b_{i-1},\mathbf b_i\}\in E(J')$.
 		Therefore with the above equation, we have two paths in $S$: $\chi(\mathbf a_0),\dots,\chi(\mathbf a_k)$ and $\chi(\mathbf b_0),\dots,\chi(\mathbf b_\ell)$, where $\chi(\mathbf a_0)=\mathbf u$ and $\chi(\mathbf b_\ell)=\mathbf v$.
 		Now we have that $\chi(\mathbf a_k)=\chi((\mathbf xy))=(\mathbf x'v_{y,z})=\chi((\mathbf xz))=\chi(\mathbf b_0)$.
@@ -943,7 +953,7 @@ We will in the following prove the former claim and then show the latter claim, 
 	\paragraph*{Property c.:}
 	To show that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$, we will give a mapping $\pi : \Hom(\mathfrak C',\mathfrak A')\to\Hom(\mathfrak C'',\mathfrak A')$ from homomorphisms from $\mathfrak C'$ to $\mathfrak A'$ to homomorphisms from $\mathfrak C''$ to $\mathfrak A'$.
 	We will then show that $\pi$ is a bijection, from which follows that both sets have the same cardinality, which then proves the claim for $\mathfrak A'$.
-	For $\mathfrak B'$, the prove is completely analogous, which is why it will be omitted.
+	For $\mathfrak B'$, the proof is completely analogous, which is why it will be omitted.
 	Let $\phi\in \Hom(\mathfrak C',\mathfrak A')$.
 	We now define $\phi'\coloneqq \pi(\phi)$ as
 	$$
@@ -1009,7 +1019,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		Using that $\psi(y)=\psi(z)$ for all $\psi\in\Hom(\mathfrak C',\mathfrak A')$, it can easily be verified that $\pi(\phi)=\phi'$.
 		We now only have to show that $\phi\in\Hom(\mathfrak C',\mathfrak A')$. 
 		Let $\mathbf c\in R^{\mathfrak C'}$ for a relation-symbol $R$.
-		We now define $\mathbf c'\coloneqq \chi(\mathbf c)$ and get by construction that $\mathbf c'\in R^{\mathfrak C''}$.
+		We now define $\mathbf c'= \chi(\mathbf c)$ and get by construction that $\mathbf c'\in R^{\mathfrak C''}$.
 		Because we know that $\phi'$ is a homomorphism, it follows that $\phi'(\mathbf c')\in R^{\mathfrak A'}$.
 		But since $\phi'(a)=\phi(a)$ for all $a\notin \{y,z,v_{y,z}\}$ and $\phi'(v_{y,z})=\phi(y)=\phi(z)$, it follows that $\phi'(\mathbf c')=\phi(\mathbf c)$.
 		Therefore $\phi(\mathbf c)\in R^{\mathfrak A'}$.
@@ -1020,7 +1030,7 @@ We will in the following prove the former claim and then show the latter claim, 
 	We thus can apply this procedure to any collision, until there are no collisions left, but then the structure is functional.
 \end{proof}
 
-From the above lemma we get that given an acyclic, distinguishing structure we can construct a new structure, which is also acyclic and distinguishing but in addition also functional.
+From the above lemma we get that given an acyclic, distinguishing structure, we can construct a new structure, which is also acyclic and distinguishing but in addition also functional.
 One example how this can be applied can be seen in figure \ref{fig:constructFunctionalStruct}.
 
 \begin{figure}
@@ -1064,10 +1074,9 @@ One example how this can be applied can be seen in figure \ref{fig:constructFunc
 Now that we have proved that it is generally possible to enforce a distinguishing, acyclic structure to be functional, we now want to proceed to the proof that totality cannot be enforced.
 This proof will work as follows.
 We will give two families of structures over the signature $\sigma=\{E/2,f/1\}$. 
-Any two elements from these families with the same size can be distinguished by naive RCR, thus there exists an acyclic structure that distinguishes them by homomorphism count.
-Therefore the first statement from above is true.
+Any two elements from these families with the same size can be distinguished by naive RCR, thus there exists an acyclic relational structure that distinguishes their encodings by homomorphism count.
+Therefore, the first statement from above is true.
 However, we will then prove that there cannot be an acyclic and total structure that also distinguishes them by homomorphism count.
-In the following we will be using $\mathbb N_{\geq x}$ for the subset of the natural numbers $\mathbb N \setminus \{0, 1, \dots, x-1\}$.
 
 Let $(\mathfrak A_i)_{i\in \mathbb N_{\geq 4}}$ be a family of $\sigma$-structures, defined as $\mathfrak A_n=(A_n, \operatorname E^{\mathfrak A_n}, f^{\mathfrak A_n})$, where $A_n=[n]$, $\operatorname E^{\mathfrak A_n}=\{(i, i+1), (i+1, i) : i\in [n-2]\}$ and $f^{\mathfrak A_n}=\{ i \mapsto \ipo n-1 : i \in [n-1]\}\cup \{n \mapsto n-1\}$.
 Let $(\mathfrak B_i)_{i\in \mathbb N_{\geq 4}}$ also be a family of $\sigma$-structures, defined as $\mathfrak B_n=(B_n, \operatorname E^{\mathfrak B_n},f^{\mathfrak B_n})$, where $B_n=[n]$, $\operatorname E^{\mathfrak B_n}=\{(i, i+1), (i+1, i) : i \in [n-1]\}$ and $f^{\mathfrak B_n}=\{i \mapsto \ipo n : i \in [n]\}$.
@@ -1151,8 +1160,8 @@ Graphical representations for a few examples of these structures can be seen in 
 
 For every $n\in\mathbb N_{\geq 4}$ it is clear that naive RCR distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
 The formula 
-$$\phi_n=\exists^{\geq 2\cdot (n-1)}(x,y). \operatorname E(x,y).$$
-distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ and using the definition of naive RCR and theorem \ref{}, this is equivalent to naive RCR distinguishing $\mathfrak A_n$ and $\mathfrak B_n$.
+$$\phi_n=\exists^{\geq 2\cdot (n-1)}(x,y). \operatorname E(x,y) \in \mathsf{nfGF}(\mathsf{C})$$
+distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ and using theorem \ref{thm:ThmA}, this is equivalent to naive RCR distinguishing $\mathfrak A_n$ and $\mathfrak B_n$.
 It now only remains to show that there cannot be a total and acyclic structure that distinguishes the encodings $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
 
 \begin{lemma}
@@ -1161,7 +1170,7 @@ It now only remains to show that there cannot be a total and acyclic structure t
 	\label{lem:totalityNotEnforcable}
 \end{lemma}
 \begin{proof}
-	Using basic boolean equivalences we prove the equivalent statement that if $\mathfrak C_n'$ is total, than it either is not distinguishing or not acyclic.
+	Using basic boolean equivalences, we prove the equivalent statement that if $\mathfrak C_n'$ is total, than it either is not distinguishing or not acyclic.
 	As such, let $\mathfrak C_n'$ be a total $\sigma'$-structure.
 	
 	We observe that if $\mathfrak C_n'$ contains $R_f$-loops, that is an element $x\in C_n'$ such that $(x, x)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ is not distinguishing.
@@ -1178,9 +1187,9 @@ It now only remains to show that there cannot be a total and acyclic structure t
 	But in either structure there does not exist such a 2-cycle.
 	
 	From the two observations above it follows that if $\mathfrak C_n'$ has cardinality $1$ or $2$, then it cannot be distinguishing, as it is total and therefore would need to contain either $R_f$-loops or $R_f$-2-cycles.
-	When now considering that $\mathfrak C_n'$ is total, thus for every $c$ there is a $d$ such that $(c,d)\in R_f^{\mathfrak C_n'}$, it is obvious that $\mathfrak C_n'$ must contain a $R_f$ cycle of size grater than $2$.
+	When now considering that $\mathfrak C_n'$ is total, thus for every $c$ there is a $d$ such that $(c,d)\in R_f^{\mathfrak C_n'}$, it is obvious that $\mathfrak C_n'$ must contain a $R_f$ cycle of size greater than $2$.
 	Thus the Gaifman-Graph of $\mathfrak C_n'$ is not acyclic. 
-	As it can be found in \cite{scheidt2025ColorRefinement} and \cite{brault-baron2014HypergraphAcyclicity}, this is equivalent to $\mathfrak C_n'$ itself not being ($\alpha$-)acyclic.
+	As it can be found in \cite{scheidt2025ColorRefinement} and \cite{brault-baron2014HypergraphAcyclicity}, this is equivalent to $\mathfrak C_n'$ itself not being acyclic.
 	So if $\mathfrak C_n'$ is total and does not contain $R_f$-loops and $R_f$-2-cycles, then it cannot be acyclic.
 \end{proof}
 
@@ -1191,7 +1200,7 @@ Let us formalize our findings.
 
 \begin{theorem}
 	Let $\sigma$ be a signature that contains function-symbols, $\mathfrak A$ and $\mathfrak B$ two $\sigma$-structures and let $\sigma'$, $\mathfrak A'$ and $\mathfrak B'$ their respective encodings.
-	No consider the following statements:
+	Now consider the following statements:
 	\begin{enumerate}
 		\item Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
 		\item There exists an acyclic and functional $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
@@ -1207,16 +1216,17 @@ Let us formalize our findings.
 
 	\textbf{\emph{3.} implies \emph{1.}}
 	The existence of such a $\sigma$-structure is, by lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings.
-	Using theorem \ref{} this implies that RCR distinguishes the encodings and by definition this means that naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
+	Using the results of \cite{scheidt2025ColorRefinement}, this implies that RCR distinguishes the encodings and by definition this means that naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
 	
 	\textbf{\emph{1.} does not imply \emph{3.}}
-	Statement \emph{3.} is equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings by homomorphism count.
-	However as we showed in lemma \ref{lem:totalityNotEnforcable}, this is not implied by the existence of just an acyclic $\sigma'$-structure which distinguishes, which is however equivalent to statement \emph{1.}.
+	By lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, Statement \emph{3.} is equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings by homomorphism count.
+	However as we showed in lemma \ref{lem:totalityNotEnforcable}, this is not implied by the existence of just an acyclic $\sigma'$-structure which distinguishes. 
+	This is however equivalent to statement \emph{1.}.
 \end{proof}
 
 We found that naive RCR cannot be characterised by acyclic structures, as functions inherently result in cycles. 
 When prohibiting loops and 2-cycles, which would not violate the acyclicity, there thus have to be larger cycles which result in the structure not being acyclic.
 The notion of acyclicity with respect to distinguishing by homomorphism count that was used here is therefore strictly weaker than naive RCR.
-However, there could be other classes of structures, which characterises naive RCR in the desired way.
+However, there could be other classes of structures, which characterise naive RCR in the desired way.
 
 
