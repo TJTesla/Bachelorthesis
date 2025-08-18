@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  15 AUG 2025 19:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  18 AUG 2025 16:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1277,89 +1277,74 @@ File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 ))
 (./preliminaries.tex
 
-[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}])
-(./rcr.tex
+[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
+8.
 
-[5]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 76.
+(/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)) (./rcr.tex
 
+[5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
 
 [6]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 75.
+
 
 [7]
 
-[8]) (./functions.tex
+[8]
 
-[9]
+[9]) (./functions.tex
 
 [10]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 111.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 111.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 111.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 111.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 111.
-
-
 
 [11]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 117.
 
-LaTeX Warning: Reference `' on page 12 undefined on input line 187.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 117.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 117.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 117.
 
 
 
 [12]
 
-LaTeX Warning: Reference `' on page 13 undefined on input line 196.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 234.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\new@ifnextchar' on input line 234.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 234.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 234.
-
-
-
 [13]
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 241.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 241.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 241.
+
+
+
 [14]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-28.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
 
-[15{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
-Missing character: There is no d in font msbm10!
-
+[15]
 
 [16]
 
 [17]
-Overfull \hbox (5.27805pt too wide) in paragraph at lines 474--476
+
+[18]
+Overfull \hbox (5.27805pt too wide) in paragraph at lines 485--487
 \T1/lmr/m/n/10.95 (-20) and $\OML/lmm/m/it/10.95 '[]\OT1/lmr/m/n/10.95 (-20) (\
 OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 1/lmr/m/n/10.95 (-20) ^^H[](\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20
@@ -1376,19 +1361,17 @@ OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 
 
 
-[18]
-
 [19]
 
 [20]
 
 [21]
 
-LaTeX Warning: Reference `' on page 22 undefined on input line 732.
-
-
-
 [22]
+
+LaTeX Warning: Reference `' on page 23 undefined on input line 746.
+
+
 
 [23]
 
@@ -1397,36 +1380,38 @@ LaTeX Warning: Reference `' on page 22 undefined on input line 732.
 [25]
 
 [26]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 1026.
-
-
-LaTeX Warning: Reference `' on page 27 undefined on input line 1141.
-
-
 
 [27]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <20.74> on input line 1040.
+
+
+LaTeX Warning: Reference `' on page 28 undefined on input line 1155.
+
+
 
 [28]
 
-LaTeX Warning: Reference `' on page 29 undefined on input line 1196.
+[29]
+
+LaTeX Warning: Reference `' on page 30 undefined on input line 1210.
 
 ) (./symmetric_structs.tex
 
-[29]
-
 [30]
 
-LaTeX Warning: Reference `' on page 31 undefined on input line 66.
+[31]
+
+LaTeX Warning: Reference `' on page 32 undefined on input line 66.
 
 
-LaTeX Warning: Reference `' on page 31 undefined on input line 70.
+LaTeX Warning: Reference `' on page 32 undefined on input line 70.
 
 
 
-[31])
+[32])
 
-[32] (./thesis.bbl
+[33] (./thesis.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
 1.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
@@ -1438,11 +1423,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-[33
+[34
 
 ])
 
-[34] (./thesis.aux)
+[35] (./thesis.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -1455,13 +1440,13 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34227 strings out of 473190
- 679561 string characters out of 5715801
- 1295569 words of memory out of 5000000
- 56280 multiletter control sequences out of 15000+600000
- 727137 words of font info for 366 fonts, out of 8000000 for 9000
+ 34253 strings out of 473190
+ 680017 string characters out of 5715801
+ 1302569 words of memory out of 5000000
+ 56291 multiletter control sequences out of 15000+600000
+ 727767 words of font info for 373 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 110i,13n,131p,10901b,1198s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,13n,131p,10901b,1210s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7
 .pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr
@@ -1482,10 +1467,10 @@ r/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/tex
 live/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/t
 exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (34 pages, 535826 bytes).
+Output written on thesis.pdf (35 pages, 540398 bytes).
 PDF statistics:
- 624 PDF objects out of 1000 (max. 8388607)
+ 615 PDF objects out of 1000 (max. 8388607)
  522 compressed objects within 6 object streams
- 147 named destinations out of 1000 (max. 500000)
+ 148 named destinations out of 1000 (max. 500000)
  92813 words of extra memory for PDF output out of 106986 (max. 10000000)
 

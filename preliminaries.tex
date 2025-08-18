@@ -6,27 +6,67 @@ Let $A$ be a set.
 Then any $a_1,\dots, a_k\in A$ form a tuple with arity $k$ of the form $\mathbf a=(a_1,\dots,a_k)$ and with $\mathbf a_n$ we denote $a_n$.
 For any function $f:A\to B$, we write $f(\mathbf a)$ for $(f(a_1),\dots,f(a_k))$.
 As a special case, if $\pi$ is a permutation, that is $\pi\in \mathcal S_k$, where $\mathcal S_k$ is the symmetric group for $k$ elements, then $\pi(\mathbf a)$ means $(a_{\pi(1)},\dots,a_{\pi(k)})$.
-For a set $A$ and a $k\in \mathbb N$, we write $\binom{A}{k}$, to denote all subsets of $A$ with cardinality exactly $k$.
+For a set $A$ and a $k\in \mathbb N$, we write $\binom{A}{k}$, to denote all subsets of $A$ with cardinality of exactly $k$.
+Let $\mathbf a=(a_1,\dots,a_k)$ be a tuple of arity $k$ and $b$ a element.
+Then we write $(\mathbf ab)\coloneqq(a_1,\dots,a_k,b)$ for the tuple of arity $k+1$ with $b$ added to the end.
+For a tuple $\mathbf a=(a_1,\dots,a_k)$ we write $\set(\mathbf a)\coloneqq\{a_1,\dots,a_k\}$ for the set that contains the elements from $\mathbf a$.
 Usually, sets are denoted by uppercase, elements from sets as lowercase, and tuples as boldface and lowercase Latin letters.
 
 % Natural numbers
 By $\mathbb N$ we mean the set of natural numbers, including $0$, and with $\mathbb N_{\geq k}$ for a $k\in \mathbb N$, we denote the set $\{k,k+1,\dots\}=\mathbb N \setminus \{0,\dots,k\}$.
+We use $[k]$ for any $k\in \mathbb N_{\geq 1}$ to mean $\{1,2,\dots, k\}$.
 
 % Multisets
-A multiset $\mathcal M$ is a set $A$ with a function $\operatorname{mult}_{\mathcal M}:A\to \mathbb N_{\geq 1}$.
+A multiset $\mathcal M$ is a pair with a set $A$ and a function $\operatorname{mult}_{\mathcal M}:A\to \mathbb N_{\geq 1}$.
 This denotes, that for every $a\in A$, there are exactly $\operatorname{mult}_{\mathcal M}(a)$ many copies.
 We also write multisets as $\multiset{\dots}$.
 As an example, the multiset $\mathcal M = \multiset{a, b, b}$ is equivalent to the set $A=\{a,b\}$, together with the function $\operatorname{mult}_{\mathcal M}=\{a\mapsto 1, b\mapsto 2\}$.
 
 % Signatures and Structures and Graphs
-A signature is a set of relation and function symbols, paired with an arity for every symbol.
+A signature is a set of relation- and function-symbols, paired with an arity for every symbol.
 We write relation-symbols as uppercase and function-symbols as lower case letters.
 For example, $\sigma=\{R/2, T/3, f/3\}$ represents a signature with a relation-symbol $R$ with arity $R$, a relation-symbol $T$ with arity $3$ and a function-symbol $f$ with arity $3$.
+We call a signature relational if it only contains relation-symbols and binary if it contains only unary and binary relation-symbols.
+For a function- or relation-symbol $R\in \sigma$, we write $\operatorname{ar}(R)$ for the arity of $R$ and we define $\operatorname{ar}(\sigma)\coloneqq \max_{R\in\sigma}\{\operatorname{ar}(R)\}$ as the maximal arity that appears in $\sigma$.
 For a signature $\sigma$ we have that a $\sigma$-structure $\mathfrak A$ is a tuple $(A,\sigma)$ where $A$, called the universe, is a set of elements and for every $k$-ary relation-symbol $R\in \sigma$ and every $\ell$-ary function-symbol $f\in \sigma$, there is a relation $R^{\mathfrak A}\subseteq A^k$ and a function $f^{\mathfrak A}:A^\ell \to A$.
 We define $\vert \mathfrak A\vert =\vert A \vert$.
 A structure is always written as an uppercase Fraktur letter, its universe is written using the same uppercase normal letter, and the letter written boldface denotes the set of all tuples.
 As an example, $\mathfrak A$ is a structure, $A$ is its universe and $\mathbf A$ is the set of its tuples, formally $\{\mathbf a : \mathbf a \in R^{\mathfrak A} \text{ for a } R\in\sigma\}$.
-A graph $G$ has a set of vertices, called 
+A graph $G$ is a pair of a set of vertices, denoted as $V(G)$, and a binary and symmetric relation over that set of vertices, called the edges $E(V)$.
 If not specified, we only talk about finite signatures and finite universes.
 
-% Colour Refinement (Basic logic (C^2), Hom/hom)
+For a graph $G=(V,E)$, we perform Colour Refinement by inductively defining for every $v\in V$ and every $i\in \mathbb N$ a colour $C_i(v)$, using the following method.
+The initial colouring is defined as $C_0(v)=0$.
+For $i\in \mathbb N$, we have that $C_{i+1}(v)=(C_i(v), \multiset{C_i(u) : \{v,u\}\in E})$.
+We say that Colour Refinement distinguishes two graphs $G$ and $H$, if there is an $i\in \mathbb N$, such that 
+$$\multiset{C_i(v) : v\in V(G)}\neq \multiset{C_i(u) : u \in V(H)}.$$
+
+A coloured multigraph is a structure $\mathcal G$ with a binary signature $\sigma=\sigma_1\operatorname{\dot{\cup}}\sigma_2$, where $\sigma_1$ contains only unary and $\sigma_2$ contains only binary relations.
+We write $E(\mathcal G)$ for $\bigcup_{E\in \sigma_2} \{\{v,w \} : (v,w)\in E^{\mathcal G}\}$.
+The unary relations express colours of the elements and the binary relations express colours of the edges.
+Colour Refinement on coloured multigraphs is then performed on coloured multigraphs as it is done for graphs, with the addition of using the element-colours in the initial colouring and considering neighbours for every edge colour separately.
+Formally, for every element $e\in G$ and every $i\in \mathbb N$ we define a colour $\gamma_i(e)$, where
+$$\gamma_0(e)=(\{C\in \sigma_1 : e\in C\}, \{E\in \sigma_2 : (e,e)\in E^{\mathcal G}\})$$
+and 
+$$\gamma_{i+1}(e)=(\{\gamma_i(e), \multiset{(\lambda(e,f), \gamma_i(f)) : \{e,f\})\in E(\mathcal G)}\}),$$
+where
+$$\lambda_{i+1}(e,f)=\{E^+ : E\in\sigma_2, (e,f)\in E^{\mathcal G}\} \cup \{E^- : E\in \sigma_2, (f,e)\in E^{\mathcal G}\}.$$
+This definition can also be found in \cite{scheidt2025ColorRefinement}.
+
+For a signature $\sigma$ and two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$, we have that $\phi:A\to B$ is called a homomorphism, if:
+\begin{itemize}
+	\item For every relation-symbol $R\in\sigma$ of arity $k$ and every $(x_1,\dots,x_k)\in R^{\mathfrak A}$, we have that $(\phi(x_1),\dots,\phi(x_k))\in R^{\mathfrak B}$ and
+	\item for every function-symbol $f\in \sigma$ of arity $k$ and every $(x_1,\dots,x_k)$, we have that $\phi(f(x_1,\dots,x_k))=f(\phi(x_1),\dots,\phi(x_k))$.
+\end{itemize}
+We then write $\Hom(\mathfrak A, \mathfrak B)$ for the set of all homomorphisms from $\mathfrak A$ to $\mathfrak B$ and define $\hom(\mathfrak A,\mathfrak B)\coloneqq \vert\Hom(\mathfrak A,\mathfrak B)\vert$.
+This is applied analogously for relational structures and graphs.
+
+Let $\mathsf L$ be a logic and let $\phi\in \mathsf L$ with $\free{\phi}=\{x_1,\dots,x_k\}$.
+We then write $\mathfrak A,a_1,\dots,a_k\models \phi(x_1,\dots,x_k)$ to mean the interpretation $(\mathfrak A,\mathfrak I)$, where $\mathfrak I=\{a_i\mapsto x_i : i \in [k]\}$.
+In the same way, we map elements $b_i\in A$ to variables $y_i$.
+
+
+
+
+
+

@@ -47,7 +47,7 @@ One interesting result due to Böker \cite{boker2019ColorRefinement} is an exten
 Concretely, Colour Refinement for a hypergraph $G$ is defined like classical $\CR$ on a coloured variant of the incidence graph of $G$.
 We then consider connected Berge-acyclic hypergraphs, that is hypergraphs whose incidence graphs are trees. 
 When counting homomorphisms from those to hypergraphs, we get that Colour Refinement distinguishes two hypergraphs $G$ and $H$ if, and only if, there is some connected Berge-acyclic hypergraph $B$, such that $B$ has a different number of homomorphisms to $G$ than to $H$.
-Another result with respect to hypergraphs has been achieved by Scheidt and Schweickardt in \cite{scheidt2023CountingHomomorphisms}.
+Another result with respect to hypergraphs has been achieved by Scheidt and Schweikardt in \cite{scheidt2023CountingHomomorphisms}.
 They devised a 2-sorted counting logic called $\mathsf{GC}^k$ and proved that two hypergraphs $G$ and $H$ satisfy exactly the same $\mathsf{GC}^k$ sentences if, and only if, all hypergraphs with generalised hypertree width $k$ have the same number of homomorphisms to $G$ as to $H$.
 For the case where $k=1$, we then get indistinguishability over the class of all $\alpha$-acyclic hypergraphs, which is a strictly stronger measure of acyclicity than Berge-acyclicity.
 Interestingly, we will encounter $\alpha$-acyclicity and $\mathsf{GC}^1$ in section \ref{sec:RelationalColourRefinement} for characterising relational structures, instead of hypergraphs.
@@ -75,9 +75,9 @@ A deeper discussion of the results from \cite{scheidt2025ColorRefinement} can be
 It can be seen that Colour Refinement for graphs, as for relational structures and hypergraphs have been studied.
 Especially the results from \cite{scheidt2025ColorRefinement} seem like a very robust and usable extension for relational structures.
 Furthermore, we notice that functional, as well as non-relational signatures have not yet been investigated.
-As many practical and useful structures use non-relational signatures, for example all algebraic structures, we pose the question how robust the results from \cite{scheidt2025ColorRefinement} are when using them with (unary) functions.
+As many practical and useful structures use non-relational signatures, for example all algebraic structures, we pose the question how robust the results from \cite{scheidt2025ColorRefinement} are when trying to apply them to structures with (unary) functions.
 Concretely, we consider two possible ways of how Relational Colour Refinement can be adapted to signatures with functions.
-For both approaches we investigate, whether they can be characterised by $\GFC$ over signatures with functions and by counting homomorphisms from acyclic structures with non-relational signatures.
+For both approaches we investigate, whether they can be characterised by a variant of $\GFC$ over signatures with functions and by counting homomorphisms from acyclic structures with non-relational signatures.
 We will see that such a characterisation through logic is in fact possible, while counting homomorphisms from acyclic structures is not.
 Additionally, we prove a similar result to the (not existing) characterisations by counting homomorphisms.
 We show that while it is not possible to require that the acyclic structure is functional (given a signature with functions), it is possible to require the acyclic structure to be symmetric (given that the two distinguished structures are symmetric as well).
@@ -98,7 +98,7 @@ For a non-relational signature $\sigma$ and two $\sigma$-structures $\mathfrak A
 For a non-relational signature $\sigma$ that only contains relation-symbols and unary function-symbols, two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ and a $k\in\mathbb N$, we have that $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \GFC_k$ of signature $\sigma$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
 
 \textbf{Theorem \ref{thm:nRCRNotCharacByHomCount}}:
-There exist two families of structures $(\mathfrak A_i)_{i\in\mathbb N_{\geq 4}}$ and $(\mathfrak B_i)_{i\in\mathbb N_{\geq 4}}$ such that naive $\RCR$ distinguishes $\mathfrak A_i$ and $\mathfrak B_i$ for all $i\geq4$, but there does not contain an acyclic, total and functional structure that distinguishes $\mathfrak A_i$ and $\mathfrak B_i$ by number of homomorphism.
+There exist two families of $\sigma$-structures $(\mathfrak A_i)_{i\in\mathbb N_{\geq 4}}$ and $(\mathfrak B_i)_{i\in\mathbb N_{\geq 4}}$, such that naive $\RCR$ distinguishes $\mathfrak A_i$ and $\mathfrak B_i$ for all $i\geq4$, but there does not contain an acyclic, $\sigma$-structure that distinguishes $\mathfrak A_i$ and $\mathfrak B_i$ by number of homomorphism.
 
 \textbf{Theorem \ref{thm:ThmD}}:
 For two symmetric, relational structures $\mathfrak A$ and $\mathfrak B$, we have that $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a symmetric, acyclic structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by number of homomorphism.
@@ -106,13 +106,12 @@ For two symmetric, relational structures $\mathfrak A$ and $\mathfrak B$, we hav
 The methods used to achieve the above results rely heavily on the proofs from \cite{scheidt2025ColorRefinement}.
 For the logical characterisation of structures with functions we translate both structures to relational structures and translate any formula to a valid $\GFC$-formula over a relational signature.
 The same is done in reverse as well.
-For the characterisation through homomorphism counting we present two families of structures.
-We prove that two structures from the families of the same size get distinguished by naive $\RCR$ but there cannot be an acyclic structure of the same signature such that it distinguishes them by homomorphism count.
+For the characterisation through homomorphism counting, we give a family of counterexamples.
 
 The structure of this thesis is as follows.
 We begin by defining notation and fundamental definitions in section \ref{sec:Preliminaries}.
 Then in section \ref{sec:RelationalColourRefinement} we present and explain the results from \cite{scheidt2025ColorRefinement}.
-Afterwards, we continue in section \ref{sec:RelationalColourRefinemetForStructuresWithFunctions} by considering structures with functions, where we will first show the logical characterisation for the two approaches, before then presenting the family of counterexamples for the characterisation through homomorphism counting.
+Afterwards, we continue in section \ref{sec:RelationalColourRefinemetForStructuresWithFunctions} by considering structures with functions, where we will first show the logical characterisation for the two approaches, before then discussing the characterisation through homomorphism counting.
 Lastly, we discuss the restriction to symmetric structures in section \ref{sec:RelationalColourRefinementForSymmetricStructures}.
 
 % Erst Intro noch fertig machen
