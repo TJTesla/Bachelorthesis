@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  18 AUG 2025 18:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  18 AUG 2025 22:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1232,21 +1232,22 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 139.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 139.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 139.
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 134.
+ine 145.
 
 
 [1
 
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}] (./intro.tex
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 6.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 6.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 6.
+al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/202
+5/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}] (./intro.tex
 LaTeX Font Info:    Trying to load font information for OT1+lmss on input line 
 6.
 
@@ -1261,8 +1262,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 [2
 
-{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/te
-xlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}]
+{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
 
 [3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
 LaTeX Font Info:    Trying to load font information for U+euf on input line 95.
@@ -1323,15 +1323,15 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [13]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 241.
+(hyperref)                removing `math shift' on input line 242.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 241.
+(hyperref)                removing `subscript' on input line 242.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 241.
+(hyperref)                removing `math shift' on input line 242.
 
 
 
@@ -1344,7 +1344,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [17]
 
 [18]
-Overfull \hbox (5.27805pt too wide) in paragraph at lines 485--487
+Overfull \hbox (5.27805pt too wide) in paragraph at lines 486--488
 \T1/lmr/m/n/10.95 (-20) and $\OML/lmm/m/it/10.95 '[]\OT1/lmr/m/n/10.95 (-20) (\
 OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 1/lmr/m/n/10.95 (-20) ^^H[](\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20
@@ -1379,7 +1379,7 @@ OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 
 [27]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 1050.
+(Font)              <20.74> on input line 1052.
 
 
 [28]
@@ -1388,9 +1388,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 [30]
 
-[31])
+[31]) (./conclusion.tex
 
-[32]
+[32])
 
 [33] (./thesis.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
@@ -1417,11 +1417,11 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34257 strings out of 473190
- 680107 string characters out of 5715801
+ 34271 strings out of 473190
+ 680379 string characters out of 5715801
  1302569 words of memory out of 5000000
- 56292 multiletter control sequences out of 15000+600000
- 728096 words of font info for 376 fonts, out of 8000000 for 9000
+ 56301 multiletter control sequences out of 15000+600000
+ 728194 words of font info for 377 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,13n,131p,10901b,1210s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
@@ -1444,10 +1444,10 @@ r/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/tex
 live/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/t
 exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (35 pages, 538528 bytes).
+Output written on thesis.pdf (35 pages, 541137 bytes).
 PDF statistics:
- 617 PDF objects out of 1000 (max. 8388607)
- 524 compressed objects within 6 object streams
+ 618 PDF objects out of 1000 (max. 8388607)
+ 525 compressed objects within 6 object streams
  145 named destinations out of 1000 (max. 500000)
  92813 words of extra memory for PDF output out of 106986 (max. 10000000)
 

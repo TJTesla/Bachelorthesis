@@ -18,7 +18,7 @@ Afterwards we will look at the logical characterisation and end with the charact
 
 
 \subsection{Naive Encoding of Functions}
-\label{Sec::NaiveEncodingOfFunctions}
+\label{sec::NaiveEncodingOfFunctions}
 
 The simplest form to encode a non-relational structure as a relational one is to simply interpret functions as relations as follows.
 For a non-relational signature $\sigma$, we define a relational signature $\sigma'$.
@@ -188,6 +188,7 @@ We can easily derive another formula $\phi'\in \GFC$ to distinguish the transiti
 We see that $\RCR_k$ distinguishes structures that were not distinguished by nRCR.
 
 \subsection{Characterisation Through Logic}
+\label{sec:RCRwithFnLogic}
 
 In this section we will discuss, how the above approaches of Colour Refinement for non-relational structures can be characterised by logic.
 We will see that for both cases we will get a logic which extends the given definition of $\GFC$, see definition \ref{def:GFC}, but restricts the usage of functions inside of terms.
@@ -668,13 +669,14 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 We thus can characterise $\RCR_k$ with the logic $\GFC_k$.
 
 \subsection{Characterisation Through Homomorphism Counting}
+\label{sec:RCRwithFnHomCount}
 
 One very interesting property of classical, as well as Relational Colour Refinement is that aside from its logical characterisation, it can be characterised by counting homomorphisms from certain structures.
 As we showed, the logical characterisation of Relational Colour Refinement has two possible extensions to structures with functions.
 Thus we now want to consider, whether those extensions can also be characterised by counting homomorphisms.
 
 In the following we will see that, using the two established approaches, it is in general not possible, to find acyclic structures with functions that divide two structures by homomorphism count.
-We will concentrate on the encoding defined in section \ref{Sec::NaiveEncodingOfFunctions}, where we will show one positive and one negative result.
+We will concentrate on the encoding defined in section \ref{sec::NaiveEncodingOfFunctions}, where we will show one positive and one negative result.
 
 To begin, let us define two concepts for relational structures that encode a non-relational structure.
 
@@ -751,7 +753,7 @@ A graphical representation of total and functional structures can be found in fi
 To continue, we have to define what it means to be acyclic for a structure with functions.
 
 \begin{definition}[Acyclic, non-relational structures]
-	Let $\sigma$ be a signature with function-symbols and $\sigma'$ its encoding as it is defined in section \ref{Sec::NaiveEncodingOfFunctions}.
+	Let $\sigma$ be a signature with function-symbols and $\sigma'$ its encoding as it is defined in section \ref{sec::NaiveEncodingOfFunctions}.
 	Let $\mathfrak C$ be a $\sigma$-structure and $\mathfrak C'$ be its encoding of signature $\sigma'$.
 	We then call $\mathfrak C$ acyclic, if $\mathfrak C'$ is acyclic, with respect to acyclicity as it is defined in definition \ref{def:alphaAcyclic}.
 \end{definition}
