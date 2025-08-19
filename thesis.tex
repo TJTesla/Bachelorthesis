@@ -62,17 +62,15 @@
 }
 
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{claim}[theorem]{Claim}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{claim}{Claim}[section]
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
-
-
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
 
 % Misc packages
 \usepackage{lipsum}
@@ -126,7 +124,6 @@
 
 \maketitle
 
-
 %TODO Provide a short abstract for your report.
 \begin{abstract}
 	Colour Refinement is an iterative graph algorithm that computes a colouring of the vertices, based on the colouring of their direct neighbours.
@@ -141,7 +138,6 @@
 	Concretely, we consider extending the class of relational structures to that of all structures and of structures with relations and unary functions, respectively.
 	We find two logical characterisations but disprove the existence of a characterisation through homomorphism counting.
 	Furthermore, we discuss for which restrictions on relational structures the characterisation through homomorphism counting remains and present two cases of restrictions, one for which the characterisation holds and one for this is does not.
-	\todo{Other thesis template?}
 \end{abstract}
 
 \thispagestyle{empty}
@@ -149,7 +145,6 @@
 \clearpage
 
 %TODO The content of your report gos below.
-
 
 \input{intro}
 
