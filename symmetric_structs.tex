@@ -16,7 +16,7 @@ Another possible restriction is the class of all symmetric structures.
 	$$R\subseteq \binom{A}{k}.$$
 \end{definition}
 An equivalent characterisation uses the symmetric group $\mathcal S_k$.
-We call a $\sigma$ structure $\mathfrak A$ symmetric, if for every $R\in \sigma$ of arity $k$, every $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)\in R^{\mathfrak A}$ and every $k$-permutation $\pi\in \mathcal S_k$, we have that
+We call a $\sigma$ structure $\mathfrak A$ symmetric, if for every $R\in \sigma$ of arity $k$, every $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)\in R^{\mathfrak A}$ and every $k$-permutation $\pi\in \mathcal S_k$
 $$(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)})\in R^{\mathfrak A}.$$
 
 We will prove in the following that the restriction to symmetric structures in indeed possible.
@@ -70,7 +70,7 @@ We can now prove the main result of this section.
 		Let $\mathbf x\in V(J)\setminus V(J')$.
 		From the construction there exists a permutation $\pi_{\mathbf x}$, such that $\pi_{\mathbf x}(\mathbf x)\in V(J')$.
 		We now define $E(J)\coloneqq E(J')\cup \{\{\pi_{\mathbf x}(\mathbf x), \mathbf x\} : \mathbf x\in \mathbf C \setminus \mathbf{C'}\}$.
-		This construction can be seen in figure \ref{SymmetricJoinTreeConstruction}.
+		This construction can be seen in Figure \ref{SymmetricJoinTreeConstruction}.
 		
 		\begin{figure}
 			\centering
@@ -115,7 +115,7 @@ We can now prove the main result of this section.
 		The connectedness and cycle-freeness follows directly from the fact that $J'$ is also a tree.
 		As such, it only remains to show the join-tree property.
 		Consider an arbitrary $v\in C$.
-		Since $C=C'$, we have that $v\in C'$ and the set of all $\mathbf x\in \mathbf{C'}$ with $v\in \set(\mathbf x)$ induces a connected subgraph in $J'$.
+		Since $C=C'$, it follows that $v\in C'$ and the set of all $\mathbf x\in \mathbf{C'}$ with $v\in \set(\mathbf x)$ induces a connected subgraph in $J'$.
 		Let $\mathbf x\in \mathbf C\setminus \mathbf{C'}$ and $v\in \set(\mathbf x)$.
 		Then $\pi_{\mathbf x}(\mathbf x)\in \mathbf{C'}$ and $\{\pi_{\mathbf x}(\mathbf x),\mathbf x\}\in E(J)$, thus $\mathbf x$ is also connected and the set $\{\mathbf x\in V(J) : v\in \set(\mathbf x)\}$ also induces a connected subgraph.
 		This was to be shown.
@@ -127,12 +127,12 @@ We can now prove the main result of this section.
 	However, we will only prove the claim for $\mathfrak A$, as the case for $\mathfrak B$ can be proven completely analogously.
 	
 	Let $\phi\in \Hom(\mathfrak C',\mathfrak A)$.
-	Then for every $R\in \sigma$, we have that if $\mathbf x\in R^{\mathfrak C'}$, then $\phi(\mathbf x)\in R^{\mathfrak A}$.
+	Then for every $R\in \sigma$, if $\mathbf x\in R^{\mathfrak C'}$, then $\phi(\mathbf x)\in R^{\mathfrak A}$.
 	Now consider $\mathbf x\in R^{\mathfrak C}$ for a $R\in \sigma$ with arity $k$ and we will proceed with a case distinction.
 	If $\mathbf x\in \mathbf{C'}$, then we have $\mathbf x\in R^{\mathfrak C'}$ and by assumption $\phi(\mathbf x)\in R^{\mathfrak A}$.
 	If $\mathbf x\in \mathbf C\setminus\mathbf{C'}$, then there must be a $\pi\in \mathcal S_k$, such that $\pi(\mathbf x)\in \mathbf{C'}$ and further $\pi(\mathbf x)\in R^{\mathfrak C'}$.
-	Then by assumption we have that $\phi(\pi(\mathbf x))\in R^{\mathfrak A}$.
-	Using lemma \ref{HomAndPermutCommute}, we know that $\phi(\pi(\mathbf x))=\pi(\phi(\mathbf x))\in R^{\mathfrak A}$.
+	Then by assumption we get that $\phi(\pi(\mathbf x))\in R^{\mathfrak A}$.
+	Using Lemma \ref{HomAndPermutCommute}, we know that $\phi(\pi(\mathbf x))=\pi(\phi(\mathbf x))\in R^{\mathfrak A}$.
 	Now let $\pi'\in \mathcal S_k$, such that $\pi'\circ\pi=\operatorname{id}\in \mathcal S_k$.
 	As $\mathfrak A$ is symmetric, we know that $\pi'(\pi(\varphi(\mathbf x)))\in R^{\mathfrak A}$ and further we get that $\pi'(\pi(\varphi(\mathbf x)))=\phi(\mathbf x)$.
 	Therefore $\phi(\mathbf x)\in R^{\mathfrak A}$ and $\phi\in\Hom(\mathfrak C,\mathfrak A)$ follows.

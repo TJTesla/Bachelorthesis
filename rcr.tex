@@ -1,23 +1,23 @@
 \section{Relational Colour Refinement}
 \label{sec:RelationalColourRefinement}
 
-Relational Structures are a very important and interesting extension of graphs.
+Relational structures are a very important and interesting extension of graphs.
 They can be found in various situation, for example in relational database theory where they are used to model the structure of databases \cite{abiteboul1996FoundationsDatabases}.
 In this section we want to look at the Relational Colour Refinement algorithm, short RCR. 
 It was defined by Scheidt and Schweikardt in \cite{scheidt2025ColorRefinement} as an extension of Colour Refinement for relational structures.
-The algorithm is similar to the adaptation of classical Colour Refinement for coloured multigraphs and has characterisations analogous to classical Colour Refinement.
+The algorithm is similar to the adaptation of classical Colour Refinement for binary structures and has characterisations analogous to classical Colour Refinement.
 Let us begin by defining RCR and applying it to a small example.
 
-\subsection{RCR and Coloured Multigraphs}
+\subsection{RCR and Binary Structures}
 
 The idea of RCR is to apply Colour Refinement on the tuples that appear in a relation.
-This can then be seen as a coloured multigraph, by colouring the elements, that is the tuples, by the set of relations that include that tuple and defining edges for every shared element in the tuples.
-This is formalised by the following definitions.
+This can then be seen as a binary structure, on which the before mentioned Colour Refinement algorithm can be applied.
+To define RCR, we need the following definitions.
 
 \begin{definition}[Atomic and shared types]
 	Let $\sigma$ be a relational signature and $\mathfrak A$ be a $\sigma$-structure.
 	For every $\mathbf a \in \mathbf A$ we define $\atp(\mathbf a)\coloneqq \{R \in \sigma : \mathbf a\in R\}$ as the set of relations that include $\mathbf a$.
-	For every $n$-ary tuple $\mathbf a\in \mathbf A$ and every $m$-ary tuple $\mathbf b\in \mathbf A$ we define $\stp(\mathbf a, \mathbf b)\coloneqq\{(i, j) \in [n]\times [m] : \mathbf a_i=\mathbf b_j\}$ as the set of all pairs of indices which denote the elements that appear in both $\mathbf a$ and $\mathbf b$.
+	For every tuple $\mathbf a\in \mathbf A$ of length $n$ and every tuple $\mathbf b\in \mathbf A$ of length $m$ we define $\stp(\mathbf a, \mathbf b)\coloneqq\{(i, j) \in [n]\times [m] : \mathbf a_i=\mathbf b_j\}$ as the set of all pairs of indices which denote the elements that appear in both $\mathbf a$ and $\mathbf b$.
 	We call $\atp(\mathbf a)$ the atomic type of $\mathbf a$ and call $\stp(\mathbf a,\mathbf b)$ the shared type of $\mathbf a$ and $\mathbf b$.
 	As shorthand notation we write $\stp(\mathbf a)$ for $\stp(\mathbf a, \mathbf a)$.
 \end{definition}
@@ -35,10 +35,10 @@ For a relational structure $\mathfrak A$ and $i\in \mathbb N$ we define $\operat
 Further, for a relational structure $\mathfrak A$, $i\in \mathbb N$ and $c\in \operatorname{RC}_i(\mathfrak A)$ we write $\operatorname{mult}_{\mathfrak A}(c)\coloneqq \vert \{\mathbf a\in \mathbf A : \rho_i(\mathbf a)=c\}\vert$ for the number of occurrences of the colour $c$.
 Finally, for two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ we say that Relational Colour Refinement distinguishes $\mathfrak A$ and $\mathfrak B$, if there is an $i \leq \max\{i_{\mathfrak A}, i_{\mathfrak B}\}$ and a colour $c\in \operatorname{RC}_i(\mathfrak A) \cup \operatorname{RC}_i(\mathfrak B)$ such that $\operatorname{mult}_{\mathfrak A}(c)\neq \operatorname{mult}_{\mathfrak B}(c)$.
 
-When comparing this algorithm with the Colour Refinement algorithm for coloured multigraphs, we see a few similarities.
-In fact, it is possible to interpret a relational structure as a coloured multigraph, on which classical Colour Refinement can be applied with an equivalent result to Relational Colour Refinement on the original structure.
+When comparing this algorithm with the Colour Refinement algorithm for binary structures, we notice similarities.
+In fact, it is possible to interpret a relational structure as a binary structure, on which classical Colour Refinement can be applied with an equivalent result to Relational Colour Refinement on the original structure.
 For a relational signature $\sigma$ we define a signature $\widehat{\sigma}\coloneqq \{E_{i,j}/2 : i,j \in [\operatorname{ar}(\sigma)]\} \cup \{U_R/1 : R\in \sigma\}$.
-For a $\sigma$-structure $\mathfrak A$, we can now define a coloured multigraph $\mathcal{G}_{\mathfrak A}$ of signature $\widehat{\sigma}$.
+For a $\sigma$-structure $\mathfrak A$, we can now define a binary structure $\mathcal{G}_{\mathfrak A}$ of signature $\widehat{\sigma}$.
 The universe of $\mathcal{G}_{\mathfrak A}$ is defined as $V(\mathcal{G})_{\mathfrak A}=\{w_{\mathbf a} : \mathbf a \in \mathbf A\}$.
 In words, we create a new element $w_{\mathbf a}$ for every tuple $\mathbf a \in \mathbf A$.
 The relations are then defined as follows.
@@ -46,13 +46,15 @@ For $R\in \sigma$ we set
 $$U_R^{\mathcal{G}_{\mathfrak A}}\coloneqq \{w_{\mathbf a} : \mathbf a \in R\}$$ 
 and for $i,j \in [\operatorname{ar}(\sigma)]$ we set 
 $$E_{i,j}^{\mathcal{G}_{\mathfrak A}}\coloneqq \{(w_{\mathbf a}, w_{\mathbf b}) : (i, j) \in \stp(\mathbf a, \mathbf b)\}.$$
-It was then proved by Scheidt and Schweikardt \cite{scheidt2025ColorRefinement} that, when corresponding $\mathbf a$ with $w_{\mathbf a}$ for every $\mathbf a\in \mathbf A$, Colour Refinement on $\mathcal{G}_{\mathfrak A}$ is equivalent, or rather induces the same partition of the tuples in every round, as Relational Colour Refinement on $\mathfrak A$.
+It was then proved by Scheidt and Schweikardt \cite{scheidt2025ColorRefinement} that, when identifying $\mathbf a$ with $w_{\mathbf a}$ for every $\mathbf a\in \mathbf A$, Colour Refinement on $\mathcal{G}_{\mathfrak A}$ is equivalent, or rather induces the same partition of the tuples in every round, as Relational Colour Refinement on $\mathfrak A$.
+
+\subsubsection{An Example for Relational Colour Refinement}
 
 We want to illustrate this with a small example.
 We choose the signature $\sigma=\{R/2, T/3\}$ and a $\sigma$-structure $\mathfrak A=(A,R^{\mathfrak A},T^{\mathfrak A})$ with $A=\{a,b,c,d\}$, $R^{\mathfrak A}=\{(a,b)\}$ and $T^{\mathfrak A}=\{(a,c,d),(b,c,d)\}$.
-A graphical representation can be found in figure \ref{fig:verySimpleRelStruc}.
+A graphical representation can be found in Figure \ref{fig:verySimpleRelStruc}.
 When applying the transformation described above, we get the signature $\widehat{\sigma}=\{E_{(i,j)} : i,j \in [3]\}\cup\{U_T, U_R\}$.
-The complete definition of $\mathcal{G}_{\mathfrak A}$ can be seen in figure \ref{fig:transformedMultigraph}, where an edge with the label $ij$ from element $a$ to $b$ represents a tuple $(a,b)\in E_{i,j}^{\mathcal{G}_{\mathfrak A}}$, shared edges are contracted and self-loops are omitted.
+The complete definition of $\mathcal{G}_{\mathfrak A}$ can be seen in Figure \ref{fig:transformedMultigraph}, where an edge with the label $ij$ from element $a$ to $b$ represents a tuple $(a,b)\in E_{i,j}^{\mathcal{G}_{\mathfrak A}}$, shared edges are contracted and self-loops are omitted.
 
 \begin{figure}
 	\centering
@@ -74,7 +76,7 @@ The complete definition of $\mathcal{G}_{\mathfrak A}$ can be seen in figure \re
 		\end{tikzpicture}
 	}
 	\hspace*{\fill}
-	\subcaptionbox{The coloured multigraph $\mathcal{G}_{\mathfrak A}$, where the blue circle represents $U_R$ and the red rectangles represent $U_T$. \label{fig:transformedMultigraph}}[0.49\textwidth]{
+	\subcaptionbox{The binary structure $\mathcal{G}_{\mathfrak A}$, where the blue circle represents $U_R$ and the red rectangles represent $U_T$. \label{fig:transformedMultigraph}}[0.49\textwidth]{
 		\centering
 		\begin{tikzpicture}[node distance=2cm]
 			\node[draw, circle, thick, rwth-blue] (ab) {$w_{(a,b)}$};
@@ -92,7 +94,7 @@ The complete definition of $\mathcal{G}_{\mathfrak A}$ can be seen in figure \re
 			(bcd) edge[shorten >=0.05cm, shorten <=0.05cm, ->, below, bend left=10] node {$22,33$} (acd);
 		\end{tikzpicture}
 	}
-	\caption{A relational structure $\mathfrak A$ of signature $\sigma=\{R/2, T/3\}$ and the coloured multigraph $\mathcal{G}_{\mathfrak{A}}$ that encodes it.}
+	\caption{A relational structure $\mathfrak A$ of signature $\sigma=\{R/2, T/3\}$ and the binary structure $\mathcal{G}_{\mathfrak{A}}$ that encodes it.}
 \end{figure}
 
 We now want to apply RCR on $\mathfrak A$ and then classical CR on $\mathcal{G}_{\mathfrak A}$.
@@ -142,7 +144,7 @@ Again, $\gamma_1(w_{(a,c,d)})\neq \gamma_1(w_{(b,c,d)})$ and the algorithm termi
 We see that both procedures act equally, which is what was proved by Scheidt and Schweikardt.
 
 Let us now look at an example where RCR distinguishes two structures.
-For this, consider the $\sigma$-structure $\mathfrak B=(B, R^{\mathfrak B}, T^{\mathfrak B})$ with $B=(a',b',c',d')$, $R^{\mathfrak B}=\{(c',d')\}$ and $T^{\mathfrak B}=\{(a',c',d'),(b',c',d')\}$, which can be seen in figure \ref{fig:distinguishedByRCR}.
+For this, consider the $\sigma$-structure $\mathfrak B=(B, R^{\mathfrak B}, T^{\mathfrak B})$ with $B=(a',b',c',d')$, $R^{\mathfrak B}=\{(c',d')\}$ and $T^{\mathfrak B}=\{(a',c',d'),(b',c',d')\}$, which can be seen in Figure \ref{fig:distinguishedByRCR}.
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -162,7 +164,8 @@ For this, consider the $\sigma$-structure $\mathfrak B=(B, R^{\mathfrak B}, T^{\
 	\caption{The $\sigma$-structure $\mathfrak B$ that gets distinguished by RCR from $\mathfrak A$.}
 	\label{fig:distinguishedByRCR}
 \end{figure}
-It can easily be seen that the initial colouring of the tuples in $\mathfrak A$ and $\mathfrak B$ are the same, RCR thus cannot distinguish the structures in round $0$.
+It can easily be seen that every colour appears exactly as often in the colouring of the tuples of $\mathfrak A$ as of $\mathfrak B$.
+Thus $\RCR$ cannot distinguish the structures in round $0$.
 However, as $\mathfrak B$ does not include a tuple with $a'$ as the first element, the colour $\gamma_1((a,c,d))$ does not appear in round $1$ of RCR in $\mathfrak B$.
 Therefore $\operatorname{mult}_{\mathfrak A}(\gamma_1((a,c,d)))=1\neq 0 = \operatorname{mult}_{\mathfrak B}(\gamma_1((a,c,d)))$ and RCR distinguishes $\mathfrak A$ and $\mathfrak B$ in round $1$.
 
@@ -188,14 +191,18 @@ This means that the bound on the number of variables is dropped, but the restric
 	\label{def:GFC}
 	For a relational signature $\sigma$ we define the class $\GFC$ over $\sigma$ inductively using the following rules:
 	\begin{enumerate}
-		\item For an $R\in\sigma$ with $\ell=\operatorname{ar}(R)$ and variables $x_1,\dots,x_\ell$, we have that $R(x_1,\dots,x_\ell)\in \GFC$.
-		\item For two variables $x$ and $y$, we have that $x=y\in\GFC$.
-		\item For $\phi\in\GFC$, we have that $\neg(\phi)\in\GFC$.
-		\item For $\phi,\psi,\in\GFC$, we have that $(\phi\land\psi)\in\GFC$.
-		\item For a formula built using rule 1. or 2. $\Delta$ and a $\phi\in\GFC$ we call $\Delta$ a guard for $\phi$, if $\free{\Delta}\supseteq\free{\phi}$.
-		For $\Delta,\phi\in \GFC$, where $\Delta$ is a guard for $\phi$, a tuple of variables $\mathbf v$ with $\set(\mathbf v)\subseteq \free{\Delta}$ and a $n\in \mathbb N_{\geq 1}$, we have that $\exists^{\geq n}\mathbf v . (\Delta \land \phi)\in \GFC$.
+		\item Let $R\in\sigma$ with $\ell=\operatorname{ar}(R)$ and let $x_1,\dots,x_\ell$ be variables. Then $R(x_1,\dots,x_\ell)\in \GFC$.
+		\item Let $a$ and $y$ be two variables. 
+		Then $x=y\in\GFC$.
+		\item Let $\phi\in\GFC$.
+		Then $\neg(\phi)\in\GFC$.
+		\item Let $\phi,\psi,\in\GFC$. 
+		Then $(\phi\land\psi)\in\GFC$.
+		\item For a formula built using Rule \emph{1.} or \emph{2.} $\Delta$ and a $\phi\in\GFC$ we call $\Delta$ a guard for $\phi$, if $\free{\Delta}\supseteq\free{\phi}$.
+		Let $\Delta,\phi\in \GFC$, where $\Delta$ is a guard for $\phi$, let $\mathbf v$ be a tuple of variables with $\set(\mathbf v)\subseteq \free{\Delta}$ and let $n\in \mathbb N_{\geq 1}$. 
+		Then $\exists^{\geq n}\mathbf v . (\Delta \land \phi)\in \GFC$.
 	\end{enumerate}
-	Formulae that are built using rules \emph{1.} and \emph{2.} are called atomic formulae, we omit parenthesises in the usual way and use $\exists^{=n}\mathbf v.(\Delta\land\phi)$ as shorthand notation for $\exists^{\geq n}\mathbf v.(\Delta\land\phi)\land \neg\exists^{\geq n+1}\mathbf v.(\Delta\land\phi)$.
+	Formulae that are built using Rules \emph{1.} and \emph{2.} are called atomic formulae, we omit parenthesises in the usual way and use $\exists^{=n}\mathbf v.(\Delta\land\phi)$ as shorthand notation for $\exists^{\geq n}\mathbf v.(\Delta\land\phi)\land \neg\exists^{\geq n+1}\mathbf v.(\Delta\land\phi)$.
 	
 	The semantics of this logic are analogous to classical Counting Logic, see for example \cite{cai1992OptimalLower}, and also are concretely defined in \cite{scheidt2025ColorRefinement}.
 \end{definition}
@@ -211,9 +218,9 @@ Using a pebble game for $\GFC$, called the Guarded-Game, Scheidt and Schweikardt
 		\item Spoiler wins the Guarded-Game on $\mathfrak A$ and $\mathfrak B$.
 	\end{enumerate}
 \end{theorem}
-Let us again consider the structures from figures \ref{fig:verySimpleRelStruc} and \ref{fig:distinguishedByRCR}.
+Let us again consider the structures from Figures \ref{fig:verySimpleRelStruc} and \ref{fig:distinguishedByRCR}.
 In the preceding section we used the colour $\rho_1((a,c,d))$ to distinguish $\mathfrak A$ and $\mathfrak B$, as it does not appear in the colouring of $\mathfrak B$.
-More precisely, there does not exist a tuple of arity $3$ in $\mathfrak B$, which is in the relation $T$ and its first element is in the relation $R$ with another element.
+More precisely, there does not exist a tuple of length $3$ in $\mathfrak B$, which is in the relation $T$ and its first element is in the relation $R$ with another element.
 This can be formalised using the formula
 $$\phi_1\coloneqq\exists^{\geq 1}(x,y,z).\left(T(x,y,z)\land \exists^{\geq 1} (y).\left( R(x,y)\right)\right).$$
 It is easy to see that $\mathfrak A\models \phi_1$ and $\mathfrak B\not\models \phi_1$.
@@ -225,7 +232,7 @@ is also distinguishing.
 \subsection{Characterising RCR by Homomorphism Counting}
 
 Another way to characterise classical CR is to count homomorphisms from trees.
-Due to \cite{dvorak2010RecognizingGraphsa} and \cite{dell2018LovaszMeets} we have that Colour Refinement distinguishes two graphs $G$ and $H$ if, and only if, there is a tree $T$, such that $\hom(T,G)\neq\hom(T,H)$.
+Due to \cite{dvorak2010RecognizingGraphsa} and \cite{dell2018LovaszMeets} it is known that Colour Refinement distinguishes two graphs $G$ and $H$ if, and only if, there is a tree $T$, such that $\hom(T,G)\neq\hom(T,H)$.
 Again, there is an analogous characterisation for Relational Colour Refinement.
 One obstacle in defining such a characterisation is finding a class that generalises trees for relational structures.
 As a tree is a connected, acyclic graph, we have to find a fitting notion of acyclicity for relational structures.
@@ -255,9 +262,9 @@ This then leads us to another main result from \cite{scheidt2025ColorRefinement}
 	\end{enumerate}
 \end{theorem}
 
-We again want to consider the structures from figures \ref{fig:verySimpleRelStruc} and \ref{fig:distinguishedByRCR} for a simple example.
+We again want to consider the structures from Figures \ref{fig:verySimpleRelStruc} and \ref{fig:distinguishedByRCR} for a simple example.
 The structure $\mathfrak B$ is acyclic.
-This can be seen from its join tree depicted in figure \ref{fig:distinguishedJoinTree}.
+This can be seen from its join tree depicted in Figure \ref{fig:distinguishedJoinTree}.
 \begin{figure}
 	\centering
 	\begin{tikzpicture}[node distance=1cm]
@@ -269,7 +276,7 @@ This can be seen from its join tree depicted in figure \ref{fig:distinguishedJoi
 		(cd) edge[-] (acd)
 		(cd) edge[-] (bcd);
 	\end{tikzpicture}
-	\caption{A join-tree for the structure $\mathfrak B$ from figure \ref{fig:distinguishedByRCR}}
+	\caption{A join-tree for the structure $\mathfrak B$ from Figure \ref{fig:distinguishedByRCR}}
 	\label{fig:distinguishedJoinTree}
 \end{figure}
 Now consider the homomorphisms from $\mathfrak B$.

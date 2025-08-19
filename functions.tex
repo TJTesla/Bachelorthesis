@@ -2,7 +2,7 @@
 \label{sec:RelationalColourRefinemetForStructuresWithFunctions}
 
 Many interesting structures use functions.
-For example all algebraic signatures include function-symbols for addition and multiplication, but also constants, which are understood as $0$-ary functions.
+For example all algebraic signatures include function symbols for addition and multiplication, but also constants, which are understood as $0$-ary functions.
 As Colour Refinement and variants of it have shown to be very useful in multiple applications, a similar method for structures with functions seems desirable.
 This section aims to apply the results from \cite{scheidt2025ColorRefinement}, which were discussed in the previous section, to such classes of structures.
 We will define two different approaches of Colour Refinement Algorithms.
@@ -24,7 +24,7 @@ The simplest form to encode a non-relational structure as a relational one is to
 For a non-relational signature $\sigma$, we define a relational signature $\sigma'$.
 For every relation symbol $R\in \sigma$, we introduce a relation symbol $R\in \sigma'$ with the same arity and for every function symbol $f\in\sigma$ with arity $k$, we introduce a relational symbol $R_f\in\sigma'$ of arity $k+1$.
 Semantically, a structure $\mathfrak A$ of signature $\sigma$ can then be encoded as a structure $\mathfrak A'$ of signature $\sigma'$ and with the same universe as $\mathfrak A$. 
-For every relational symbol $R\in\sigma$ we set $R^{\mathfrak A'}\coloneqq R^{\mathfrak A}$ and for every function symbol $f\in\sigma$ of arity $k$ there exists a relation symbol $R_f\in\sigma'$ and we set $R_f^{\mathfrak A}\coloneqq \{(\mathbf xy) : f^{\mathfrak A}(\mathbf x)=y\}$ where $\mathbf x$ is a tuple of arity $k$.
+For every relational symbol $R\in\sigma$ we set $R^{\mathfrak A'}\coloneqq R^{\mathfrak A}$ and for every function symbol $f\in\sigma$ of arity $k$ there exists a relation symbol $R_f\in\sigma'$ and we set $R_f^{\mathfrak A}\coloneqq \{(\mathbf xy) : f^{\mathfrak A}(\mathbf x)=y\}$ where $\mathbf x$ is a tuple of length $k$.
 
 This procedure encodes a non-relational structure as a relational one, on which Relational Colour Refinement can now be performed.
 As such we say, that the Naive Relational Colour Refinement (nRCR) distinguishes two structures $\mathfrak A$ and $\mathfrak B$ if, and only if, RCR distinguishes their naive encodings $\mathfrak A'$ and $\mathfrak B'$.
@@ -39,7 +39,7 @@ However, a bound on the alternation of different function symbols is necessary t
 Let us concretely define, how we expand the signature.
 
 \begin{definition}[Transitive expansion]
-	Let $\sigma\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature with relation-symbols $\sigma_{\operatorname{Rel}}$ and unary function-symbols $\sigma_{\operatorname{Func}}$ and let $\mathfrak A$ be a structure of signature $\sigma$ with $\vert \mathfrak A \vert=n$.
+	Let $\sigma\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature with relation symbols $\sigma_{\operatorname{Rel}}$ and unary function symbols $\sigma_{\operatorname{Func}}$ and let $\mathfrak A$ be a structure of signature $\sigma$ with $\vert \mathfrak A \vert=n$.
 	For readability, we define the family of sets of alternations of function applications $\operatorname{Alters}_n^0(\sigma)\coloneqq\{\operatorname{id}\}$ and
 	\begin{align*}
 		\operatorname{Alters}^k_{n}(\sigma)\coloneqq \operatorname{Alters}^{k-1}_{n}(\sigma)\cup\{f_1^{m_1}f_2^{m_2}\dots f_k^{m_k} : & f_1,f_2,\dots, f_k\in \sigma_{\operatorname{Func}} \\ 
@@ -109,7 +109,7 @@ The definitions of all $\operatorname{Eq}^{\widetilde{\mathfrak A}}_{\alpha,\bet
 We can now define $\RCR$ for signatures that include unary function symbols.
 
 \begin{definition}[RCR for structures with unary functions]
-	Let $\sigma$ be a signature with relation- and unary function-symbols and let $\mathfrak A$ and $\mathfrak B$ be structures of signature $\sigma$.
+	Let $\sigma$ be a signature with relation and unary function symbols and let $\mathfrak A$ and $\mathfrak B$ be structures of signature $\sigma$.
 	We say that $\mathfrak A$ and $\mathfrak B$ are being distinguished by RCR with alternation depth $k$ ($\RCR_k$), if $\vert\mathfrak A\vert\neq \vert \mathfrak B\vert$ or the transitive expansions with alternation depth $k$, $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$, are being distinguished by $\RCR$.
 \end{definition}
 Just like nRCR, this algorithm allows for a logical characterisation, which will be investigated later.
@@ -191,13 +191,13 @@ We see that $\RCR_k$ distinguishes structures that were not distinguished by nRC
 \label{sec:RCRwithFnLogic}
 
 In this section we will discuss, how the above approaches of Colour Refinement for non-relational structures can be characterised by logic.
-We will see that for both cases we will get a logic which extends the given definition of $\GFC$, see definition \ref{def:GFC}, but restricts the usage of functions inside of terms.
+We will see that for both cases we will get a logic which extends the given definition of $\GFC$, see Definition \ref{def:GFC}, but restricts the usage of functions inside of terms.
 
 \subsubsection{Characterising Naive RCR Using Logic} 
 
 The nRCR algorithm will be characterised by the nesting-free guarded fragment of counting logic $\mathsf{nfGF}(\mathsf C)$.
 This logics forbids the nesting of functions and only allows the usage of them as $f(\mathbf x)=y$.
-This way, a function-symbol acts like a relation-symbol, which is analogous to the encoding used in nRCR. 
+This way, a function symbol acts like a relation symbol, which is analogous to the encoding used in nRCR. 
 This leads to the characterisation of nRCR by $\mathsf{nfGF}(\mathsf C)$, which we will prove in the following.
 
 \begin{definition}[$\mathsf{nfGF}(\mathsf C)$]
@@ -233,7 +233,7 @@ We now show that nRCR and $\mathsf{nfGF}(\mathsf C)$ can distinguish exactly the
 While the above theorem results in a nice characterisation of the naive encoding, the nesting of terms is often very desired when using functions.
 However, it can be shown that nesting is too powerful for the naive encoding.
 
-Consider the structures $\mathfrak A$ and $\mathfrak B$ from figure \ref{nRCRvsRCRk} and the formula $\phi=\exists^{\geq 1} x.(f(f(f(x)))=x)$ which utilizes term nesting to find a cycle of length three.
+Consider the structures $\mathfrak A$ and $\mathfrak B$ from Figure \ref{nRCRvsRCRk} and the formula $\phi=\exists^{\geq 1} x.(f(f(f(x)))=x)$ which utilizes term nesting to find a cycle of length three.
 It is obvious that $\mathfrak A \models \phi$ and $\mathfrak B\not\models \phi$.
 However, as it was discussed above, one finds that nRCR cannot distinguish them.
 Therefore, term nesting is too powerful for the naive encoding.
@@ -241,8 +241,8 @@ Therefore, term nesting is too powerful for the naive encoding.
 
 \subsubsection{Logical Characterisation of RCR$_k$}
 
-A first idea that may come to mind when looking at the definition of the transitive expansion, is to use the classical notion of atomic formula for guards, fixate a maximal alternation depth for terms and only allow $\vert \mathfrak{A}\vert$ applications of the same function-symbol in series.
-Concretely, for a function-symbol $f$ and a term $s(x)$, only terms of the form  $f^m(s(x))$ where $m\leq\vert\mathfrak A\vert$ are allowed.
+A first idea that may come to mind when looking at the definition of the transitive expansion, is to use the classical notion of atomic formula for guards, fixate a maximal alternation depth for terms and only allow $\vert \mathfrak{A}\vert$ applications of the same function symbol in series.
+Concretely, for a function symbol $f$ and a term $s(x)$, only terms of the form  $f^m(s(x))$ where $m\leq\vert\mathfrak A\vert$ are allowed.
 However, we prove that we can allow a term $f^m(s(x))$ for an arbitrary $m\in\mathbb N$, while the bounded alternation depth is still needed.
 The reason why this is possible, hinges on the pigeonhole principle.
 When considering $f(x)$, $f^2(x)$, $f^3(x)$ and so forth, until $f^m(x)$, where $m>\vert\mathfrak A\vert$, there have to be to numbers $i$ and $j$, such that $f^i(x)=f^j(x)$.
@@ -574,7 +574,7 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 
 \begin{theorem}
 	\label{thm:ThmB}
-	Let $\mathfrak A$ and $\mathfrak B$ be two structures of the same signature $\sigma$ with relation- and unary function-symbols and let $k\in \mathbb{N}$.
+	Let $\mathfrak A$ and $\mathfrak B$ be two structures of the same signature $\sigma$ with relation and unary function symbols and let $k\in \mathbb{N}$.
 	Then the two following statements are equivalent:
 	\begin{enumerate}
 		\item $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$.
@@ -609,7 +609,7 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 	\begin{proof}
 		\textbf{Base cases:}
 		If $\phi$ is an atomic formula, that is, either a term equivalence or a relation, then set $\phi'$ to $\theta_\phi$.
-		The equivalence follows directly from the above lemmas \ref{TranslationOfArbTerms} and \ref{TranslationOfArbAtomics}.
+		The equivalence follows directly from the above Lemmas \ref{TranslationOfArbTerms} and \ref{TranslationOfArbAtomics}.
 		
 		\textbf{Inductive cases:}
 		In the cases where $\phi$ is of the form $\neg\theta$ or $\theta_1\land\theta_2$, we set $\phi'$ to $\neg\theta'$ or $\theta_1'\land\theta_2'$ and the claim follows directly using the induction hypothesis.
@@ -676,15 +676,15 @@ As we showed, the logical characterisation of Relational Colour Refinement has t
 Thus we now want to consider, whether those extensions can also be characterised by counting homomorphisms.
 
 In the following we will see that, using the two established approaches, it is in general not possible, to find acyclic structures with functions that divide two structures by homomorphism count.
-We will concentrate on the encoding defined in section \ref{sec::NaiveEncodingOfFunctions}, where we will show one positive and one negative result.
+We will concentrate on the encoding defined in Section \ref{sec::NaiveEncodingOfFunctions}, where we will show one positive and one negative result.
 
 To begin, let us define two concepts for relational structures that encode a non-relational structure.
 
 \begin{definition}[Total structures]
 	\label{def:TotalStructures}
-	Let $\sigma\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature where $\sigma_{\operatorname{Func}}$ contains exactly all function-symbols and is not empty.
+	Let $\sigma\coloneqq \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature where $\sigma_{\operatorname{Func}}$ contains exactly all function symbols and is not empty.
 	Now let $\sigma'$ be the relational encoding of $\sigma$ and let $\mathfrak A'$ be a $\sigma'$-structure.
-	We call $\mathfrak A'$ total, if for every $R_{f}\in\widehat{\sigma}$ with arity $n+1$ where $f\in \sigma_{\operatorname{Func}}$ has arity $n$, we have that for every $n$-ary tuple $\mathbf x$ there is a $y$ such that $(\mathbf xy)\in R^{\mathfrak A'}_{f}$.
+	We call $\mathfrak A'$ total, if for every $R_{f}\in\widehat{\sigma}$ with arity $n+1$ where $f\in \sigma_{\operatorname{Func}}$ has arity $n$, and every tuple $\mathbf x$ of length $n$, there is a $y$ such that $(\mathbf xy)\in R^{\mathfrak A'}_{f}$.
 \end{definition}
 
 Total structures therefore capture the notion that every relation that encodes a function is defined for the complete value-domain.
@@ -692,11 +692,11 @@ However, functions also only valuate to exactly one value.
 This idea is captured by the following definition.
 
 \begin{definition}[Functional structures]
-	We define $\sigma$, $\sigma'$ and $\mathfrak A'$ exactly as in definition \ref{def:TotalStructures}.
+	We define $\sigma$, $\sigma'$ and $\mathfrak A'$ exactly as in Definition \ref{def:TotalStructures}.
 	We call $\mathfrak A'$ functional, if for every $R_{f}\in\widehat{\sigma}$ with arity $n+1$ where $f\in \sigma_{\operatorname{Func}}$ has arity $n$, we have that if $(\mathbf xy)\in R^{\mathfrak A'}_{f}$ there is no $y'\neq y$ such that $(\mathbf xy')\in R^{\mathfrak A'}_{f}$.
 \end{definition}
-
-A graphical representation of total and functional structures can be found in figure \ref{fig:totalAndFunctionalStructs}.
+\iffalse
+A graphical representation of total and functional structures can be found in Figure \ref{fig:totalAndFunctionalStructs}.
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.49\textwidth}
@@ -750,18 +750,19 @@ A graphical representation of total and functional structures can be found in fi
 	\caption{Examples for different combinations of total and functional structures with $\sigma=\{f/1\}$ and thus $\sigma'=\{R_f/2\}$.}
 	\label{fig:totalAndFunctionalStructs}
 \end{figure}
+\fi
 To continue, we have to define what it means to be acyclic for a structure with functions.
 
 \begin{definition}[Acyclic, non-relational structures]
-	Let $\sigma$ be a signature with function-symbols and $\sigma'$ its encoding as it is defined in section \ref{sec::NaiveEncodingOfFunctions}.
+	Let $\sigma$ be a signature with function symbols and $\sigma'$ its encoding as it is defined in Section \ref{sec::NaiveEncodingOfFunctions}.
 	Let $\mathfrak C$ be a $\sigma$-structure and $\mathfrak C'$ be its encoding of signature $\sigma'$.
-	We then call $\mathfrak C$ acyclic, if $\mathfrak C'$ is acyclic, with respect to acyclicity as it is defined in definition \ref{def:alphaAcyclic}.
+	We then call $\mathfrak C$ acyclic, if $\mathfrak C'$ is acyclic, with respect to acyclicity as it is defined in Definition \ref{def:alphaAcyclic}.
 \end{definition}
 
 We now want to find the equivalence between the existence of an acyclic structure with functions and an encoding of an acyclic structure with the above properties (with respect to homomorphism counting).
 
 \begin{lemma}
-	Let $\sigma$ be a signature with function-symbols and $\sigma'$ be the relational encoding of it.
+	Let $\sigma$ be a signature with function symbols and $\sigma'$ be the relational encoding of it.
 	Let $\mathfrak A$ and $\mathfrak B$ be $\sigma$-structures and $\mathfrak A'$ and $\mathfrak B'$ be their respective encodings of signature $\sigma'$.
 	Then the two following statements are equivalent.
 	\begin{enumerate}
@@ -779,11 +780,11 @@ We now want to find the equivalence between the existence of an acyclic structur
 	
 	Let $\phi\in\Hom(\mathfrak C,\mathfrak A)$. 
 	We show that $\phi\in\Hom(\mathfrak C',\mathfrak A')$.
-	Let $(\mathbf xy)\in R^{\mathfrak C'}_f$ for a function-symbol $f\in\sigma$.
+	Let $(\mathbf xy)\in R^{\mathfrak C'}_f$ for a function symbol $f\in\sigma$.
 	Then by definition of the encoding $f^{\mathfrak C}(\mathbf x)=y$ and then $f^{\mathfrak A}(\phi(\mathbf x))=\phi(f^{\mathfrak C}(\mathbf x))=\phi(y)$.
-	Thus we have that $(\phi(\mathbf x)\phi(y))\in R_f^{\mathfrak A'}$, but this is equal to $\phi(\mathbf xy)\in R_f^{\mathfrak A'}$.
+	Thus $(\phi(\mathbf x)\phi(y))\in R_f^{\mathfrak A'}$, but this is equal to $\phi(\mathbf xy)\in R_f^{\mathfrak A'}$.
 	Let $\mathbf x\in R^{\mathfrak C'}$ where $R\neq R_f$ for all function symbols $f\in\sigma$.
-	Then we have that $R^{\mathfrak C'}=R^{\mathfrak C}$ and $R^{\mathfrak A}=R^{\mathfrak A'}$. 
+	Then $R^{\mathfrak C'}=R^{\mathfrak C}$ and $R^{\mathfrak A}=R^{\mathfrak A'}$. 
 	Therefore because $\mathbf x\in R^{\mathfrak C}$, we have $\phi(\mathbf x)\in R^{\mathfrak A}=R^{\mathfrak A'}$. 
 	This was to be shown
 	
@@ -793,22 +794,22 @@ We now want to find the equivalence between the existence of an acyclic structur
 	By the construction of the encoding we know that $R^{\mathfrak C}=R^{\mathfrak C'}$ and $R^{\mathfrak A'}=R^{\mathfrak A}$ and with the same argument as before we can conclude that $\phi(\mathbf x)\in R^{\mathfrak A}$.
 	Let $\mathbf x$ and $y$ be such that $f^{\mathfrak C}(\mathbf x)=y$.
 	Then by construction we know that $(\mathbf xy)\in R_f^{\mathfrak C'}$.
-	Because $\phi$ is a homomorphism we also know that $\phi(\mathbf xy)\in R_f^{\mathfrak A'}$ and because $\mathfrak A'$ is also an encoding we have that $f^{\mathfrak A}(\phi(\mathbf x))=\phi(y)=\phi(f^{\mathfrak C}(\mathbf x))$.
+	Because $\phi$ is a homomorphism we also know that $\phi(\mathbf xy)\in R_f^{\mathfrak A'}$ and because $\mathfrak A'$ is also an encoding, we have that $f^{\mathfrak A}(\phi(\mathbf x))=\phi(y)=\phi(f^{\mathfrak C}(\mathbf x))$.
 	This was to be shown.
 	$\mathfrak A$ and $\mathfrak A'$ can be replaced by $\mathfrak B$ and $\mathfrak B'$, respectively, to get the analogous result for the other structure.
 	
 	We now show that \emph{2.} implies \emph{1.}.
 	Let $\mathfrak C'$ be an acyclic, total and functional $\sigma'$-structure.
 	We can now construct a $\sigma$-structure $\mathfrak C$ by decoding $\mathfrak C'$ and will also get that $\Hom(\mathfrak C',\mathfrak A')=\Hom(\mathfrak C,\mathfrak A)$.
-	For a relation-symbol $R\in\sigma$ we can define $R^{\mathfrak C}\coloneqq R^{\mathfrak C'}$.
-	For a function-symbol $f\in\sigma$ we can define $f^{\mathfrak C}$ as follows: 
-	Let $f$ be of arity $n$. Then for a $n$-ary tuple $\mathbf x$ there must be a $y$ such that $(\mathbf xy)\in R_f^{\mathfrak C'}$ because $\mathfrak C'$ is total and there must be exactly one such $y$ because $\mathfrak C'$ is functional.
+	For a relation symbol $R\in\sigma$ we can define $R^{\mathfrak C}\coloneqq R^{\mathfrak C'}$.
+	For a function symbol $f\in\sigma$ we can define $f^{\mathfrak C}$ as follows: 
+	Let $f$ be of arity $n$. Then for a tuple $\mathbf x$ of length $n$, there must be a $y$ such that $(\mathbf xy)\in R_f^{\mathfrak C'}$ because $\mathfrak C'$ is total and there must be exactly one such $y$ because $\mathfrak C'$ is functional.
 	Therefore we define $f^{\mathfrak C}(\mathbf x)=y$.
 	The claim that the sets of homomorphisms is equal can be verified using exactly the same arguments as in the analogous proof of the other direction.
 \end{proof}
 
 We can now continue to put this in relation to the statement regarding RCR.
-We have that naive RCR distinguishes two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ if, and only if, RCR distinguishes the encodings $\mathfrak A'$ and $\mathfrak B'$ of signature $\sigma'$.
+Naive RCR distinguishes two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ if, and only if, RCR distinguishes the encodings $\mathfrak A'$ and $\mathfrak B'$ of signature $\sigma'$.
 Due to the results of \cite{scheidt2025ColorRefinement} this is the case if, and only if, there is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
 We would like to achieve the result that this is equivalent to there being an acyclic $\sigma$ structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by homomorphism count (however this will not be the case).
 By the above lemma, the latter is equivalent to there being an acyclic, total and functional $\sigma'$-structure $\mathfrak C''$ that distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
@@ -829,31 +830,28 @@ We will in the following prove the former claim and then show the latter claim, 
 \end{lemma}
 \begin{proof}
 	The proof for the above lemma will work as follows.
-	If $\mathfrak C'$ is not functional, then there is a function-symbol $f\in\sigma$ and two different tuples $(\mathbf xy),(\mathbf xz)\in R^{\mathfrak C'}_f$, we call this a collision.
+	If $\mathfrak C'$ is not functional, then there is a function symbol $f\in\sigma$ and two different tuples $(\mathbf xy),(\mathbf xz)\in R^{\mathfrak C'}_f$, we call this a collision.
 	We will give a procedure to iteratively remove such collisions.
-	The procedure will reduce the number of elements by one, will keep the acyclicity property and will result in a structure with the same amount of homomorphisms to $\mathfrak A'$ and $\mathfrak B'$, respectively.
+	The procedure will reduce the number of elements of $\mathfrak C'$ by one, will keep the acyclicity property and will result in a structure with the same amount of homomorphisms to $\mathfrak A'$ and $\mathfrak B'$, respectively.
 	Thus, by continuously applying that procedure to all collisions, we will get $\mathfrak C''$.
 	The algorithm must terminate, as the number of elements strictly decreases and we only consider finite structures.
 	
 	The remainder of this proof will be dedicated to describing the procedure and proving the above claims.
-	Assume that there is a function-symbol $f\in \sigma$ and two different tuples $(\mathbf x y),(\mathbf x z)\in R_f^{\mathfrak C'}$. 
+	Assume that there is a function symbol $f\in \sigma$ and two different tuples $(\mathbf x y),(\mathbf x z)\in R_f^{\mathfrak C'}$. 
 	Our goal will be to construct a structure $\mathfrak C''$ of signature $\sigma'$ without this particular collision and with the following properties:
 	\begin{itemize}
 		\item[a.] $\vert \mathfrak C'' \vert = \vert \mathfrak C'\vert -1$
 		\item[b.] $\mathfrak C''$ is acyclic
 		\item[c.] $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$.
 	\end{itemize}
-	We define the function $\chi : \mathbf{C'}\to\mathbf{C''}$ which will map tuples of $\mathfrak C'$ to tuples of $\mathfrak C''$ with the same arity.
-	Concretely, for an arbitrary tuple $\mathbf c\in \mathbf{C'}$ of arity $k$ and for every $i\in[k]$, we have
+	We define $\mathfrak C'' \coloneqq ((C' \setminus \{y,z\})\cup \{v_{y,z}\}, \sigma)$ and will define the relations using the following function.
+	The function $\chi : \mathbf{C'}\to\mathbf{C''}$ which maps tuples of $\mathfrak C'$ to tuples of $\mathfrak C''$ with the same length.
+	Concretely, for an arbitrary tuple $\mathbf c\in \mathbf{C'}$ of length $k$ and for every $i\in[k]$, we have
 	$$\chi(\mathbf c)_i \coloneqq \begin{cases}
 		\mathbf c_i & \text{if } \mathbf c_i\notin \{y,z\} \\
-		v_{y,z} & \text{if } \mathbf c_i \in \{y,z\}
+		v_{y,z} & \text{if } \mathbf c_i \in \{y,z\}.
 	\end{cases}$$
-	for a new element $v_{y,z}$.
-	In words, we replace every occurrence of $y$ and $z$ by $v_{y,z}$, while letting everything else stay the same.
-	Now we can define 
-	$$\mathfrak C'' \coloneqq ((C' \setminus \{y,z\})\cup \{v_{y,z}\}, \sigma),$$
-	where for all $R\in\sigma'$ we have $R^{\mathfrak C''}\coloneqq \{\chi(\mathbf c) : \mathbf c\in R^{\mathfrak C'}\}$.
+	Then, for all $R\in\sigma$, we define $R^{\mathfrak C''}\coloneqq \{\chi(\mathbf c) : \mathbf c\in R^{\mathfrak C'}\}$.
 	We will now proceed by proving the above properties.
 	
 	\paragraph*{Property a.:}
@@ -948,7 +946,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		We now get a path in $V_y$ with the elements $\mathbf a_0,\dots,\mathbf a_k\in V_y$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=(\mathbf xy)$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
 		We also get a path in $V_z$ with the elements $\mathbf b_0,\dots,\mathbf b_\ell\in V_z$ such that $\mathbf b_0=(\mathbf xz)$, $\mathbf b_\ell = \mathbf b$ and $\{\mathbf b_{i-1},\mathbf b_i\}\in E(J')$.
 		Therefore with the above equation, we have two paths in $S$: $\chi(\mathbf a_0),\dots,\chi(\mathbf a_k)$ and $\chi(\mathbf b_0),\dots,\chi(\mathbf b_\ell)$, where $\chi(\mathbf a_0)=\mathbf u$ and $\chi(\mathbf b_\ell)=\mathbf v$.
-		Now we have that $\chi(\mathbf a_k)=\chi((\mathbf xy))=(\mathbf x'v_{y,z})=\chi((\mathbf xz))=\chi(\mathbf b_0)$.
+		However, $\chi(\mathbf a_k)=\chi((\mathbf xy))=(\mathbf x'v_{y,z})=\chi((\mathbf xz))=\chi(\mathbf b_0)$.
 		Therefore, we get one path from $\mathbf u$ to $\mathbf v$ in $S$.
 	\end{proof}
 	
@@ -974,7 +972,7 @@ We will in the following prove the former claim and then show the latter claim, 
 	\end{claim}
 	\begin{proof}
 		Let $\phi\in\Hom(\mathfrak C',\mathfrak A')$ and $\phi'\coloneqq \pi(\phi)$.
-		Consider a relation-symbol $R$ and a tuple $\mathbf c \in R^{\mathfrak C''}$.
+		Consider a relation symbol $R$ and a tuple $\mathbf c \in R^{\mathfrak C''}$.
 		If $v_{y,z}\notin\set(\mathbf c)$, then $\chi(\mathbf c)=\mathbf c$, $\phi(\mathbf c)=\phi'(\mathbf c)$ and $\mathbf c\in R^{\mathfrak C'}$ follows.
 		Then we get $\phi(\mathbf c)\in R^{\mathfrak A'}$ and further $\phi'(\mathbf c)\in R^{\mathfrak A'}$.
 		
@@ -1020,7 +1018,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		$$
 		Using that $\psi(y)=\psi(z)$ for all $\psi\in\Hom(\mathfrak C',\mathfrak A')$, it can easily be verified that $\pi(\phi)=\phi'$.
 		We now only have to show that $\phi\in\Hom(\mathfrak C',\mathfrak A')$. 
-		Let $\mathbf c\in R^{\mathfrak C'}$ for a relation-symbol $R$.
+		Let $\mathbf c\in R^{\mathfrak C'}$ for a relation symbol $R$.
 		We now define $\mathbf c'= \chi(\mathbf c)$ and get by construction that $\mathbf c'\in R^{\mathfrak C''}$.
 		Because we know that $\phi'$ is a homomorphism, it follows that $\phi'(\mathbf c')\in R^{\mathfrak A'}$.
 		But since $\phi'(a)=\phi(a)$ for all $a\notin \{y,z,v_{y,z}\}$ and $\phi'(v_{y,z})=\phi(y)=\phi(z)$, it follows that $\phi'(\mathbf c')=\phi(\mathbf c)$.
@@ -1033,7 +1031,7 @@ We will in the following prove the former claim and then show the latter claim, 
 \end{proof}
 
 From the above lemma we get that given an acyclic, distinguishing structure, we can construct a new structure, which is also acyclic and distinguishing but in addition also functional.
-One example how this can be applied can be seen in figure \ref{fig:constructFunctionalStruct}.
+One example how this can be applied can be seen in Figure \ref{fig:constructFunctionalStruct}.
 
 \begin{figure}
 	\centering
@@ -1069,7 +1067,7 @@ One example how this can be applied can be seen in figure \ref{fig:constructFunc
 		(a3) edge[->, thick] (vbc3)
 		(vbc3) edge[->, thick] (vde3);
 	\end{tikzpicture}
-	\caption{Two successive applications of the procedure described in the proof of lemma \ref{lem:constructionOfFunctionalStruct}. The arrows represent a binary relation $R_f$, which encodes a unary function $f$.}
+	\caption{Two successive applications of the procedure described in the proof of Lemma \ref{lem:constructionOfFunctionalStruct}. The arrows represent a binary relation $R_f$, which encodes a unary function $f$.}
 	\label{fig:constructFunctionalStruct}
 \end{figure}
 
@@ -1082,7 +1080,7 @@ However, we will then prove that there cannot be an acyclic and total structure 
 
 Let $(\mathfrak A_i)_{i\in \mathbb N_{\geq 4}}$ be a family of $\sigma$-structures, defined as $\mathfrak A_n=(A_n, \operatorname E^{\mathfrak A_n}, f^{\mathfrak A_n})$, where $A_n=[n]$, $\operatorname E^{\mathfrak A_n}=\{(i, i+1), (i+1, i) : i\in [n-2]\}$ and $f^{\mathfrak A_n}=\{ i \mapsto \ipo n-1 : i \in [n-1]\}\cup \{n \mapsto n-1\}$.
 Let $(\mathfrak B_i)_{i\in \mathbb N_{\geq 4}}$ also be a family of $\sigma$-structures, defined as $\mathfrak B_n=(B_n, \operatorname E^{\mathfrak B_n},f^{\mathfrak B_n})$, where $B_n=[n]$, $\operatorname E^{\mathfrak B_n}=\{(i, i+1), (i+1, i) : i \in [n-1]\}$ and $f^{\mathfrak B_n}=\{i \mapsto \ipo n : i \in [n]\}$.
-Graphical representations for a few examples of these structures can be seen in figure \ref{fig:exmaplesFamilies}.
+Graphical representations for a few examples of these structures can be seen in Figure \ref{fig:exmaplesFamilies}.
 
 \begin{figure}[t!]
 	\centering
@@ -1163,11 +1161,11 @@ Graphical representations for a few examples of these structures can be seen in 
 For every $n\in\mathbb N_{\geq 4}$ it is clear that naive RCR distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
 The formula 
 $$\phi_n=\exists^{\geq 2\cdot (n-1)}(x,y). \operatorname E(x,y) \in \mathsf{nfGF}(\mathsf{C})$$
-distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ and using theorem \ref{thm:ThmA}, this is equivalent to naive RCR distinguishing $\mathfrak A_n$ and $\mathfrak B_n$.
+distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ and using Theorem \ref{thm:ThmA}, this is equivalent to naive RCR distinguishing $\mathfrak A_n$ and $\mathfrak B_n$.
 It now only remains to show that there cannot be a total and acyclic structure that distinguishes the encodings $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
 
 \begin{lemma}
-	Let $n\in\mathbb N_{\geq 4}$ and let $\mathfrak C_n'$ be an acyclic $\sigma'$-structure that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
+	Let $n\in\mathbb N_{\geq 4}$ and let $\mathfrak C_n'$ be an acyclic $\sigma'$-structure that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism counts.
 	Then $\mathfrak C_n'$ cannot be both acyclic and total.
 	\label{lem:totalityNotEnforcable}
 \end{lemma}
@@ -1196,12 +1194,12 @@ It now only remains to show that there cannot be a total and acyclic structure t
 \end{proof}
 
 We thus have showed that there cannot exist an acylic and total $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
-However, in lemma \ref{lem:acycTotalAndFunctionalEquivAcyc} we showed that the existence of an acyclic, total and functional $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ is equivalent to the existence of an acyclic $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
+However, in Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc} we showed that the existence of an acyclic, total and functional $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ is equivalent to the existence of an acyclic $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
 Since there is no acyclic and total $\mathfrak C_n'$, there also is no acyclic, total and functional $\mathfrak C_n''$ that distinguishes, and therefore there is no $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ by homomorphism count.
 Let us formalize our findings.
 
 \begin{theorem}
-	Let $\sigma$ be a signature that contains function-symbols, $\mathfrak A$ and $\mathfrak B$ two $\sigma$-structures and let $\sigma'$, $\mathfrak A'$ and $\mathfrak B'$ their respective encodings.
+	Let $\sigma$ be a signature that contains function symbols, $\mathfrak A$ and $\mathfrak B$ two $\sigma$-structures and let $\sigma'$, $\mathfrak A'$ and $\mathfrak B'$ their respective encodings.
 	Now consider the following statements:
 	\begin{enumerate}
 		\item Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
@@ -1214,15 +1212,15 @@ Let us formalize our findings.
 \begin{proof}
 	\textbf{\emph{1.} is equivalent to \emph{2.}}
 	Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
-	Using lemma \ref{lem:constructionOfFunctionalStruct}, we then can construct an acyclic and function $\sigma'$-structure that also distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
+	Using Lemma \ref{lem:constructionOfFunctionalStruct}, we then can construct an acyclic and function $\sigma'$-structure that also distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
 
 	\textbf{\emph{3.} implies \emph{1.}}
-	The existence of such a $\sigma$-structure is, by lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings.
+	The existence of such a $\sigma$-structure is, by Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings.
 	Using the results of \cite{scheidt2025ColorRefinement}, this implies that RCR distinguishes the encodings and by definition this means that naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
 	
 	\textbf{\emph{1.} does not imply \emph{3.}}
-	By lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, Statement \emph{3.} is equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings by homomorphism count.
-	However as we showed in lemma \ref{lem:totalityNotEnforcable}, this is not implied by the existence of just an acyclic $\sigma'$-structure which distinguishes. 
+	By Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, Statement \emph{3.} is equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings by homomorphism count.
+	However as we showed in Lemma \ref{lem:totalityNotEnforcable}, this is not implied by the existence of just an acyclic $\sigma'$-structure which distinguishes. 
 	This is however equivalent to statement \emph{1.}.
 \end{proof}
 

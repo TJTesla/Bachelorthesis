@@ -2,11 +2,11 @@
 
 The graph isomorphism problem is a very interesting and important problem in both theoretical and applied computer science.
 The question, whether two graphs are structurally identical comes up in many fields of research.
-For example when trying to recognize identical chemical structures for patent verification \cite{ray1957FindingChemical} or finding symmetries for optimizing problems such as the Boolean Satisfiability problem \cite{grohe2020GraphIsomorphism}.
+For example when trying to recognize identical chemical structures for patent verification \cite{ray1957FindingChemical} or finding symmetries for optimizing algorithms for problems such as the Boolean Satisfiability problem \cite{grohe2020GraphIsomorphism}.
 Furthermore, the graph isomorphism problem is interesting from a complexity theoretic perspective, as it is a prominent example for a problem, which has not been proven to be either $\mathsf{NP}$-complete or solvable in polynomial time. \cite{babai2016GraphIsomorphism}
 
 One (incomplete) algorithm that is often used in practical isomorphism problem solvers \cite{grohe2020GraphIsomorphism} is \emph{Colour Refinement}, short $\CR$, also called the \emph{1-dimensional Weisfeiler-Leman algorithm}.
-Given two graphs, it can prove in quasilinear time that they are not isomorphic \cite{berkholz2017TightLowera}.
+Given two graphs, it can decide, whether they might be isomorphic or whether they are not \cite{berkholz2017TightLowera}.
 Concretely, $\CR$ is an iterative algorithm that, in the beginning, assigns every vertex the same colour and in following iterations assigns each one a new colour, based on the colours of its neighbours.
 This procedure is repeated, until the partition of the vertices induced by the colouring stays the same. 
 We then say that Colour Refinement distinguishes two graphs, if there is some colour that appears differently often in the two graphs.
@@ -19,24 +19,20 @@ Aside from isomorphism testing, Colour Refinement has applications in different 
 Incidentally, the first recorded occurrence of this algorithm appeared in 1965 and dealt with the description of chemical structures \cite{morgan1965GenerationUnique}.
 Its significance for computer science has been recognised later by Weisfeiler and Leman in 1968 \cite{weisfeiler1968reduction}.
 One interesting application of Colour Refinement is in the reduction of the dimension of linear programs.
-By defining a variant of Colour Refinement on matrices which finds a partition of the rows and columns, it is possible to reformulate a linear program with a considerably smaller dimension. 
+By defining a variant of Colour Refinement on matrices which finds a partition of the rows and columns, it is possible to reformulate a linear program with a considerably smaller dimension.
 This method of first reducing the problem and then solving the reduced instance has been shown to be more performant than the standard way of solving linear programs. \cite{grohe2014DimensionReduction}
 Another application can be found in the field of machine learning, more precisely for kernel methods.
-Generally, the aim of kernel methods is to assign a similarity value between two elements, which then can be used in more complex machine learning techniques such as support vector machines or regression.
-An emerging concept in this field are kernels for graphs, also called graph kernels, which are a method to compare two graphs, and represent how similar they are with a single value.
-Standard graph kernel methods consider certain subgraphs and count the (dis-)similarities. \cite{vishwanathan2010graph}
-One interesting application of Colour Refinement can be found in its usage as a graph kernel.
-When fixating an integer $h$ and counting for each of the first $h$ Colour Refinement steps how many vertices between two graphs share the same colour, we get a graph kernel.
+There, it is possible to define a kernel for graphs, by counting the number of vertices that share the same colour for the first $h$ rounds.
 This Weisfeiler-Leman Graph Kernel has an adequate ability to to classify graphs, while having a significantly better runtime than classical graph kernels. \cite{grohe2021ColorRefinement}
 
-The importance of $\CR$ in theoretical computer science can be seen, when  we consider other characterisations of its distinguishing power.
+One importance of $\CR$ in theoretical computer science can be seen, when  we consider other characterisations of its distinguishing power.
 Thus, $\CR$ can be equivalently characterised by counting homomorphisms from trees and by considering a certain logic.
 Due to Dvo\v r\'ak \cite{dvorak2010RecognizingGraphsa} and Dell, Grohe and Rattan \cite{dell2018LovaszMeets} we have the following characterisation.
 Given two graphs $G$ and $H$, we have that Colour Refinement distinguishes them if, and only if, there is some tree $T$ such that the number of homomorphisms from $T$ to $G$ is different than to $H$.
 Such a characterisation can also be done through logic.
 We define $\C{2}$ as the logic that extends first-order logic by counting quantifiers and only uses up to two variables.
 Then, it was the shown by Cai and Immerman \cite{cai1992OptimalLower} and Immerman and Lander \cite{immerman1990DescribingGraphs} that the following holds: 
-Colour Refinement distinguishes $G$ and $H$ if, and only if, there is a sentence $\phi\in\C{2}$ such that $G\models \varphi$ and $ H\not\models \varphi$.
+Colour Refinement distinguishes $G$ and $H$ if, and only if, there is a $\C{2}$-sentence which is satisfied by $G$, but not by $H$.
 
 From the above examples it can be seen that while Colour Refinement is a simple procedure, it can be applied in various situations.
 This versatility has been one of the reasons for its success and poses the question, whether it could be possible to formulate an analogous procedure for more than graphs.
@@ -50,7 +46,7 @@ When counting homomorphisms from those to hypergraphs, we get that Colour Refine
 Another result with respect to hypergraphs has been achieved by Scheidt and Schweikardt in \cite{scheidt2023CountingHomomorphisms}.
 They devised a 2-sorted counting logic called $\mathsf{GC}^k$ and proved that two hypergraphs $G$ and $H$ satisfy exactly the same $\mathsf{GC}^k$ sentences if, and only if, all hypergraphs with generalised hypertree width $k$ have the same number of homomorphisms to $G$ as to $H$.
 For the case where $k=1$, we then get indistinguishability over the class of all $\alpha$-acyclic hypergraphs, which is a strictly stronger measure of acyclicity than Berge-acyclicity.
-Interestingly, we will encounter $\alpha$-acyclicity and $\mathsf{GC}^1$ in section \ref{sec:RelationalColourRefinement} for characterising relational structures, instead of hypergraphs.
+Interestingly, we will encounter $\alpha$-acyclicity and $\mathsf{GC}^1$ in Section \ref{sec:RelationalColourRefinement} for characterising relational structures, instead of hypergraphs.
 A first effort to extend Colour Refinement to relational structures has been made by Butti and Dalmau in \cite{butti2021FractionalHomomorphism}.
 They also defined Colour Refinement on the incidence graph of a relational structure and proved that this distinguishes two relational structures if, and only if, there is a connected Berge-acyclic relational structure with a different number of homomorphisms to the structures.
 A more recent result with respect to relational structures has been made by Scheidt and Schweikardt \cite{scheidt2025ColorRefinement}.
@@ -59,7 +55,7 @@ Thus it can distinguish structures that the variant in \cite{butti2021Fractional
 Furthermore, they were able to define the logic $\GFC$, which characterises $\RCR$ in the same way as $\C{2}$ characterises classical $\CR$.
 Additionally, the aforementioned $\alpha$-acyclic structures characterise $\RCR$ as well.
 Concretely, we have that two relational structures of the same signature get distinguished by $\RCR$ if, and only if, there is an $\alpha$-acyclic structure of the same signature such that is has a different amount of homomorphisms to the structures.
-A deeper discussion of the results from \cite{scheidt2025ColorRefinement} can be found in section \ref{sec:RelationalColourRefinement}.
+A deeper discussion of the results from \cite{scheidt2025ColorRefinement} can be found in Section \ref{sec:RelationalColourRefinement}.
 
 % Abschnitt nicht so überzeugend
 % Motivation für das fehlt, "gibt für rel struc und hypergraph"
@@ -72,7 +68,7 @@ A deeper discussion of the results from \cite{scheidt2025ColorRefinement} can be
 % In abgespeckt/verbaler um nicht ganze Notation einzuführen
 % Thm 1 aus Intro vereinfachte Form von Thm x
 
-It can be seen that Colour Refinement for graphs, as for relational structures and hypergraphs have been studied.
+It can be seen that there exist multiple comprehensive results for relational structures and hypergraphs.
 Especially the results from \cite{scheidt2025ColorRefinement} seem like a very robust and usable extension for relational structures.
 Furthermore, we notice that functional, as well as non-relational signatures have not yet been investigated.
 As many practical and useful structures use non-relational signatures, for example all algebraic structures, we pose the question how robust the results from \cite{scheidt2025ColorRefinement} are when trying to apply them to structures with (unary) functions.
@@ -89,19 +85,25 @@ Naive $\RCR$ encodes $n$-ary functions $f$ directly as a $(n+1)$-ary relations $
 $\RCR_k$ encodes unary functions $f$ as a family of relations $R_{f^1}$, $R_{f^2}$, $\dots$, where $(x,y)\in R_{f^i}$ if, and only if, $f^i(x)=y$, that is the $n$-times application of $f$ on $x$.
 Furthermore we define $\mathsf{nfGF}(\mathsf C)$ as the logic that is defined as $\GFC$ over non-relational signatures but does not allow the nesting of terms. 
 Additionally we define $\GFC_k$ as the logic that is the normal extension of $\GFC$ to non-relational signatures but terms are only allowed to have an alternation-depth of function-applications of $k$.
+We further call an encoding of a non-relational structure as a relational one total, if the encoding of every function is defined for every value in the function-domain and we call the structure functional, if the encoding of every function defines at most one value for every element in the function-domain.
 We then achieve the following results.
 
-\textbf{Theorem \ref{thm:ThmA}}:
-For a non-relational signature $\sigma$ and two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$, we have that naive $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \mathsf{nfGF}(\mathsf C)$ of signature $\sigma$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+\begin{theorem}[Theorem \ref{thm:ThmA}]
+For a signature $\sigma$ and two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$, naive $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \mathsf{nfGF}(\mathsf C)$ of signature $\sigma$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+\end{theorem}
 
-\textbf{Theorem \ref{thm:ThmB}}:
-For a non-relational signature $\sigma$ that only contains relation-symbols and unary function-symbols, two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ and a $k\in\mathbb N$, we have that $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \GFC_k$ of signature $\sigma$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+\begin{theorem}[Theorem \ref{thm:ThmB}]
+For a signature $\sigma$ that only contains relation symbols and unary function symbols, two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ and a $k\in\mathbb N$, $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \GFC_k$ of signature $\sigma$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+\end{theorem}
 
-\textbf{Theorem \ref{thm:nRCRNotCharacByHomCount}}:
-There exist two families of $\sigma$-structures $(\mathfrak A_i)_{i\in\mathbb N_{\geq 4}}$ and $(\mathfrak B_i)_{i\in\mathbb N_{\geq 4}}$, such that naive $\RCR$ distinguishes $\mathfrak A_i$ and $\mathfrak B_i$ for all $i\geq4$, but there does not contain an acyclic, $\sigma$-structure that distinguishes $\mathfrak A_i$ and $\mathfrak B_i$ by number of homomorphism.
+\begin{theorem}[Theorem \ref{thm:nRCRNotCharacByHomCount}]
+There exists a signature such that two structures of it get distinguished by naive $\RCR$ if, and only if, there exists an acyclic and functional structure that distinguishes the encodings by homomorphism count.
+Additionally, there cannot exist an acyclic, total encoding that has differently many homomorphisms to the encodings.
+\end{theorem}
 
-\textbf{Theorem \ref{thm:ThmD}}:
-For two symmetric, relational structures $\mathfrak A$ and $\mathfrak B$, we have that $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a symmetric, acyclic structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by number of homomorphism.
+\begin{theorem}[Theorem \ref{thm:ThmD}]
+For two symmetric, relational structures $\mathfrak A$ and $\mathfrak B$, $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a symmetric, acyclic structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by number of homomorphism.
+\end{theorem}
 
 The methods used to achieve the above results rely heavily on the proofs from \cite{scheidt2025ColorRefinement}.
 For the logical characterisation of structures with functions we translate both structures to relational structures and translate any formula to a valid $\GFC$-formula over a relational signature.
@@ -109,10 +111,10 @@ The same is done in reverse as well.
 For the characterisation through homomorphism counting, we give a family of counterexamples.
 
 The structure of this thesis is as follows.
-We begin by defining notation and fundamental definitions in section \ref{sec:Preliminaries}.
-Then in section \ref{sec:RelationalColourRefinement} we present and explain the results from \cite{scheidt2025ColorRefinement}.
-Afterwards, we continue in section \ref{sec:RelationalColourRefinemetForStructuresWithFunctions} by considering structures with functions, where we will first show the logical characterisation for the two approaches, before then discussing the characterisation through homomorphism counting.
-Lastly, we discuss the restriction to symmetric structures in section \ref{sec:RelationalColourRefinementForSymmetricStructures}.
+We begin by defining notation and fundamental definitions in Section \ref{sec:Preliminaries}.
+Then in Section \ref{sec:RelationalColourRefinement} we present and explain the results from \cite{scheidt2025ColorRefinement}.
+Afterwards, we continue in Section \ref{sec:RelationalColourRefinemetForStructuresWithFunctions} by considering structures with functions, where we will first show the logical characterisation for the two approaches, before then discussing the characterisation through homomorphism counting.
+Lastly, we discuss the restriction to symmetric structures in Section \ref{sec:RelationalColourRefinementForSymmetricStructures}.
 
 % Erst Intro noch fertig machen
 % Dann Beweise am Ende fertig

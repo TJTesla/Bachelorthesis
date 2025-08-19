@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  18 AUG 2025 22:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  19 AUG 2025 17:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1066,54 +1066,54 @@ Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count347
 )
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
-5.
+4.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-Package scrbase Info: activating english \abstractname on input line 115.
-Package scrbase Info: activating english \partname on input line 115.
-Package scrbase Info: activating english \figurename on input line 115.
-Package scrbase Info: activating english \tablename on input line 115.
-Package scrbase Info: activating english \contentsname on input line 115.
-Package scrbase Info: activating english \listfigurename on input line 115.
-Package scrbase Info: activating english \listtablename on input line 115.
-Package scrbase Info: activating english \refname on input line 115.
-Package scrbase Info: activating english \indexname on input line 115.
-LaTeX Info: Redefining \microtypecontext on input line 115.
-Package microtype Info: Applying patch `item' on input line 115.
-Package microtype Info: Applying patch `toc' on input line 115.
-Package microtype Info: Applying patch `eqnum' on input line 115.
-Package microtype Info: Applying patch `footnote' on input line 115.
-Package microtype Info: Applying patch `verbatim' on input line 115.
-LaTeX Info: Redefining \microtypesetup on input line 115.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+Package scrbase Info: activating english \abstractname on input line 114.
+Package scrbase Info: activating english \partname on input line 114.
+Package scrbase Info: activating english \figurename on input line 114.
+Package scrbase Info: activating english \tablename on input line 114.
+Package scrbase Info: activating english \contentsname on input line 114.
+Package scrbase Info: activating english \listfigurename on input line 114.
+Package scrbase Info: activating english \listtablename on input line 114.
+Package scrbase Info: activating english \refname on input line 114.
+Package scrbase Info: activating english \indexname on input line 114.
+LaTeX Info: Redefining \microtypecontext on input line 114.
+Package microtype Info: Applying patch `item' on input line 114.
+Package microtype Info: Applying patch `toc' on input line 114.
+Package microtype Info: Applying patch `eqnum' on input line 114.
+Package microtype Info: Applying patch `footnote' on input line 114.
+Package microtype Info: Applying patch `verbatim' on input line 114.
+LaTeX Info: Redefining \microtypesetup on input line 114.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 115.
+LaTeX Info: Redefining \showhyphens on input line 114.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1144,7 +1144,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 115.
+Package hyperref Info: Link coloring ON on input line 114.
 
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write4
@@ -1157,7 +1157,7 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 115.
+(scrartcl)           before \begin{document} on input line 114.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
@@ -1171,12 +1171,12 @@ File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 Package todonotes Warning: The length marginparwidth is less than 2cm and will 
 most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
-loading the todonotes package. on input line 115.
+loading the todonotes package. on input line 114.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
-29.
+28.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1185,36 +1185,36 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-29.
+28.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-29.
+28.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-129.
+128.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-129.
+128.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 129.
+(Font)              <14.4> on input line 128.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 129.
+(Font)              <10> on input line 128.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 129.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 129
+(Font)              <7> on input line 128.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 128
 .
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1223,7 +1223,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 129
+LaTeX Font Info:    Trying to load font information for U+msb on input line 128
 .
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1233,13 +1233,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 139.
+(Font)              <10.95> on input line 138.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 139.
+(Font)              <8> on input line 138.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 139.
+(Font)              <6> on input line 138.
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 145.
+ine 144.
 
 
 [1
@@ -1265,7 +1265,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
 
 [3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 95.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 92.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
@@ -1279,17 +1279,31 @@ File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 [4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
-8.
+9.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)) (./rcr.tex
+)
+Overfull \hbox (34.11972pt too wide) in paragraph at lines 60--61
+[]\T1/lmr/m/n/10.95 (-20) for ev-ery func-tion sym-bol $\OML/lmm/m/it/10.95 f \
+OMS/lmsy/m/n/10.95 2 \OML/lmm/m/it/10.95 ^^[$ \T1/lmr/m/n/10.95 (-20) of ar-ity
+ $\OML/lmm/m/it/10.95 k$ \T1/lmr/m/n/10.95 (-20) and ev-ery $\OT1/lmr/m/n/10.95
+ (-20) (\OML/lmm/m/it/10.95 x[]; [] ; x[]\OT1/lmr/m/n/10.95 (-20) )$\T1/lmr/m/n
+/10.95 (-20) , $\OML/lmm/m/it/10.95 '\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10
+.95 f\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; [] ; x[]\OT1/lmr/m/n/10
+.95 (-20) )) = \OML/lmm/m/it/10.95 f\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.
+95 '\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]\OT1/lmr/m/n/10.95 (-20) )
+\OML/lmm/m/it/10.95 ; [] ; '\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]\O
+T1/lmr/m/n/10.95 (-20) ))$\T1/lmr/m/n/10.95 (-20) . 
+ []
+
+) (./rcr.tex
 
 [5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
 
 [6]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 75.
+(Font)              <5> on input line 77.
 
 
 [7]
@@ -1376,11 +1390,11 @@ OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 [25]
 
 [26]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <20.74> on input line 1050.
+
 
 [27]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 1052.
-
 
 [28]
 
@@ -1417,11 +1431,11 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34271 strings out of 473190
- 680379 string characters out of 5715801
+ 34280 strings out of 473190
+ 680430 string characters out of 5715801
  1302569 words of memory out of 5000000
- 56301 multiletter control sequences out of 15000+600000
- 728194 words of font info for 377 fonts, out of 8000000 for 9000
+ 56300 multiletter control sequences out of 15000+600000
+ 728680 words of font info for 380 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,13n,131p,10901b,1210s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
@@ -1444,10 +1458,10 @@ r/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/tex
 live/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/t
 exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (35 pages, 541137 bytes).
+Output written on thesis.pdf (35 pages, 538488 bytes).
 PDF statistics:
- 618 PDF objects out of 1000 (max. 8388607)
- 525 compressed objects within 6 object streams
- 145 named destinations out of 1000 (max. 500000)
- 92813 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 623 PDF objects out of 1000 (max. 8388607)
+ 530 compressed objects within 6 object streams
+ 149 named destinations out of 1000 (max. 500000)
+ 92821 words of extra memory for PDF output out of 106986 (max. 10000000)
 
