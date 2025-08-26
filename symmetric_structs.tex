@@ -1,14 +1,16 @@
 \section {Relational Colour Refinement for Symmetric Structures}
 \label{sec:RelationalColourRefinementForSymmetricStructures}
 
-One interesting question that can be posed when looking at the characterisation of RCR through homomorphism counting is, what restriction to the class of structures can be made.
+One interesting question that can be posed when looking at the characterisation of RCR through homomorphism counting is, which restrictions to the class of structures can be made.
 Concretely, which subclass $\mathcal S$ of the relational structures can be chosen, such that we get the following equivalence:
 Two structures $\mathfrak A$ and $\mathfrak B$ from $\mathcal S$ get distinguished by RCR if, and only if, there is an acyclic structure $\mathfrak C$ from $\mathcal S$ with $\hom(\mathfrak C, \mathfrak A)\neq \hom(\mathfrak C, \mathfrak B)$.
 
-We have seen that this cannot be done for the class of all total structures.
-Another possible restriction is the class of all symmetric structures.
+This is not possible for the class of total structures, as they are defined in Definition \ref{def:TotalStructures}.
+Consider the naive encodings of the families from Lemma \ref{lem:totalityNotEnforcable}.
+These are distinguished by RCR, but there does not exist an acyclic, total structure, which distinguishes them by homomorphism counts.
+Another class which can be investigated is the class of symmetric structures.
 
-\begin{definition}[Symmetric Structures]
+\begin{definition}[Symmetric structures]
 	Let $\sigma$ be a relational signature.
 	A structure $\mathfrak A$ of signature $\sigma$ is a symmetric structure, if for every relation and every tuple in those relations, the order of the elements is irrelevant.
 	This means, that every relation $R$ with arity $k$ is a subset of all possible subsets of $A$ with exactly $k$ elements.
@@ -32,7 +34,8 @@ As a reminder on notation, for a $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)$, a ho
 	Note that the definitions of $\phi(\pi(\mathbf x))$ and $\pi(\phi(\mathbf x))$ are 
 	$$\phi(\pi(\mathbf x)) = (\phi(x_{\pi(1)}), \phi(x_{\pi(2)}),\dots,\phi(x_{\pi(k)}))$$
 	and
-	$$\pi(\phi(\mathbf x)) = (\phi(\mathbf x)_{\pi(1)},\phi(\mathbf x)_{\pi(2)},\dots,\phi(\mathbf x)_{\pi(k)}).$$
+	$$\pi(\phi(\mathbf x)) = (\phi(\mathbf x)_{\pi(1)},\phi(\mathbf x)_{\pi(2)},\dots,\phi(\mathbf x)_{\pi(k)}),$$
+	respectively.
 	From these, we directly get
 	$$\phi(\pi(\mathbf x))_i=\phi(x_{\pi(i)})=(\phi(x_1),\phi(x_2),\dots,\phi(x_2))_{\pi(i)}=\phi(\mathbf x)_{\pi(i)}=\pi(\phi(\mathbf x))_i.$$
 	Therefore the lemma must hold.
@@ -127,15 +130,14 @@ We can now prove the main result of this section.
 	However, we will only prove the claim for $\mathfrak A$, as the case for $\mathfrak B$ can be proven completely analogously.
 	
 	Let $\phi\in \Hom(\mathfrak C',\mathfrak A)$.
-	Then for every $R\in \sigma$, if $\mathbf x\in R^{\mathfrak C'}$, then $\phi(\mathbf x)\in R^{\mathfrak A}$.
 	Now consider $\mathbf x\in R^{\mathfrak C}$ for a $R\in \sigma$ with arity $k$ and we will proceed with a case distinction.
 	If $\mathbf x\in \mathbf{C'}$, then we have $\mathbf x\in R^{\mathfrak C'}$ and by assumption $\phi(\mathbf x)\in R^{\mathfrak A}$.
-	If $\mathbf x\in \mathbf C\setminus\mathbf{C'}$, then there must be a $\pi\in \mathcal S_k$, such that $\pi(\mathbf x)\in \mathbf{C'}$ and further $\pi(\mathbf x)\in R^{\mathfrak C'}$.
-	Then by assumption we get that $\phi(\pi(\mathbf x))\in R^{\mathfrak A}$.
+	If $\mathbf x\in \mathbf C\setminus\mathbf{C'}$, then there must be a $\pi\in \mathcal S_k$, such that $\pi(\mathbf x)\in \mathbf{C'}$ and $\pi(\mathbf x)\in R^{\mathfrak C'}$.
+	Then by assumption, we get that $\phi(\pi(\mathbf x))\in R^{\mathfrak A}$.
 	Using Lemma \ref{HomAndPermutCommute}, we know that $\phi(\pi(\mathbf x))=\pi(\phi(\mathbf x))\in R^{\mathfrak A}$.
 	Now let $\pi'\in \mathcal S_k$, such that $\pi'\circ\pi=\operatorname{id}\in \mathcal S_k$.
-	As $\mathfrak A$ is symmetric, we know that $\pi'(\pi(\varphi(\mathbf x)))\in R^{\mathfrak A}$ and further we get that $\pi'(\pi(\varphi(\mathbf x)))=\phi(\mathbf x)$.
-	Therefore $\phi(\mathbf x)\in R^{\mathfrak A}$ and $\phi\in\Hom(\mathfrak C,\mathfrak A)$ follows.
+	As $\mathfrak A$ is symmetric, we know that $\pi'(\pi(\varphi(\mathbf x)))\in R^{\mathfrak A}$ and with $\pi'(\pi(\varphi(\mathbf x)))=\phi(\mathbf x)$ it follows that $\phi(\mathbf x)\in R^{\mathfrak A}$.
+	We therefore have shown that $\phi\in\Hom(\mathfrak C,\mathfrak A)$.
 	
 	Now let $\phi\notin\Hom(\mathfrak C',\mathfrak A)$.
 	Then there is a $R\in\sigma$ with arity $k$ and a $\mathbf x\in R^{\mathfrak C'}$ with $\phi(\mathbf x)\notin R^{\mathfrak A}$.

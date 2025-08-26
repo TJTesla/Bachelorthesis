@@ -2,7 +2,7 @@
 % i7 Seminar Report Template
 % Version November 8, 2023
 
-\documentclass[a4paper,11pt,DIV=15]{scrartcl} % Do not edit this line.
+\documentclass[a4paper,11pt,DIV=14]{scrartcl} % Do not edit this line.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -16,6 +16,8 @@
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
 % \renewcommand{theta}{\vartheta} % if you want
+
+% \usepackage[textwidth=426p]{geometry}
 
 % Math packages
 \usepackage{amsmath}
@@ -61,16 +63,19 @@
 	citecolor={rwth-green}
 }
 
+
+
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}{Proposition}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{corollary}{Corollary}[section]
-\newtheorem{conjecture}{Conjecture}[section]
-\newtheorem{claim}{Claim}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{claim}[theorem]{Claim}
 \theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{remark}{Remark}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
 
 % Misc packages
 \usepackage{lipsum}
@@ -136,7 +141,7 @@
 	Especially the characterisations are similar to classical Colour Refinement.
 	As such, its distinguishing power is equivalent to that of the guarded fragment of counting logic and to that of counting homomorphisms from $\alpha$-acyclic relational structures.
 	
-	In this thesis, we want to present the results of Scheidt and Schweikardt and investigate the robustness their algorithm and characterisations are.
+	In this thesis, we want to present the results of Scheidt and Schweikardt and investigate the robustness of their algorithm and characterisations.
 	Concretely, we consider extending the class of relational structures to that of all structures and of structures with relations and unary functions, respectively.
 	We find two logical characterisations but disprove the existence of a characterisation through homomorphism counting.
 	Furthermore, we discuss for which restrictions on relational structures the characterisation through homomorphism counting remains and present two cases of restrictions, one for which the characterisation holds and one for which it does not.
@@ -148,17 +153,17 @@
 
 %TODO The content of your report gos below.
 
-\input{intro}
+\include{intro}
 
-\input{preliminaries}
+\include{preliminaries}
 
-\input{rcr}
+\include{rcr}
 
-\input{functions}
+\include{functions}
 
-\input{symmetric_structs}
+\include{symmetric_structs}
 
-\input{conclusion}
+\include{conclusion}
 
 
 \clearpage

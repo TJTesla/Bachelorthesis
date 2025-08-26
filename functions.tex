@@ -844,15 +844,15 @@ We will in the following prove the former claim and then show the latter claim, 
 		We see that $\chi(\mathbf b_i)=\mathbf u_{\ipo k} = \chi(\mathbf a_{\ipo k})$.
 		
 		If there is a $c\in \set(\mathbf u_{\ipo k})$ with $c\neq v_{y,z}$, then by definition of $\chi$, we have $c\in \set(\mathbf b_i)\cap \set(\mathbf a_{\ipo k})$.
-		Therefore $\mathbf b_i,\mathbf a_{\ipo k}\in V_c$ and because $J'$ is a join tree, $\mathbf b_i$ and $\mathbf a_{\ipo k}$ have to be connected.
+		Therefore, $\mathbf b_i,\mathbf a_{\ipo k}\in V_c$ and because $J'$ is a join tree, $\mathbf b_i$ and $\mathbf a_{\ipo k}$ have to be connected.
 		
 		If $\set(\mathbf u_{\ipo k})=\{v_{y,z}\}$, we have four possible cases.
 		If $y\in \set(\mathbf b_i)\cap \set(\mathbf a_{\ipo k})$ or $z\in \set(\mathbf b_i)\cap \set(\mathbf a_{\ipo k})$, then we can do the same as before by setting $c=y$ or $c=z$, respectively.
 		Otherwise we have $y\in\set(\mathbf b_i)$ and $z\in \set(\mathbf a_{\ipo k})$, or $z\in\set(\mathbf b_i)$ and $y\in \set(\mathbf a_{\ipo k})$.
 		We will only consider the former option, as the latter can be proven analogously.
-		From our beginning assumption we know that $(\mathbf xy),(\mathbf xz)\in R_f$. Choose some $x\in\mathbf x$, and $(\mathbf xy),(\mathbf xz)\in V_x$ follows.
+		From our beginning assumption we know that $(\mathbf xy),(\mathbf xz)\in R_f^{\mathfrak C'}$. Choose some $x\in\mathbf x$, and $(\mathbf xy),(\mathbf xz)\in V_x$ follows.
 		Furthermore, we have $\mathbf b_i,(\mathbf xy)\in V_y$ and $\mathbf a_{\ipo k},(\mathbf xz)\in V_z$.
-		Since $J'$ is a join tree, we thus know that $\mathbf b_i$ is connected with $(\mathbf xy)$, which in turn is connected with $(\mathbf xz)$, which again is connected with $\mathbf a_{\ipo k}$.
+		Since $J'$ is a join tree, we thus know that $\mathbf b_i$ is connected with $(\mathbf xy)$, which in turn is connected with $(\mathbf xz)$, which is connected with $\mathbf a_{\ipo k}$.
 		Therefore $\mathbf b_i$ and $\mathbf a_{\ipo k}$ are connected.
 		
 		Thus we have found a cycle in $J'$, which is a contradiction to it being a join tree.
@@ -871,15 +871,15 @@ We will in the following prove the former claim and then show the latter claim, 
 		If $c\neq v_{y,z}$, then $c\in C'$, thus consider $V_c$.
 		By definition there are $\mathbf a,\mathbf b\in V_c$ such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
 		Because $J'$ is a join tree, $V_c$ must induce a connected subtree.
-		Thus there must be $\mathbf a_0,\dots,\mathbf a_k\in V_c$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=\mathbf b$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
-		By definition we then get, that there must be $\chi(\mathbf a_0),\chi(\mathbf a_k)\in S$ and we get $\chi(\mathbf a_0)=\chi(\mathbf a)=\mathbf u$, $\chi(\mathbf a_k)=\chi(\mathbf b)=\mathbf v$ and $\{\chi(\mathbf a_{i-1},\mathbf a_i)\}\in E(J''))$ for all $i\in[k]$.
+		Thus there must be $\mathbf a_0,\dots,\mathbf a_k\in V_c$, such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=\mathbf b$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
+		By definition, we then get that there must be $\chi(\mathbf a_0),\dots,\chi(\mathbf a_k)\in S$ and further $\chi(\mathbf a_0)=\chi(\mathbf a)=\mathbf u$, $\chi(\mathbf a_k)=\chi(\mathbf b)=\mathbf v$ and $\{\chi(\mathbf a_{i-1}),\chi(\mathbf a_i)\}\in E(J''))$ for all $i\in[k]$.
 		Therefore, $\mathbf u$ and $\mathbf v$ are connected in $S$.
 		
 		If $v=v_{y,z}$, we again define $\mathbf a,\mathbf b\in V(J')$ such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
 		If $\mathbf a,\mathbf b\in V_y$ or $\mathbf a,\mathbf b\in V_z$, then we can proceed exactly as in the former case with $v=y$ or $v=z$, respectively.
 		If that is not the case, then either $\mathbf a\in V_y$ and $\mathbf b\in V_z$, or the other way round.
-		We will only prove the former case, as the latter case can proven analogously.
-		Since the following will depend on it, we will now prove the following equality: $S=\{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
+		We will only prove the former case, as the latter case can be proven analogously.
+		Since the following will depend on it, we will now prove that $S=\{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
 		
 		$\supseteq$:
 		Let $\mathbf u \in \{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
@@ -896,13 +896,14 @@ We will in the following prove the former claim and then show the latter claim, 
 		We now get a path in $V_y$ with the elements $\mathbf a_0,\dots,\mathbf a_k\in V_y$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=(\mathbf xy)$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
 		We also get a path in $V_z$ with the elements $\mathbf b_0,\dots,\mathbf b_\ell\in V_z$ such that $\mathbf b_0=(\mathbf xz)$, $\mathbf b_\ell = \mathbf b$ and $\{\mathbf b_{i-1},\mathbf b_i\}\in E(J')$.
 		Therefore with the above equation, we have two paths in $S$: $\chi(\mathbf a_0),\dots,\chi(\mathbf a_k)$ and $\chi(\mathbf b_0),\dots,\chi(\mathbf b_\ell)$, where $\chi(\mathbf a_0)=\mathbf u$ and $\chi(\mathbf b_\ell)=\mathbf v$.
-		However, $\chi(\mathbf a_k)=\chi((\mathbf xy))=(\mathbf x'v_{y,z})=\chi((\mathbf xz))=\chi(\mathbf b_0)$.
+		However, $\chi(\mathbf a_k)=\chi((\mathbf xy))=(\chi(\mathbf x)v_{y,z})=\chi((\mathbf xz))=\chi(\mathbf b_0)$.
 		Therefore, we get one path from $\mathbf u$ to $\mathbf v$ in $S$.
 	\end{proof}
 	
 	\paragraph*{Property c.:}
 	To show that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$, we will give a mapping $\pi : \Hom(\mathfrak C',\mathfrak A')\to\Hom(\mathfrak C'',\mathfrak A')$ from homomorphisms from $\mathfrak C'$ to $\mathfrak A'$ to homomorphisms from $\mathfrak C''$ to $\mathfrak A'$.
-	We will then show that $\pi$ is a bijection, from which follows that both sets have the same cardinality, which then proves the claim for $\mathfrak A'$.
+	We will then show that $\pi$ is a bijection, from which follows that both sets have the same cardinality.
+	This then proves the claim for $\mathfrak A'$.
 	For $\mathfrak B'$, the proof is completely analogous, which is why it will be omitted.
 	Let $\phi\in \Hom(\mathfrak C',\mathfrak A')$.
 	We now define $\phi'\coloneqq \pi(\phi)$ as
@@ -928,8 +929,8 @@ We will in the following prove the former claim and then show the latter claim, 
 		
 		If $v_{y,z}\in\set(\mathbf c)$, then there exists a $\mathbf c'\in R^{\mathfrak C'}$ such that $\chi(\mathbf c')=\mathbf c$. 
 		We thus get $\phi(\mathbf c')\in R^{\mathfrak A'}$.
-		We also have that $\phi(\mathbf c')=\phi'(\mathbf c)$, because for all $x \in \set(\mathbf c)\setminus \{v_{y,z}\}$, we also have $x\in\set(\mathbf c')$ and $\phi(x)=\phi'(x)$.
-		For $v_{y,z}$ we have that $\phi'(v_{y,z})=\phi(y)=\phi(z)$.
+		It holds that $\phi(\mathbf c')=\phi'(\mathbf c)$, because for all $x \in \set(\mathbf c)\setminus \{v_{y,z}\}$, it follows that $x\in\set(\mathbf c')$ and $\phi(x)=\phi'(x)$.
+		For $v_{y,z}$, $\phi'(v_{y,z})=\phi(y)=\phi(z)$ holds.
 		Therefore, $\phi'(\mathbf c)\in R^{\mathfrak A'}$ follows, which was to be shown.
 	\end{proof}
 	
@@ -943,11 +944,11 @@ We will in the following prove the former claim and then show the latter claim, 
 		Let $\phi_1,\phi_2\in\Hom(\mathfrak C',\mathfrak A')$, $\phi_1\neq\phi_2$ and define $\phi_1'\coloneqq \pi(\phi_1)$ and $\phi_2'\coloneqq \pi(\phi_2)$.
 		Our goal is to show that $\phi_1'\neq \phi_2'$.
 		There has to be a $u\in C'$ such that $\phi_1(u)\neq\phi_2(u)$, otherwise they would be the same function.
-		We now do a case distinction.
+		We now have a case distinction.
 		
-		\emph{Case 1:} $u\notin\{y,z\}$. Then we have
+		\emph{Case 1:} $u\notin\{y,z\}$. Then
 		$$\phi_1'(u)=\phi_1(u)\neq \phi_2(u)=\phi_2'(u).$$
-		\emph{Case 2:} $u\in \{y,z\}$. Then we have 
+		\emph{Case 2:} $u\in \{y,z\}$. Then
 		$$\phi_1'(v_{y,z})=\phi_1(y)=\phi_1(z)=\phi_1(u)\neq \phi_2(u)=\phi_2(z)=\phi_2(y)=\phi_2'(v_{y,z}).$$
 		In both cases we have found an element that gets mapped differently, thus $\phi_1'\neq\phi_2'$ must follow.
 	\end{proof}
@@ -975,12 +976,12 @@ We will in the following prove the former claim and then show the latter claim, 
 		Therefore $\phi(\mathbf c)\in R^{\mathfrak A'}$.
 	\end{proof}
 	
-	We now have proved all properties.
-	Therefore, we showed that it is possible to eliminate collisions, while keeping the number of homomorphisms to $\mathfrak A'$ and $\mathfrak B'$ the same and reducing the number of elements by one and still have an acyclic structure.
+	We now have proved the properties above.
+	Therefore, we showed that it is possible to eliminate collisions, while keeping the number of homomorphisms to $\mathfrak A'$ and to $\mathfrak B'$ the same, reducing the number of elements by one and still having an acyclic structure.
 	We thus can apply this procedure to any collision, until there are no collisions left, but then the structure is functional.
 \end{proof}
 
-From the above lemma we get that given an acyclic, distinguishing structure, we can construct a new structure, which is also acyclic and distinguishing but in addition also functional.
+From the above lemma it follows that given an acyclic, distinguishing structure, it is possible to construct a new structure, which is also acyclic and distinguishing but in addition also functional.
 One example how this can be applied can be seen in Figure \ref{fig:constructFunctionalStruct}.
 
 \begin{figure}
@@ -1021,7 +1022,7 @@ One example how this can be applied can be seen in Figure \ref{fig:constructFunc
 	\label{fig:constructFunctionalStruct}
 \end{figure}
 
-Now that we have proved that it is generally possible to enforce a distinguishing, acyclic structure to be functional, we now want to proceed to the proof that totality cannot be enforced.
+Now that we have proved that it is generally possible to enforce a distinguishing, acyclic structure to be functional, we want to proceed by proving that totality cannot be enforced.
 This proof will work as follows.
 We will give two families of structures over the signature $\sigma=\{E/2,f/1\}$. 
 Any two elements from these families with the same size can be distinguished by naive RCR, thus there exists an acyclic relational structure that distinguishes their encodings by homomorphism count.
@@ -1112,7 +1113,8 @@ For every $n\in\mathbb N_{\geq 4}$ it is clear that naive RCR distinguishes $\ma
 The formula 
 $$\phi_n=\exists^{\geq 2\cdot (n-1)}(x,y). \operatorname E(x,y) \in \mathsf{nfGF}(\mathsf{C})$$
 distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ and using Theorem \ref{thm:ThmA}, this is equivalent to naive RCR distinguishing $\mathfrak A_n$ and $\mathfrak B_n$.
-It now only remains to show that there cannot be a total and acyclic structure that distinguishes the encodings $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
+Therefore, there exists an acyclic structure that distinguishes the encodings by homomorphism counts.
+It now only remains to show that this structure cannot be total, acyclic and distinguishing.
 
 \begin{lemma}
 	Let $n\in\mathbb N_{\geq 4}$ and let $\mathfrak C_n'$ be an acyclic $\sigma'$-structure that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism counts.
@@ -1124,14 +1126,14 @@ It now only remains to show that there cannot be a total and acyclic structure t
 	As such, let $\mathfrak C_n'$ be a total $\sigma'$-structure.
 	
 	We observe that if $\mathfrak C_n'$ contains $R_f$-loops, that is an element $x\in C_n'$ such that $(x, x)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ is not distinguishing.
-	In fact, then we have $\hom(\mathfrak C_n',\mathfrak A_n')=\hom(\mathfrak C_n',\mathfrak B_n')=0$.
+	In fact, then $\hom(\mathfrak C_n',\mathfrak A_n')=\hom(\mathfrak C_n',\mathfrak B_n')=0$.
 	Otherwise, there would exist a homomorphism $\phi$ to either $\mathfrak A_n'$ or $\mathfrak B_n'$.
 	Let $c\in C_n'$ be such that $(c,c)\in R_f^{\mathfrak C_n'}$.
 	Then we would have $(\phi(c),\phi(c))\in R_f^{\mathfrak A_n'}$ or $(\phi(c),\phi(c))\in R_f^{\mathfrak B_n'}$, respectively.
 	But in either structure, there does not exist such a loop.
 	
-	Using similar arguments, we can reason that if $\mathfrak C_n'$ contains $R_f$-2-cycles, that is two elements $c$ and $d$ such that $(c, d), (d, c)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ cannot be distinguishing, as it does not have any homomorphisms to neither $\mathfrak A_n'$ nor $\mathfrak B_n'$.
-	Otherwise there again would be a homomorphism $\phi$ to either $\mathfrak A_n'$ or $\mathfrak B_n'$.
+	Using similar arguments, we can reason that if $\mathfrak C_n'$ contains $R_f$-2-cycles, that is two elements $c$ and $d$ such that $(c, d), (d, c)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ cannot be distinguishing, as it does not have any homomorphisms to either $\mathfrak A_n'$ or $\mathfrak B_n'$.
+	Otherwise there again would be a homomorphism $\phi$ to $\mathfrak A_n'$ or $\mathfrak B_n'$.
 	Let $c,d\in C_n'$ form such a $R_f$-2-cycle.
 	Then we would have $(\phi(c),\phi(d)),(\phi(d),\phi(c))\in R_f^{\mathfrak A_n'}$ or $(\phi(c),\phi(d)),(\phi(d),\phi(c))\in R_f^{\mathfrak B_n'}$, respectively.
 	But in either structure there does not exist such a 2-cycle.
@@ -1139,20 +1141,19 @@ It now only remains to show that there cannot be a total and acyclic structure t
 	From the two observations above it follows that if $\mathfrak C_n'$ has cardinality $1$ or $2$, then it cannot be distinguishing, as it is total and therefore would need to contain either $R_f$-loops or $R_f$-2-cycles.
 	When now considering that $\mathfrak C_n'$ is total, thus for every $c$ there is a $d$ such that $(c,d)\in R_f^{\mathfrak C_n'}$, it is obvious that $\mathfrak C_n'$ must contain a $R_f$ cycle of size greater than $2$.
 	Thus the Gaifman-Graph of $\mathfrak C_n'$ is not acyclic. 
-	As it can be found in \cite{scheidt2025ColorRefinement} and \cite{brault-baron2014HypergraphAcyclicity}, this is equivalent to $\mathfrak C_n'$ itself not being acyclic.
+	As it can be found in \cite{brault-baron2014HypergraphAcyclicity} and \cite{scheidt2025ColorRefinement}, this is equivalent to $\mathfrak C_n'$ itself not being acyclic.
 	So if $\mathfrak C_n'$ is total and does not contain $R_f$-loops and $R_f$-2-cycles, then it cannot be acyclic.
 \end{proof}
 
 We thus have showed that there cannot exist an acylic and total $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
 However, in Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc} we showed that the existence of an acyclic, total and functional $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ is equivalent to the existence of an acyclic $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
 Since there is no acyclic and total $\mathfrak C_n'$, there also is no acyclic, total and functional $\mathfrak C_n''$ that distinguishes, and therefore there is no $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ by homomorphism count.
-Let us formalize our findings.
 
 \begin{theorem}
-	Let $\sigma$ be a signature that contains function symbols, $\mathfrak A$ and $\mathfrak B$ two $\sigma$-structures and let $\sigma'$, $\mathfrak A'$ and $\mathfrak B'$ their respective encodings.
+	Let $\sigma$ be a signature, let $\mathfrak A$ and $\mathfrak B$ be two $\sigma$-structures and let $\sigma'$, $\mathfrak A'$ and $\mathfrak B'$ be their respective encodings.
 	Now consider the following statements:
 	\begin{enumerate}
-		\item Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
+		\item Naive Relational Colour Refinement distinguishes $\mathfrak A$ and $\mathfrak B$.
 		\item There exists an acyclic and functional $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
 		\item There exists an acyclic $\sigma$-structure $\mathfrak C$ such that $\hom(\mathfrak C,\mathfrak A)\neq \hom(\mathfrak C,\mathfrak B)$.
 	\end{enumerate}
@@ -1170,13 +1171,13 @@ Let us formalize our findings.
 	
 	\textbf{\emph{1.} does not imply \emph{3.}}
 	By Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, Statement \emph{3.} is equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings by homomorphism count.
-	However as we showed in Lemma \ref{lem:totalityNotEnforcable}, this is not implied by the existence of just an acyclic $\sigma'$-structure which distinguishes. 
+	However as we showed in Lemma \ref{lem:totalityNotEnforcable}, this is not implied by the existence of an acyclic $\sigma'$-structure which distinguishes the encodings. 
 	This is however equivalent to statement \emph{1.}.
 \end{proof}
 
-We found that naive RCR cannot be characterised by acyclic structures, as functions inherently result in cycles. 
+We found that naive RCR cannot be characterised by acyclic structures, as the totality of functions inherently result in cycles. 
 When prohibiting loops and 2-cycles, which would not violate the acyclicity, there thus have to be larger cycles which result in the structure not being acyclic.
-The notion of acyclicity with respect to distinguishing by homomorphism count that was used here is therefore strictly weaker than naive RCR.
+The notion of acyclicity with respect to $\alpha$-acyclicity and the used encoding, is therefore strictly weaker than naive RCR.
 However, there could be other classes of structures, which characterise naive RCR in the desired way.
 
 

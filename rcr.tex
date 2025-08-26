@@ -16,9 +16,8 @@ To define RCR, we need the following definitions.
 
 \begin{definition}[Atomic and shared types]
 	Let $\sigma$ be a relational signature and $\mathfrak A$ be a $\sigma$-structure.
-	For every $\mathbf a \in \mathbf A$ we define $\atp(\mathbf a)\coloneqq \{R \in \sigma : \mathbf a\in R\}$ as the set of relations that include $\mathbf a$.
-	For every tuple $\mathbf a\in \mathbf A$ of length $n$ and every tuple $\mathbf b\in \mathbf A$ of length $m$ we define $\stp(\mathbf a, \mathbf b)\coloneqq\{(i, j) \in [n]\times [m] : \mathbf a_i=\mathbf b_j\}$ as the set of all pairs of indices which denote the elements that appear in both $\mathbf a$ and $\mathbf b$.
-	We call $\atp(\mathbf a)$ the atomic type of $\mathbf a$ and call $\stp(\mathbf a,\mathbf b)$ the shared type of $\mathbf a$ and $\mathbf b$.
+	For every $\mathbf a \in \mathbf A$ we define the atomic type $\atp(\mathbf a)\coloneqq \{R \in \sigma : \mathbf a\in R\}$ as the set of relations that include $\mathbf a$.
+	For every tuple $\mathbf a\in \mathbf A$ of length $n$ and every tuple $\mathbf b\in \mathbf A$ of length $m$ we define the shared type $\stp(\mathbf a, \mathbf b)\coloneqq\{(i, j) \in [n]\times [m] : \mathbf a_i=\mathbf b_j\}$ as the set of all pairs of indices which denote the elements that appear in both $\mathbf a$ and $\mathbf b$.
 	As shorthand notation we write $\stp(\mathbf a)$ for $\stp(\mathbf a, \mathbf a)$.
 \end{definition}
 
@@ -29,10 +28,11 @@ Formally, $\rho_0(\mathbf a)\coloneqq(\atp(\mathbf a), \stp(\mathbf a))$.
 For every $i \in \mathbb N_{\geq 1}$ the colour $\rho_i(\mathbf a)$ is made up of $\rho_{i-1}(\mathbf a)$ and the colour of the last round for every tuple that $\mathbf a$ shares an element with, in addition to the information which elements are shared.
 This is formalised as $\rho_{i+1}(\mathbf a)\coloneqq(\rho_{i}(\mathbf a), N_{i+1}^{\mathfrak A}(\mathbf a))$, where
 $$N_{i+1}^{\mathfrak A}\coloneqq \multiset{(\stp(\mathbf a, \mathbf b), \rho_{i}(\mathbf b)) : \mathbf b\in \mathbf A, \stp(\mathbf a, \mathbf b)\neq \emptyset}.$$
-It can easily be verified that if $\rho_i(\mathbf a) \neq \rho_i(\mathbf b)$, then $\rho_{i+1}(\mathbf a)\neq\rho_{i+1}(\mathbf b)$, we therefore get a refinement.
+It can easily be verified that if $\rho_i(\mathbf a) \neq \rho_i(\mathbf b)$, then $\rho_{i+1}(\mathbf a)\neq\rho_{i+1}(\mathbf b)$. 
+We therefore get a refinement.
 This also means there must be a smallest $i_{\mathfrak A} \leq \mathbf A$, such that for every $\mathbf a, \mathbf b\in \mathbf A$, we have that $\rho_{i_{\mathfrak A}}(\mathbf a) = \rho_{i_{\mathfrak A}}(\mathbf b)$ if, and only if, $\rho_{i_{\mathfrak A}+1}(\mathbf a) = \rho_{i_{\mathfrak A}+1}(\mathbf b)$, we then call this colouring the stable colouring.
 For a relational structure $\mathfrak A$ and $i\in \mathbb N$ we define $\operatorname{RC}_i(\mathfrak A)\coloneqq\{\rho_i(\mathbf a) : \mathbf a \in \mathbf A\}$ as the set of colours that get constructed in the $i$-th round of RCR.
-Further, for a relational structure $\mathfrak A$, $i\in \mathbb N$ and $c\in \operatorname{RC}_i(\mathfrak A)$ we write $\operatorname{mult}_{\mathfrak A}(c)\coloneqq \vert \{\mathbf a\in \mathbf A : \rho_i(\mathbf a)=c\}\vert$ for the number of occurrences of the colour $c$.
+Further, for a relational structure $\mathfrak A$, a number $i\in \mathbb N$ and a colour $c\in \operatorname{RC}_i(\mathfrak A)$ we write $\operatorname{mult}_{\mathfrak A}(c)\coloneqq \vert \{\mathbf a\in \mathbf A : \rho_i(\mathbf a)=c\}\vert$ for the number of occurrences of the colour $c$.
 Finally, for two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ we say that Relational Colour Refinement distinguishes $\mathfrak A$ and $\mathfrak B$, if there is an $i \leq \max\{i_{\mathfrak A}, i_{\mathfrak B}\}$ and a colour $c\in \operatorname{RC}_i(\mathfrak A) \cup \operatorname{RC}_i(\mathfrak B)$ such that $\operatorname{mult}_{\mathfrak A}(c)\neq \operatorname{mult}_{\mathfrak B}(c)$.
 
 When comparing this algorithm with the Colour Refinement algorithm for binary structures, we notice similarities.
@@ -185,14 +185,14 @@ This means that two graphs $G$ and $H$ get distinguished by Colour Refinement if
 Similarly, Relational Colour Refinement is characterised by the guarded fragment of counting logic, in short $\GFC$.
 This logic restricts first-order logic with counting quantifiers in the same way, as the guarded fragment of first-order logic $\mathsf{GF}$ restricts $\mathsf{FO}$.
 An investigation of this notion of guards can be found in \cite{gradel1999RestrainingPower}.
-This means that the bound on the number of variables is dropped, but the restriction that quantifiers need to be relativised by an atomic formula is added.
+The guarded fragment drops the bound on the number of variables, but adds the restriction that quantifiers need be relativised by an atomic formula.
 
 \begin{definition}[The guarded fragment of counting logic]
 	\label{def:GFC}
 	For a relational signature $\sigma$ we define the class $\GFC$ over $\sigma$ inductively using the following rules:
 	\begin{enumerate}
 		\item Let $R\in\sigma$ with $\ell=\operatorname{ar}(R)$ and let $x_1,\dots,x_\ell$ be variables. Then $R(x_1,\dots,x_\ell)\in \GFC$.
-		\item Let $a$ and $y$ be two variables. 
+		\item Let $x$ and $y$ be two variables. 
 		Then $x=y\in\GFC$.
 		\item Let $\phi\in\GFC$.
 		Then $\neg(\phi)\in\GFC$.
@@ -206,7 +206,7 @@ This means that the bound on the number of variables is dropped, but the restric
 	
 	The semantics of this logic are analogous to classical Counting Logic, see for example \cite{cai1992OptimalLower}, and also are concretely defined in \cite{scheidt2025ColorRefinement}.
 \end{definition}
-We find that this logic is equivalent to the logic $\mathsf{GC}^1$ as it is defined by the same authors in \cite{scheidt2023CountingHomomorphisms}.
+When comparing $\GFC$ with the logic $\mathsf{GC}^1$, see \cite{scheidt2023CountingHomomorphisms}, we notice that they seem very similar.
 
 Using a pebble game for $\GFC$, called the Guarded-Game, Scheidt and Schweikardt proved the following theorem:
 \begin{theorem}[Theorem B from \cite{scheidt2025ColorRefinement}]
@@ -237,7 +237,7 @@ Again, there is an analogous characterisation for Relational Colour Refinement.
 One obstacle in defining such a characterisation is finding a class that generalises trees for relational structures.
 As a tree is a connected, acyclic graph, we have to find a fitting notion of acyclicity for relational structures.
 As can be seen in \cite{brault-baron2014HypergraphAcyclicity}, there are multiple such definitions possible for hypergraphs, which can be applied to relational structures as well.
-When considering the results from \cite{scheidt2023CountingHomomorphisms} and that $\mathsf{GC}^1$ characterises RCR, it becomes clear that hypergraphs of generalised hypertree width of $1$, or equivalently $\alpha$-acyclic hypergraphs, may be a possible candidate.
+When considering the results from \cite{scheidt2023CountingHomomorphisms} and that $\mathsf{GC}^1$ seems very similar to $\GFC$, it appears that hypergraphs of generalised hypertree width of $1$, or equivalently $\alpha$-acyclic hypergraphs, may be a possible candidate.
 This is in fact the case.
 Let us therefore define $\alpha$-acyclic structures, or in the following just acyclic structures.
 
