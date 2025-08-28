@@ -106,7 +106,7 @@
 \renewcommand{\theta}{\vartheta}
 \renewcommand{\rho}{\varrho}
 
-\newcommand{\term}[1]{\operatorname{\textit{#1}}}
+\newcommand{\term}[1]{\operatorname{\mathit{#1}}}
 
 \def\multiset#1{\ensuremath{\left\{\kern-.35em\left\{#1\right\}\kern-.35em\right\}}}
 \newcommand{\leftmultiset}{\ensuremath{\{\kern-.35em\{}}
@@ -133,18 +133,18 @@
 
 %TODO Provide a short abstract for your report.
 \begin{abstract}
-	Colour Refinement is an iterative graph algorithm that computes a colouring of the vertices, based on the colouring of their direct neighbours.
+	Colour Refinement is an iterative algorithm for graphs that computes a colouring of the vertices, based on the colouring of their direct neighbours.
 	Aside from useful applications in various fields, it is theoretically interesting, due to its characterisations.
 	It was proved that the distinguishing power of Colour Refinement is equivalent to that of counting logic with two variables and to that of counting homomorphisms from trees.
 	Therefore, the question, whether such an algorithm is also possible for extensions of graphs was posed.
-	Recently, Scheidt and Schweikardt defined an algorithm for relational structures with analogous properties.
-	Especially the characterisations are similar to classical Colour Refinement.
-	As such, its distinguishing power is equivalent to that of the guarded fragment of counting logic and to that of counting homomorphisms from $\alpha$-acyclic relational structures.
+	Recently, Scheidt and Schweikardt defined an Colour Refinement algorithm for relational structures with analogous characterisations.
+	Its distinguishing power is equivalent to that of the guarded fragment of counting logic and to that of counting homomorphisms from $\alpha$-acyclic relational structures.
 	
 	In this thesis, we want to present the results of Scheidt and Schweikardt and investigate the robustness of their algorithm and characterisations.
-	Concretely, we consider extending the class of relational structures to that of all structures and of structures with relations and unary functions, respectively.
+	Concretely, we consider two possible extensions of the algorithm to all structures and to structures with relations and unary functions.
 	We find two logical characterisations but disprove the existence of a characterisation through homomorphism counting.
-	Furthermore, we discuss for which restrictions on relational structures the characterisation through homomorphism counting remains and present two cases of restrictions, one for which the characterisation holds and one for which it does not.
+	Furthermore, we discuss for which restrictions on relational structures the characterisation through homomorphism counting remains and present results for two restrictions. 
+	One for which the characterisation holds and one for which it does not.
 \end{abstract}
 
 \thispagestyle{empty}

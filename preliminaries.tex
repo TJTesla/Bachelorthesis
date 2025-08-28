@@ -3,11 +3,11 @@
 
 % Tuple notation
 Let $A$ be a set.
-Then a $a_1,\dots, a_k\in A$ form a tuple with length $k$ of the form $\mathbf a=(a_1,\dots,a_k)$ and with $\mathbf a_n$ we denote $a_n$.
+Then a $a_1,\dots, a_k\in A$ form a tuple with length $k$ of the form $\mathbf a=(a_1,\dots,a_k)\in A^k$ and with $\mathbf a_n$ we denote $a_n$.
 For any function $f:A\to B$, we write $f(\mathbf a)$ for $(f(a_1),\dots,f(a_k))$.
 If $\pi$ is a permutation, that is $\pi\in \mathcal S_k$, where $\mathcal S_k$ is the symmetric group for $k$ elements, then $\pi(\mathbf a)$ means $(a_{\pi(1)},\dots,a_{\pi(k)})$.
 For a set $A$ and a $k\in \mathbb N$, we write $\binom{A}{k}$, to denote all subsets of $A$ with cardinality of exactly $k$.
-Let $\mathbf a=(a_1,\dots,a_k)$ be a tuple of length $k$ and $b$ a element.
+Let $\mathbf a=(a_1,\dots,a_k)\in A^k$ be a tuple of length $k$ and $b\in A$.
 Then we write $(\mathbf ab)\coloneqq(a_1,\dots,a_k,b)$ for the tuple of length $k+1$ with $b$ added to the end.
 For a tuple $\mathbf a=(a_1,\dots,a_k)$ we write $\set(\mathbf a)\coloneqq\{a_1,\dots,a_k\}$ for the set that contains the elements from $\mathbf a$.
 Usually, sets are denoted by uppercase, elements from sets as lowercase, and tuples as boldface and lowercase Latin letters.
@@ -18,22 +18,22 @@ We use $[k]$ for any $k\in \mathbb N_{\geq 1}$ to mean $\{1,2,\dots, k\}$.
 
 % Multisets
 A multiset $\mathcal M$ is a pair with a set $A$ and a function $\operatorname{mult}_{\mathcal M}:A\to \mathbb N_{\geq 1}$.
-This denotes, that for every $a\in A$, there are exactly $\operatorname{mult}_{\mathcal M}(a)$ many copies.
+This denotes, that for every $a\in A$, there are exactly $\operatorname{mult}_{\mathcal M}(a)$ many copies in $\mathcal M$.
 We also write multisets as $\multiset{\dots}$.
 As an example, the multiset $\mathcal M = \multiset{a, b, b}$ is equivalent to the set $A=\{a,b\}$, together with the function $\operatorname{mult}_{\mathcal M}=\{a\mapsto 1, b\mapsto 2\}$.
 
 % Signatures and Structures and Graphs
 A signature is a set of relation and function symbols, paired with an arity for every symbol.
 We write relation symbols as uppercase and function symbols as lower case letters.
-For example, $\sigma=\{R/2, T/3, f/3\}$ represents a signature with a relation symbol $R$ of arity $2$, a relation symbol $T$ with arity $3$ and a function symbol $f$ with arity $3$.
-We call a signature relational if it only contains relation symbols and binary if it contains only unary and binary relation symbols.
+For example, $\sigma=\{R/2, T/3, f/3\}$ represents a signature with a relation symbol $R$ of arity $2$, a relation symbol $T$ of arity $3$ and a function symbol $f$ of arity $3$.
+We call a signature relational, if it only contains relation symbols and binary if it contains only unary and binary symbols.
 For a function or relation symbol $R\in \sigma$, we write $\operatorname{ar}(R)$ for the arity of $R$ and we define $\operatorname{ar}(\sigma)\coloneqq \max_{R\in\sigma}\{\operatorname{ar}(R)\}$ as the maximal arity that appears in $\sigma$.
 For a signature 
 $\sigma=\{R_1/\kern-.15em\operatorname{ar}(R_1), R_2/\kern-.15em\operatorname{ar}(R_2), \dots, f_1/\kern-.15em\operatorname{ar}(f_1),f_2/\kern-.15em\operatorname{ar}(f_2),\dots\}$
  we define a $\sigma$-structure $\mathfrak A$ as a tuple $(A,R_1^{\mathfrak A},R_2^{\mathfrak A},\dots,f_1^{\mathfrak A},f_2^{\mathfrak A},\dots)$ where $A$, called the universe, is a set of elements and $R_i^{\mathfrak A}\subseteq A^{\operatorname{ar}(R_i)}$ is a relation of arity $\operatorname{ar}(R_i)$ and $f_i^{\mathfrak A}:A^{\operatorname{ar}(f_i)}\to A$ is a function of arity $\operatorname{ar}(f_i)$.
 We define $\vert \mathfrak A\vert =\vert A \vert$.
-A structure is always written as an uppercase Fraktur letter, its universe is written using the same uppercase Latin letter.
-For relation structures, we use an uppercase, boldface Latin letter to denote the union of all relations, formally $\bigcup_{R\in\sigma}R$.
+A structure is usually written as an uppercase Fraktur letter, its universe is written using the same uppercase Latin letter.
+For relational structures, we use an uppercase, boldface Latin letter to denote the union of all relations, formally $\bigcup_{R\in\sigma}R$.
 As an example, $\mathfrak A$ is a structure, $A$ is its universe and $\mathbf A$ is the union of all relations.
 A graph $G$ is a pair of a set of vertices, denoted as $V(G)$, and a binary and symmetric relation over that set of vertices, called the edges $E(V)$.
 If not specified, we only talk about finite signatures and finite universes.
@@ -44,28 +44,32 @@ For $i\in \mathbb N$, we define $C_{i+1}(v)\coloneqq(C_i(v), \multiset{C_i(u) : 
 We say that Colour Refinement distinguishes two graphs $G$ and $H$, if there is an $i\in \mathbb N$, such that 
 $$\multiset{C_i(v) : v\in V(G)}\neq \multiset{C_i(u) : u \in V(H)}.$$
 
-It is possible to adapt classical Colour Refinement for binary relational structures, by using the unary relations in the initial colouring and annotating neighbours with the binary relations that connect the elements.
+It is possible to adapt classical Colour Refinement to binary relational structures, by using the unary relations in the initial colouring and annotating neighbours with the binary relations that connect the elements.
 Let $\sigma=\sigma_1\operatorname{\dot{\cup}}\sigma_2$, where $\sigma_1$ contains only unary and $\sigma_2$ contains only binary relations.
 For a binary relational structure $\mathcal G$, write $E(\mathcal G)$ for $\bigcup_{E\in \sigma_2} \{\{v,w \} : (v,w)\in E^{\mathcal G}\}$.
 Then, for every element $e\in G$ we define
 $$\gamma_0(e)\coloneqq(\{C\in \sigma_1 : e\in C\}, \{E\in \sigma_2 : (e,e)\in E^{\mathcal G}\}).$$
-For every $e\in G$, every $i\in \mathbb N$ we define a
+For every $e\in G$, every $i\in \mathbb N$ we define 
 $$\gamma_{i+1}(e)\coloneqq(\gamma_i(e), \multiset{(\lambda(e,f), \gamma_i(f)) : \{e,f\}\in E(\mathcal G)}),$$
 and
-$$\lambda_{i+1}(e,f)\coloneqq\{E^+ : E\in\sigma_2, (e,f)\in E^{\mathcal G}\} \cup \{E^- : E\in \sigma_2, (f,e)\in E^{\mathcal G}\},$$
-where we introduce to new symbols $E^+$ and $E^-$ for every $E\in \sigma_2$.
+$$\lambda(e,f)\coloneqq\{E^+ : E\in\sigma_2, (e,f)\in E^{\mathcal G}\} \cup \{E^- : E\in \sigma_2, (f,e)\in E^{\mathcal G}\},$$
+where we introduce two new symbols $E^+$ and $E^-$ for every $E\in \sigma_2$.
 This definition can also be found in \cite{scheidt2025ColorRefinement}.
 
-For a signature $\sigma$ and two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$, we write call $\phi:A\to B$ a homomorphism, if:
+For a signature $\sigma$ and two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$, we call a function $\phi:A\to B$ a homomorphism, if:
 \begin{itemize}
-	\item For every relation symbol $R\in\sigma$ of arity $k$ and every $(x_1,\dots,x_k)\in R^{\mathfrak A}$, $(\phi(x_1),\dots,\phi(x_k))\in R^{\mathfrak B}$ and
-	\item for every function symbol $f\in \sigma$ of arity $k$ and every $(x_1,\dots,x_k)$, $\phi(f^{\mathfrak A}(x_1,\dots,x_k))=f^{\mathfrak B}(\phi(x_1),\dots,\phi(x_k))$.
+	\item For every relation symbol $R\in\sigma$ of arity $k$ and every $(x_1,\dots,x_k)\in R^{\mathfrak A}$,
+	$$(\phi(x_1),\dots,\phi(x_k))\in R^{\mathfrak B}$$ 
+	and
+	\item for every function symbol $f\in \sigma$ of arity $k$ and every $(x_1,\dots,x_k)$, 
+	$$\phi(f^{\mathfrak A}(x_1,\dots,x_k))=f^{\mathfrak B}(\phi(x_1),\dots,\phi(x_k)).$$
 \end{itemize}
 We then write $\Hom(\mathfrak A, \mathfrak B)$ for the set of all homomorphisms from $\mathfrak A$ to $\mathfrak B$ and define $\hom(\mathfrak A,\mathfrak B)\coloneqq \vert\Hom(\mathfrak A,\mathfrak B)\vert$.
 This applies analogously for relational structures and graphs.
 
-For a $\phi(x_1,\dots,x_k)\in\mathsf C$, where $\mathsf C$ is the logic that extends $\mathsf{FO}$ with counting quantifiers, we write $\mathfrak A,a_1,\dots,a_k\models \phi(x_1,\dots,x_k)$ to mean $\mathfrak A\models \phi(a_1,\dots,a_k)$.
+For a $\phi(x_1,\dots,x_k)\in\mathsf C$, or a subset of $\mathsf{C}$, where $\mathsf C$ is the logic that extends $\mathsf{FO}$ with counting quantifiers, we write $\mathfrak A,a_1,\dots,a_k\models \phi(x_1,\dots,x_k)$ to mean $\mathfrak A\models \phi(a_1,\dots,a_k)$.
 Similarly, for a $\psi(x_1,\dots,x_k,y_1,\dots,y_\ell)\in\mathsf C$, we write $\mathfrak A,a_1,\dots,a_k,b_1,\dots,b_\ell\models \psi(x_1,\dots,x_k,y_1,\dots,y_\ell)$ for $\mathfrak A\models \psi(a_1,\dots,a_k,b_1,\dots,b_\ell)$.
+We use $\top$ for a formula, which is always satisfied.
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  26 AUG 2025 15:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  28 AUG 2025 14:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1235,11 +1235,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 142.
+(Font)              <10.95> on input line 141.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 142.
+(Font)              <8> on input line 141.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 142.
+(Font)              <6> on input line 141.
 
 
 [1
@@ -1364,15 +1364,15 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [14]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 244.
+(hyperref)                removing `math shift' on input line 242.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 244.
+(hyperref)                removing `subscript' on input line 242.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 244.
+(hyperref)                removing `math shift' on input line 242.
 
 
 
@@ -1385,7 +1385,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [18]
 
 [19]
-Overfull \hbox (1.0566pt too wide) in paragraph at lines 488--490
+Overfull \hbox (1.0566pt too wide) in paragraph at lines 487--489
 []\T1/lmr/m/n/10.95 (-20) If $\OML/lmm/m/it/10.95 m > n$\T1/lmr/m/n/10.95 (-20)
  , we again as-sume that $\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[]; a[] \OMS
 /lmsy/m/n/10.95 j[]\OT1/lmr/m/n/10.95 (-20) = \OML/lmm/m/it/10.95 #[]\OT1/lmr/m
@@ -1397,19 +1397,19 @@ Overfull \hbox (1.0566pt too wide) in paragraph at lines 488--490
  []
 
 
-Overfull \hbox (13.81387pt too wide) in paragraph at lines 488--490
+Overfull \hbox (21.11374pt too wide) in paragraph at lines 487--489
 \T1/lmr/m/n/10.95 (-20) and $\OML/lmm/m/it/10.95 '[]\OT1/lmr/m/n/10.95 (-20) (\
 OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 1/lmr/m/n/10.95 (-20) ^^H[](\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20
 ) )$ \T1/lmr/m/n/10.95 (-20) with $\OML/lmm/m/it/10.95 '[] \OMS/lmsy/m/n/10.95 
 6\OT1/lmr/m/n/10.95 (-20) = \OML/lmm/m/it/10.95 '[]$\T1/lmr/m/n/10.95 (-20) , $
 \U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[] \OMS/lmsy/m/n/10.95 j[]\OT1/lmr/m/n
-/10.95 (-20) = \OMS/lmsy/m/n/10.95 9[]\OML/lmm/m/it/10.95 x[]:'[]\OT1/lmr/m/n/1
-0.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) )$ \T1/lmr/m/n
-/10.95 (-20) and $\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[] \OMS/lmsy/m/n/10.
-95 j[]\OT1/lmr/m/n/10.95 (-20) = \OMS/lmsy/m/n/10.95 9[]\OML/lmm/m/it/10.95 x[]
-:'[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-
-20) )$\T1/lmr/m/n/10.95 (-20) .
+/10.95 (-20) = \OMS/lmsy/m/n/10.95 9[]\OML/lmm/m/it/10.95 x[] [] '[]\OT1/lmr/m/
+n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) )$ \T1/lmr/
+m/n/10.95 (-20) and $\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[] \OMS/lmsy/m/n/
+10.95 j[]\OT1/lmr/m/n/10.95 (-20) = \OMS/lmsy/m/n/10.95 9[]\OML/lmm/m/it/10.95 
+x[] [] '[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10
+.95 (-20) )$\T1/lmr/m/n/10.95 (-20) .
  []
 
 
@@ -1432,7 +1432,7 @@ OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
 
 [28]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 1001.
+(Font)              <20.74> on input line 1004.
 
 
 [29]
@@ -1491,11 +1491,11 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34288 strings out of 473190
- 681549 string characters out of 5715801
+ 34338 strings out of 473190
+ 682238 string characters out of 5715801
  1296601 words of memory out of 5000000
- 56322 multiletter control sequences out of 15000+600000
- 726328 words of font info for 360 fonts, out of 8000000 for 9000
+ 56336 multiletter control sequences out of 15000+600000
+ 753811 words of font info for 382 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,13n,131p,10901b,1210s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
@@ -1512,16 +1512,17 @@ l/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2
 025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-di
 st/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
 e1/public/lm/lmri10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/
-lm/lmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmssbx1
-0.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></us
-r/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/tex
-live/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/t
-exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (38 pages, 541232 bytes).
+lm/lmri8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmss10.p
+fb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr
+/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/tex
+live/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2025/t
+exmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/f
+onts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1
+/public/amsfonts/symbols/msbm10.pfb>
+Output written on thesis.pdf (38 pages, 551944 bytes).
 PDF statistics:
- 638 PDF objects out of 1000 (max. 8388607)
- 542 compressed objects within 6 object streams
+ 649 PDF objects out of 1000 (max. 8388607)
+ 550 compressed objects within 6 object streams
  151 named destinations out of 1000 (max. 500000)
- 92821 words of extra memory for PDF output out of 106986 (max. 10000000)
+ 105109 words of extra memory for PDF output out of 106986 (max. 10000000)
 

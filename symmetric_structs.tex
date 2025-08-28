@@ -13,12 +13,12 @@ Another class which can be investigated is the class of symmetric structures.
 \begin{definition}[Symmetric structures]
 	Let $\sigma$ be a relational signature.
 	A structure $\mathfrak A$ of signature $\sigma$ is a symmetric structure, if for every relation and every tuple in those relations, the order of the elements is irrelevant.
-	This means, that every relation $R$ with arity $k$ is a subset of all possible subsets of $A$ with exactly $k$ elements.
+	This means, that every relation $R$ of arity $k$ is a subset of all possible subsets of $A$ with exactly $k$ elements.
 	Formally, that means
 	$$R\subseteq \binom{A}{k}.$$
 \end{definition}
 An equivalent characterisation uses the symmetric group $\mathcal S_k$.
-We call a $\sigma$ structure $\mathfrak A$ symmetric, if for every $R\in \sigma$ of arity $k$, every $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)\in R^{\mathfrak A}$ and every $k$-permutation $\pi\in \mathcal S_k$
+We call a $\sigma$-structure $\mathfrak A$ symmetric, if for every $R\in \sigma$ of arity $k$, every $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)\in R^{\mathfrak A}$ and every $k$-permutation $\pi\in \mathcal S_k$
 $$(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)})\in R^{\mathfrak A}.$$
 
 We will prove in the following that the restriction to symmetric structures in indeed possible.
@@ -43,7 +43,7 @@ As a reminder on notation, for a $k$-tuple $\mathbf x=(x_1,x_2,\dots,x_k)$, a ho
 We can now prove the main result of this section.
 \begin{theorem}
 	\label{thm:ThmD}
-	Let $\sigma$ be a relational signature and $\mathfrak A$ and $\mathfrak B$ be two $\sigma$ structures.
+	Let $\sigma$ be a relational signature and $\mathfrak A$ and $\mathfrak B$ be two $\sigma$-structures.
 	Then the following two statements are equivalent:
 	\begin{enumerate}
 		\item $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$.
@@ -59,8 +59,8 @@ We can now prove the main result of this section.
 	Assume that $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$.
 	From the results of \cite{scheidt2025ColorRefinement} we know that there exists an acyclic structure $\mathfrak C'$ with $\hom(\mathfrak C',\mathfrak A)\neq \hom(\mathfrak C',\mathfrak B)$.
 	Our goal will be to construct a $\sigma$ structure $\mathfrak C$ from $\mathfrak C'$ that is both acyclic and symmetric.
-	Informally, $\mathfrak C'$ will have the same elements as $\mathfrak C$ and for every tuple that appears in some relation, we will add all possible permutations of that tuple to the relation as well.
-	Formally, we define $\mathfrak C\coloneqq(C',\sigma)$ and for all $R\in\sigma$ with arity $k$, we have
+	Informally, $\mathfrak C$ will have the same elements as $\mathfrak C'$ and for every tuple that appears in some relation, we will add all possible permutations of that tuple to the relation as well.
+	Formally, we define $\mathfrak C\coloneqq(C',\sigma)$ and for all $R\in\sigma$ of arity $k$, we have
 	$$R^{\mathfrak C}\coloneqq \{(x_{\pi(1)},x_{\pi(2)},\dots,x_{\pi(k)}) : \text{for every } (x_1,x_2,\dots,x_k)\in R^{\mathfrak C'} \text{ and every } \pi\in \mathcal S_k\}.$$
 	From the second characterisation of symmetric structures given above, it is obvious that $\mathfrak C$ is symmetric.
 	\begin{claim}
@@ -115,7 +115,7 @@ We can now prove the main result of this section.
 			\label{SymmetricJoinTreeConstruction}
 		\end{figure}
 		
-		The connectedness and cycle-freeness follows directly from the fact that $J'$ is also a tree.
+		The connectedness and cycle-freeness follows directly from the fact that $J'$ is a tree.
 		As such, it only remains to show the join-tree property.
 		Consider an arbitrary $v\in C$.
 		Since $C=C'$, it follows that $v\in C'$ and the set of all $\mathbf x\in \mathbf{C'}$ with $v\in \set(\mathbf x)$ induces a connected subgraph in $J'$.
@@ -140,12 +140,12 @@ We can now prove the main result of this section.
 	We therefore have shown that $\phi\in\Hom(\mathfrak C,\mathfrak A)$.
 	
 	Now let $\phi\notin\Hom(\mathfrak C',\mathfrak A)$.
-	Then there is a $R\in\sigma$ with arity $k$ and a $\mathbf x\in R^{\mathfrak C'}$ with $\phi(\mathbf x)\notin R^{\mathfrak A}$.
+	Then there is an $R\in\sigma$ of arity $k$ and an $\mathbf x\in R^{\mathfrak C'}$ with $\phi(\mathbf x)\notin R^{\mathfrak A}$.
 	From the definition we get that $\mathbf x\in \mathbf{C}$ and thus $\mathbf x \in R^{\mathfrak C}$ and from the assumption we get that $\phi(\mathbf x)\notin R^{\mathfrak A}$.
 	Therefore $\phi\notin \Hom(\mathfrak C,\mathfrak A)$.
 \end{proof}
 
-With this, we have proven that it is possible to only consider symmetric acyclic structures with a different homomorphism count, when trying to distinguish symmetric structures.
+With this, we have proven that it is possible to only consider symmetric acyclic structures with a different homomorphism counts, when trying to distinguish symmetric structures.
 Therefore, we can restrict the class of structures to only consider symmetric structures, while retaining the characterisation through homomorphism counting.
 
 

@@ -2,18 +2,18 @@
 \label{sec:RelationalColourRefinemetForStructuresWithFunctions}
 
 Many interesting structures use functions.
-For example all algebraic signatures include function symbols for addition and multiplication, but also constants, which are understood as functions of arity $0$.
+For example all algebraic signatures include function symbols for addition and multiplication.
 As Colour Refinement and variants of it have shown to be very useful in multiple applications, a similar method for structures with functions seems desirable.
 This section aims to apply the results from \cite{scheidt2025ColorRefinement}, which were discussed in the previous section, to such classes of structures.
 We will define two different approaches for a Colour Refinement algorithm.
 Both will encode non-relational structures and non-relational signatures as relational structures and relational signatures, respectively.
 The already discussed Relational Colour Refinement can then be applied on these structures.
-We then study, whether the non-relational signatures can also be used in the characterisations.
+We study, whether the non-relational signatures can also be used in the characterisations.
 Concretely, can we use functions in the formulae which form the logic that characterises the algorithms, if such a logic exists?
 To what extend can these functions be used and what restrictions apply?
 The same will be done for the characterisation by homomorphism counting.
 Can we use the encodings to define acyclic, non-relational structures, and can the classes of those characterise the algorithms by homomorphism counting?
-We will begin by defining both approaches and comparing those with a simple example.
+We will begin by defining both approaches and comparing them with a simple example.
 Afterwards we will look at the logical characterisation and end with the characterisation by homomorphism counting.
 
 
@@ -43,22 +43,22 @@ Let us concretely define, how we expand the signature.
 	For readability, we define the family of sets of alternations of function applications $\operatorname{Alters}_n^0(\sigma)\coloneqq\{\operatorname{id}\}$ and
 	\begin{align*}
 		\operatorname{Alters}^k_{n}(\sigma)\coloneqq \operatorname{Alters}^{k-1}_{n}(\sigma)\cup\{f_1^{m_1}f_2^{m_2}\dots f_k^{m_k} : & f_1,f_2,\dots, f_k\in \sigma_{\operatorname{Func}} \\ 
-		& \land \forall i\in[k]. m_i\in[n] \\ 
-		& \land \forall i\in[k-1] . f_{i} \neq f_{i+1}\}.
+		& \land \forall i\in[k]\operatorname{.} m_i\in[n] \\ 
+		& \land \forall i\in[k-1] \operatorname{.} f_{i} \neq f_{i+1}\}.
 	\end{align*}
 	We will now fixate an arbitrary $k\in\mathbb N$, which will be our bound on the alternation depth and will define a new signature $\widetilde{\sigma}$ as well as a structure $\widetilde{\mathfrak A}$ of said signature, which will be the transitive expansion with alternation depth $k$ of $\mathfrak{A}$.
-	For $k\in\mathbb N$, $\alpha,\beta,\alpha_1,\dots,\alpha_\ell\in \operatorname{Alters}^k_n(\sigma)$ and a $R\in \sigma_{\operatorname{Rel}}$ with arity $\ell$, we define the binary relation
+	For $k\in\mathbb N$, $\alpha,\beta,\alpha_1,\dots,\alpha_\ell\in \operatorname{Alters}^k_n(\sigma)$ and a $R\in \sigma_{\operatorname{Rel}}$ of arity $\ell$, we define the binary relation
 	$$\operatorname{Eq}_{\alpha,\beta}^{\widetilde{\mathfrak A}}\coloneqq \{(a,b) : \alpha^{\mathfrak A}(a)=\beta^{\mathfrak A}(b)\},$$
 	and the relation of arity $\ell$
 	$$R_{\alpha_1,\dots,\alpha_\ell}^{\widetilde{\mathfrak A}} \coloneqq \{(a_1,\dots,a_\ell) : (\alpha_1^{\mathfrak A}(a_1),\dots,\alpha_\ell^{\mathfrak A}(a_\ell))\in R^{\mathfrak A}\}.$$
 	We now define the transitive expansion with alternation depth $k$ signature $\widetilde{\sigma}$, where 
-	\begin{align*}
-		\widetilde{\sigma}\coloneqq & \{\operatorname{Eq}_{\alpha,\beta}/2: \alpha,\beta\in\operatorname{Alters}^k_n(\sigma)\} \\
-		& \operatorname{\dot{\cup}} \{R_{\alpha_1,\dots,\alpha_\ell}/\ell : R\in \sigma_{\operatorname{Rel}},\operatorname{ar}(R)=\ell \text{ and } \alpha_1,\dots,\alpha_\ell\in \operatorname{Alters}^k_n(\sigma)\}.
-	\end{align*}
+	\begin{alignat*}{2}
+		\widetilde{\sigma}\coloneqq & &&\{\operatorname{Eq}_{\alpha,\beta}/2: \alpha,\beta\in\operatorname{Alters}^k_n(\sigma)\} \\
+		&  \operatorname{\dot{\cup}} \, && \{R_{\alpha_1,\dots,\alpha_\ell}/\ell : R\in \sigma_{\operatorname{Rel}},\operatorname{ar}(R)=\ell \text{ and } \alpha_1,\dots,\alpha_\ell\in \operatorname{Alters}^k_n(\sigma)\}.
+	\end{alignat*}
 \end{definition}
 
-Since the following will heavily depend on this construction, let us consider an example.
+Since the following content will heavily depend on this construction, let us consider an example.
 We define the signature $\sigma=\{R,f,g\}$ where $R$ is a unary relation symbol and $f$ and $g$ are unary function symbols.
 Now consider a $\sigma$ structure $\mathfrak A=(A,\sigma)$ with $A=\{a,b\}$, $R^{\mathfrak A}=\{a\}$, $f^{\mathfrak A}=\{a\mapsto b, b\mapsto a\}$ and $g^{\mathfrak A}=\{a\mapsto a, b\mapsto b\}$.
 A graphical representation of $\mathfrak A$ can be found in \cref{fig:TransitiveExpansionExA}.
@@ -176,27 +176,26 @@ We now want to see, whether $\RCR_1$ distinguishes the structures $\mathfrak A$ 
 First we compute $\widetilde\sigma$ as $\{\operatorname{Eq}_{f^i,f^j}, \operatorname{Eq}_{f^i,\operatorname{id}}, \operatorname{Eq}_{\operatorname{id},f^j} : 0< i,j \leq 6\}\cup\{\operatorname{Eq}_{\operatorname{id},\operatorname{id}}\}$. 
 For easier readability, we will only give the definitions for the symbols in $\{\operatorname{Eq}_{f^i,\operatorname{id}} : 0 < i \leq n\}$. 
 We find that 
-$$\operatorname{Eq}_{f^i,\operatorname{id}}^{\widetilde{\mathfrak A}} = \{(a_j,a_{j+i \operatorname{mod} 3}),(a_{j+3}, a_{(j+i\operatorname{mod} 3)+3}) : j \in \{0,1,2\}\}$$
+$$\operatorname{Eq}_{f^i,\operatorname{id}}^{\widetilde{\mathfrak A}} = \{(a_j,a_{(j+i) \operatorname{mod} 3}),(a_{j+3}, a_{((j+i)\operatorname{mod} 3)+3}) : j \in \{0,1,2\}\}$$
 and 
 $$\operatorname{Eq}_{f^i,\operatorname{id}}^{\widetilde{\mathfrak B}} = \{(a_j,a_{j+i \operatorname{mod} 6}) : j \in \{0,\dots,5\}\}.$$
 By using \cite{scheidt2025ColorRefinement}, we know that $\RCR$ distinguishes $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$ if, and only if, there is a formula $\widetilde{\phi}\in\GFC$ of signature $\widetilde{\sigma}$ that distinguishes them.
 Notice that $\operatorname{Eq}_{f^1,\operatorname{id}}^{\widetilde{\mathfrak A}}=\operatorname{Eq}_{f^4,\operatorname{id}}^{\widetilde{\mathfrak A}}$, $\operatorname{Eq}_{f^2,\operatorname{id}}^{\widetilde{\mathfrak A}}=\operatorname{Eq}_{f^5,\operatorname{id}}^{\widetilde{\mathfrak A}}$ and $\operatorname{Eq}_{f^3,\operatorname{id}}^{\widetilde{\mathfrak A}}=\operatorname{Eq}_{f^6,\operatorname{id}}^{\widetilde{\mathfrak A}}$, while only $\operatorname{Eq}_{f^0,\operatorname{id}}^{\widetilde{\mathfrak B}}=\operatorname{Eq}_{f^6,\operatorname{id}}^{\widetilde{\mathfrak B}}$.
 Therefore the sentence 
-$$\exists^{\geq 6}(x,y).\left(\operatorname{Eq}_{f^1,\operatorname{id}}(x,y) \land \operatorname{Eq}_{f^4,\operatorname{id}}(x,y)\right)\in \GFC$$ 
+$$\exists^{\geq 6}(x,y)\operatorname{.}\left(\operatorname{Eq}_{f^1,\operatorname{id}}(x,y) \land \operatorname{Eq}_{f^4,\operatorname{id}}(x,y)\right)\in \GFC$$ 
 is satisfied by $\widetilde{\mathfrak A}$, but not $\widetilde{\mathfrak B}$.
-We can easily derive another formula $\phi'\in \GFC$ to distinguish the transitive expansions, for example $\phi'=\exists^{\geq 1} x. \operatorname{Eq}_{f^3, \operatorname{id}}(x, x)$, which expresses the existence of a $3$-cycle.
-
-We see that $\RCR_k$ distinguishes structures that were not distinguished by nRCR.
+We can easily derive another formula $\phi'\in \GFC$ to distinguish the transitive expansions, for example $\exists^{\geq 1} x\operatorname{.} \operatorname{Eq}_{f^3, \operatorname{id}}(x, x)$, which expresses the existence of a $3$-cycle.
+We see that $\RCR_k$ distinguishes structures that cannot be distinguished by nRCR.
 
 \subsection{Characterisation through Logic}
 \label{sec:RCRwithFnLogic}
 
-In this section we will discuss, how the above approaches of Colour Refinement for non-relational structures can be characterised by logic.
-We will see that for both cases we will get a logic which extends the given definition of $\GFC$, see Definition \ref{def:GFC}, but restricts the usage of functions inside of terms.
+In this section we will discuss, how the above approaches of Colour Refinement for non-relational signatures can be characterised by logic.
+We will see that for both cases we obtain a logic which extends the given definition of $\GFC$, see Definition \ref{def:GFC}, but restricts the usage of functions inside of terms.
 
 \subsubsection{Characterising Naive RCR Using Logic} 
 
-The nRCR algorithm will be characterised by the nesting-free guarded fragment of counting logic $\mathsf{nfGF}(\mathsf C)$.
+The nRCR algorithm will be characterised by the nesting free guarded fragment of counting logic $\mathsf{nfGF}(\mathsf C)$.
 This logic forbids the nesting of functions and only allows the usage of them as $f(\mathbf x)=y$.
 This way, a function symbol acts like a relation symbol, which is analogous to the encoding used for nRCR. 
 This leads to the characterisation of nRCR by $\mathsf{nfGF}(\mathsf C)$, which we will prove in the following.
@@ -205,7 +204,6 @@ This leads to the characterisation of nRCR by $\mathsf{nfGF}(\mathsf C)$, which 
 	Consider the definition of $\GFC$ given in Definition \ref{def:GFC}.
 	We obtain the nesting-free fragment, by allowing $f(\mathbf x)=y$ as a further atomic formula.
 	Concretely, for a relation symbol of arity $k$ and a function symbol of arity $\ell$, we only allow atomic formulae of the form $R(x_1,\dots,x_\ell)$, $x=y$ and $f(x_1,\dots,x_\ell)=y$.
-	
 	The remaining definitions stay the same.
 \end{definition}
 
@@ -235,7 +233,7 @@ We now show that nRCR and $\mathsf{nfGF}(\mathsf C)$ can distinguish exactly the
 While the above theorem results in a nice characterisation of the naive encoding, the nesting of terms is often very desired when using functions.
 However, it can be shown that nesting is too powerful for the naive encoding.
 
-Consider the structures $\mathfrak A$ and $\mathfrak B$ from Figure \ref{nRCRvsRCRk} and the formula $\phi=\exists^{\geq 1} x.(f(f(f(x)))=x)$ which utilises term nesting to find a cycle of length three.
+Consider the structures $\mathfrak A$ and $\mathfrak B$ from Figure \ref{nRCRvsRCRk} and the formula $\phi=\exists^{\geq 1} x\operatorname{.}(f(f(f(x)))=x)$ which utilises term nesting to find a cycle of length three.
 It is obvious that $\mathfrak A \models \phi$ and $\mathfrak B\not\models \phi$.
 However, as it was discussed above, one finds that nRCR cannot distinguish the structures.
 Therefore, term nesting is too powerful for the naive encoding.
@@ -243,21 +241,20 @@ Therefore, term nesting is too powerful for the naive encoding.
 
 \subsubsection{Logical Characterisation of RCR$_k$}
 
-A first idea that may come to mind when looking at the definition of the transitive expansion, is to use the classical notion of atomic formula for guards, fixate a maximal alternation depth for terms and only allow $\vert \mathfrak{A}\vert$ applications of the same function symbol in series.
-Concretely, for a function symbol $f$, a term $s(x)$ and a natural number $k$, allow only terms of the form $f^m(s(x))$ where $m\leq\vert\mathfrak A\vert$ and with only up to $k$ alternations of function applications.
+A first idea that may come to mind when looking at the definition of the transitive expansion, is to use the classical notion of atomic formulas for guards, fixate a maximal alternation depth for terms and only allow $\vert \mathfrak{A}\vert$ applications of the same function symbol in series.
+Concretely, for a function symbol $f$, a term $s(x)$ and two natural numbers $k$ and $m$, allow only terms of the form $f^m(s(x))$ where $m\leq\vert\mathfrak A\vert$ and with only up to $k$ alternations of function applications.
 However, we prove that we can allow a term $f^m(s(x))$ for an arbitrary $m\in\mathbb N$, while the bounded alternation depth is still needed.
 The reason why this is possible, hinges on the pigeonhole principle.
-When considering $x,f(x)$, $f^2(x)$, $f^3(x)$ and so forth, until $f^m(x)$, where $m>\vert\mathfrak A\vert$, there have to be two numbers $i$ and $j$, such that $f^i(x)=f^j(x)$.
-Therefore, we can decompose the path formed by $f^1(x),\dots,f^m(x)$ into a path to a cycle, the cycle itself, and a last part of that cycle.
-To allow the following proofs to be more readable, we first want to define the set of all such valid decompositions.
-
+When considering $x,f(x)$, $f^2(x)$, $f^3(x)$ and so forth, until $f^m(x)$, where $m>\vert\mathfrak A\vert$, there have to be two numbers $i,j\leq \vert\mathfrak A\vert$, such that $f^i(x)=f^j(x)$.
+Therefore, we can decompose the path formed by $f^0(x),f^1(x),\dots,f^m(x)$ into a path to a cycle, the cycle itself, and a last part of that cycle.
+For the sake of readability, we first want to define the set of all such valid decompositions.
 Let 
 \begin{align*}
-	\mathcal I(n,m)=\{(k,\ell,p)\in [n]^3 \quad:\quad & k+p < k+\ell \leq n \; \land \\
+	\mathcal I(n,m)=\{(k,\ell,p)\in [n]^3 \;:\quad & k+p < k+\ell \leq n \; \land \\
 	& k+r\cdot \ell + p = m \text{ for some } r\in \mathbb N\}.
 \end{align*}
 This set will represents all the possible ways, to decompose a path of length $m$ in a structure with $n$ elements into a cycle and the path to and from it.
-This means, that the triple $(k,\ell,p)$ will represent a path, that has a beginning part of length $k$, then a cycle of length $\ell$ and a last part that consists of the first $p$ elements of the cycle.
+This means, that the triple $(k,\ell,p)$ will represent a path, that has a beginning part of length $k$, then a cycle of length $\ell$ and a last part that consists of the first $p$ elements of that cycle.
 One can see that in a structure $\mathfrak A$ with a unary function $f$ and $n$ elements, any path along of $f$ with length $m>n$ can be decomposed into a triple in the set $\mathcal I(n,m)$.
 A graphical description of such a triple $(k,\ell,p)$ can be found in \cref{PathDecompositionPrinciple}.
 
@@ -285,7 +282,7 @@ This is formally stated in the following definition.
 
 \begin{definition}[Alternation bounded $\GFC$]
 	For a $k\in\mathbb N$, we define the fragment of $\GFC$ with a bounded alternation depth of $k$ ($\GFC_k$) as $\GFC$ with the constraint that for all formulae $\phi\in\GFC_k$ of signature $\sigma$ and every term $t$ that appears in $\phi$, there is an $n\in \mathbb{N}$ and an $\alpha\in \operatorname{Alters}_n^k(\sigma)$ such that $\alpha=t$.
-	Atomic formulae are defined as usual, that is, the formulae $R(t_1(x_1),t_2(x_2),\dots,t_n(x_n))$ and $t_1(x_1)=t_2(x_2)$ for terms $t_1,t_2,\dots,t_n$ and variables $x_1,x_2,\dots,x_n$ are atomic formulae.
+	Atomic formulae are defined as usual, that is, the formulae $R(\term t_1(x_1),\term t_2(x_2),\dots,\term t_n(x_n))$ and $\term t_1(x_1)=\term t_2(x_2)$ for terms $\term t_1,\term t_2,\dots,\term t_n$ and variables $x_1,x_2,\dots,x_n$ are atomic formulae.
 \end{definition}
 
 With this, we can prove the first result, which allows us to use $f^m(x)=y$ for every $m\in \mathbb N$ in a formula.
@@ -295,7 +292,7 @@ With this, we can prove the first result, which allows us to use $f^m(x)=y$ for 
 	Then there exists a formula $\theta(x_1,x_2)\in \GFC_1$ such that for any $\mathfrak A$ with $\vert \mathfrak A\vert=n$ it holds
 	$$\mathfrak A,a_1,a_2 \models \psi(x_1,x_2) \text{ if, and only if, } \mathfrak A,a_1,a_2 \models \theta(x_1,x_2)$$ 
 	and for any $f^{m'}(x)$ that appears in $\theta$ we have $m'\leq n$.
-	Furthermore, $\theta(x_1,x_2)$ is of the form $\bigvee \Phi(x_1,x_2)$, and if $\mathfrak A,a_1,a_2\models \theta(x_1,x_2)$, then there is exactly one $\phi(x_1,x_2)\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1} x_2 . \phi(x_1,x_2)$.
+	Furthermore, $\theta(x_1,x_2)$ is of the form $\bigvee \Phi(x_1,x_2)$, and if $\mathfrak A,a_1,a_2\models \theta(x_1,x_2)$, then there is exactly one $\phi(x_1,x_2)\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1} x_2 \operatorname{.} \phi(x_1,x_2)$.
 	\label{Simple_fm_to_fk}
 \end{lemma}
 \begin{proof}
@@ -309,13 +306,13 @@ With this, we can prove the first result, which allows us to use $f^m(x)=y$ for 
 		& \land \operatorname{E}^{k,\ell}_{f}(x_1)  \\
 		& \land \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)
 	\end{align*}
-	and for some term $t(x_1)$ we have
-	$$\operatorname{E}^{k,\ell}_{f}(t(x_1))=\begin{cases}
+	and for some term $t(x_1)$ we define
+	$$\operatorname{E}^{k,\ell}_{f}(t(x_1))\coloneqq\begin{cases}
 		\top & \text{if } k=0 \\
 		f^{k-1}(t(x_1))\neq f^{k-1+\ell}(t(x_1)) & \text{otherwise}.
 	\end{cases}$$
 	Due to the definition of $\mathcal I(n,m)$ it is obvious that only $f^{m'}$ with $m'\leq n$ appears.
-	We now proceed to the proof of the equivalence.
+	We now proceed with the proof of the equivalence.
 	For the purpose of readability, we will write $f_{\mathfrak A}$ instead of $f^{\mathfrak A}$.
 	
 	We will show that if $\mathfrak A,a_1,a_2 \models \theta(x_1,x_2)$, then $\mathfrak A,a_1,a_2 \models \psi(x_1,x_2)$.
@@ -324,7 +321,8 @@ With this, we can prove the first result, which allows us to use $f^m(x)=y$ for 
 	In particular $f_{\mathfrak A}^{k}(a_1)=f_{\mathfrak A}^{k+\ell}(a_1)$. It follows that
 	$$f_{\mathfrak A}^{k}(a_1)=f_{\mathfrak A}^{k+\ell}(a_1)=f_{\mathfrak A}^{k+2\ell}(a_1)=f_{\mathfrak A}^{k+3\ell}(a_1) = \dots = f_{\mathfrak A}^{k+r\cdot \ell}(a_1)$$
 	for all $r\in \mathbb N$. By using the definition of $\mathcal{I}(n,m)$, we get
-	$$a_2 =f_{\mathfrak A}^{k+p}(a_1) = f_{\mathfrak A}^{k+r\cdot \ell + p}(a_1)=f_{\mathfrak A}^{m}(a_1).$$
+	$$a_2 =f_{\mathfrak A}^{k+p}(a_1) = f_{\mathfrak A}^{k+r\cdot \ell + p}(a_1)=f_{\mathfrak A}^{m}(a_1)$$
+	for some $r\in \mathbb N$.
 	From this we can deduce that $\mathfrak A,a_1,a_2\models \psi(x_1,x_2)$, where $\psi(x_1,x_2)$ has the form $f^{m}(x_1)=x_2$.
 	
 	Now we prove that if $\mathfrak A,a_1,a_2 \models \psi(x_1,x_2)$, then $\mathfrak A,a_1,a_2 \models \theta(x_1,x_2)$. 
@@ -335,29 +333,31 @@ With this, we can prove the first result, which allows us to use $f^m(x)=y$ for 
 	For that, we consider the parts of the conjunction and show for each one that it is satisfied.
 	
 	\begin{itemize}
-		\item $f^{k+p}(x_1)=x_2$ is satisfied.
+		\item $f^{k+p}(x_1)=x_2$:
 		We use the fact that $a= b \operatorname{mod} c \Leftrightarrow b = r\cdot c +a \text{ for some } r\in \mathbb N$.
 		Then
 		$$f_{\mathfrak A}^{k+p}(a_1)=f_{\mathfrak A}^{i+(m-i)-r\cdot \ell}(a_1)=f_{\mathfrak A}^{i+r\cdot \ell + m -i - r\cdot \ell}(a_1)=f_{\mathfrak A}^{m}(a_1)=a_2.$$
 		Therefore $\mathfrak A,a_1,a_2\models f^{k+p}(x_1)=x_2$.
 		
-		\item $f^{k}(x_1)=f^{k+\ell}(x_1)$ is satisfied.
+		\item $f^{k}(x_1)=f^{k+\ell}(x_1)$:
 		Consider that
 		$$f_{\mathfrak A}^{k}(a_1)=f_{\mathfrak A}^{i}(a_1)=f_{\mathfrak A}^{j}(a_1)=f_{\mathfrak A}^{j+i-i}(a_1)=f_{\mathfrak A}^{i+j-i}(a_1)=f_{\mathfrak A}^{k+\ell}(a_1).$$
 		This leads to $\mathfrak A,a_1,a_2\models f^{k}(x_1)=f^{k+\ell}(x_1)$.
 		
-		\item $\operatorname{E}^{k,\ell}_f(x_1)$ is satisfied.
+		\item $\operatorname{E}^{k,\ell}_f(x_1)$:
 		Otherwise $f_{\mathfrak A}^{k-1}(a_1)=f_{\mathfrak A}^{k-1+\ell}(a)$, but then $(k-1,\ell)$ would be lexicographically smaller than $(i,j)$.
+		Thus $\mathfrak A, a_1,a_2\models \operatorname{E}^{k,\ell}_f(x_1)$.
 		
-		\item The same reasoning applies to $\bigwedge_{\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)$. 
+		\item The same reasoning applies to $\bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)$. 
 		If it weren't satisfied, there would be a $(i,j')$ with $j'<j$ and $f_{\mathfrak A}^{i}(a_1)=f_{\mathfrak A}^{i+j'}(a_1)$ which would be lexicographically smaller than $(i,j)$.
+		It follows that $\mathfrak A,a_1,a_2\models \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)$.
 	\end{itemize}
 	
 	Thus we have shown that every subformula of the conjunction and therefore the formula is being fulfilled.
 	
-	Lastly, it remains to prove that if $\theta$ is satisfied, then there is exactly one $(k,\ell,p)\in\mathcal{I}(n,m)$ such that $\exists^{\geq 1}x_2.\zeta_{(k,\ell,p)}(x_1, x_2)$ is fulfilled.
+	Lastly, it remains to prove that if $\theta$ is satisfied, then there is exactly one $(k,\ell,p)\in\mathcal{I}(n,m)$ such that $\exists^{\geq 1}x_2\operatorname{.}\zeta_{(k,\ell,p)}(x_1, x_2)$ is fulfilled.
 	We prove this by contradiction.
-	Assume that $\mathfrak A,a_1,a_2\models \theta(x_1,x_2)$ and that there are $\zeta_{(k,\ell,p)}(x_1,x_2)$ and $\zeta_{(k',\ell',p')}(x_1,x_2)$ with $(k,\ell,p)\neq (k',\ell',p')$, such that $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\zeta_{(k,\ell,p)}(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\zeta_{(k',\ell',p')}(x_1,x_2)$.
+	Assume that $\mathfrak A,a_1,a_2\models \theta(x_1,x_2)$ and that there are $\zeta_{(k,\ell,p)}(x_1,x_2)$ and $\zeta_{(k',\ell',p')}(x_1,x_2)$ with $(k,\ell,p)\neq (k',\ell',p')$, such that $\mathfrak A,a_1\models \exists^{\geq 1}x_2\operatorname{.}\zeta_{(k,\ell,p)}(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1}x_2\operatorname{.}\zeta_{(k',\ell',p')}(x_1,x_2)$.
 	
 	We proceed with a case distinction. 
 	Let $k=k'$ and $\ell=\ell'$.
@@ -369,7 +369,7 @@ With this, we can prove the first result, which allows us to use $f^m(x)=y$ for 
 	and because $p$ is a non-negative integer, $r=r'$ has to follow and further we get $p=p'$.
 	However this would contradict that $(k,\ell,p)\neq (k',\ell',p')$.
 	Now assume that $k=k'$, $\ell\neq\ell'$ and without loss of generality assume that $\ell<\ell'$.
-	But then $\mathfrak A,a_1 \not\models \bigwedge_{\hat{\ell}<\ell'}f^{k'}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$, because 
+	But then $\mathfrak A,a_1 \not\models \bigwedge_{0<\hat{\ell}<\ell'}f^{k'}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$, because 
 	$$f^{k'+\ell}_{\mathfrak A}(a_1)=f^{k+\ell}_{\mathfrak A}=f^k_{\mathfrak A}(a_1)=f^{k'}_{\mathfrak A}(a_1)$$
 	and $k'+\ell < k'+\ell'$.
 	Thus this cannot be the case as well.
@@ -379,15 +379,15 @@ With this, we can prove the first result, which allows us to use $f^m(x)=y$ for 
 	But this contradicts $\mathfrak A,a_1 \models \operatorname{E}^{k',\ell'}_f(x_1)$.
 	If $\ell < \ell'$, then 
 	$$f_{\mathfrak A}^{k'}(a_1) =f_{\mathfrak A}^{k'+(k-k)}(a_1)=f_{\mathfrak A}^{k+(k'-k)}(a_1)=f_{\mathfrak A}^{k+(k'-k)+\ell}(a_1) = f_{\mathfrak A}^{k'+\ell}(a_1),$$
-	but this again contradicts $\mathfrak A,a_1 \models \bigwedge_{\hat{\ell}<\ell'}f^{k'}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$.
-	No assume $\ell'<\ell$.
+	but this again contradicts $\mathfrak A,a_1 \models \bigwedge_{0<\hat{\ell}<\ell'}f^{k'}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$.
+	Now assume $\ell'<\ell$.
 	There exists a $t\in\mathbb N$, such that 
 	$$k+t\cdot  \ell < k' \leq k+(t+1)\cdot \ell.$$
 	We now define $r\coloneqq k+(t+1)\cdot \ell -k'$ and get $f_{\mathfrak A}^{k'+r}(a_1)=f_{\mathfrak A}^{k'+r+\ell'}$ and by using $f_{\mathfrak A}^{k'+r}(a_1)=f_{\mathfrak A}^{k+(t+1)\cdot \ell}(a_1)=f_{\mathfrak A}^k(a_1)$ it follows that $f_{\mathfrak A}^{k}(a_1)=f_{\mathfrak A}^{k+\ell'}(a_1)$.
-	This contradicts $\mathfrak A,a_1 \models \bigwedge_{\hat{\ell}<\ell}f^{k}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$.
+	This contradicts $\mathfrak A,a_1 \models \bigwedge_{0<\hat{\ell}<\ell}f^{k}(x_1)\neq f^{k'+\hat{\ell}}(x_1)$.
 	
-	One can see that we did not use $x_2$ or $a_2$.
-	Therefore its interpretation is irrelevant, which is why we can existentially quantify it in the claim.
+	One can see that we did not use $a_2$ in our argumentation.
+	Therefore its value is irrelevant, as long as $\mathfrak A,a_1,a_2\models \theta(x_1,x_2)$, which is why we can existentially quantify it in the claim.
 	As all possible cases lead to a contradiction, the first assumption cannot be true and we proved the claim.
 \end{proof}
 
@@ -396,13 +396,13 @@ A natural extension would be, to allow alternations of functions, for example fo
 This is also possible and will be proved in the following.
 
 \begin{lemma}
-	Let $d\in\mathbb N$ and $\psi(x_1,x_2)\in \GFC_d$ be of the form $t(x_1)=x_2$ for a term $t$.
+	Let $d\in\mathbb N$ and let $\psi(x_1,x_2)\in \GFC_d$ be of the form $t(x_1)=x_2$ for a term $t$.
 	Then there exists a formula $\theta_{t}(x_1,x_2)\in\GFC_d$, such that for any structure $\mathfrak A$ with $\vert \mathfrak A \vert = n$ it holds
 	$$\mathfrak A,a_1,a_2 \models \psi(x_1,x_2) \text{ if, and only if, } \mathfrak A,a_1,a_2 \models \vartheta_{t}(x_1,x_2).$$ 
 	Furthermore, $\theta_{t}(x_1,x_2)$ is of the form $\bigvee \Phi(x_1,x_2)$ where all $\phi(x_1,x_2)\in\Phi(x_1,x_2)$ are of the form
 	$$t'(x_1)=x_2 \land \bigwedge \Psi(x_1)$$ 
 	for some term $t'(x_1)$, and for every function symbol $f$ there does not appear a term of the form $f^m(s(x))$ where $m > n$.
-	Additionally, if $\mathfrak A,a_1,a_2\models \theta_{t}(x_1,x_2)$, then there is exactly one $\phi\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi(x_1,x_2)$.
+	Additionally, if $\mathfrak A,a_1,a_2\models \theta_{t}(x_1,x_2)$, then there is exactly one $\phi\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1}x_2\operatorname{.}\phi(x_1,x_2)$.
 	\label{TranslationOfArbTerms}
 \end{lemma}
 \begin{proof}
@@ -413,82 +413,81 @@ This is also possible and will be proved in the following.
 	It can easily be verified that it is in the correct form and from the same proof we get that if the translated formula is fulfilled, exactly one subformula of the disjunction is satisfied.
 	
 	\textbf{Inductive step:}
-	Assume that $t(x_1)$ is of the form $g^m(s(x_1))$ for a unary function symbol $g$, a $m\in\mathbb N$ and a term $s=f^{m'}(s'(x))$ where $f\neq g$.
-	By the induction hypothesis, there is a formula $\theta_{s}(x_1,x_2)\in \GFC_{d-1}$ of the form $\bigvee \Phi_s(x_1,x_2)$ defined above with $\mathfrak A,a_1,a_2 \models s(x_1)=x_2$ if, and only if, $\mathfrak A,a_1,a_2\models \theta_{s}(x_1,x_2)$.
+	Assume that $\term t(x_1)$ is of the form $g^m(\term s(x_1))$ for a unary function symbol $g$, a $m\in\mathbb N$ and a term $\term s=f^{m'}(s'(x))$ where $f\neq g$.
+	By the induction hypothesis, there is a formula $\theta_{\term s}(x_1,x_2)\in \GFC_{d-1}$ of the form $\bigvee \Phi_{\term s}(x_1,x_2)$ defined above with $\mathfrak A,a_1,a_2 \models \term s(x_1)=x_2$ if, and only if, $\mathfrak A,a_1,a_2\models \theta_{\term s}(x_1,x_2)$.
 	
-	If $m\leq n$, we set $\theta_{t}(x_1,x_2)$ to
+	If $m\leq n$, we set $\theta_{\term t}(x_1,x_2)$ to
 	$$\bigvee \Phi'(x_1,x_2),$$
-	where $\Phi'(x_1,x_2)\coloneqq\{g^{m}(t'(x_1))=x_2 \land \bigwedge \Psi(x_1) : t'(x_1)=x_2 \land \bigwedge \Psi(x_1)\in \Phi_s(x_1,x_2)\}$.
+	where $\Phi'(x_1,x_2)\coloneqq\{g^{m}(\term t'(x_1))=x_2 \land \bigwedge \Psi(x_1) : \term t'(x_1)=x_2 \land \bigwedge \Psi(x_1)\in \Phi_s(x_1,x_2)\}$.
 	
-	If $m>n$, then we set $\theta_{t}(x_1,x_2)$ to
+	If $m>n$, then we set $\theta_{\term t}(x_1,x_2)$ to
 	$$\bigvee_{(k,\ell,p)\in \mathcal I(n,m)} \bigvee \Phi'_{(k,\ell,p)}(x_1,x_2),$$
 	where 
 	\begin{align*}
-		\Phi'_{(k,\ell,p)}\coloneqq \{g^{k+p}(t'(x_1))=x_2 &\land g^{k}(t'(x_1))=g^{k+\ell}(t'(x_1)) \\
-		& \land \operatorname{E}^{k,\ell}_g(t'(x_1)) \land \bigwedge_{0<\ell'<\ell} g^{k}(t'(x_1))\neq g^{k+\ell'}(t'(x_1)) \\
-		& \land \Psi(x_1) : t'(x_1)=x_2 \land \bigwedge \Psi(x_1)\in \Phi_s(x_1,x_2)\}.
+		\Phi'_{(k,\ell,p)}\coloneqq \{g^{k+p}(\term t'(x_1))=x_2 &\land g^{k}(\term t'(x_1))=g^{k+\ell}(\term t'(x_1)) \\
+		& \land \operatorname{E}^{k,\ell}_g(\term t'(x_1)) \land \bigwedge_{0<\ell'<\ell} g^{k}(\term t'(x_1))\neq g^{k+\ell'}(\term t'(x_1)) \\
+		& \land\bigwedge \Psi(x_1) : \term t'(x_1)=x_2 \land \bigwedge \Psi(x_1)\in \Phi_{\term s}(x_1,x_2)\}.
 	\end{align*}
 	
-	By using the above definitions, we get $\mathfrak A,a_1,a_2\models s(x_1)=x_2$ if, and only if, $\mathfrak A,a_1,a_2\models \phi_s(x_1,x_2)$ for some $\phi_s\in\Phi_s$ where $\phi_s(x_1,x_2)$ is of the form $t'(x_1)=x_2 \land \bigwedge \Psi(x_1)$.
+	By using the above definitions, we get $\mathfrak A,a_1,a_2\models \term s(x_1)=x_2$ if, and only if, $\mathfrak A,a_1,a_2\models \phi_{\term s}(x_1,x_2)$ for some $\phi_{\term s}\in\Phi_{\term s}$ where $\phi_{\term s}(x_1,x_2)$ is of the form $\term t'(x_1)=x_2 \land \bigwedge \Psi(x_1)$.
 	Therefore
 	\begin{equation*}
-		\mathfrak A, a_1,a_2 \models s(x_1)=x_2 \text{ if, and only if, } \mathfrak A,a_1,a_2 \models t'(x_1)=x_2 \land \bigwedge \Psi(x_1).
+		\mathfrak A, a_1,a_2 \models \term s(x_1)=x_2 \text{ if, and only if, } \mathfrak A,a_1,a_2 \models \term t'(x_1)=x_2 \land \bigwedge \Psi(x_1).
 		\tag{$\star$}
 		\label{eq:a}
 	\end{equation*}
 	We now prove that 
-	$$\mathfrak A, a_1,a_2\models t(x_1)=x_2 \text{ if, and only if, } \mathfrak A,a_1,a_2\models \theta_{t}(x_1,x_2).$$
+	$$\mathfrak A, a_1,a_2\models \term t(x_1)=x_2 \text{ if, and only if, } \mathfrak A,a_1,a_2\models \theta_{\term t}(x_1,x_2).$$
 	Assume $m\leq n$.
-	Let $\mathfrak A, a_1,a_2 \models \theta_{t}$.
+	Let $\mathfrak A, a_1,a_2 \models \theta_{\term t}$.
 	Then there is some $\phi(x_1,x_2)$ of the form $g^{m}(t'(x_1))=x_2 \land \bigwedge \Psi(x_1)$ such that $\mathfrak A,a_1,a_2\models \phi(x_1,x_2)$.
 	We then get
 	\begin{align*}
-		\mathfrak A,a_1,a_2 \models & g^{m}(t'(x_1))=x_2 \land \bigwedge \Psi(x_1) \\
-		\Leftrightarrow \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land \bigwedge \Psi(x_1) \land t'(x_1)=x_3 \text{ for some } a_3\in A \\
-		\overset{(\star)}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3\models & g^{m}(x_3)=x_2 \land s(x_1)=x_3 \text{ for some } a_3\in A \\
-		\Leftrightarrow \mathfrak A,a_1,a_2 \models & g^{m}(s(x_1))=x_2.
+		\mathfrak A,a_1,a_2 \models & \term g^{m}(\term t'(x_1))=x_2 \land \bigwedge \Psi(x_1) \\
+		\Leftrightarrow \mathfrak A,a_1,a_2,a_3 \models & \term g^{m}(x_3)=x_2 \land \term t'(x_1)=x_3 \land \bigwedge \Psi(x_1) \text{ for some } a_3\in A \\
+		\overset{(\star)}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3\models & \term g^{m}(x_3)=x_2 \land \term s(x_1)=x_3 \text{ for some } a_3\in A \\
+		\Leftrightarrow \mathfrak A,a_1,a_2 \models & \term g^{m}(\term s(x_1))=x_2.
 	\end{align*}
 	
 	Now let $m>n$.
 	Then there is a
 	\begin{align*}
-		\phi(x_1,x_2)\coloneqq g^{k+p}(t'(x_1))=x_2 &\land g^{k}(t'(x_1))=g^{k+\ell}(t'(x_1)) \\
-		& \land \operatorname{E}^{k,\ell}_g(t'(x_1)) \land \bigwedge_{0<\ell'<\ell} g^{k}(t'(x_1))\neq g^{k+\ell'}(t'(x_1)) \\
+		\phi(x_1,x_2)\coloneqq \term g^{k+p}(t'(x_1))=x_2 &\land \term g^{k}(t'(x_1))=\term g^{k+\ell}(\term t'(x_1)) \\
+		& \land \operatorname{E}^{k,\ell}_g(\term t'(x_1)) \land \bigwedge_{0<\ell'<\ell} \term g^{k}(\term t'(x_1))\neq \term g^{k+\ell'}(\term t'(x_1)) \\
 		& \land \bigwedge \Psi(x_1)
 	\end{align*}
 	for some $(k,\ell,p)\in\mathcal I(n,m)$ with $\mathfrak A,a_1,a_2\models \phi(x_1,x_2)$.
 	And now
 	\begin{align*}
 		\mathfrak A,a_1,a_2 \models & \phi(x_1,x_2) \\
-		\Leftrightarrow A,a_1,a_2,a_3 \models &g^{k+p}(x_3)=x_2 \land g^{k}(x_3)=g^{k+\ell}(x_3) \\
-		& \land \operatorname{E}^{k,\ell}_g(x_3) \land \bigwedge_{0<\ell'<\ell} g^{k}(x_3)\neq g^{k+\ell'}(x_3) \\
-		& \land \bigwedge\Psi(x_1) \land t'(x_1)=x_3 \text{ for some } a_3\in A \\
-		\overset{\ref{Simple_fm_to_fk}}{\Leftrightarrow} \mathfrak A, a_1,a_2,a_3 \models & g^{m}(x_3)=x_2 \land t'(x_1)=x_3 \land \bigwedge\Psi(x_1) \text{ for some } a_3 \in A \\
-		\overset{(\star)}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3 \models & g^{m}(x_3)=x_2\land s(x_1)=x_3 \text{ for some } a_3\in A \\
-		\Leftrightarrow \mathfrak A,a_1,a_2 \models & g^{m}(s(x_1))=x_2.
+		\Leftrightarrow A,a_1,a_2,a_3 \models &\term g^{k+p}(x_3)=x_2 \land \term g^{k}(x_3)=\term g^{k+\ell}(x_3) \\
+		& \land \operatorname{E}^{k,\ell}_g(x_3) \land \bigwedge_{0<\ell'<\ell} \term g^{k}(x_3)\neq \term g^{k+\ell'}(x_3) \\
+		& \land \term t'(x_1)=x_3 \land \bigwedge\Psi(x_1) \text{ for some } a_3\in A \\
+		\overset{\ref{Simple_fm_to_fk}}{\Leftrightarrow} \mathfrak A, a_1,a_2,a_3 \models & \term g^{m}(x_3)=x_2 \land \term t'(x_1)=x_3 \land \bigwedge\Psi(x_1) \text{ for some } a_3 \in A \\
+		\overset{(\star)}{\Leftrightarrow} \mathfrak A,a_1,a_2,a_3 \models & \term g^{m}(x_3)=x_2\land \term s(x_1)=x_3 \text{ for some } a_3\in A \\
+		\Leftrightarrow \mathfrak A,a_1,a_2 \models & \term g^{m}(\term s(x_1))=x_2.
 	\end{align*}
 	The other direction follows in both cases, as only equivalent steps have been used and it is obvious that the disjunction of a set is being fulfilled, if a formula of the set is satisfied.
 	
-	Lastly, we show that if $\mathfrak A,a_1,a_2\models \theta_t(x_1,x_2)$, where $\theta_t$ is of the form $\bigvee \Phi$, there is exactly one $\phi\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1} x_2.\phi(x_1,x_2)$.
-	As in the proof of \cref{Simple_fm_to_fk}, we are going to use a proof by contradiction and we will look at the cases where $m\leq n$ and $m> n$ separately.
+	Lastly, we show that if $\mathfrak A,a_1,a_2\models \theta_t(x_1,x_2)$, then there is exactly one $\phi\in\Phi$, such that $\mathfrak A,a_1\models \exists^{\geq 1} x_2\operatorname{.}\phi(x_1,x_2)$.
+	As in the proof of Lemma \ref{Simple_fm_to_fk}, we are going to use a proof by contradiction and we will look at the cases where $m\leq n$ and $m> n$ separately.
 	If $m\leq n$, assume that $\mathfrak A,a_1,a_2\models \theta_t(x_1,x_2)$ and that there are $\phi_1,\phi_2\in \Phi'(x_1,x_2)$ with $\phi_1\neq \phi_2$, $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi_1(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi_2(x_1,x_2)$.
 	It is easy to see that 
-	$$\mathfrak A,a_1,a_2,a_3\models g^m(t'_1(x_1))=x_2 \land \bigwedge \Psi_1(x_1) \land g^m(t'_2(x_1))=x_3 \land \bigwedge\Psi_2(x_1)$$
+	$$\mathfrak A,a_1,a_2,a_3\models \term g^m(t'_1(x_1))=x_2 \land \bigwedge \Psi_1(x_1) \land \term g^m(t'_2(x_1))=x_3 \land \bigwedge\Psi_2(x_1)$$
 	for some $a_2$ and $a_3$, which is equivalent to
 	\begin{align*}
 		\mathfrak A,a_1,a_2,a_3,a_4,a_5\models
-		\phantom{\land} &g^m(x_4)=x_2 \land t'_1(x_1)=x_4\land \bigwedge\Psi_1(x_1) \\ 
-		\land &g^m(x_5)=x_3 \land t'_2(x_1)=x_4 \land \bigwedge\Psi_2(x_1)
+		\phantom{\land} &\term g^m(x_4)=x_2 \land \term t'_1(x_1)=x_4\land \bigwedge\Psi_1(x_1) \\ 
+		\land &\term g^m(x_5)=x_3 \land \term t'_2(x_1)=x_4 \land \bigwedge\Psi_2(x_1)
 	\end{align*}
 	for some $a_4$ and $a_5$.
-	However, $t'_1(x_1)=x_2\land \bigwedge\Psi_1(x_1), t'_2(x_1)=x_s \land \bigwedge\Psi_2(x_1) \in \Phi_s$ and thus there would be
-	two different $\psi_1(x_1,x_2),\psi_2(x_1,x_2)\in \Phi_s$ such that $\mathfrak A,a_1\models \exists^{\geq 1} x_2.\psi_1(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1} x_2.\psi_2(x_1,x_2)$.
+	However, $\term t'_1(x_1)=x_2\land \bigwedge\Psi_1(x_1), \term t'_2(x_1)=x_s \land \bigwedge\Psi_2(x_1) \in \Phi_s$ and thus there would be two different $\psi_1(x_1,x_2),\psi_2(x_1,x_2)\in \Phi_s$ such that $\mathfrak A,a_1\models \exists^{\geq 1} x_2\operatorname{.}\psi_1(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1} x_2\operatorname{.}\psi_2(x_1,x_2)$.
 	But this contradicts the induction hypothesis that $\Phi_s$ conforms to the properties stated in the lemma.
 	
-	If $m>n$, we again assume that $\mathfrak A,a_1,a_2\models \theta_t(x_1,x_2)$ and that there are $\phi_1(x_1,x_2)\in\Phi'_{(k,\ell,p)}(x_1,x_2)$ and $\phi_2(x_1,x_2)\in\Phi'_{(k',\ell',p')}(x_1,x_2)$ with $\phi_1\neq \phi_2$, $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi_1(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1}x_2.\phi_2(x_1,x_2)$.
+	If $m>n$, we again assume that $\mathfrak A,a_1,a_2\models \theta_t(x_1,x_2)$ and that there are $\phi_1(x_1,x_2)\in\Phi'_{(k,\ell,p)}(x_1,x_2)$ and $\phi_2(x_1,x_2)\in\Phi'_{(k',\ell',p')}(x_1,x_2)$ with $\phi_1\neq \phi_2$, $\mathfrak A,a_1\models \exists^{\geq 1}x_2\operatorname{.}\phi_1(x_1,x_2)$ and $\mathfrak A,a_1\models \exists^{\geq 1}x_2\operatorname{.}\phi_2(x_1,x_2)$.
 	By looking at the structure of the formulae as they are defined in this proof and by substituting terms and variables like in the first case, we again find that 
-	$$\mathfrak A,a_1,a_3,a_4\models t'_1(x_1)=x_3\land \bigwedge\Psi_1(x_1) \land t'_2(x_1)=x_4 \land \bigwedge\Psi_2(x_1),$$
-	where $t'_1(x_1)=x_2\land\bigwedge \Psi_1(x_1), t'_2(x_1)=x_2\land\bigwedge \Psi_2(x_1)\in \Phi_s$.
+	$$\mathfrak A,a_1,a_2,a_3\models \term t'_1(x_1)=x_2\land \bigwedge\Psi_1(x_1) \land \term t'_2(x_1)=x_3 \land \bigwedge\Psi_2(x_1),$$
+	where $\term t'_1(x_1)=x_2\land\bigwedge \Psi_1(x_1), \term t'_2(x_1)=x_2\land\bigwedge \Psi_2(x_1)\in \Phi_s$.
 	By using the same arguments as before, we arrive at a contradiction.
 	As such, the assumption must be false and we have finished the proof.
 \end{proof}
@@ -497,38 +496,38 @@ Finally, we want to be able to use terms inside relations.
 This is also possible and will be shown in the following lemma.
 
 \begin{lemma}
-	Let $d\in\mathbb N$ and $\psi(x_1,\dots,x_m)\coloneqq R(t_1(x_1),\dots,t_m(x_m))\in \GFC_d$ be an atomic formula.
+	Let $d\in\mathbb N$ and $\psi(x_1,\dots,x_m)= R(\term t_1(x_1),\dots,\term t_m(x_m))\in \GFC_d$ be an atomic formula.
 	Then there exists a formula $\theta_\psi\in\GFC_d$, such that for any given structure (of fitting signature) $\mathfrak A$ with $\vert\mathfrak A \vert=n$ it holds
 	$$\mathfrak A,a_1,\dots,a_m\models \psi(x_1,\dots,x_m) \text{ if, and only if, } \mathfrak A,a_1,\dots,a_m\models \theta_\psi(x_1,\dots,x_m).$$
 	Furthermore, $\theta_\psi(x_1,\dots,x_m)$ is of the form $\bigvee \Phi(x_1,\dots,x_m)$ where all $\phi\in\Phi$ are of the form
-	$$R(t_1'(x_1),\dots,t_m'(x_m))\land \bigwedge\Psi_1(x_1)\land \dots\land\bigwedge \Psi_m(x_m),$$
-	and for every $f^m(s(x))$ that appear in $\theta_\psi$, where $f$ is a unary function symbol and $s$ is a term we have $m\leq n$.
+	$$R(\term t_1'(x_1),\dots,\term t_m'(x_m))\land \bigwedge\Psi_1(x_1)\land \dots\land\bigwedge \Psi_m(x_m),$$
+	and for every $\term f^m(s(x))$ that appear in $\theta_\psi$, where $f$ is a unary function symbol and $s$ is a term we have $m\leq n$.
 	Additionally, if $\mathfrak A,a_1,\dots,a_m\models \theta_\psi(x_1,\dots,x_m)$, then there exists exactly one $\phi(x_1,\dots,x_m)\in\Phi(x_1,\dots,x_m)$, such that $\mathfrak A,a_1,\dots,a_m\models \phi(x_1,\dots,x_m)$.
 	\label{TranslationOfArbAtomics}
 \end{lemma}
 \begin{proof}
 	Let $\mathfrak A,a_1,\dots,a_m\models\psi(x_1,\dots,x_m)$.
 	This is equivalent to 
-	$$\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models R(y_1,\dots,y_m)\land t_1(x_1)=y_1\land\dots\land t_m(x_m)=y_m$$
+	$$\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models R(y_1,\dots,y_m)\land \term t_1(x_1)=y_1\land\dots\land \term t_m(x_m)=y_m$$
 	for some $b_1,\dots,b_m\in A$.
 	By applying the previous lemma, we get the equivalent statement
 	\begin{align*}
-		\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models R(y_1,\dots,y_m) \land& \bigvee_{i_1}\left(t_{1,i_1}'(x_1)=y_1\land \bigwedge\Psi_{1,i_1}(x_1)\right) \\
+		\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models R(y_1,\dots,y_m) \land& \bigvee_{i_1}\left(\term t_{1,i_1}'(x_1)=y_1\land \bigwedge\Psi_{1,i_1}(x_1)\right) \\
 		\land& \dots \\
-		\land& \bigvee_{i_m}\left(t_{m,i_m}'(x_m)=y_m\land \bigwedge\Psi_{m,i_m}(x_m)\right).
+		\land& \bigvee_{i_m}\left(\term t_{m,i_m}'(x_m)=y_m\land \bigwedge\Psi_{m,i_m}(x_m)\right).
 	\end{align*}
 	Through distribution of boolean formulae we get
 	\begin{align*}
-		\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \bigvee_{i_1} \dots \bigvee_{i_m} ( R(y_1,\dots,y_m)\land & t_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi_{1,i_1}(x_1) \\
+		\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \bigvee_{i_1} \dots \bigvee_{i_m} ( R(y_1,\dots,y_m)\land & \term t_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi_{1,i_1}(x_1) \\
 		\land & \dots \tag{$\triangle$}\\
-		\land & t_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi_{m,i_m}(x_m) ).
+		\land & \term t_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi_{m,i_m}(x_m) ).
 	\end{align*}
 	Finally, we can resubstitute variables and get
 	\begin{align*}
-		\mathfrak A,a_1,\dots,a_m\models \bigvee_{i_1}\dots\bigvee_{i_m} &(R(t_{1,i_1}'(x_1),\dots,t_{m,i_m}'(x_m)) \\
+		\mathfrak A,a_1,\dots,a_m\models \bigvee_{i_1}\dots\bigvee_{i_m} &(R(\term t_{1,i_1}'(x_1),\dots,\term t_{m,i_m}'(x_m)) \\
 		&\land \bigwedge\Psi_{1,i_1}(x_1) \\
 		&\land\dots \\
-		&\land\bigwedge\Psi_{m,i_m}(x_m))\eqqcolon \theta_\psi(x_1,\dots,x_m).
+		&\land\bigwedge\Psi_{m,i_m}(x_m)\eqqcolon \theta_\psi(x_1,\dots,x_m).
 	\end{align*}
 	One can see that $\theta_\psi$ is of the correct form.
 	The equality follows from the fact that only equivalences have been used to derive $\theta_\psi$ from $\psi$.
@@ -543,33 +542,33 @@ This is also possible and will be shown in the following lemma.
 	\end{align*}
 	and $\phi_2$ is of the form
 	\begin{align*}
-		R(y_1,\dots,y_m)\land & s_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi'_{1,i_1}(x_1) \\
+		R(y_1,\dots,y_m)\land & \term s_{1,i_1}'(x_1)=y_1 \land \bigwedge\Psi'_{1,i_1}(x_1) \\
 		\land & \dots \\
-		\land & s_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi'_{m,i_m}(x_m),
+		\land & \term s_{m,i_m}'(x_m)=y_m \land \bigwedge\Psi'_{m,i_m}(x_m),
 	\end{align*}
 	such that $\phi_1\neq\phi_2$, $\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \phi_1$ and $\mathfrak A,a_1,\dots,a_m,b_1,\dots,b_m\models \phi_2$.
-	As $\phi_1\neq \phi_2$, there must be a $j$ such that $\psi_1$ is of the form $t'_{j,i_j}(x_j)=y_j\land \bigwedge \Psi_{j,i_j}(x_j)$, $\psi_2$ is of the form $s'_{j,i_j}(x_j)=y_j\land\bigwedge \Psi'_{j,i_j}(x_j)$ and $\psi_1\neq\psi_2$.
-	From the construction of the formula we know, that there is a term $t_j$, a formula $\theta_{t_j}$ of the form $\bigvee \Phi_{t_j}$ and $\psi_1,\psi_2\in\Phi_{t_j}$.
-	However, $\mathfrak A,a_j\models \exists^{\geq 1}y_j . \psi_1(x_j,y_j)$ and $\mathfrak A,a_j\models \exists^{\geq 1}y_j.\psi_2(x_j,y_j)$ would contradict the claim that has been proved in \cref{TranslationOfArbTerms}.
+	As $\phi_1\neq \phi_2$, there must be a $j$ such that $\psi_1$ is of the form $\term t'_{j,i_j}(x_j)=y_j\land \bigwedge \Psi_{j,i_j}(x_j)$, $\psi_2$ is of the form $\term s'_{j,i_j}(x_j)=y_j\land\bigwedge \Psi'_{j,i_j}(x_j)$ and $\psi_1\neq\psi_2$.
+	From the construction of the formula we know, that there is a term $\term t_j$, a formula $\theta_{\term t_j}$ of the form $\bigvee \Phi_{\term t_j}$ and $\psi_1,\psi_2\in\Phi_{\term t_j}$.
+	However, $\mathfrak A,a_j\models \exists^{\geq 1}y_j \operatorname{.} \psi_1(x_j,y_j)$ and $\mathfrak A,a_j\models \exists^{\geq 1}y_j\operatorname{.}\psi_2(x_j,y_j)$ would contradict the claim that has been proved in \cref{TranslationOfArbTerms}.
 \end{proof}
 
-This lemma also allows the usage of term equations, that is of formulae $t(x_1)=s(x_2)$ for term $t$ and $s$, as the equation symbol can be understood as an infix, binary relation.
-To illustrate how this translation works, let us consider the formula $\psi$ of the form $g^4(f^3(x))=y$ for a structure with $2$ elements.
-As in the proof, we inductively translate the inner terms and as such get for the formula $f^3(x)=y$, the formula $\phi$ of the form
-$$\bigvee_{(k,\ell,p)\in \mathcal I(2,3)}\left(f^k(x)=f^{k+\ell}(x)\land f^{k+p}(x)=y \land \operatorname{E}^{k,l}_f(x)\land\bigwedge_{\hat \ell < \ell} f^k(x)\neq f^{k+\hat\ell}(x)\right)$$
+This lemma also allows the usage of term equations, that is of formulae $\term t(x_1)=\term s(x_2)$ for terms $\term t$ and $\term s$, as the equation symbol can be understood as a binary relation, written in infix notation.
+To illustrate how this translation works, let us consider the formula $\psi$ of the form $\term g^4(\term f^3(x))=y$ for a structure with $2$ elements as an example.
+In the construction of the proof, we inductively translate the inner terms and as such get for the formula $\term f^3(x)=y$, the formula $\phi$ of the form
+$$\bigvee_{(k,\ell,p)\in \mathcal I(2,3)}\left(\term f^{k+p}(x)=y \land \term f^k(x)=\term f^{k+\ell}(x) \land \operatorname{E}^{k,l}_f(x)\land\bigwedge_{\hat \ell < \ell} \term f^k(x)\neq \term f^{k+\hat\ell}(x)\right)$$
 and with $\mathcal I(2,3)=\{(0,2,1),(1,1,0),(0,1,0)\}$ we get that $\phi$ equals
 \begin{align*}
-	\phantom{\lor}&\left(x=f^2(x) \land f(x)=y \land x\neq f(x)\right) \\
-	\lor & \left(f(x)=f^2(x) \land f(x)=y \land x \neq f(x)\right) \\
-	\lor & \left(x=f(x) \land x=y \land \top\right).
+	\phantom{\lor}&\left(\term f(x)=y \land x=\term f^2(x) \land x\neq \term f(x)\right) \\
+	\lor & \left(\term f(x)=y \land \term f(x)=\term f^2(x) \land x \neq \term f(x)\right) \\
+	\lor & \left(x=y \land x=\term f(x) \land \top\vphantom{f^2} \right).
 \end{align*}
 Now we can construct $\theta_\psi$ from $\psi$. 
 From the proof, we know that $\theta_\psi$ is of the form
 \begin{align*}
 	\bigvee_{(k',\ell',p')\in \mathcal I(2,4)} \bigvee_{(k,\ell,p)\in \mathcal I(2,3)} (
-	& g^{k'+p'}(f^{k+p}(x))=y \land g^{k'}(f^{k+p}(x))=g^{k'+\ell'}(f^{k+p}(x)) \\
-	& \operatorname{E}^{k',\ell'}_f(f^{k+p}(x)) \land \bigwedge_{0<\hat{\ell}<\ell'} g^{k'}(f^{k+p}(x))\neq g^{k'+\hat{\ell}}(f^{k+p}(x)) \\
-	& f^k(x)=f^{k+l}(x) \land \operatorname{E}^{k,\ell}_f(x) \land \bigwedge_{0<\hat{\ell}<\ell} f^k(x)\neq f^{k+\hat{\ell}}(x)
+	& \term g^{k'+p'}(\term f^{k+p}(x))=y \land \term g^{k'}(\term f^{k+p}(x))=\term g^{k'+\ell'}(\term f^{k+p}(x)) \\
+	& \operatorname{E}^{k',\ell'}_f(\term f^{k+p}(x)) \land \bigwedge_{0<\hat{\ell}<\ell'} \term g^{k'}(\term f^{k+p}(x))\neq \term g^{k'+\hat{\ell}}(\term f^{k+p}(x)) \\
+	& \term f^k(x)=\term f^{k+l}(x) \land \operatorname{E}^{k,\ell}_f(x) \land \bigwedge_{0<\hat{\ell}<\ell} \term f^k(x)\neq \term f^{k+\hat{\ell}}(x)
 	)
 \end{align*}
 and with $\mathcal I(2,4)=\{(1,1,0),(0,1,0), (0,2,0)\}$ we can analogously find $\theta_\psi$.
@@ -588,7 +587,7 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 \begin{proof}
 	We prove that \emph{1.} implies \emph{2.}. 
 	Let $\mathfrak A$ and $\mathfrak B$ be distinguished by $\RCR_k$.
-	If they are of different sizes, assume without loss of generality that 
+	If their universes have different cardinalities, assume without loss of generality that 
 	$$\vert \mathfrak A \vert =n > n'=\vert \mathfrak B \vert.$$
 	Then define $\phi\coloneqq \exists^{\geq n} x. \top\in \GFC_k$, which obviously distinguishes the structures.
 	
@@ -604,7 +603,7 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 	Now we prove that \emph{2.} implies \emph{1.}.
 	Let $\phi\in \GFC_k$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
 	Using \cref{TranslationOfArbAtomics} we can obtain a formula $\theta_\psi$ for every atomic subformula $\psi$ of $\phi$ which is equivalent to $\psi$ for structures with $n$ elements.
-	With this we can construct an equivalent formula $\phi'\in\GFC_k$, which then allows us, to easily translate it to $\widetilde{\sigma}$.
+	With this, we can construct an equivalent formula $\phi'\in\GFC_k$ of signature $\sigma$, which then allows us, to easily translate it to $\widetilde{\sigma}$.
 	We will construct this formula $\phi'$ inductively and directly prove the equivalence.
 	
 	\begin{claim}
@@ -616,26 +615,28 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 		The equivalence follows directly from the above Lemmas \ref{TranslationOfArbTerms} and \ref{TranslationOfArbAtomics}.
 		
 		\textbf{Inductive cases:}
-		In the cases where $\phi$ is of the form $\neg\theta$ or $\theta_1\land\theta_2$, we set $\phi'$ to $\neg\theta'$ or $\theta_1'\land\theta_2'$ and the claim follows directly using the induction hypothesis.
+		In the cases where $\phi$ is of the form $\neg\theta$ or $\theta_1\land\theta_2$ and by induction hypothesis we have translations $\theta'$, $\theta_1'$ and $\theta_2'$, we set $\phi'$ to $\neg\theta'$ or $\theta_1'\land\theta_2'$, respectively.
+		The claim follows directly using the induction hypothesis.
 		
-		Let $\phi$ be of the form $\exists^{\geq\ell}\mathbf v. \Delta\land \theta$.
+		Let $\phi$ be of the form $\exists^{\geq\ell}\mathbf v. (\Delta\land \theta)$.
 		In addition to translating $\Delta$ and $\theta$ to $\theta_\Delta$ and $\theta'$, respectively, we also will need to transform the formula, so that it still is a valid formula in $\GFC_k$.
 		When looking at the possible translations from the atomic formula $\Delta(x_1,\dots,x_m)$, we see that it must be of the form $\bigvee_{i\in[o]} (\Delta'_i(x_1,\dots,x_m) \land \bigwedge \Psi_i(x_1,\dots,x_m))$.
 		When considering the transformed formula 
-		$$\exists^{\geq \ell}\mathbf v. \left(\bigvee_{i\in [o]}\left(\Delta'_i\land\bigwedge \Psi_i\right) \land \theta'\right),$$
+		$$\exists^{\geq \ell}\mathbf v\operatorname{.} \left(\bigvee_{i\in [o]}\left(\Delta'_i\land\bigwedge \Psi_i\right) \land \theta'\right),$$
 		we then will distribute $\theta'$ over the disjunction and thus define
-		$$\psi \coloneqq \exists^{\geq \ell}\mathbf v. \left(\bigvee_{i\in[o]} \left(\Delta'_i\land\bigwedge \Psi_i \land \theta'\right)\right)$$
+		$$\psi \coloneqq \exists^{\geq \ell}\mathbf v\operatorname{.} \left(\bigvee_{i\in[o]} \left(\Delta'_i\land\bigwedge \Psi_i \land \theta'\right)\right)$$
 		In the following we prove the equivalence of $\phi$ and $\psi$.
 		Let $\mathfrak A\models \phi$.
 		This means there are at least $\ell$ tuples $\mathbf a\in A$, such that $(\mathfrak A,\mathbf a)\models \Delta(\mathbf v) \land \theta(\mathbf v)$.
 		Using the induction hypothesis we get that this is equivalent to $(\mathfrak A,\mathbf a)\models \bigvee(\Delta'\land\bigwedge\Psi)\land \theta'$, which, using the distributive law of propositional logic, is equivalent to $(\mathfrak A,\mathbf a)\models \bigvee(\Delta'\land\bigwedge\Psi\land\theta')$.
-		Therefore the number of tuples that satisfy $\Delta\land\theta$ must be the same as for $\bigvee(\Delta'\land\bigwedge\Psi\land\theta')$ and $\mathfrak A\models \exists^{\geq\ell}\mathbf v. \bigvee (\Delta'\land\bigwedge\Psi\land\theta')$ follows.
+		Therefore the number of tuples that satisfy $\Delta\land\theta$ must be the same as for $\bigvee(\Delta'\land\bigwedge\Psi\land\theta')$ and $\mathfrak A\models \exists^{\geq\ell}\mathbf v\operatorname{.} \bigvee (\Delta'\land\bigwedge\Psi\land\theta')$ follows.
+		The converse can be shown using the same arguments in reverse order.
 		
 		However, we are not finished, because $\psi \notin \GFC_k$.
 		We will solve this, by considering all possible segmentations of the disjunction.
 		Informally, for $o,\ell\in\mathbb N$ we define $\operatorname{Parts}(o, \ell)$ as the set of all multisets with exactly $\ell$ elements of $[o]$, respecting their multiplicity.
 		We then define $\phi'$ as
-		$$\bigvee_{(M,\operatorname{mult}_M)\in \operatorname{Parts}(o,\ell)} \bigwedge_{i\in M} \exists^{\geq \operatorname{mult}_M(i)}\mathbf v. (\Delta'_i\land\bigwedge \Psi_i \land \theta')$$
+		$$\bigvee_{(M,\operatorname{mult}_M)\in \operatorname{Parts}(o,\ell)} \bigwedge_{i\in M} \exists^{\geq \operatorname{mult}_M(i)}\mathbf v\operatorname{.} (\Delta'_i\land\bigwedge \Psi_i \land \theta')$$
 		and will prove the equivalence between $\psi$ and $\phi'$ in the following. 
 		
 		Let $\mathfrak A\models \psi$.
@@ -643,12 +644,12 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 		From the above lemmas we know that for every such tuple, there is exactly one $i$ such that $\mathfrak A,\mathbf a\models \Delta'_i\land\bigwedge \Psi_i\land \theta'$.
 		Now construct a multiset $(M,\operatorname{mult}_M)$ with exactly these $i$ that are being satisfied and with the multiplicity of the amount of tuples satisfying them.
 		One can see that $(M,\operatorname{mult}_M)\in \operatorname{Parts}(o,\ell)$ and that 
-		$$\mathfrak A \models \bigwedge_{i\in M}\exists^{\geq\operatorname{mult}_M(i)}\mathbf v. (\Delta'_i\land \bigwedge\Psi_i\land \theta').$$
+		$$\mathfrak A \models \bigwedge_{i\in M}\exists^{\geq\operatorname{mult}_M(i)}\mathbf v\operatorname{.} (\Delta'_i\land \bigwedge\Psi_i\land \theta').$$
 		It directly follows that $\mathfrak A\models \phi'$.
 		
 		Let $\mathfrak A\models \phi'$.
 		Then there exists a multiset $(M,\operatorname{mult}_M)\in \operatorname{Parts}(o,\ell)$, such that 
-		$$\mathfrak A \models \bigwedge_{i\in M}\exists^{\geq\operatorname{mult}_M(i)}\mathbf v. (\Delta'_i\land \bigwedge\Psi_i\land \theta').$$
+		$$\mathfrak A \models \bigwedge_{i\in M}\exists^{\geq\operatorname{mult}_M(i)}\mathbf v\operatorname{.} (\Delta'_i\land \bigwedge\Psi_i\land \theta').$$
 		We know that for an $\mathbf a$ with $\mathfrak A,\mathbf a\models (\Delta'_i\land \bigwedge\Psi_i\land \theta')$ there does not exist a $j\neq i$, such that $\mathfrak A,\mathbf a\models (\Delta'_j\land \bigwedge\Psi_j\land \theta')$.
 		From this we can reason that there exist at least $\ell$ different tuples that fulfil some $\Delta'_i\land\bigwedge\Psi_i\land\theta'$.
 		It now follows that $\mathfrak A\models\psi$.
@@ -658,16 +659,16 @@ This now allows us to prove the logical characterisation of our Colour Refinemen
 	Note that for every term $\alpha$ that appears in $\phi'$, it holds that $\alpha\in \operatorname{Alters}^k_n(\sigma)$.
 	This follows from the properties of the translation in \cref{TranslationOfArbAtomics}.
 	Furthermore, for every atomic subformula, we have a corresponding relation symbol in $\widetilde{\sigma}$.
-	With this, we can transform $\phi'$ to a formula $\widetilde{\phi}\in\GFC$ of signature $\widetilde{\sigma}$, such that $\mathfrak A\models \phi'$ if, and only if, $\widetilde{\mathfrak A}\models \widetilde{\phi}$.
+	With this, we can transform $\phi'$ to a formula $\widetilde{\phi}\in\GFC$ of signature $\widetilde{\sigma}$, such that $\mathfrak A\models \phi'$ if, and only if, $\widetilde{\mathfrak A}\models \widetilde{\phi}$, respectively with $\mathfrak B$ and $\widetilde{\mathfrak B}$.
 	
 	It can be seen that the only subformulae that need to be changed are atomic.
-	Let $\psi$ be an atomic formula that appears in $\phi'$.
+	Let $\psi$ be an atomic subformula of $\phi'$.
 	If $\psi$ is a term equation, that is, it is of the form $t(x)=s(y)$, we know through the construction of $\phi'$ and the definition of the transitive expansion, that there are $\alpha,\beta\in \operatorname{Alters}^k_n(\sigma)$ with $\alpha=t$ and $\beta=s$. 
-	As such, we can replace $\psi$ with $\operatorname{Eq}_{\alpha,\beta}(x,y)$.
+	As such, we can replace $\psi$ with $\operatorname{Eq}_{\alpha,\beta}(x,y)\in \widetilde{\sigma}$.
 	
 	If $\psi$ is a relation, that is, it is of the form $R(t_1(x_1),\dots,t_m(x_m))$, we again have $\alpha_1,\dots,\alpha_m\in \operatorname{Alters}^k_n(\sigma)$, such that $\alpha_i=t_i$ for $i\in[m]$.
-	We then can replace $\psi$ with $R_{\alpha_1,\dots,\alpha_m}(x_1,\dots,x_m)$.
-	From the semantic definition of the transitive expansion, it can be easily seen that $\mathfrak A\models \phi'$ if, and only if, $\widetilde{\mathfrak A}\models \widetilde{\phi}$.
+	We then can replace $\psi$ with $R_{\alpha_1,\dots,\alpha_m}(x_1,\dots,x_m)\in \widetilde{\sigma}$.
+	From the semantic definition of the transitive expansion, it can be easily seen that $\phi'$ and $\widetilde{\phi}$ are equivalent for structures with $n$ elements.
 	
 	With this, we have obtained a formula $\widetilde{\phi}\in\GFC$ of signature $\widetilde{\sigma}$, where $\widetilde{\mathfrak A}\models \widetilde{\phi}$ and $\widetilde{\mathfrak B}\not\models \widetilde{\phi}$.
 	Using \cite{scheidt2025ColorRefinement}, we thus know that $\RCR$ distinguishes $\widetilde{\mathfrak A}$ and $\widetilde{\mathfrak B}$ and by definition we can deduce that $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$.
@@ -682,20 +683,20 @@ One very interesting property of classical, as well as Relational Colour Refinem
 We introduced two possible extensions of Relational Colour Refinement and showed their logical characterisations.
 We now want to consider, whether those extensions can also be characterised by counting homomorphisms.
 
-In the following we will see that, using the two established approaches, it is in general not possible, to find acyclic structures with functions that divide two structures by homomorphism count.
-We will concentrate on the encoding defined in Section \ref{sec::NaiveEncodingOfFunctions}, where we will show one positive and one negative result.
+In the following we will see that, using the two established approaches, it is in general not possible to find acyclic structures with functions that divide two structures by homomorphism counts.
+We will concentrate on the encoding defined in Section \ref{sec::NaiveEncodingOfFunctions}, as it is subsumed by the transitive expansion encoding, defined in Section \ref{sec:TransitiveExpansion}. 
 
 To begin, let us define two concepts for relational structures that encode a non-relational structure.
 
 \begin{definition}[Total structures]
 	\label{def:TotalStructures}
-	Let $\sigma= \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature where $\sigma_{\operatorname{Func}}$ contains exactly all function symbols and is not empty.
+	Let $\sigma= \sigma_{\operatorname{Rel}} \operatorname{\dot{\cup}} \sigma_{\operatorname{Func}}$ be a signature where $\sigma_{\operatorname{Func}}$ contains exactly all function symbols.
 	Now let $\sigma'$ be the relational encoding of $\sigma$ and let $\mathfrak A'$ be a $\sigma'$-structure.
 	We call $\mathfrak A'$ total, if for every $R_{f}\in\sigma'$ with arity $n+1$, where $f\in \sigma_{\operatorname{Func}}$ has arity $n$, and every tuple $\mathbf x$ of length $n$, there is a $y$ such that $(\mathbf xy)\in R^{\mathfrak A'}_{f}$.
 \end{definition}
 
-Total structures capture the notion that every relation that encodes a function is defined for the complete domain of the function.
-However, functions only valuate to exactly one value.
+Total structures capture the notion that every relation that encodes a function is defined for the complete domain of the function, or equivalently that functions in structures are total functions and not partial.
+Another defining aspect of functions of structures is that they valuate to exactly one value.
 This idea is captured by the following definition.
 
 \begin{definition}[Functional structures]
@@ -736,7 +737,7 @@ We now want to find the equivalence between the existence of an acyclic structur
 	Thus $(\phi(\mathbf x)\phi(y))\in R_f^{\mathfrak A'}$, but this is equivalent to $\phi(\mathbf xy)\in R_f^{\mathfrak A'}$.
 	Let $\mathbf x\in R^{\mathfrak C'}$ where $R\neq R_f$ for all function symbols $f\in\sigma$.
 	Then $R^{\mathfrak C'}=R^{\mathfrak C}$ and $R^{\mathfrak A}=R^{\mathfrak A'}$. 
-	Therefore because $\mathbf x\in R^{\mathfrak C}$, we have $\phi(\mathbf x)\in R^{\mathfrak A}=R^{\mathfrak A'}$. 
+	Therefore, because $\mathbf x\in R^{\mathfrak C}$, we have $\phi(\mathbf x)\in R^{\mathfrak A}=R^{\mathfrak A'}$. 
 	
 	Let $\phi\in \Hom(\mathfrak C',\mathfrak A')$.
 	We show that $\phi\in\Hom(\mathfrak C,\mathfrak A)$.
@@ -753,16 +754,17 @@ We now want to find the equivalence between the existence of an acyclic structur
 	We can now construct a $\sigma$-structure $\mathfrak C$ by decoding $\mathfrak C'$ and will also get that $\Hom(\mathfrak C',\mathfrak A')=\Hom(\mathfrak C,\mathfrak A)$.
 	For a relation symbol $R\in\sigma$ we can define $R^{\mathfrak C}\coloneqq R^{\mathfrak C'}$.
 	For a function symbol $f\in\sigma$ we can define $f^{\mathfrak C}$ as follows: 
-	Let $f$ be of arity $n$. Then for a tuple $\mathbf x$ of length $n$, there must be a $y$ such that $(\mathbf xy)\in R_f^{\mathfrak C'}$ because $\mathfrak C'$ is total and there must be exactly one such $y$ because $\mathfrak C'$ is functional.
+	Let $f$ be of arity $n$. 
+	Then for all tuples $\mathbf x$ of length $n$, there must be a $y$ such that $(\mathbf xy)\in R_f^{\mathfrak C'}$ because $\mathfrak C'$ is total and there must be exactly one such $y$ because $\mathfrak C'$ is functional.
 	Therefore we define $f^{\mathfrak C}(\mathbf x)=y$.
-	The claim that the sets of homomorphisms is equal can be verified using exactly the same arguments as in the analogous proof of the other direction.
+	The claim that the sets of homomorphisms are equal can be verified using exactly the same arguments as in the analogous proof of the forward direction.
 \end{proof}
 
 We can now continue to put this in relation to the statement regarding RCR.
 Naive RCR distinguishes two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ if, and only if, RCR distinguishes the encodings $\mathfrak A'$ and $\mathfrak B'$ of signature $\sigma'$.
 Due to the results of \cite{scheidt2025ColorRefinement} this is the case if, and only if, there is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
-We would like to achieve the result that this is equivalent to there being an acyclic $\sigma$ structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by homomorphism count (however this will not be the case).
-By the above lemma, the latter is equivalent to there being an acyclic, total and functional $\sigma'$-structure $\mathfrak C''$ that distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
+We would like to achieve the result that this is equivalent to there being an acyclic $\sigma$ structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by homomorphism counts (however this will not be the case).
+By the above lemma, the latter is equivalent to there being an acyclic, total and functional $\sigma'$-structure $\mathfrak C''$ that distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism counts.
 Our goal will therefore be, to study the relationship between the two following statements.
 \begin{enumerate}
 	\item There is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
@@ -775,7 +777,7 @@ We will in the following prove the former claim and then show the latter claim, 
 
 \begin{lemma}
 	Let $\mathfrak A$ and $\mathfrak B$ be structures of signature $\sigma$ and let $\mathfrak A'$, $\mathfrak B'$ and $\sigma'$ be the respective encodings.
-	If there is an acyclic structure $\mathfrak C'$ of signature $\sigma'$ with $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$, then we can construct a functional, acyclic structure $\mathfrak C''$ of signature $\sigma'$ such that $\hom(\mathfrak C'',\mathfrak A')=\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')=\hom(\mathfrak C',\mathfrak B')$.
+	If there is an acyclic structure $\mathfrak C'$ of signature $\sigma'$ with $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$, then we can construct a functional, acyclic structure $\mathfrak C''$ of signature $\sigma'$ such that $\hom(\mathfrak C'',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak A')$ and $\hom(\mathfrak C'',\mathfrak B')\neq\hom(\mathfrak C',\mathfrak B')$.
 	\label{lem:constructionOfFunctionalStruct}
 \end{lemma}
 \begin{proof}
@@ -872,11 +874,11 @@ We will in the following prove the former claim and then show the latter claim, 
 		By definition there are $\mathbf a,\mathbf b\in V_c$ such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
 		Because $J'$ is a join tree, $V_c$ must induce a connected subtree.
 		Thus there must be $\mathbf a_0,\dots,\mathbf a_k\in V_c$, such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=\mathbf b$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
-		By definition, we then get that there must be $\chi(\mathbf a_0),\dots,\chi(\mathbf a_k)\in S$ and further $\chi(\mathbf a_0)=\chi(\mathbf a)=\mathbf u$, $\chi(\mathbf a_k)=\chi(\mathbf b)=\mathbf v$ and $\{\chi(\mathbf a_{i-1}),\chi(\mathbf a_i)\}\in E(J''))$ for all $i\in[k]$.
+		By definition, we then get that there must be $\chi(\mathbf a_0),\dots,\chi(\mathbf a_k)\in S$ and further $\chi(\mathbf a_0)=\chi(\mathbf a)=\mathbf u$, $\chi(\mathbf a_k)=\chi(\mathbf b)=\mathbf v$ and $\{\chi(\mathbf a_{i-1}),\chi(\mathbf a_i)\}\in E(J'')$ for all $i\in[k]$.
 		Therefore, $\mathbf u$ and $\mathbf v$ are connected in $S$.
 		
 		If $v=v_{y,z}$, we again define $\mathbf a,\mathbf b\in V(J')$ such that $\chi(\mathbf a)=\mathbf u$ and $\chi(\mathbf b)=\mathbf v$.
-		If $\mathbf a,\mathbf b\in V_y$ or $\mathbf a,\mathbf b\in V_z$, then we can proceed exactly as in the former case with $v=y$ or $v=z$, respectively.
+		If $\mathbf a,\mathbf b\in V_y$ or $\mathbf a,\mathbf b\in V_z$, then we can proceed exactly as in the former case with $c=y$ or $c=z$, respectively.
 		If that is not the case, then either $\mathbf a\in V_y$ and $\mathbf b\in V_z$, or the other way round.
 		We will only prove the former case, as the latter case can be proven analogously.
 		Since the following will depend on it, we will now prove that $S=\{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
@@ -885,7 +887,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		Let $\mathbf u \in \{\chi(\mathbf c) : \mathbf c\in V_y\}\cup \{\chi(\mathbf c) : \mathbf c\in V_z\}$.
 		We then get that $\mathbf u = \chi(\mathbf a)$ for an $\mathbf a\in V(J')$.
 		From the definition it follows that $y\in \set(\mathbf a)$ or $z\in \set(\mathbf a)$ has to hold.
-		Thus we get that $v_{y,z}\in \set(\chi(\mathbf a))=\set(\mathbf u)$ and therefore $\mathbf u\in S$ has to hold.
+		Thus we get that $v_{y,z}\in \set(\chi(\mathbf a))=\set(\mathbf u)$ and therefore $\mathbf u\in S$.
 		
 		$\subseteq$:
 		Let $\mathbf u\in S$, then $v_{y,z}\in \set(\mathbf u)$ follows.
@@ -894,7 +896,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		
 		It is obvious that $(\mathbf xy)\in V_y$ and $(\mathbf xz)\in V_z$.
 		We now get a path in $V_y$ with the elements $\mathbf a_0,\dots,\mathbf a_k\in V_y$ such that $\mathbf a_0=\mathbf a$, $\mathbf a_k=(\mathbf xy)$ and $\{\mathbf a_{i-1},\mathbf a_i\}\in E(J')$ for all $i\in [k]$.
-		We also get a path in $V_z$ with the elements $\mathbf b_0,\dots,\mathbf b_\ell\in V_z$ such that $\mathbf b_0=(\mathbf xz)$, $\mathbf b_\ell = \mathbf b$ and $\{\mathbf b_{i-1},\mathbf b_i\}\in E(J')$.
+		We also get a path in $V_z$ with the elements $\mathbf b_0,\dots,\mathbf b_\ell\in V_z$ such that $\mathbf b_0=(\mathbf xz)$, $\mathbf b_\ell = \mathbf b$ and $\{\mathbf b_{i-1},\mathbf b_i\}\in E(J')$ for all $i\in[k]$.
 		Therefore with the above equation, we have two paths in $S$: $\chi(\mathbf a_0),\dots,\chi(\mathbf a_k)$ and $\chi(\mathbf b_0),\dots,\chi(\mathbf b_\ell)$, where $\chi(\mathbf a_0)=\mathbf u$ and $\chi(\mathbf b_\ell)=\mathbf v$.
 		However, $\chi(\mathbf a_k)=\chi((\mathbf xy))=(\chi(\mathbf x)v_{y,z})=\chi((\mathbf xz))=\chi(\mathbf b_0)$.
 		Therefore, we get one path from $\mathbf u$ to $\mathbf v$ in $S$.
@@ -908,7 +910,7 @@ We will in the following prove the former claim and then show the latter claim, 
 	Let $\phi\in \Hom(\mathfrak C',\mathfrak A')$.
 	We now define $\phi'\coloneqq \pi(\phi)$ as
 	$$
-	\phi'(x)=
+	\phi'(x)\coloneqq
 	\begin{cases}
 		\phi(x) & \text{if } x\neq v_{y,z} \\
 		\phi(y) & \text{if } x = v_{y,z}.
@@ -929,7 +931,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		
 		If $v_{y,z}\in\set(\mathbf c)$, then there exists a $\mathbf c'\in R^{\mathfrak C'}$ such that $\chi(\mathbf c')=\mathbf c$. 
 		We thus get $\phi(\mathbf c')\in R^{\mathfrak A'}$.
-		It holds that $\phi(\mathbf c')=\phi'(\mathbf c)$, because for all $x \in \set(\mathbf c)\setminus \{v_{y,z}\}$, it follows that $x\in\set(\mathbf c')$ and $\phi(x)=\phi'(x)$.
+		It holds that $\phi(\mathbf c')=\phi'(\mathbf c)$, because for all $x \in \set(\mathbf c)\setminus \{v_{y,z}\}$, $\phi(x)=\phi'(x)$.
 		For $v_{y,z}$, $\phi'(v_{y,z})=\phi(y)=\phi(z)$ holds.
 		Therefore, $\phi'(\mathbf c)\in R^{\mathfrak A'}$ follows, which was to be shown.
 	\end{proof}
@@ -948,6 +950,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		
 		\emph{Case 1:} $u\notin\{y,z\}$. Then
 		$$\phi_1'(u)=\phi_1(u)\neq \phi_2(u)=\phi_2'(u).$$
+		
 		\emph{Case 2:} $u\in \{y,z\}$. Then
 		$$\phi_1'(v_{y,z})=\phi_1(y)=\phi_1(z)=\phi_1(u)\neq \phi_2(u)=\phi_2(z)=\phi_2(y)=\phi_2'(v_{y,z}).$$
 		In both cases we have found an element that gets mapped differently, thus $\phi_1'\neq\phi_2'$ must follow.
@@ -961,7 +964,7 @@ We will in the following prove the former claim and then show the latter claim, 
 		We now construct a $\phi\in\Hom(\mathfrak C',\mathfrak A')$ such that $\pi(\phi)=\phi'$.
 		We define
 		$$
-		\phi(x)=
+		\phi(x)\coloneqq
 		\begin{cases}
 			\phi'(x) & \text{if } x \notin \{y,z\} \\
 			\phi'(v_{y,z}) & \text{if } x \in \{y,z\}.
@@ -1025,9 +1028,9 @@ One example how this can be applied can be seen in Figure \ref{fig:constructFunc
 Now that we have proved that it is generally possible to enforce a distinguishing, acyclic structure to be functional, we want to proceed by proving that totality cannot be enforced.
 This proof will work as follows.
 We will give two families of structures over the signature $\sigma=\{E/2,f/1\}$. 
-Any two elements from these families with the same size can be distinguished by naive RCR, thus there exists an acyclic relational structure that distinguishes their encodings by homomorphism count.
+Any two elements from these families with the same size can be distinguished by naive RCR, thus there exists an acyclic relational structure that distinguishes their encodings by homomorphism counts.
 Therefore, the first statement from above is true.
-However, we will then prove that there cannot be an acyclic and total structure that also distinguishes them by homomorphism count.
+However, we will then prove that there cannot be an acyclic and total structure that also distinguishes them by homomorphism counts.
 
 Let $(\mathfrak A_i)_{i\in \mathbb N_{\geq 4}}$ be a family of $\sigma$-structures, defined as $\mathfrak A_n=(A_n, \operatorname E^{\mathfrak A_n}, f^{\mathfrak A_n})$, where $A_n=[n]$, $\operatorname E^{\mathfrak A_n}=\{(i, i+1), (i+1, i) : i\in [n-2]\}$ and $f^{\mathfrak A_n}=\{ i \mapsto \ipo n-1 : i \in [n-1]\}\cup \{n \mapsto n-1\}$.
 Let $(\mathfrak B_i)_{i\in \mathbb N_{\geq 4}}$ also be a family of $\sigma$-structures, defined as $\mathfrak B_n=(B_n, \operatorname E^{\mathfrak B_n},f^{\mathfrak B_n})$, where $B_n=[n]$, $\operatorname E^{\mathfrak B_n}=\{(i, i+1), (i+1, i) : i \in [n-1]\}$ and $f^{\mathfrak B_n}=\{i \mapsto \ipo n : i \in [n]\}$.
@@ -1111,7 +1114,7 @@ Graphical representations for a few examples of these structures can be seen in 
 
 For every $n\in\mathbb N_{\geq 4}$ it is clear that naive RCR distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
 The formula 
-$$\phi_n=\exists^{\geq 2\cdot (n-1)}(x,y). \operatorname E(x,y) \in \mathsf{nfGF}(\mathsf{C})$$
+$$\phi_n=\exists^{\geq 2\cdot (n-1)}(x,y)\operatorname{.} \operatorname E(x,y) \in \mathsf{nfGF}(\mathsf{C})$$
 distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ and using Theorem \ref{thm:ThmA}, this is equivalent to naive RCR distinguishing $\mathfrak A_n$ and $\mathfrak B_n$.
 Therefore, there exists an acyclic structure that distinguishes the encodings by homomorphism counts.
 It now only remains to show that this structure cannot be total, acyclic and distinguishing.
@@ -1127,13 +1130,13 @@ It now only remains to show that this structure cannot be total, acyclic and dis
 	
 	We observe that if $\mathfrak C_n'$ contains $R_f$-loops, that is an element $x\in C_n'$ such that $(x, x)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ is not distinguishing.
 	In fact, then $\hom(\mathfrak C_n',\mathfrak A_n')=\hom(\mathfrak C_n',\mathfrak B_n')=0$.
-	Otherwise, there would exist a homomorphism $\phi$ to either $\mathfrak A_n'$ or $\mathfrak B_n'$.
+	If that were not the case, there would exist a homomorphism $\phi$ to either $\mathfrak A_n'$ or $\mathfrak B_n'$.
 	Let $c\in C_n'$ be such that $(c,c)\in R_f^{\mathfrak C_n'}$.
 	Then we would have $(\phi(c),\phi(c))\in R_f^{\mathfrak A_n'}$ or $(\phi(c),\phi(c))\in R_f^{\mathfrak B_n'}$, respectively.
 	But in either structure, there does not exist such a loop.
 	
 	Using similar arguments, we can reason that if $\mathfrak C_n'$ contains $R_f$-2-cycles, that is two elements $c$ and $d$ such that $(c, d), (d, c)\in R_f^{\mathfrak C_n'}$, then $\mathfrak C_n'$ cannot be distinguishing, as it does not have any homomorphisms to either $\mathfrak A_n'$ or $\mathfrak B_n'$.
-	Otherwise there again would be a homomorphism $\phi$ to $\mathfrak A_n'$ or $\mathfrak B_n'$.
+	Otherwise, there again would be a homomorphism $\phi$ to $\mathfrak A_n'$ or $\mathfrak B_n'$.
 	Let $c,d\in C_n'$ form such a $R_f$-2-cycle.
 	Then we would have $(\phi(c),\phi(d)),(\phi(d),\phi(c))\in R_f^{\mathfrak A_n'}$ or $(\phi(c),\phi(d)),(\phi(d),\phi(c))\in R_f^{\mathfrak B_n'}$, respectively.
 	But in either structure there does not exist such a 2-cycle.
@@ -1145,9 +1148,10 @@ It now only remains to show that this structure cannot be total, acyclic and dis
 	So if $\mathfrak C_n'$ is total and does not contain $R_f$-loops and $R_f$-2-cycles, then it cannot be acyclic.
 \end{proof}
 
-We thus have showed that there cannot exist an acylic and total $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism count.
+We thus have showed that there cannot exist an acyclic and total $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ by homomorphism counts.
 However, in Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc} we showed that the existence of an acyclic, total and functional $\mathfrak C_n'$ that distinguishes $\mathfrak A_n'$ and $\mathfrak B_n'$ is equivalent to the existence of an acyclic $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$.
-Since there is no acyclic and total $\mathfrak C_n'$, there also is no acyclic, total and functional $\mathfrak C_n''$ that distinguishes, and therefore there is no $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ by homomorphism count.
+Since there is no acyclic and total $\mathfrak C_n'$, there also is no acyclic, total and functional $\mathfrak C_n''$ that distinguishes the encodings, and therefore there is no $\mathfrak C_n$ that distinguishes $\mathfrak A_n$ and $\mathfrak B_n$ by homomorphism counts.
+The results of this section are summarised in the following theorem.
 
 \begin{theorem}
 	Let $\sigma$ be a signature, let $\mathfrak A$ and $\mathfrak B$ be two $\sigma$-structures and let $\sigma'$, $\mathfrak A'$ and $\mathfrak B'$ be their respective encodings.
@@ -1163,21 +1167,22 @@ Since there is no acyclic and total $\mathfrak C_n'$, there also is no acyclic, 
 \begin{proof}
 	\textbf{\emph{1.} is equivalent to \emph{2.}}
 	Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is an acyclic $\sigma'$-structure $\mathfrak C'$ such that $\hom(\mathfrak C',\mathfrak A')\neq\hom(\mathfrak C',\mathfrak B')$.
-	Using Lemma \ref{lem:constructionOfFunctionalStruct}, we then can construct an acyclic and function $\sigma'$-structure that also distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count.
+	Using Lemma \ref{lem:constructionOfFunctionalStruct}, we then can construct an acyclic and functional $\sigma'$-structure that also distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism counts.
+	The converse directly follows from the existence of an acyclic $\sigma'$-structure that distinguishes $\mathfrak A'$ and $\mathfrak B'$ by homomorphism counts.
 
 	\textbf{\emph{3.} implies \emph{1.}}
 	The existence of such a $\sigma$-structure is, by Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings.
 	Using the results of \cite{scheidt2025ColorRefinement}, this implies that RCR distinguishes the encodings and by definition this means that naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$.
 	
 	\textbf{\emph{1.} does not imply \emph{3.}}
-	By Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, Statement \emph{3.} is equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings by homomorphism count.
+	By Lemma \ref{lem:acycTotalAndFunctionalEquivAcyc}, Statement \emph{3.} is equivalent to there being an acyclic, total and functional $\sigma'$-structure that distinguishes the encodings by homomorphism counts.
 	However as we showed in Lemma \ref{lem:totalityNotEnforcable}, this is not implied by the existence of an acyclic $\sigma'$-structure which distinguishes the encodings. 
 	This is however equivalent to statement \emph{1.}.
 \end{proof}
 
-We found that naive RCR cannot be characterised by acyclic structures, as the totality of functions inherently result in cycles. 
+We found that naive RCR cannot be characterised by acyclic structures, as the totality of functions inherently results in cycles. 
 When prohibiting loops and 2-cycles, which would not violate the acyclicity, there thus have to be larger cycles which result in the structure not being acyclic.
-The notion of acyclicity with respect to $\alpha$-acyclicity and the used encoding, is therefore strictly weaker than naive RCR.
+The notion of acyclicity with respect to $\alpha$-acyclicity and the used encoding is therefore strictly weaker than naive RCR.
 However, there could be other classes of structures, which characterise naive RCR in the desired way.
 
 

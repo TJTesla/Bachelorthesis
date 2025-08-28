@@ -26,21 +26,21 @@ When fixating a natural number $h$, it is possible to define a kernel for graphs
 This Weisfeiler-Leman Graph Kernel has an adequate ability to to classify graphs, while having a significantly better runtime than classical graph kernels. \cite{grohe2021ColorRefinement}
 
 One importance of $\CR$ in theoretical computer science can be seen, when  we consider other characterisations of its distinguishing power.
-Thus, $\CR$ can be equivalently characterised by counting homomorphisms from trees and by considering a certain logic.
+Thus, $\CR$ can be equivalently characterised by counting homomorphisms from trees and by considering a fragment of counting logic.
 Due to Dvo\v r\'ak \cite{dvorak2010RecognizingGraphsa} and Dell, Grohe and Rattan \cite{dell2018LovaszMeets} we have the following characterisation.
 Given two graphs $G$ and $H$, we have that Colour Refinement distinguishes them if, and only if, there is some tree $T$ such that the number of homomorphisms from $T$ to $G$ is different than to $H$.
 Such a characterisation can also be done through logic.
 We define $\C{2}$ as the logic that extends first-order logic by counting quantifiers and only uses up to two variables.
 Then, it was the shown by Cai and Immerman \cite{cai1992OptimalLower} and Immerman and Lander \cite{immerman1990DescribingGraphs} that the following holds: 
-Colour Refinement distinguishes $G$ and $H$ if, and only if, there is a $\C{2}$-sentence which is satisfied by $G$, but not by $H$.
+Colour Refinement distinguishes $G$ and $H$ if, and only if, there is a sentence in $\C{2}$, which is satisfied by $G$, but not by $H$.
 
 From the examples above it can be seen that while Colour Refinement is a simple procedure, it can be applied in various situations.
 This versatility has been one of the reasons for its success and poses the question, whether it could be possible to formulate an analogous procedure for more than graphs.
 One obvious extension of graphs are hypergraphs.
-These are structures with a set of vertices and edges between those.
+These are structures with a set of vertices and undirected edges between those.
 However, while the edges of classical graphs connect two vertices, edges of hypergraphs can include an arbitrary number of them.
 One interesting result due to Böker \cite{boker2019ColorRefinement} is an extension of Colour Refinement to hypergraphs, which gives rise to an analogous characterisation using homomorphism counting.
-Concretely, Colour Refinement for a hypergraph $G$ is defined like classical $\CR$ on a coloured variant of the incidence graph of $G$.
+Concretely, Colour Refinement for a hypergraph is defined like classical $\CR$ on a coloured variant of the incidence graph of it.
 We then consider connected Berge-acyclic hypergraphs, that is hypergraphs whose incidence graphs are trees. 
 When counting homomorphisms from those to hypergraphs, we get that Colour Refinement distinguishes two hypergraphs $G$ and $H$ if, and only if, there is some connected Berge-acyclic hypergraph $B$, such that $B$ has a different number of homomorphisms to $G$ than to $H$.
 Another result with respect to hypergraphs has been achieved by Scheidt and Schweikardt in \cite{scheidt2023CountingHomomorphisms}.
@@ -52,7 +52,7 @@ They also defined Colour Refinement on the incidence graph of a relational struc
 A more recent result with respect to relational structures has been made by Scheidt and Schweikardt \cite{scheidt2025ColorRefinement}.
 They defined an extension of Colour Refinement for relational structures, called Relational Colour Refinement, short $\RCR$, which is stronger than the version in \cite{butti2021FractionalHomomorphism}.
 Thus it can distinguish structures that the variant in \cite{butti2021FractionalHomomorphism} cannot.
-Furthermore, they were able to define the guarded fragment of counting logic $\GFC$, which characterises $\RCR$ in the same way as $\C{2}$ characterises classical $\CR$.
+Furthermore, they defined the guarded fragment of counting logic $\GFC$, and where able to prove that this logic characterises $\RCR$ in the same way as $\C{2}$ characterises classical $\CR$.
 Additionally, the aforementioned $\alpha$-acyclic structures characterise $\RCR$ as well.
 Concretely, we have that two relational structures of the same signature get distinguished by $\RCR$ if, and only if, there is an $\alpha$-acyclic structure of the same signature such that is has a different amount of homomorphisms to the structures.
 A deeper discussion of the results from \cite{scheidt2025ColorRefinement} can be found in Section \ref{sec:RelationalColourRefinement}.
@@ -73,7 +73,7 @@ Especially the results from \cite{scheidt2025ColorRefinement} seem like a very r
 Furthermore, we notice that functional, as well as non-relational signatures have not yet been investigated.
 As many practical and useful structures use non-relational signatures, for example all algebraic structures, we pose the question how robust the results from \cite{scheidt2025ColorRefinement} are when trying to apply them to structures with (unary) functions.
 Concretely, we consider two possible ways of how Relational Colour Refinement can be adapted to signatures with functions.
-For both approaches we investigate, whether they can be characterised by a variant of $\GFC$ over signatures with functions and by counting homomorphisms from acyclic structures with non-relational signatures.
+For both approaches we investigate, whether they can be characterised by a variant of $\GFC$ over signatures with function symbols and by counting homomorphisms from acyclic structures with non-relational signatures.
 We will see that such a characterisation through logic is in fact possible, while counting homomorphisms from acyclic structures is not.
 Additionally, we prove another result for the characterisation by counting homomorphisms.
 We show that while it is not possible to require that the acyclic structure is total (given a signature with functions), it is possible to require the acyclic structure to be symmetric (given that the two distinguished structures are symmetric as well).
@@ -83,33 +83,40 @@ The results of this thesis are as follows.
 We define two variants of $\RCR$ for non-relational signatures, called naive $\RCR$ and $\RCR_k$ for a $k\in\mathbb{N}$, where the latter is only defined for unary functions.
 Naive $\RCR$ encodes $n$-ary functions $f$ directly as a $(n+1)$-ary relations $R_f$, such that $(x_1,\dots,x_n,y)\in R_f$ if, and only if, $f(x_1,\dots,x_n)=y$.
 Then normal $\RCR$ is applied to the relational structure.
-$\RCR_k$ encodes unary functions $f$ as a family of relations $R_{f^1}$, $R_{f^2}$, $\dots$, where $(x,y)\in R_{f^i}$ if, and only if, $f^i(x)=y$, that is the $n$-times application of $f$ on $x$.
+$\RCR_k$ encodes unary functions $f$ as a family of relations $R_{f^1}$, $R_{f^2}$, $\dots$, where $(x,y)\in R_{f^i}$ if, and only if, $f^i(x)=y$, where $f^i(x)$ is the $i$-times application of $f$ on $x$.
 Furthermore we define $\mathsf{nfGF}(\mathsf C)$ as the logic that is defined as $\GFC$ over non-relational signatures but does not allow the nesting of terms. 
-Additionally we define $\GFC_k$ as the logic that is the normal extension of $\GFC$ to non-relational signatures but terms are only allowed to have an alternation-depth of function-applications of $k$.
-We further call an encoding of a non-relational structure as a relational one total, if the encoding of every function is defined for every value in the function-domain and we call the structure functional, if the encoding of every function defines at most one value for every element in the function-domain.
+Additionally we define $\GFC_k$ as the logic that is the natural extension of $\GFC$ to non-relational signatures but terms are only allowed to have an alternation-depth of function applications of up to $k$.
+We further call an encoding of a non-relational structure as a relational one total, if the encoding of every function is defined for every value in the domain of th function and we call the structure functional, if the encoding of every function defines at most one value for every element in the domain of the function.
 We then achieve the following results.
 
 \begin{theorem}[Theorem \ref{thm:ThmA}]
-For a signature $\sigma$ and two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$, naive $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \mathsf{nfGF}(\mathsf C)$ of signature $\sigma$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+Let $\sigma$ be a signature and let $\mathfrak A$ and $\mathfrak B$ be two $\sigma$-structures.
+Naive $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \mathsf{nfGF}(\mathsf C)$ of signature $\sigma$, such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
 \end{theorem}
 
 \begin{theorem}[Theorem \ref{thm:ThmB}]
-For a signature $\sigma$ that only contains relation symbols and unary function symbols, two $\sigma$-structures $\mathfrak A$ and $\mathfrak B$ and a $k\in\mathbb N$, $\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \GFC_k$ of signature $\sigma$ such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
+Let $\sigma$ be a signature that only contains relation symbols and unary function symbols. 
+Let $\mathfrak A$ and $\mathfrak B$ be two $\sigma$-structures and let $k\in\mathbb N$. 
+$\RCR_k$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a sentence $\phi\in \GFC_k$ of signature $\sigma$, such that $\mathfrak A\models \phi$ and $\mathfrak B\not\models \phi$.
 \end{theorem}
 
 \begin{theorem}[Theorem \ref{thm:nRCRNotCharacByHomCount}]
-There exists a signature such that two structures of it get distinguished by naive $\RCR$ if, and only if, there exists an acyclic and functional structure that distinguishes the encodings by homomorphism count.
-Additionally, there cannot exist an acyclic, total encoding that has differently many homomorphisms to the encodings.
+\label{thm:introHomCount}
+Two structures $\mathfrak A$ and $\mathfrak B$ get distinguished by naive $\RCR$ if, and only if, there exists an acyclic and functional structure that distinguishes the encodings of $\mathfrak A$ and $\mathfrak B$ by homomorphism counts.
+Furthermore, there exist structures $\mathfrak A$ and $\mathfrak B$ that get distinguished by naive $\RCR$, but there does not exist an acyclic and total structure that distinguishes the encodings of $\mathfrak A$ and $\mathfrak B$ by homomorphism counts.
 \end{theorem}
 
 \begin{theorem}[Theorem \ref{thm:ThmD}]
-For two symmetric, relational structures $\mathfrak A$ and $\mathfrak B$, $\RCR$ distinguishes $\mathfrak A$ and $\mathfrak B$ if, and only if, there is a symmetric, acyclic structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by number of homomorphism.
+Two symmetric, relational structures $\mathfrak A$ and $\mathfrak B$ get distinguished by $\RCR$ if, and only if, there is a symmetric, acyclic structure that distinguishes $\mathfrak A$ and $\mathfrak B$ by number of homomorphism.
 \end{theorem}
 
 The methods used to achieve the above results rely heavily on the proofs from \cite{scheidt2025ColorRefinement}.
 For the logical characterisation of structures with functions we translate both structures to relational structures and translate any formula to a valid $\GFC$-formula over a relational signature.
 The same is done in reverse.
-For the characterisation through homomorphism counting, we give a family of counterexamples.
+For the characterisation through homomorphism counting, we have two results, see Theorem \ref{thm:introHomCount}.
+For the first result we present a procedure to iteratively remove collisions of function encodings.
+This then results in a functional structure.
+The second result is shown by defining two families of counterexamples.
 
 The structure of this thesis is as follows.
 We begin by defining notation and fundamental definitions in Section \ref{sec:Preliminaries}.
