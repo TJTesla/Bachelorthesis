@@ -26,10 +26,10 @@ For every $\mathbf a\in \mathbf A$ we iteratively construct a colour $\rho_i(\ma
 We begin by defining the initial colour using the atomic and shared type of $\mathbf a$ itself.
 Formally, $\rho_0(\mathbf a)\coloneqq(\atp(\mathbf a), \stp(\mathbf a))$.
 For every $i \in \mathbb N_{\geq 1}$ the colour $\rho_i(\mathbf a)$ is made up of $\rho_{i-1}(\mathbf a)$ and the colour of the last round for every tuple that $\mathbf a$ shares an element with, in addition to the information which elements are shared.
-This is formalised as $\rho_{i+1}(\mathbf a)\coloneqq(\rho_{i}(\mathbf a), N_{i+1}^{\mathfrak A}(\mathbf a))$, where
-$$N_{i+1}^{\mathfrak A}\coloneqq \multiset{(\stp(\mathbf a, \mathbf b), \rho_{i}(\mathbf b)) : \mathbf b\in \mathbf A, \stp(\mathbf a, \mathbf b)\neq \emptyset}.$$
+This is formalised as 
+$$\rho_{i+1}(\mathbf a)\coloneqq(\rho_{i}(\mathbf a), \multiset{(\stp(\mathbf a, \mathbf b), \rho_{i}(\mathbf b)) : \mathbf b\in \mathbf A, \stp(\mathbf a, \mathbf b)\neq \emptyset}).$$
 It can easily be verified that if $\rho_i(\mathbf a) \neq \rho_i(\mathbf b)$, then $\rho_{i+1}(\mathbf a)\neq\rho_{i+1}(\mathbf b)$. 
-We therefore get a refinement.
+The rounds therefore act as a refinement.
 This also means that there must be a smallest $i_{\mathfrak A} \leq \mathbf A$, such that for every $\mathbf a, \mathbf b\in \mathbf A$, we have that $\rho_{i_{\mathfrak A}}(\mathbf a) = \rho_{i_{\mathfrak A}}(\mathbf b)$ if, and only if, $\rho_{i_{\mathfrak A}+1}(\mathbf a) = \rho_{i_{\mathfrak A}+1}(\mathbf b)$, we then call this colouring the stable colouring.
 For a relational structure $\mathfrak A$ and $i\in \mathbb N$ we define $\operatorname{RC}_i(\mathfrak A)\coloneqq\{\rho_i(\mathbf a) : \mathbf a \in \mathbf A\}$ as the set of colours that get constructed in the $i$-th round of RCR.
 Further, for a relational structure $\mathfrak A$, a number $i\in \mathbb N$ and a colour $c\in \operatorname{RC}_i(\mathfrak A)$ we write $\operatorname{mult}_{\mathfrak A}(c)\coloneqq \vert \{\mathbf a\in \mathbf A : \rho_i(\mathbf a)=c\}\vert$ for the number of occurrences of the colour $c$.
@@ -39,7 +39,7 @@ When comparing this algorithm with the Colour Refinement algorithm for binary re
 In fact, it is possible to interpret a relational structure as a binary relational structure, on which classical CR can be applied with an equivalent result to RCR on the original structure.
 For a relational signature $\sigma$ we define a signature $\widehat{\sigma}\coloneqq \{E_{i,j}/2 : i,j \in [\operatorname{ar}(\sigma)]\} \cup \{U_R/1 : R\in \sigma\}$.
 For a $\sigma$-structure $\mathfrak A$, we can now define a binary relational structure $\mathcal{G}_{\mathfrak A}$ of signature $\widehat{\sigma}$.
-The universe of $\mathcal{G}_{\mathfrak A}$ is defined as $V(\mathcal{G})_{\mathfrak A}=\{w_{\mathbf a} : \mathbf a \in \mathbf A\}$.
+The universe of $\mathcal{G}_{\mathfrak A}$ is defined as $V(\mathcal{G}_{\mathfrak A})=\{w_{\mathbf a} : \mathbf a \in \mathbf A\}$.
 In words, we create a new element $w_{\mathbf a}$ for every tuple $\mathbf a \in \mathbf A$.
 The relations are then defined as follows.
 For $R\in \sigma$ we set 
@@ -171,9 +171,10 @@ This is because for all triples $(x,y,z)\in T^{\mathfrak B}$, there does not exi
 Therefore $\operatorname{mult}_{\mathfrak A}(\gamma_1((a,c,d)))=1\neq 0 = \operatorname{mult}_{\mathfrak B}(\gamma_1((a,c,d)))$ and RCR distinguishes $\mathfrak A$ and $\mathfrak B$ in round $1$.
 
 In their paper, Scheidt and Schweikardt consider a larger example, which is an extension of the classical non-distinguishable example for Colour Refinement.
-It uses a signature with a binary and a $6$-ary relation and is comprised of the structure $\mathfrak A_1$ with one $6$-cycle and the structure $\mathfrak A_2$ with two $3$-cycles.
+They use a signature with a binary relation and a relation of arity $6$.
+The example is then comprised of the structure $\mathfrak A_1$ with one $6$-cycle and the structure $\mathfrak A_2$ with two $3$-cycles.
 Without the $6$-ary relation the structure would be a regular graph and therefore could not be distinguished by Colour Refinement.
-Because of that, the $6$-ary relation includes one tuple, containing all $6$ elements each.
+Because of that, the $6$-ary relation includes one tuple, containing all $6$ elements.
 With this change, the structures can be distinguished by $\RCR$, which is discussed in \cite{scheidt2025ColorRefinement}.
 
 Furthermore, Scheidt and Schweikardt investigate other, seemingly simpler, possible variants of Colour Refinement which use the Gaifman-Graph and Incidence-Graph of a relational structure.
@@ -201,14 +202,14 @@ The guarded fragment drops the bound on the number of variables, but adds the re
 		Then $(\phi\land\psi)\in\GFC$ and $\free{(\phi\land\psi)}=\free{\phi}\cup\free{\psi}$.
 		\item For a formula built using Rule \emph{1.} or \emph{2.} $\Delta$ and a $\phi\in\GFC$, we call $\Delta$ a guard for $\phi$, if $\free{\Delta}\supseteq\free{\phi}$.
 		Let $\Delta,\phi\in \GFC$, where $\Delta$ is a guard for $\phi$, let $\mathbf v$ be a tuple of variables with $\set(\mathbf v)\subseteq \free{\Delta}$ and let $n\in \mathbb N_{\geq 1}$. 
-		Then $\exists^{\geq n}\mathbf v . (\Delta \land \phi)\in \GFC$ and $\free{\exists^{\geq n}\mathbf v.(\Delta\land\phi)}=\free{\Delta}\setminus \set{\mathbf v}$.
+		Then $\exists^{\geq n}\mathbf v . (\Delta \land \phi)\in \GFC$ and $\free{\exists^{\geq n}\mathbf v.(\Delta\land\phi)}=\free{\Delta}\setminus \set(\mathbf v)$.
 	\end{enumerate}
 	Formulae that are built using Rules \emph{1.} and \emph{2.} are called atomic formulae, we omit parenthesises in the usual way and use $\exists^{=n}\mathbf v.(\Delta\land\phi)$ as shorthand notation for $\exists^{\geq n}\mathbf v.(\Delta\land\phi)\land \neg\exists^{\geq n+1}\mathbf v.(\Delta\land\phi)$.
 	
 	The semantics of this logic are analogous to classical counting logic, see for example \cite{cai1992OptimalLower}, and also are concretely defined in \cite{scheidt2025ColorRefinement}.
 \end{definition}
 When comparing $\GFC$ with the logic $\mathsf{GC}^1$, see \cite{scheidt2023CountingHomomorphisms}, we notice that they seem very similar.
-A guard in $\GFC$ uses only one edge, since atomic formulae are defined as equalities and relations.
+A guard in $\GFC$ uses only one edge, since atomic formulae are either equalities or relations.
 This is similar to the one available edge variable in $\mathsf{GC}^1$, over which a guard is defined.
 
 Using a pebble game for $\GFC$, called the Guarded-Game, Scheidt and Schweikardt proved the following theorem:
@@ -227,10 +228,6 @@ More precisely, there does not exist a tuple of length $3$ in $\mathfrak B$, whi
 This can be formalised using the formula
 $$\phi_1\coloneqq\exists^{\geq 1}(x,y,z).\left(T(x,y,z)\land \exists^{\geq 1} (y).\left( R(x,y)\right)\right).$$
 It is easy to see that $\mathfrak A\models \phi_1$ and $\mathfrak B\not\models \phi_1$.
-Another formula can be obtained from the fact that in the stable colouring of $\mathfrak B$, the tuples $(a,c,d)$ and $(b,c,d)$ share the same colour.
-Therefore, the formula
-$$\phi_2\coloneqq \exists^{\geq 2}(x,y,z).\left(T(x,y,z)\land R(y,z)\right)$$
-is also distinguishing.
 
 \subsection{Characterising RCR by Homomorphism Counting}
 
@@ -239,7 +236,7 @@ Due to \cite{dvorak2010RecognizingGraphsa} and \cite{dell2018LovaszMeets} it is 
 Again, there is an analogous characterisation for Relational Colour Refinement.
 One obstacle in defining such a characterisation is finding a class that generalises trees for relational structures.
 As a tree is a connected, acyclic graph, we have to find a fitting notion of acyclicity for relational structures.
-As can be seen in \cite{brault-baron2014HypergraphAcyclicity}, there are multiple such definitions for hypergraphs, which can be applied to relational structures as well.
+It can be seen, for example in \cite{brault-baron2014HypergraphAcyclicity}, that there are multiple such definitions for hypergraphs, which can be applied to relational structures as well.
 When considering the results from \cite{scheidt2023CountingHomomorphisms} and that $\mathsf{GC}^1$ seems very similar to $\GFC$, it appears that hypergraphs of generalised hypertree width of $1$, or equivalently $\alpha$-acyclic hypergraphs, may be a possible candidate.
 This is in fact the case.
 Let us therefore define $\alpha$-acyclic structures, which will just be called acyclic structures in the following.
@@ -250,7 +247,7 @@ Let us therefore define $\alpha$-acyclic structures, which will just be called a
 	A join-tree $J$ for $\mathfrak C$ is a tree with a vertex for every tuple in $\mathfrak C$, thus $V(J)=\mathbf C$, which fulfils the join-tree-property:
 	For any $c\in C$, the set $\{\mathbf c \in V(J) : c\in \set(\mathbf c)\}$ induces a connected subgraph of $J$.
 	This induced subgraph is also a tree and will be denoted as $J_c$.
-	Finally, we call structure acyclic, if it has a join-tree.
+	Finally, we call a structure acyclic, if it has a join-tree.
 \end{definition}
 There are multiple equivalent characterisations for this notion of acyclicity which can be found in \cite{brault-baron2014HypergraphAcyclicity}.
 Recall the definition for homomorphisms between structures and the definitions of $\Hom$ and $\hom$.
@@ -284,8 +281,9 @@ This can be seen from its join tree depicted in Figure \ref{fig:distinguishedJoi
 \end{figure}
 Now consider the homomorphisms from $\mathfrak B$.
 The identity is always a homomorphism, therefore $\hom(\mathfrak B, \mathfrak B)\geq 1$.
-However, when trying to construct a homomorphism from $\mathfrak B$ to $\mathfrak A$, we encounter some issues.
-As $(c',d')\in R^{\mathfrak B}$ and $(a,b)$ is the only tuple in $R^{\mathfrak A}$, we have to map $c'$ to $a$ and $d'$ to $b$.
+However, a homomorphism from $\mathfrak B$ to $\mathfrak A$ cannot exist.
+Consider $(c',d')\in R^{\mathfrak B}$ and that $(a,b)$ is the only tuple in $R^{\mathfrak A}$. 
+We therefore would have to map $c'$ to $a$ and $d'$ to $b$.
 But now consider the tuple $(a',c',d')\in T^{\mathfrak B}$ and let $x$ be the element that $a'$ gets mapped to.
 Then $(x,a,b)$ must be in $T^{\mathfrak A}$.
 But there is no such tuple in $\mathfrak A$, independently of $x$.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  28 AUG 2025 14:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  28 AUG 2025 19:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -72,23 +72,23 @@ Package typearea Info: You've used standard option `a4paper'.
 
 
 Package typearea Warning: Bad type area settings!
-(typearea)                The detected line width is about 20%
+(typearea)                The detected line width is about 17%
 (typearea)                larger than the heuristically estimated maximum
 (typearea)                limit of typographical good line width.
 (typearea)                You should e.g. decrease DIV, increase fontsize
 (typearea)                or change papersize.
 
 Package typearea Info: These are the values describing the layout:
-(typearea)             DIV  = 14
+(typearea)             DIV  = 13
 (typearea)             BCOR = 0.0pt
 (typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 469.47052pt
-(typearea)              DIV departure   = -20%
-(typearea)              \evensidemargin = -8.25128pt
-(typearea)              \oddsidemargin  = -8.25128pt
+(typearea)              \textwidth      = 459.6215pt
+(typearea)              DIV departure   = -17%
+(typearea)              \evensidemargin = -3.32678pt
+(typearea)              \oddsidemargin  = -3.32678pt
 (typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 677.4003pt
-(typearea)              \topmargin      = -49.30951pt
+(typearea)              \textheight     = 650.20029pt
+(typearea)              \topmargin      = -44.6664pt
 (typearea)              \headheight     = 17.0pt
 (typearea)              \headsep        = 20.40001pt
 (typearea)              \topskip        = 11.0pt
@@ -1268,11 +1268,10 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 {/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
 
-[3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
+[3]
 LaTeX Font Info:    Trying to load font information for U+euf on input line 93.
 
-
-(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-euf.cfg
@@ -1280,10 +1279,11 @@ File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 ))
 
-[4]
+[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
 \openout2 = `preliminaries.aux'.
 
- (./preliminaries.tex
+
+(./preliminaries.tex
 
 [5
 
@@ -1311,7 +1311,7 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 77.
 
-Overfull \hbox (19.67139pt too wide) in paragraph at lines 124--128
+Overfull \hbox (29.5204pt too wide) in paragraph at lines 124--128
 \T1/lmr/m/n/10.95 (-20) RCR, we have $\OML/lmm/m/it/10.95 ^^M[]\OT1/lmr/m/n/10.
 95 (-20) (\OML/lmm/m/it/10.95 w[]\OT1/lmr/m/n/10.95 (-20) ) = (\OMS/lmsy/m/n/10
 .95 f\OML/lmm/m/it/10.95 U[]\OMS/lmsy/m/n/10.95 g\OML/lmm/m/it/10.95 ; \OMS/lms
@@ -1362,6 +1362,19 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [13]
 
 [14]
+Overfull \hbox (19.45448pt too wide) in paragraph at lines 236--240
+[]\T1/lmr/m/n/10.95 (-20) For ex-am-ple, con-sider the struc-tures $\U/euf/m/n/
+10.95 A$ \T1/lmr/m/n/10.95 (-20) and $\U/euf/m/n/10.95 B$ \T1/lmr/m/n/10.95 (-2
+0) from Fig-ure [][]5[][] and the for-mula $\OML/lmm/m/it/10.95 ' \OT1/lmr/m/n/
+10.95 (-20) = \OMS/lmsy/m/n/10.95 9[]\OML/lmm/m/it/10.95 x []\OT1/lmr/m/n/10.95
+ (-20) (\OML/lmm/m/it/10.95 f\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 f\OT
+1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 f\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/
+m/it/10.95 x\OT1/lmr/m/n/10.95 (-20) ))) =
+ []
+
+
+
+[15]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 242.
@@ -1376,43 +1389,27 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 
-[15]
-
 [16]
 
 [17]
+Overfull \hbox (6.75711pt too wide) in paragraph at lines 385--388
+\OML/lmm/m/it/10.95 f[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 a[]\OT1/lm
+r/m/n/10.95 (-20) ) = \OML/lmm/m/it/10.95 f[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm
+/m/it/10.95 a[]\OT1/lmr/m/n/10.95 (-20) )$ \T1/lmr/m/n/10.95 (-20) it fol-lows 
+that $\OML/lmm/m/it/10.95 f[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 a[]\
+OT1/lmr/m/n/10.95 (-20) ) = \OML/lmm/m/it/10.95 f[]\OT1/lmr/m/n/10.95 (-20) (\O
+ML/lmm/m/it/10.95 a[]\OT1/lmr/m/n/10.95 (-20) )$\T1/lmr/m/n/10.95 (-20) . This 
+con-tra-dicts $\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[] \OMS/lmsy/m/n/10.95 
+j[]\OT1/lmr/m/n/10.95 (-20) = [][] \OML/lmm/m/it/10.95 f[]\OT1/lmr/m/n/10.95 (-
+20) (\OML/lmm/m/it/10.95 x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 6\OT
+1/lmr/m/n/10.95 (-20) =
+ []
+
+
 
 [18]
 
 [19]
-Overfull \hbox (1.0566pt too wide) in paragraph at lines 487--489
-[]\T1/lmr/m/n/10.95 (-20) If $\OML/lmm/m/it/10.95 m > n$\T1/lmr/m/n/10.95 (-20)
- , we again as-sume that $\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[]; a[] \OMS
-/lmsy/m/n/10.95 j[]\OT1/lmr/m/n/10.95 (-20) = \OML/lmm/m/it/10.95 #[]\OT1/lmr/m
-/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) )$ \T1/lmr
-/m/n/10.95 (-20) and that there are $\OML/lmm/m/it/10.95 '[]\OT1/lmr/m/n/10.95 
-(-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.
-95 2 \OT1/lmr/m/n/10.95 (-20) ^^H[](\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10
-.95 (-20) )$
- []
-
-
-Overfull \hbox (21.11374pt too wide) in paragraph at lines 487--489
-\T1/lmr/m/n/10.95 (-20) and $\OML/lmm/m/it/10.95 '[]\OT1/lmr/m/n/10.95 (-20) (\
-OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) ) \OMS/lmsy/m/n/10.95 2 \OT
-1/lmr/m/n/10.95 (-20) ^^H[](\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20
-) )$ \T1/lmr/m/n/10.95 (-20) with $\OML/lmm/m/it/10.95 '[] \OMS/lmsy/m/n/10.95 
-6\OT1/lmr/m/n/10.95 (-20) = \OML/lmm/m/it/10.95 '[]$\T1/lmr/m/n/10.95 (-20) , $
-\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[] \OMS/lmsy/m/n/10.95 j[]\OT1/lmr/m/n
-/10.95 (-20) = \OMS/lmsy/m/n/10.95 9[]\OML/lmm/m/it/10.95 x[] [] '[]\OT1/lmr/m/
-n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10.95 (-20) )$ \T1/lmr/
-m/n/10.95 (-20) and $\U/euf/m/n/10.95 A\OML/lmm/m/it/10.95 ; a[] \OMS/lmsy/m/n/
-10.95 j[]\OT1/lmr/m/n/10.95 (-20) = \OMS/lmsy/m/n/10.95 9[]\OML/lmm/m/it/10.95 
-x[] [] '[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10
-.95 (-20) )$\T1/lmr/m/n/10.95 (-20) .
- []
-
-
 
 [20]
 
@@ -1425,41 +1422,52 @@ x[] [] '[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 x[]; x[]\OT1/lmr/m/n/10
 [24]
 
 [25]
+Overfull \hbox (4.49557pt too wide) in paragraph at lines 726--727
+[]\T1/lmr/m/it/10.95 (-20) There ex-ists an acyclic, to-tal and func-tional str
+uc-ture $\U/euf/m/n/10.95 C[]$ \T1/lmr/m/it/10.95 (-20) of sig-na-ture $\OML/lm
+m/m/it/10.95 ^^[[]$ \T1/lmr/m/it/10.95 (-20) such that $[]\OT1/lmr/m/n/10.95 (-
+20) (\U/euf/m/n/10.95 C[]\OML/lmm/m/it/10.95 ; \U/euf/m/n/10.95 A[]\OT1/lmr/m/n
+/10.95 (-20) ) \OMS/lmsy/m/n/10.95 6\OT1/lmr/m/n/10.95 (-20) =
+ []
+
+
 
 [26]
 
 [27]
 
 [28]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 1004.
-
 
 [29]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <20.74> on input line 1008.
+
 
 [30]
 
-[31])
+[31]
 
-[32]
+[32])
+
+[33]
 \openout2 = `symmetric_structs.aux'.
 
  (./symmetric_structs.tex
 
-[33
+[34
 
 
 
 ]
 
-[34])
+[35])
 
-[35]
+[36]
 \openout2 = `conclusion.aux'.
 
  (./conclusion.tex)
 
-[36
+[37
 
 
 
@@ -1475,13 +1483,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 
 
-[37
+[38
 
 
 
 ])
 
-[38] (./thesis.aux (./intro.aux) (./preliminaries.aux) (./rcr.aux)
+[39] (./thesis.aux (./intro.aux) (./preliminaries.aux) (./rcr.aux)
 (./functions.aux) (./symmetric_structs.aux) (./conclusion.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
@@ -1491,11 +1499,11 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34338 strings out of 473190
- 682238 string characters out of 5715801
- 1296601 words of memory out of 5000000
- 56336 multiletter control sequences out of 15000+600000
- 753811 words of font info for 382 fonts, out of 8000000 for 9000
+ 34343 strings out of 473190
+ 682251 string characters out of 5715801
+ 1301600 words of memory out of 5000000
+ 56332 multiletter control sequences out of 15000+600000
+ 754195 words of font info for 386 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  110i,13n,131p,10901b,1210s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.
@@ -1519,10 +1527,10 @@ live/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2025/t
 exmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/f
 onts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1
 /public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (38 pages, 551944 bytes).
+Output written on thesis.pdf (39 pages, 554453 bytes).
 PDF statistics:
- 649 PDF objects out of 1000 (max. 8388607)
- 550 compressed objects within 6 object streams
- 151 named destinations out of 1000 (max. 500000)
+ 655 PDF objects out of 1000 (max. 8388607)
+ 555 compressed objects within 6 object streams
+ 152 named destinations out of 1000 (max. 500000)
  105109 words of extra memory for PDF output out of 106986 (max. 10000000)
 
