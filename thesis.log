@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  28 AUG 2025 19:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  1 SEP 2025 15:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1362,7 +1362,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 [13]
 
 [14]
-Overfull \hbox (19.45448pt too wide) in paragraph at lines 236--240
+Overfull \hbox (19.45448pt too wide) in paragraph at lines 237--241
 []\T1/lmr/m/n/10.95 (-20) For ex-am-ple, con-sider the struc-tures $\U/euf/m/n/
 10.95 A$ \T1/lmr/m/n/10.95 (-20) and $\U/euf/m/n/10.95 B$ \T1/lmr/m/n/10.95 (-2
 0) from Fig-ure [][]5[][] and the for-mula $\OML/lmm/m/it/10.95 ' \OT1/lmr/m/n/
@@ -1377,22 +1377,22 @@ m/it/10.95 x\OT1/lmr/m/n/10.95 (-20) ))) =
 [15]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 242.
+(hyperref)                removing `math shift' on input line 243.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 242.
+(hyperref)                removing `subscript' on input line 243.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 242.
+(hyperref)                removing `math shift' on input line 243.
 
 
 
 [16]
 
 [17]
-Overfull \hbox (6.75711pt too wide) in paragraph at lines 385--388
+Overfull \hbox (6.75711pt too wide) in paragraph at lines 386--389
 \OML/lmm/m/it/10.95 f[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm/m/it/10.95 a[]\OT1/lm
 r/m/n/10.95 (-20) ) = \OML/lmm/m/it/10.95 f[]\OT1/lmr/m/n/10.95 (-20) (\OML/lmm
 /m/it/10.95 a[]\OT1/lmr/m/n/10.95 (-20) )$ \T1/lmr/m/n/10.95 (-20) it fol-lows 
@@ -1422,7 +1422,7 @@ j[]\OT1/lmr/m/n/10.95 (-20) = [][] \OML/lmm/m/it/10.95 f[]\OT1/lmr/m/n/10.95 (-
 [24]
 
 [25]
-Overfull \hbox (4.49557pt too wide) in paragraph at lines 726--727
+Overfull \hbox (4.49557pt too wide) in paragraph at lines 727--728
 []\T1/lmr/m/it/10.95 (-20) There ex-ists an acyclic, to-tal and func-tional str
 uc-ture $\U/euf/m/n/10.95 C[]$ \T1/lmr/m/it/10.95 (-20) of sig-na-ture $\OML/lm
 m/m/it/10.95 ^^[[]$ \T1/lmr/m/it/10.95 (-20) such that $[]\OT1/lmr/m/n/10.95 (-
@@ -1440,7 +1440,7 @@ m/m/it/10.95 ^^[[]$ \T1/lmr/m/it/10.95 (-20) such that $[]\OT1/lmr/m/n/10.95 (-
 
 [29]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <20.74> on input line 1008.
+(Font)              <20.74> on input line 1009.
 
 
 [30]
@@ -1527,7 +1527,7 @@ live/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2025/t
 exmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/f
 onts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1
 /public/amsfonts/symbols/msbm10.pfb>
-Output written on thesis.pdf (39 pages, 554411 bytes).
+Output written on thesis.pdf (39 pages, 554447 bytes).
 PDF statistics:
  655 PDF objects out of 1000 (max. 8388607)
  555 compressed objects within 6 object streams

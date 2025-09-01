@@ -1,2 +1,11 @@
-\beamer@sectionintoc {1}{Classical Colour Refinement}{2}{0}{1}
-\beamer@sectionintoc {2}{Relational Colour Refinement}{7}{0}{2}
+\beamer@sectionintoc {1}{Classical Colour Refinement}{4}{0}{1}
+\beamer@sectionintoc {2}{Relational Colour Refinement}{10}{0}{2}
+\beamer@subsectionintoc {2}{1}{Logical Characterisation of RCR}{17}{0}{2}
+\beamer@subsectionintoc {2}{2}{Combinatorial Characterisation of RCR}{21}{0}{2}
+\beamer@sectionintoc {3}{Relational Colour Refinement for Structures With Functions}{26}{0}{3}
+\beamer@subsectionintoc {3}{1}{Logical Characterisation of Naive RCR}{34}{0}{3}
+\beamer@subsectionintoc {3}{2}{Logical Characterisation of RCR$_k$}{37}{0}{3}
+\beamer@sectionintoc {4}{Combinatorial Characterisation of RCR}{42}{0}{4}
+\beamer@sectionintoc {5}{Restricting RCR to Symmetric Structures}{54}{0}{5}
+\beamer@sectionintoc {6}{Sketch of a Proof}{57}{0}{6}
+\beamer@sectionintoc {7}{Conclusion}{63}{0}{7}
