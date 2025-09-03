@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  2 SEP 2025 00:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.6.1)  3 SEP 2025 14:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1263,13 +1263,13 @@ thkerncmss.
 [8
 
 ]
-Overfull \hbox (18.16902pt too wide) in paragraph at lines 241--241
+Overfull \hbox (18.16902pt too wide) in paragraph at lines 245--245
  [][] 
  []
 
 
-Overfull \hbox (23.81053pt too wide) in paragraph at lines 241--241
- [] 
+Overfull \hbox (23.81053pt too wide) in paragraph at lines 245--245
+ [][] 
  []
 
 
@@ -1282,20 +1282,20 @@ Overfull \hbox (23.81053pt too wide) in paragraph at lines 241--241
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 257.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 261.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 257.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 261.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 257.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 261.
 
 
 
 [11
 
 ]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 265
+LaTeX Font Info:    Trying to load font information for U+euf on input line 269
 .
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
@@ -1304,7 +1304,7 @@ File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 [12
 
 ]
-Overfull \hbox (2.51875pt too wide) in paragraph at lines 299--299
+Overfull \hbox (2.51875pt too wide) in paragraph at lines 303--303
  [][] 
  []
 
@@ -1313,7 +1313,7 @@ Overfull \hbox (2.51875pt too wide) in paragraph at lines 299--299
 [13
 
 ]
-Overfull \vbox (8.38531pt too high) detected at line 348
+Overfull \vbox (8.38531pt too high) detected at line 352
  []
 
 
@@ -1326,13 +1326,13 @@ Overfull \vbox (8.38531pt too high) detected at line 348
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 405.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 409.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <7> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 405.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 409.
 
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 405.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 409.
 
 
 
@@ -1343,7 +1343,7 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 [17
 
 ]
-Overfull \vbox (27.64833pt too high) detected at line 426
+Overfull \vbox (27.64833pt too high) detected at line 430
  []
 
 
@@ -1375,15 +1375,15 @@ Overfull \vbox (27.64833pt too high) detected at line 426
 [24
 
 ]
-Overfull \hbox (6.42776pt too wide) in paragraph at lines 647--647
- [] 
- []
-
-
 
 [25
 
 ]
+Overfull \hbox (6.42776pt too wide) in paragraph at lines 652--652
+ [] 
+ []
+
+
 
 [26
 
@@ -1400,14 +1400,14 @@ Overfull \hbox (6.42776pt too wide) in paragraph at lines 647--647
 [29
 
 ]
-Overfull \vbox (0.48636pt too high) detected at line 711
- []
-
-
 
 [30
 
 ]
+Overfull \vbox (0.48636pt too high) detected at line 717
+ []
+
+
 
 [31
 
@@ -1433,25 +1433,25 @@ Overfull \vbox (0.48636pt too high) detected at line 711
 
 ]
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 845.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 845.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 845.
-
-LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 845.
-
-
-
 [37
 
 ]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 851.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 851.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 851.
+
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 851.
+
+
 
 [38
 
@@ -1547,7 +1547,6 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
 
 [61
 
-
 ]
 
 [62
@@ -1557,22 +1556,27 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <12> not available
 
 [63
 
+
 ]
-Overfull \vbox (19.25925pt too high) detected at line 1316
- []
-
-
 
 [64
 
 ]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\translate ' on input line 1318.
+Overfull \vbox (19.25925pt too high) detected at line 1322
+ []
 
 
 
 [65
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\translate ' on input line 1324.
+
+
+
+[66
 
 ]
 \tf@nav=\write6
@@ -1590,13 +1594,13 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `slides.out' has not changed.
-(rerunfilecheck)             Checksum: 373F01C985A074B67455D82BD6EB1AE1;2481.
+(rerunfilecheck)             Checksum: DE5441DBE173F64E249AE39BFC17D16F;2554.
  ) 
 Here is how much of TeX's memory you used:
- 30122 strings out of 473190
- 617178 string characters out of 5715801
- 1018742 words of memory out of 5000000
- 52641 multiletter control sequences out of 15000+600000
+ 30123 strings out of 473190
+ 617198 string characters out of 5715801
+ 1019440 words of memory out of 5000000
+ 52640 multiletter control sequences out of 15000+600000
  578503 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,131p,1982b,1225s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1625,10 +1629,10 @@ texlive/2025/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local
 /texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/l
 ocal/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb></usr/loc
 al/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb>
-Output written on slides.pdf (65 pages, 316547 bytes).
+Output written on slides.pdf (66 pages, 319010 bytes).
 PDF statistics:
- 589 PDF objects out of 1000 (max. 8388607)
- 459 compressed objects within 5 object streams
- 143 named destinations out of 1000 (max. 500000)
+ 598 PDF objects out of 1000 (max. 8388607)
+ 467 compressed objects within 5 object streams
+ 145 named destinations out of 1000 (max. 500000)
  139 words of extra memory for PDF output out of 10000 (max. 10000000)
 

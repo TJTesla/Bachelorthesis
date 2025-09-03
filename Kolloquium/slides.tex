@@ -149,7 +149,7 @@
 	\begin{frame}{Distinguished graphs}
 		\begin{itemize}
 			\item CR distinguishes two graphs $G$ and $H$, if
-			\item there exists $C_i(v)$ in colouring of $G$ or $H$, such that number of vertices with colour $C_i(v)$ is different in $G$ than in $H$
+			\item there exists $C_i(v)$ in colouring of $G$ or $H$, such that the number of vertices with colour $C_i(v)$ is different in $G$ than in $H$
 		\end{itemize}
 		
 		\begin{columns}
@@ -188,11 +188,6 @@
 			\item Due to \textcolor{red}{bibliography}:\break
 			CR distinguishes $G$ and $H$ if, and only if, there exists tree $T$, such that $\hom(T,G)\neq\hom(T,H)$
 		\end{itemize}
-		Examples for $G$ and $H$:
-		\begin{itemize}
-			\item $\phi\coloneqq \exists^{\geq 1} x . \neg \exists^{\geq 2} y . E(x,y)$
-			\item $T\coloneqq(\{v, u\}, \{\{v,u\}\})$
-		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Application of Characterisations to Example}
@@ -213,6 +208,19 @@
 					edge[-] (d)
 					(c) edge[-] (d);
 				\end{tikzpicture}
+				
+			\end{column}
+			\begin{column}{0.75\textwidth}
+				\begin{itemize}
+					\item Used existence of colour $(0,\multiset{0})$ in colouring of $H$ to distinguish $G$ and $H$
+					\item From colour it follows that vertex with degree $1$ exists
+					\item $\exists^{\geq 1} x \operatorname{.} \neg \exists^{\geq 2} y \operatorname{.} E(x,y)$ distinguishes $G$ and $H$
+				\end{itemize}
+			\end{column}
+		\end{columns}
+		\begin{columns}
+			\begin{column}{0.25\textwidth}
+				\centering
 				\begin{tikzpicture}[node distance=2cm]
 					\node (a) {$a'$};
 					\node[right=of a] (b) {$b'$};
@@ -229,10 +237,6 @@
 			\end{column}
 			\begin{column}{0.75\textwidth}
 				\begin{itemize}
-					\item Used existence of colour $(0,\multiset{0})$ in colouring of $H$ to distinguish $G$ and $H$
-					\item From colour it follows that vertex with degree $1$ exists
-					\item $\exists^{\geq 1} x \operatorname{.} \neg \exists^{\geq 2} y \operatorname{.} E(x,y)$ distinguishes $G$ and $H$
-					\item[]
 					\item There are $5$ edges in $G$ but only $4$ in $H$
 					\item Tree $T\coloneqq(\{v, u\}, \{\{v,u\}\})$ has $10$ homomorphisms to $G$ and $8$ to $H$
 				\end{itemize}
@@ -397,7 +401,7 @@
 			\end{column}
 		\end{columns}
 		\begin{itemize}
-			\item $\gamma_1((a,c,d))=((\{T\},\{\dots\}), \multiset{(\{1,1\}, (\{R\},\{\dots\})), \dots})$ appears in colouring of left structure but not in right
+			\item $\rho((a,c,d))=((\{T\},\{\dots\}), \multiset{(\{1,1\}, (\{R\},\{\dots\})), \dots})$ appears in colouring of left structure but not in right
 			\begin{itemize}
 				\item There is no triple in $T$ where its first element is in a tuple in $R$
 			\end{itemize}	
@@ -415,13 +419,13 @@
 		
 		\begin{block}{Guarded Fragment of Counting Logic}
 			\begin{itemize}
-				\item Everything except for quantifies defined as in classical counting logic
+				\item Everything except for quantifiers defined as in classical counting logic
 				\item For atomic formula $\Delta\in\GFC$ and formula $\phi\in\GFC$, we call $\Delta$ a guard for $\phi$, if $\free{\Delta}\supseteq \free{\phi}$
 				\item Quantifiers appear only in form $\exists^{\geq i} \mathbf v \operatorname{.} (\Delta \land \phi)$, where $\Delta$ is guard for $\phi$ and $\set(\mathbf v) \subseteq \free{\Delta}$
 			\end{itemize}
 		\end{block}
 		\begin{itemize}
-			\item Examples: $\exists^{\geq 2} (x,y) \operatorname{.}E(x,y)\land T(y)\in \GFC$, but $\exists^{\geq 3} (x,y,z) \operatorname{.} E(x,y) \land E(y,z) \land E(z,x)\notin \GFC$
+			\item Examples: $\exists^{\geq 2} (x,y) \operatorname{.}(E(x,y)\land T(y))\in \GFC$, but $\exists^{\geq 3} (x,y,z) \operatorname{.} (E(x,y) \land E(y,z) \land E(z,x))\notin \GFC$
 		\end{itemize}
 	\end{frame}
 	
@@ -535,6 +539,7 @@
 				\end{tikzpicture}
 			\end{column}
 		\end{columns}
+		\pause
 		\vspace{10pt}
 		\begin{columns}
 			\begin{column}{0.4\textwidth}
@@ -666,7 +671,7 @@
 		\begin{itemize}
 			\item Goal: Encode non-relational structures and signatures as relational ones
 			\item Functions can directly be interpreted as relations:
-			$$(\mathbf xy)\in R_f \Longleftrightarrow f(\mathbf x)=y$$
+			$$f(\mathbf x)=y \Longleftrightarrow (\mathbf xy)\in R_f$$
 			\item For non-relational signature $\sigma$ define relational signature $\sigma'$:
 			\begin{itemize}
 				\item Relation symbol $R\in\sigma$ of arity $n$ $\rightarrow$ introduce $R\in\sigma'$ of arity $n$
@@ -677,6 +682,7 @@
 				\item For relation symbol $R\in\sigma$: $R^{\mathfrak A'}\coloneqq R^{\mathfrak A}$
 				\item For function symbol $f\in \sigma$: $R_f^{\mathfrak A'}\coloneqq \{(\mathbf xy) : f^{\mathfrak A}(\mathbf x)=y\}$
 			\end{itemize}
+			\item We say naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$, if RCR distinguishes the encodings
 		\end{itemize}
 	\end{frame}
 	
@@ -857,8 +863,8 @@
 			\item No restriction of number of application of same function in series
 			\item Examples:
 			\begin{itemize}
-				\item $\exists^{\geq 1}(x,y) \operatorname{.} (f^2(g(h^3(x)))=y \land T(y))\notin \GFC_2$, but in $\GFC_3$
-				\item $\exists^{\geq 1}(x,y) \operatorname{.} (f^i(x)=y \land T(y))\in \GFC_1$ for all $i\in \mathbb N$
+				\item $f^2(g(h^3(x)))=y\notin \GFC_2$, but in $\GFC_3$
+				\item $f^i(x)=y\in \GFC_1$ for all $i\in \mathbb N$
 			\end{itemize}
 		\end{itemize}
 	\end{frame}
@@ -866,9 +872,9 @@
 	\begin{frame}{Characterising RCR$_k$ Logically i}
 		Hinges on three lemmas:
 		\begin{enumerate}
-			\item Formulae $f^m(x)=y\in \GFC_1$ can be translated to formula in $\GFC_1$ that is equivalent for ~structures with $n$ elements and only $f^i$ with $i\leq n$ appears
-			\item Formulae $g^m(s(x))=y\in \GFC_d$ can be translated to formula in $\GFC_d$ that is equivalent for structure with $n$ elements and only $f^i$ with $i\leq n$ appears
-			\item Formulae $R(t_1(x_1),\dots,t_\ell(x_\ell))\in \GFC_d$ can be translated to formula in $\GFC_d$ that is equivalent for structure with $n$ elements and only $f^i$ with $i\leq n$ appears
+			\item Formula $f^m(x)=y\in \GFC_1$ can be translated to formula in $\GFC_1$ that is equivalent for ~structures with $n$ elements and only $f^i$ with $i\leq n$ appears
+			\item Formula $g^m(s(x))=y\in \GFC_d$ can be translated to formula in $\GFC_d$ that is equivalent for structure with $n$ elements and only $f^i$ with $i\leq n$ appears
+			\item Formula $R(t_1(x_1),\dots,t_\ell(x_\ell))\in \GFC_d$ can be translated to formula in $\GFC_d$ that is equivalent for structure with $n$ elements and only $f^i$ with $i\leq n$ appears
 		\end{enumerate}
 	\end{frame}
 	
@@ -897,19 +903,19 @@
 		\end{itemize}
 	\end{frame}
 	
-	\section{Combinatorial Characterisation of RCR}
+	\subsection{Discussion on the Combinatorial Characterisation}
 	
 	\begin{frame}{Total and Functional Structures}
 		\begin{itemize}
 			\item Let $\sigma$ be a signature and $\mathfrak A$ a $\sigma$-structure and $\sigma'$ and $\mathfrak A'$ the respective naive encodings
 			\item We call $\mathfrak A$ total if for every $n$-ary function symbol $f\in\sigma$ and every $n$-tuple $\mathbf x$ there is a $y$, such that $(\mathbf xy)\in R_f^{\mathfrak A'}$
-			\item We call $\mathfrak A$ function if for every $n$-ary function symbol $f$ there are no two $n+1$-tuples $(\mathbf xy),(\mathbf xz)\in R_f^{\mathfrak A'}$
+			\item We call $\mathfrak A$ functional if for every $n$-ary function symbol $f$ there are no two $n+1$-tuples $(\mathbf xy),(\mathbf xz)\in R_f^{\mathfrak A'}$
 		\end{itemize}
 		\vspace{10pt}
 		\begin{columns}
 			\begin{column}{0.5\textwidth}
 				\centering
-				\vspace{19pt}
+				\vspace{18pt}
 				\begin{tikzpicture}[node distance=3cm]
 					\node[state] (a) {$a_1$};
 					\node[state, right=of a] (b) {$a_2$};
@@ -955,9 +961,9 @@
 			\item Result: Forward direction holds, backwards does not
 			\item First step: Reformulate first statement:
 			\begin{center}
-				Non-relational, acyclic structure distinguishes $\mathfrak A$ and $\mathfrak B$ by homomorphism count\\
+				Some non-relational, acyclic structure dist. $\mathfrak A$ and $\mathfrak B$ by hom. count\\
 				iff.\\
-				Some total, functional and acyclic structure distinguishes encodings $\mathfrak A'$ and $\mathfrak B'$ by homomorphism count
+				Some total, functional and acyclic structure dist. encodings $\mathfrak A'$ and $\mathfrak B'$ by hom. count
 			\end{center}
 		\end{itemize}
 	\end{frame}
@@ -1211,7 +1217,7 @@
 			\end{center}
 			\item Does not hold for class of total structures
 			\begin{itemize}
-				\item[$\circ$] Encodings of classes of structures from before are total, but not total and acyclic structure dist. them by hom. count
+				\item[$\circ$] Encodings of classes of structures from before are total, but no total and acyclic structure dist. them by hom. count
 			\end{itemize}
 			\item Another class to investigate: Class of symmetric structures
 		\end{itemize}
@@ -1224,7 +1230,7 @@
 			\begin{center}
 				Acyclic structure dist. the structures by hom. count\\
 				iff.\\
-				Acycic, symmetric structure dist. the structure by hom. count
+				Acyclic, symmetric structure dist. the structure by hom. count
 			\end{center}
 			\item From this, restriction to symmetric structures is possible
 		\end{itemize}
@@ -1272,9 +1278,9 @@
 				& \land \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)
 			\end{align*}
 			and
-			$$\operatorname{E}^{k,\ell}_{f}(t(x_1))\coloneqq\begin{cases}
+			$$\operatorname{E}^{k,\ell}_{f}(x_1)\coloneqq\begin{cases}
 				\top & \text{if } k=0 \\
-				f^{k-1}(t(x_1))\neq f^{k-1+\ell}(t(x_1)) & \text{otherwise}.
+				f^{k-1}(x_1)\neq f^{k-1+\ell}(x_1) & \text{otherwise}.
 			\end{cases}$$
 			\item $f^{k+p}(x_1)=x_2 \land f^{k}(x_1)=f^{k+\ell}(x_1)$ ensures that $(k,\ell,p)$ decomposes the path into a path to a cycle and the cycle itself
 			\item $\operatorname{E}^{k,\ell}_{f}(x_1) \land \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)$ ensures that only the lexicographically smallest decomposition is satisfied
