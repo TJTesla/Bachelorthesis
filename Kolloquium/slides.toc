@@ -1,11 +1,11 @@
 \beamer@sectionintoc {1}{Classical Colour Refinement}{4}{0}{1}
-\beamer@sectionintoc {2}{Relational Colour Refinement}{10}{0}{2}
+\beamer@sectionintoc {2}{Relational Colour Refinement}{12}{0}{2}
 \beamer@subsectionintoc {2}{1}{Logical Characterisation of RCR}{17}{0}{2}
 \beamer@subsectionintoc {2}{2}{Combinatorial Characterisation of RCR}{21}{0}{2}
 \beamer@sectionintoc {3}{Relational Colour Refinement for Structures With Functions}{27}{0}{3}
-\beamer@subsectionintoc {3}{1}{Logical Characterisation of Naive RCR}{35}{0}{3}
-\beamer@subsectionintoc {3}{2}{Logical Characterisation of RCR$_k$}{38}{0}{3}
-\beamer@subsectionintoc {3}{3}{Discussion on the Combinatorial Characterisation}{43}{0}{3}
-\beamer@sectionintoc {4}{Restricting RCR to Symmetric Structures}{55}{0}{4}
-\beamer@sectionintoc {5}{Sketch of a Proof}{58}{0}{5}
-\beamer@sectionintoc {6}{Conclusion}{64}{0}{6}
+\beamer@subsectionintoc {3}{1}{Logical Characterisation of Naive RCR}{34}{0}{3}
+\beamer@subsectionintoc {3}{2}{Logical Characterisation of RCR$_k$}{37}{0}{3}
+\beamer@subsectionintoc {3}{3}{Discussion on the Combinatorial Characterisation}{41}{0}{3}
+\beamer@sectionintoc {4}{RCR on Subclasses of Relational Structures}{51}{0}{4}
+\beamer@sectionintoc {5}{Sketch of a Proof}{55}{0}{5}
+\beamer@sectionintoc {6}{Conclusion}{61}{0}{6}

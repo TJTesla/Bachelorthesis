@@ -79,37 +79,35 @@
 	\begin{frame}{Introduction}
 		\begin{itemize}
 			\item Colour Refinement is an important and interesting algorithm
-			\item It is applied in modern isomorphism solvers
-			\item It can be characterised logically and combinatorially
+			\item Applied in modern isomorphism solvers
+			\item Can be characterised logically and combinatorially
 			\item Extension to more than graphs seems desirable
-			\item Recently, Scheidt and Schweikardt \textcolor{red}{bibliography} introduced Relational Colour Refinement
+			\item Scheidt and Schweikardt \textcolor{red}{bibliography} introduced Relational Colour Refinement
 			\item Conceptually similar to classical Colour Refinement
 			\item Also has a logical and a combinatorial characterisation
 		\end{itemize}
 	\end{frame}
 	
 	\begin{frame}{Contents of this presentation}
-		\begin{enumerate}
-			\item Classical Colour Refinement
-			\item Relational Colour Refinement
-			\item Relational Colour Refinement for Structures With Functions
-			\item Restricting RCR to Subclasses of Relational Structures
-			\item Conclusion
-		\end{enumerate}
+		\setbeamertemplate{section in toc}[sections numbered]
+		\tableofcontents[hideallsubsections]
 	\end{frame}
 	
 	\section{Classical Colour Refinement}
 	
 	\begin{frame}{Colour Refinement}
 		\begin{itemize}
-			\item Also called CR or $1$-dimensional Weisfeiler-Leman algorithm
+			\item Also called \emph{CR} or \emph{$1$-dimensional Weisfeiler-Leman} algorithm
 			\item Iterative graph algorithm
 			\item Constructs colour for every vertex, based on colours of neighbours
 		\end{itemize}
 		
 		\begin{definition}[Colour Refinement]
 			For graph $G=(V,E)$, for every $v\in V$ and $i\in \mathbb N$:
-			$$C_0(v)\coloneqq 0$$ and $$C_{i+1}(v)\coloneqq(C_i(v),\multiset{C_i(u) : \{v,u\}\in E}).$$
+			\begin{itemize}
+				\item Initial colour: $C_0(v)\coloneqq 0$
+				\item Next rounds:$$C_{i+1}(v)\coloneqq(C_i(v),\multiset{C_i(u) : \{v,u\}\in E})$$
+			\end{itemize}
 		\end{definition}
 	\end{frame}
 	
@@ -136,11 +134,8 @@
 				\begin{itemize}
 					\item $C_0(a)=C_0(b)=C_0(c)=C_0(d)=0$
 					\item[]
-					\item $C_1(a)=(C_0(a),\multiset{0, 0})=C_1(b)$
-					\item $C_1(c)=(C_0(c),\multiset{0, 0, 0})=C_1(d)$
-					\item[]
-					\item $C_2(a)=(C_1(a),\multiset{C_1(c),C_1(c)})=C_2(b)$
-					\item $C_2(c)=(C_1(c),\multiset{C_1(a),C_1(a),C_1(c)})=C_2(d)$
+					\item $C_1(a)=C_1(b)=(0,\multiset{0, 0})$
+					\item $C_1(c)=C_1(d)=(0,\multiset{0, 0, 0})$
 				\end{itemize}
 			\end{column}
 		\end{columns}
@@ -151,7 +146,7 @@
 			\item CR distinguishes two graphs $G$ and $H$, if
 			\item there exists $C_i(v)$ in colouring of $G$ or $H$, such that the number of vertices with colour $C_i(v)$ is different in $G$ than in $H$
 		\end{itemize}
-		
+		\pause
 		\begin{columns}
 			\begin{column}{0.25\textwidth}
 				\centering
@@ -172,12 +167,12 @@
 			\begin{column}{0.75\textwidth}
 				\begin{itemize}
 					\item Colours in first round equal
+					\item $C_1(b')=(0, \multiset{0})$ does not appear in $G$
 					\item[]
-					\item $C_1(b')=(C_0(b'),\multiset{C_0(d')})=(0, \multiset{0})$ does not appear in $G$
+					\item[$\Rightarrow$] Colour Refinement distinguishes $G$ and $H$
 				\end{itemize}
 			\end{column}
 		\end{columns}
-		$\Rightarrow$ Colour Refinement distinguishes $G$ and $H$.
 	\end{frame}
 	
 	\begin{frame}{Characterisations of CR}
@@ -214,7 +209,7 @@
 				\begin{itemize}
 					\item Used existence of colour $(0,\multiset{0})$ in colouring of $H$ to distinguish $G$ and $H$
 					\item From colour it follows that vertex with degree $1$ exists
-					\item $\exists^{\geq 1} x \operatorname{.} \neg \exists^{\geq 2} y \operatorname{.} E(x,y)$ distinguishes $G$ and $H$
+					\item $\exists^{\geq 1} x \operatorname{.} \exists^{=1} y \operatorname{.} E(x,y)$ distinguishes $G$ and $H$
 				\end{itemize}
 			\end{column}
 		\end{columns}
@@ -236,10 +231,12 @@
 				\end{tikzpicture}
 			\end{column}
 			\begin{column}{0.75\textwidth}
-				\begin{itemize}
-					\item There are $5$ edges in $G$ but only $4$ in $H$
-					\item Tree $T\coloneqq(\{v, u\}, \{\{v,u\}\})$ has $10$ homomorphisms to $G$ and $8$ to $H$
-				\end{itemize}
+				\onslide<2>{
+					\begin{itemize}
+						\item There are $5$ edges in $G$ but only $4$ in $H$
+						\item Tree $T\coloneqq(\{v, u\}, \{\{v,u\}\})$ has $10$ homomorphisms to $G$ and $8$ to $H$
+					\end{itemize}
+				}
 			\end{column}
 		\end{columns}
 	\end{frame}
@@ -248,11 +245,10 @@
 	
 	\begin{frame}{Relational Colour Refinement}
 		\begin{itemize}
-			\item Called RCR for short
-			\item Introduced by Scheidt and Schweikardt \textcolor{red}{bibliography}
+			\item Called \emph{RCR} for short
 			\item Applies variant of classical Colour Refinement on tuples of structure
-			\item Uses atomic type (set of relations that contain tuple) as part of initial colouring
-			\item Uses pairs of indices as edges to define shared elements of tuples
+			\item Uses atomic type as part of initial colouring
+			\item Uses pairs of indices as edges to mark shared elements of tuples
 			\item Formally:
 			$$\operatorname{atp}(\mathbf a) = \{ R \in \sigma : \mathbf a \in R\}$$
 			and
@@ -264,7 +260,7 @@
 		\begin{itemize}
 			\item For relational structure $\mathfrak A$ and all tuples $\mathbf a\in \mathbf A$:
 			\item Initial colour: $\varrho_0(\mathbf a)=(\operatorname{atp}(\mathbf a), \operatorname{stp}(\mathbf a, \mathbf a))$
-			\item For the next rounds: $\varrho_{i+1}(\mathbf a)=(\varrho_i(\mathbf a), \multiset{(\operatorname{stp}(\mathbf a,\mathbf b), \varrho_i(\mathbf b)) : \operatorname{stp}(\mathbf a,\mathbf b)\neq\emptyset})$
+			\item For the next rounds: $\varrho_{i+1}(\mathbf a)=(\varrho_i(\mathbf a), \multiset{(\operatorname{stp}(\mathbf a,\mathbf b), \varrho_i(\mathbf b)) : \set(\mathbf a)\cap\set(\mathbf b)\neq\emptyset})$
 		\end{itemize}
 	\end{frame}
 	
@@ -296,67 +292,9 @@
 		\end{columns}
 		\begin{itemize}
 			\item $\rho_0((a,b))=(\{R\},\{(1,1),(2,2)\})$ and $\rho_0((a,c,d))=\rho_0((b,c,d))=(\{T\}, \{(1,1),(2,2),(3,3)\})$
-			\item $$\rho_1((a,c,d))=(\rho_0((a,c,d)), \multiset{(\{(1,1)\}, \rho_0((a,b))), \dots})$$
+			\item $\rho_1((a,c,d))=(\rho_0((a,c,d)), \multiset{(\{(1,1)\}, \rho_0((a,b))), \dots})$
 			and 
-			$$\rho_1((b,c,d))=(\rho_0((b,c,d)), \multiset{(\{(1,2)\}, \rho_0((a,b))), \dots})$$
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}{Equivalent formulation of RCR}
-		\begin{itemize}
-			\item RCR can be equivalently defined as colour refinement on coloured multigraphs (graph with vertex and edge colouring)
-			\item Create vertex for every tuple
-			\item Colour vertices using atomic type
-			\item Define edge relation for every pair of indices
-			\begin{itemize}
-				\item Connect vertices if elements of index-pair are the same
-			\end{itemize}
-		\end{itemize}
-		\begin{columns}
-			\begin{column}{0.5\textwidth}
-				\centering
-				\begin{tikzpicture}
-					\node[] at (0,0) (a) {$a$};
-					\node[] at (2, 0) (b) {$b$};
-					\node[] at (0, -2) (c) {$c$};
-					\node[] at (2, -2) (d) {$d$};
-					
-					\node[fit=(a) (c) (d)] (acd) {};
-					\draw[rounded corners=20pt, thick, rwth-red] ($(acd.north west)+(0,0.4)$) -- (acd.south west) -- ($(acd.south east)+(0.4,0)$) -- cycle;
-					
-					\node[fit=(b) (c) (d)] (bcd) {};
-					\draw[rounded corners=20pt, thick, rwth-red] ($(bcd.north east)+(0,0.4)$) -- (bcd.south east) -- ($(bcd.south west)+(-0.4, 0)$) -- cycle;
-					
-					\node[draw, rounded corners=10pt, thick, rwth-blue, fit=(a) (b)] {};
-				\end{tikzpicture}
-			\end{column}
-			\begin{column}{0.5\textwidth}
-				\centering
-				\begin{tikzpicture}[node distance=2cm]
-					\node[draw, circle, thick, rwth-blue] (ab) {$w_{(a,b)}$};
-					\node[draw, thick, rwth-red, below left=of ab] (acd) {$w_{(a,c,d)}$};
-					\node[draw, thick, rwth-red, below right=of ab] (bcd) {$w_{(b,c,d)}$};
-					
-					\draw
-					(ab) edge[shorten >=0.05cm, shorten <=0.05cm, ->, above, bend right=10] node {$11$} (acd)
-					(acd) edge[shorten >=0.05cm, shorten <=0.05cm, ->, below, bend right=10] node {$11$} (ab)
-					
-					(ab) edge[shorten >=0.05cm, shorten <=0.05cm, ->, above, bend left=10] node {$21$} (bcd)
-					(bcd) edge[shorten >=0.05cm, shorten <=0.05cm, ->, below, bend left=10] node {$12$} (ab)
-					
-					(acd) edge[shorten >=0.05cm, shorten <=0.05cm, ->, below, bend left=10] node {$22,33$} (bcd)
-					(bcd) edge[shorten >=0.05cm, shorten <=0.05cm, ->, below, bend left=10] node {$22,33$} (acd);
-				\end{tikzpicture}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
-	\begin{frame}{Colour Refinement for Coloured Multigraphs}
-		\begin{itemize}
-			\item Simple variant of classical CR
-			\item Use vertex colouring in initial colour
-			\item Instead of only considering colours of neighbours, consider the colour together with the colours of edges connecting them
-			\item This on encoding of relational structure is equivalent to RCR
+			$\rho_1((b,c,d))=(\rho_0((b,c,d)), \multiset{(\{(1,2)\}, \rho_0((a,b))), \dots})$
 		\end{itemize}
 	\end{frame}
 	
@@ -401,10 +339,7 @@
 			\end{column}
 		\end{columns}
 		\begin{itemize}
-			\item $\rho((a,c,d))=((\{T\},\{\dots\}), \multiset{(\{1,1\}, (\{R\},\{\dots\})), \dots})$ appears in colouring of left structure but not in right
-			\begin{itemize}
-				\item There is no triple in $T$ where its first element is in a tuple in $R$
-			\end{itemize}	
+			\item $\rho_1((a,c,d))$ appears in colouring of left structure but not in right
 		\end{itemize}
 	\end{frame}
 	
@@ -412,9 +347,8 @@
 	
 	\begin{frame}{Guarded Fragment of Counting Logic}
 		\begin{itemize}
-			\item We have seen how $\C{2}$ characterises CR on graphs
-			\item Analogously: Guarded fragment of counting logic $\GFC$ characterises RCR
-			\item Guarded fragment drops bound on number of variables, but introduces restriction that quantifiers need to be relativised by atomic formula
+			\item $\C{2}$ characterises CR on graphs
+			\item Guarded fragment of counting logic $\GFC$ characterises RCR
 		\end{itemize}
 		
 		\begin{block}{Guarded Fragment of Counting Logic}
@@ -425,7 +359,11 @@
 			\end{itemize}
 		\end{block}
 		\begin{itemize}
-			\item Examples: $\exists^{\geq 2} (x,y) \operatorname{.}(E(x,y)\land T(y))\in \GFC$, but $\exists^{\geq 3} (x,y,z) \operatorname{.} (E(x,y) \land E(y,z) \land E(z,x))\notin \GFC$
+			\item Examples: 
+			\begin{itemize}
+				\item $\exists^{\geq 2} (x,y) \operatorname{.}(E(x,y)\land T(y))\in \GFC$
+				\item $\exists^{\geq 3} (x,y,z) \operatorname{.} (E(x,y) \land E(y,z) \land E(z,x))\notin \GFC$
+			\end{itemize}
 		\end{itemize}
 	\end{frame}
 	
@@ -478,7 +416,7 @@
 			\end{column}
 		\end{columns}
 		\begin{itemize}
-			\item We used existence of $\gamma_1((a,c,d))=((\{T\},\{\dots\}), \multiset{(\{1,1\}, (\{R\},\{\dots\})), \dots})$ in left structure to distinguish them
+			\item We have seen RCR distinguishes the structures
 			\item Formula $\exists^{\geq 1}(x,y,z).\left(T(x,y,z)\land \exists^{\geq 1} (y).\left( R(x,y)\right)\right)$ satisfied by left and not by right structure
 		\end{itemize}
 	\end{frame}
@@ -495,7 +433,7 @@
 				\item Let $\mathfrak C$ be relational structure
 				\item Join tree $J$ for $\mathfrak C$ is tree with $V(J)=\mathbf C$ and fulfils join-tree-property:
 				\begin{itemize}
-					\item For every $v\in C$, the set $\{\mathbf x \in V(J) : v\in \mathbf x\}$ induces a connected subtree
+					\item For every $e\in C$, the set $\{\mathbf x \in V(J) : e\in \mathbf \set(x)\}$ induces a connected subtree
 				\end{itemize}
 				\item We call $\mathfrak C$ acyclic, if it has a join tree
 			\end{itemize}
@@ -690,8 +628,9 @@
 		\begin{itemize}
 			\item Approach is only defined for unary function symbols
 			\item Encoding emulates the nesting of function applications
-			\item Encode function $f$ as family of relations $R_{f^1},R_{f^2},\dots$, where $(x,y)\in R_{f^i}$, if $f^i(x)=y$
-			\item For multiple functions, also encode alternations, for example $R_{\term fg}$ or $R_{g^2f^3}$
+			\item Encode function $f$ as family of relations $R_{f^1},R_{f^2},\dots$, where $(x,y)\in R_{f^i}$ if $\underbrace{f(f(\dots f(}_{i\text{ times}}x)))=y$
+			\item In the following: $f^i(x)$ written for $\underbrace{f(f(\dots f(}_{i\text{ times}}x)))$
+			\item For multiple functions, also encode alternations, for example $R_{\term {fg}}$ or $R_{g^2f^3}$
 		\end{itemize}
 	\end{frame}
 	
@@ -701,7 +640,7 @@
 				\item Let $\sigma$ be signature with unary function symbols
 				\item Define set of all allowed function application alternations $\operatorname{Alters}^k_n$ as $\operatorname{Alters}^0_n(\sigma)=\{\operatorname{id}\}$ and 
 				\begin{align*}
-					\operatorname{Alters}^k_{n}(\sigma)\coloneqq \operatorname{Alters}^{k-1}_{n}(\sigma)\cup\{f_1^{m_1}f_2^{m_2}\dots f_k^{m_k} : & f_1,f_2,\dots, f_k\in \sigma_{\operatorname{Func}} \\ 
+					\operatorname{Alters}^k_{n}(\sigma)\coloneqq \operatorname{Alters}^{k-1}_{n}(\sigma)\cup\{f_1^{m_1}\dots f_k^{m_k} : & f_1,\dots, f_k\in \sigma_{\operatorname{Func}} \\ 
 					& \land \forall i\in[k]\operatorname{.} m_i\in[n] \\ 
 					& \land \forall i\in[k-1] \operatorname{.} f_{i} \neq f_{i+1}\}.
 				\end{align*}
@@ -710,8 +649,8 @@
 		\begin{itemize}
 			\item Example: 
 			\begin{itemize}
-				\item $\sigma=\{R/1,f/1,g/1\}$
-				\item $\operatorname{Alters}^1_2(\sigma)=\{\operatorname{id}, f,f^2,g,g^2\}$
+				\item $\sigma=\{f/1,g/1\}$
+				\item $\operatorname{Alters}^2_2(\sigma)=\underbrace{\{\operatorname{id}\}}_{k=0} \cup \underbrace{\{f,f^2,g,g^2\}}_{k=1} \cup \underbrace{\{fg, fg^2, f^2g, f^2g^2, gf, \dots\}}_{k=2}$
 			\end{itemize}
 		\end{itemize}
 	\end{frame}
@@ -720,7 +659,7 @@
 		\begin{block}{Transitive Expansion}
 			\begin{itemize}
 				\item For alternation depth $k$ and $\sigma$-structure $\mathfrak A$ with $\vert \mathfrak A\vert = n$ define transitive expansion $\widetilde{\mathfrak A}$ as a $\widetilde{\sigma}$-structure
-				\item For $\alpha,\beta,\alpha_1,\dots,\alpha_\ell\in \operatorname{Alters}^k_n(\sigma)$ and relation symbol $R\in\sigma$ of arity $\ell$, insert relation symbol $\operatorname{Eq}_{\alpha,\beta}$ of arity $2$ and relation symbol $R_{\alpha_1,\dots,\alpha_\ell}$ of arity $\ell$ to $\widetilde{\sigma}$
+				\item For $\alpha,\beta,\alpha_1,\dots,\alpha_\ell\in \operatorname{Alters}^k_n(\sigma)$ and relation symbol $R\in\sigma$ of arity $\ell$, insert relation symbol $\operatorname{Eq}_{\alpha,\beta}$ of arity $2$ and relation symbol $R_{\alpha_1,\dots,\alpha_\ell}$ of arity $\ell$ into $\widetilde{\sigma}$
 				\item Define $\operatorname{Eq}_{\alpha,\beta}^{\widetilde{\mathfrak A}}\coloneqq \{(x,y) : \alpha^{\mathfrak A}(x)=\beta^{\mathfrak A}(y)\}$ and $R_{\alpha_1,\dots,\alpha_\ell}^{\widetilde{\mathfrak A}}\coloneqq \{(x_1,\dots,x_\ell) : (\alpha_1^{\mathfrak A}(x_1),\dots,\alpha_\ell^{\mathfrak A}(x_\ell))\in R^{\mathfrak A}\}$
 			\end{itemize}
 		\end{block}
@@ -754,6 +693,7 @@
 		\end{itemize}
 	\end{frame}
 	
+	\iffalse
 	\begin{frame}{Naive Encoding versus Transitive Expansion}
 		\begin{columns}
 			\begin{column}{0.5\textwidth}
@@ -808,6 +748,7 @@
 			\end{itemize}
 		\end{itemize}
 	\end{frame}
+	\fi
 	
 	\subsection{Logical Characterisation of Naive RCR}
 	
@@ -817,8 +758,7 @@
 				\item Extends given definition of $\GFC$ for non-relational signatures
 				\item Allow atomics of the following forms
 				\begin{itemize}
-					\item For relation symbol $R$ of arity $\ell$ and variables $x_1,\dots,x_\ell$: $R(x_1,\dots,x_\ell)\in \mathsf{nfGF}(\mathsf C)$
-					\item For variables $x$ and $y$: $x=y\in \mathsf{nfGF}(\mathsf C)$
+					\item Relation symbols and variable equations like in $\GFC$
 					\item For function symbol $f$ of arity $\ell$ and variables $x_1,\dots,x_\ell,y$: $f(x_1,\dots,x_\ell)=y\in \mathsf{nfGF}(\mathsf C)$
 				\end{itemize}
 			\end{itemize}
@@ -854,7 +794,7 @@
 		\begin{block}{$\GFC_k$}
 			\begin{itemize}
 				\item Fixate $k\in\mathbb N$
-				\item Natural extension of $\GFC$ to non-relational signatures w.r.t. allowed atomic formulae with one restriction
+				\item Atomics are defined like in natural extension to non-relational signatures, with one restriction
 				\item For every formula in $\GFC_k$ and every term $t$ that appears in it, there must exist a $n\in\mathbb N$, such that $t=\alpha$ for a $\alpha\in\operatorname{Alters}^k_n(\sigma)$
 			\end{itemize}
 		\end{block}
@@ -869,6 +809,7 @@
 		\end{itemize}
 	\end{frame}
 	
+	\iffalse
 	\begin{frame}{Characterising RCR$_k$ Logically i}
 		Hinges on three lemmas:
 		\begin{enumerate}
@@ -877,6 +818,7 @@
 			\item Formula $R(t_1(x_1),\dots,t_\ell(x_\ell))\in \GFC_d$ can be translated to formula in $\GFC_d$ that is equivalent for structure with $n$ elements and only $f^i$ with $i\leq n$ appears
 		\end{enumerate}
 	\end{frame}
+	\fi
 	
 	\begin{frame}{Characterising RCR$_k$ Logically ii}
 		\begin{block}{Logical Characterisation of RCR$_k$}
@@ -895,9 +837,14 @@
 			\item 1. to 2.: Like, before sentence in $\GFC$ over signature $\widetilde{\sigma}$ can easily be translated into sentence in $\GFC_k$ over signature $\sigma$
 			\item 2. to 1.:
 			\begin{itemize}
-				\item Replace atomic subformulae by translations from lemmas
+				\item Assume $n=\vert \mathfrak A \vert = \vert \mathfrak B \vert$
+				\item Translate and replace all atomic subformulae by formula that:
+				\begin{itemize}
+					\item is equivalent for all structures with $n$ elements
+					\item only contains terms $f^i(s(x))$ with $i\leq n$
+				\end{itemize}
 				\item Rearrange resulting formula to get valid $\GFC_k$-sentence
-				\item Results in equivalent formula for structure with $n=\vert \mathfrak A \vert$ elements and for every term $t$ there exists an $\alpha\in\operatorname{Alters}^k_n(\sigma)$, such that $t=\alpha$
+				\item Results in equivalent formula for structures with $n$ elements and for every term $t$ there exists an $\alpha\in\operatorname{Alters}^k_n(\sigma)$, such that $t=\alpha$
 				\item Can easily be translated into sentence in $\GFC$ of signature $\widetilde{\sigma}$
 			\end{itemize}
 		\end{itemize}
@@ -907,9 +854,9 @@
 	
 	\begin{frame}{Total and Functional Structures}
 		\begin{itemize}
-			\item Let $\sigma$ be a signature and $\mathfrak A$ a $\sigma$-structure and $\sigma'$ and $\mathfrak A'$ the respective naive encodings
-			\item We call $\mathfrak A$ total if for every $n$-ary function symbol $f\in\sigma$ and every $n$-tuple $\mathbf x$ there is a $y$, such that $(\mathbf xy)\in R_f^{\mathfrak A'}$
-			\item We call $\mathfrak A$ functional if for every $n$-ary function symbol $f$ there are no two $n+1$-tuples $(\mathbf xy),(\mathbf xz)\in R_f^{\mathfrak A'}$
+			\item Let $\sigma$ be a signature, $\sigma'$ its naive encoding and $\mathfrak A'$ a $\sigma'$-structure
+			\item We call $\mathfrak A'$ total if for every $n$-ary function symbol $f\in\sigma$ and every $n$-tuple $\mathbf x$ there is a $y$, such that $(\mathbf xy)\in R_f^{\mathfrak A'}$
+			\item We call $\mathfrak A'$ functional if for every $n$-ary function symbol $f$ there are no two $n+1$-tuples $(\mathbf xy),(\mathbf xz)\in R_f^{\mathfrak A'}$
 		\end{itemize}
 		\vspace{10pt}
 		\begin{columns}
@@ -939,7 +886,6 @@
 	
 	\begin{frame}{Non-Relational Acyclic Structures}
 		\begin{itemize}
-			\item If we want to count homomorphisms to non-relational structures we need to determine what an non-relational, acyclic structure would look like
 			\item Will define acyclicity w.r.t. the naive encoding
 		\end{itemize}
 		\begin{block}{Non-Relational Acyclic Structures}
@@ -955,7 +901,7 @@
 			\item Desired equivalence: 
 			\begin{center}
 				Non-relational, acyclic structure distinguishes $\mathfrak A$ and $\mathfrak B$ by homomorphism count \\ 
-				iff.? \\
+				? \\
 				Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$
 			\end{center}
 			\item Result: Forward direction holds, backwards does not
@@ -988,7 +934,8 @@
 	\begin{frame}{Non-Enforceability of Totality}
 		\begin{itemize}
 			\item There are structures that are distinguished by naive RCR, but there is no acyclic and total structure that distinguishes the encodings by homomorphism count
-			\item Two families of structures $(\mathfrak A_i)_{i\in\mathbb N_{\geq 4}}$ and $(\mathfrak B_i)_{i\in\mathbb N_{\geq 4}}$
+			\item Define signature $\sigma=\{E/2,f/1\}$
+			\item Two families of $\sigma$-structures $(\mathfrak A_i)_{i\in\mathbb N_{\geq 4}}$ and $(\mathfrak B_i)_{i\in\mathbb N_{\geq 4}}$
 			\item For all $i\in \mathbb N_{\geq 4}$: Naive RCR distinguishes $\mathfrak A_i$ and $\mathfrak B_i$, but no acyclic and total structure can distinguish the encodings by hom. count
 		\end{itemize}
 	\end{frame}
@@ -997,7 +944,7 @@
 		\begin{columns}
 			\begin{column}{0.25\textwidth}
 				\centering
-				\onslide<1->{
+				\only<1->{
 					\scalebox{0.8}{
 						\begin{tikzpicture}[node distance=0.8cm]
 							\node[state] (1) {$1$};
@@ -1019,30 +966,7 @@
 			
 			\begin{column}{0.25\textwidth}
 				\centering
-				\onslide<3->{
-					\scalebox{0.8}{
-						\begin{tikzpicture}[node distance=0.8cm]
-							\node[state] (1) {$1$};
-							\node[state, below =of 1, xshift=-0.5cm] (2) {$2$};
-							\node[state, below =of 2, xshift=-0.5cm] (3) {$3$};
-							\node[state, below =of 3, xshift=-0.5cm] (4) {$4$};
-							\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak B_4$:};
-							\draw
-							(1) edge[-, thick, rwth-blue] (2)
-							(2) edge[-, thick, rwth-blue] (3)
-							(3) edge[-, thick, rwth-blue] (4)
-							(1) edge[->, thick, bend left, rwth-red] (2)
-							(2) edge[->, thick, bend left, rwth-red] (3)
-							(3) edge[->, thick, bend left, rwth-red] (4)
-							(4) edge[->, thick, bend left, rwth-red] (1);
-						\end{tikzpicture}
-					}
-				}
-			\end{column}
-			
-			\begin{column}{0.25\textwidth}
-				\centering
-				\onslide<2->{
+				\only<1->{
 					\scalebox{0.8}{
 						\begin{tikzpicture}[node distance=0.8cm]
 							\node[state] (1) {$1$};
@@ -1067,7 +991,32 @@
 			
 			\begin{column}{0.25\textwidth}
 				\centering
-				\onslide<4>{
+				\only<2>{
+					\scalebox{0.8}{
+						\begin{tikzpicture}[node distance=0.8cm]
+							\node[state] (1) {$1$};
+							\node[state, below =of 1, xshift=-0.5cm] (2) {$2$};
+							\node[state, below =of 2, xshift=-0.5cm] (3) {$3$};
+							\node[state, below =of 3, xshift=-0.5cm] (4) {$4$};
+							\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak B_4$:};
+							\draw
+							(1) edge[-, thick, rwth-blue] (2)
+							(2) edge[-, thick, rwth-blue] (3)
+							(3) edge[-, thick, rwth-blue] (4)
+							(1) edge[->, thick, bend left, rwth-red] (2)
+							(2) edge[->, thick, bend left, rwth-red] (3)
+							(3) edge[->, thick, bend left, rwth-red] (4)
+							(4) edge[->, thick, bend left, rwth-red] (1);
+						\end{tikzpicture}
+					}
+				}
+			\end{column}
+			
+			
+			
+			\begin{column}{0.25\textwidth}
+				\centering
+				\only<2>{
 					\scalebox{0.8}{
 						\begin{tikzpicture}[node distance=0.8cm]
 							\node[state] (1) {$1$};
@@ -1123,7 +1072,8 @@
 						\node[state, below =of 1, xshift=-0.5cm] (2) {$2$};
 						\node[state, below =of 2, xshift=-0.5cm] (3) {$3$};
 						\node[state, below =of 3, xshift=-0.5cm] (4) {$4$};
-						\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak B_4$:};
+						\node[state, right =of 4] (5) {$5$};
+						\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak A_5$:};
 						\draw
 						(1) edge[-, thick, rwth-blue] (2)
 						(2) edge[-, thick, rwth-blue] (3)
@@ -1131,7 +1081,8 @@
 						(1) edge[->, thick, bend left, rwth-red] (2)
 						(2) edge[->, thick, bend left, rwth-red] (3)
 						(3) edge[->, thick, bend left, rwth-red] (4)
-						(4) edge[->, thick, bend left, rwth-red] (1);
+						(4) edge[->, thick, bend left, rwth-red] (1)
+						(5) edge[->, thick, rwth-red] (4);
 					\end{tikzpicture}
 				}
 			\end{column}
@@ -1144,8 +1095,7 @@
 						\node[state, below =of 1, xshift=-0.5cm] (2) {$2$};
 						\node[state, below =of 2, xshift=-0.5cm] (3) {$3$};
 						\node[state, below =of 3, xshift=-0.5cm] (4) {$4$};
-						\node[state, right =of 4] (5) {$5$};
-						\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak A_5$:};
+						\node[left =of 1, yshift=-0.5cm] (label) {\large $\mathfrak B_4$:};
 						\draw
 						(1) edge[-, thick, rwth-blue] (2)
 						(2) edge[-, thick, rwth-blue] (3)
@@ -1153,8 +1103,7 @@
 						(1) edge[->, thick, bend left, rwth-red] (2)
 						(2) edge[->, thick, bend left, rwth-red] (3)
 						(3) edge[->, thick, bend left, rwth-red] (4)
-						(4) edge[->, thick, bend left, rwth-red] (1)
-						(5) edge[->, thick, rwth-red] (4);
+						(4) edge[->, thick, bend left, rwth-red] (1);
 					\end{tikzpicture}
 				}
 			\end{column}
@@ -1205,7 +1154,7 @@
 		\end{center}
 	\end{frame}
 	
-	\section{Restricting RCR to Symmetric Structures}
+	\section{RCR on Subclasses of Relational Structures}
 	
 	\begin{frame}{Restricting the Class of Structures}
 		\begin{itemize}
@@ -1226,11 +1175,12 @@
 	\begin{frame}{Restriction to Symmetric Structures}
 		\begin{itemize}
 			\item Relational Structure is symmetric, if for every $k$-ary relation $R$ and for every $k$-tuple $\mathbf x\in R$, every permutation of the elements in $\mathbf x$ is also in $R$
+			\pause
 			\item For two symmetric structures we can show
 			\begin{center}
-				Acyclic structure dist. the structures by hom. count\\
+				There exists acyclic structure dist. the structures by hom. count\\
 				iff.\\
-				Acyclic, symmetric structure dist. the structure by hom. count
+				There exists acyclic, symmetric structure dist. the structure by hom. count
 			\end{center}
 			\item From this, restriction to symmetric structures is possible
 		\end{itemize}
@@ -1238,22 +1188,31 @@
 	
 	\section{Sketch of a Proof}
 	
-	\begin{frame}{Statement of the Lemma}
+	\begin{frame}{Description of the Lemma}
 		\begin{itemize}
-			\item First lemma for logical characterisation of transitive expansion
-			\item A formula $\psi$ of the form $f^m(x_1)=x_2\in \GFC_1$ can be translated to a formula $\theta(x_1,x_2)\in\GFC_1$, such that:
+			\item Lemma for translating $f^m(x_1)=x_2$ to a formula with a bounded number of applications of $f$ in series
+			\item Used in proof of logical characterisation of RCR$_k$
+		\end{itemize}
+		\begin{block}{Lemma 4.6}
+			A formula $\psi$ of the form $f^m(x_1)=x_2\in \GFC_1$ can be translated to a formula $\theta(x_1,x_2)\in\GFC_1$, such that:
 			\begin{enumerate}
 				\item They are equivalent for structures with $n$ elements
 				\item There does not appear a term $f^i$ with $i>n$ in $\theta$
 				\item $\theta$ is of the form $\bigvee \Phi$ and if $\theta$ is fulfilled, then there exists exactly one $\phi\in\Phi$ which is satisfied
 			\end{enumerate}
-		\end{itemize}
+		\end{block}
 	\end{frame}
 	
 	\begin{frame}{Proof Idea}
 		\begin{itemize}
-			\item For $f^0(x),f^1(x),\dots,f^m(x)$, if $m>n$, there have to be $i,j\leq n$ such that $f^i(x)=f^j(x)$
-			\item We get path to a cycle, a cycle and a last part of it
+			\item Elements $f^0(x),f^1(x),\dots,f^m(x)$ describe a path through a structure
+			\item If $m>n$, there have to be $i,j\leq n$ such that $f^i(x)=f^j(x)$
+			\item Path can be decomposed into:
+			\begin{enumerate}
+				\item Path to a cycle
+				\item A cycle
+				\item A last part of the cycle
+			\end{enumerate}
 			\item Define set $\mathcal I(n,m)$ as set of all such decomposition $(k,\ell,p)$
 		\end{itemize}
 		\centering
@@ -1274,22 +1233,29 @@
 			\item Define $\theta(x_1,x_2)\coloneqq \bigvee_{(k,\ell,p)\in \mathcal I(n,m)} \zeta_{(k,\ell,p)}(x_1,x_2)$ where
 			\begin{align*}
 				\zeta_{(k,\ell,p)}(x_1,x_2)\coloneqq & f^{k+p}(x_1)=x_2 \land f^{k}(x_1)=f^{k+\ell}(x_1) \\
-				& \land \operatorname{E}^{k,\ell}_{f}(x_1)  \\
+				& \land f^{k-1}(x_1)\neq f^{k-1+\ell}(x_1)  \\
 				& \land \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)
 			\end{align*}
-			and
-			$$\operatorname{E}^{k,\ell}_{f}(x_1)\coloneqq\begin{cases}
-				\top & \text{if } k=0 \\
-				f^{k-1}(x_1)\neq f^{k-1+\ell}(x_1) & \text{otherwise}.
-			\end{cases}$$
+			\begin{center}
+				\begin{tikzpicture}
+					\filldraw (-2, 0) circle (2pt); % Begin
+					\draw[thick, ->] (-1.9, 0) -- node[below] {$k$} (1.9, 0) ;
+					\filldraw (2, 0) circle (2pt); % End of k
+					\draw[thick, |->] (3.25, 0) ++(-175:1.25) arc (-175:175:1.25);
+					\node[xshift=4.7cm] {$\ell$};
+					\draw[thick, |->] (3.25, 0) ++(-175:1) arc (-175:-50:1);
+					\node[xshift=3cm, yshift=-0.75cm] {$p$};
+					\filldraw (3.96, -0.71) circle (2pt);
+				\end{tikzpicture}
+			\end{center}
 			\item $f^{k+p}(x_1)=x_2 \land f^{k}(x_1)=f^{k+\ell}(x_1)$ ensures that $(k,\ell,p)$ decomposes the path into a path to a cycle and the cycle itself
-			\item $\operatorname{E}^{k,\ell}_{f}(x_1) \land \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)$ ensures that only the lexicographically smallest decomposition is satisfied
+			\item $f^{k-1}(x_1)\neq f^{k-1+\ell}(x_1) \land \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)$ ensures that only the lexicographically smallest decomposition is satisfied
 			\item[]
-			\item If $\psi$ is satisfied, a smallest decomposition $(k,\ell,p)$ exists that describes the path of $f$
+			\item If $\psi$ is satisfied, a smallest decomposition $(k,\ell,p)$ exists that decomposes the path of $f$
 			\item Then it can be shown that $\zeta_{(k,\ell,p)}$ is satisfied, and because only the lexicographically smallest $(k,\ell,p)$ is satisfied, it is the only one
 			\item[]
 			\item If $\theta$ is satisfied, some $\zeta_{(k,\ell,p)}$ is satisfied
-			\item This means that $(k,\ell,p)$ describes the path of $f$, therefore $\psi$ is also satisfied
+			\item This means that $(k,\ell,p)$ decomposes the path of $f$, therefore $\psi$ is also satisfied
 		\end{itemize}
 	\end{frame}
 	
