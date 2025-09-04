@@ -87,7 +87,7 @@
 			\item Applied in modern isomorphism solvers
 			\item Can be characterised logically and combinatorially
 			\item Extension to more than graphs seems desirable
-			\item Scheidt and Schweikardt \textcolor{red}{bibliography} introduced Relational Colour Refinement
+			\item Scheidt and Schweikardt, 2025 introduced Relational Colour Refinement
 			\item Conceptually similar to classical Colour Refinement
 			\item Also has a logical and a combinatorial characterisation
 		\end{itemize}
@@ -105,17 +105,16 @@
 			\item Also called \emph{CR} or \emph{$1$-dimensional Weisfeiler-Leman} algorithm
 			\item Iterative graph algorithm
 			\item Constructs colour for every vertex, based on colours of neighbours
-		\end{itemize}
-		
-		\begin{definition}[Colour Refinement]
-			For graph $G=(V,E)$, for every $v\in V$ and $i\in \mathbb N$:
+			\item Initial colour for every $v\in V$: $C_0(v)=0$
+			\item Next rounds: $C_{i+1}(v)\coloneqq(C_i(v),\multiset{C_i(u) : \{v,u\}\in E})$
+			\item CR distinguishes two graphs $G$ and $H$, if
 			\begin{itemize}
-				\item Initial colour: $C_0(v)\coloneqq 0$
-				\item Next rounds:$$C_{i+1}(v)\coloneqq(C_i(v),\multiset{C_i(u) : \{v,u\}\in E})$$
+				\item there exists $C_i(v)$ in colouring of $G$ or $H$, such that the number of vertices with colour $C_i(v)$ is different in $G$ than in $H$
 			\end{itemize}
-		\end{definition}
+		\end{itemize}
 	\end{frame}
 	
+	\iffalse
 	\begin{frame}{Example for CR}
 		\begin{columns}
 			\begin{column}{0.25\textwidth}
@@ -179,17 +178,19 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
+	\fi
 	
 	\begin{frame}{Characterisations of CR}
 		\begin{itemize}
 			\item There are equivalent characterisations for CR
-			\item Due to \textcolor{red}{bibliography}:\break
+			\item Logical characterisation:\break
 			CR distinguishes $G$ and $H$ if, and only if, there exists $\phi\in \C{2}$, such that $G\models \phi$ and $H\not\models \phi$
-			\item Due to \textcolor{red}{bibliography}:\break
+			\item Combinatorial characterisation:\break
 			CR distinguishes $G$ and $H$ if, and only if, there exists tree $T$, such that $\hom(T,G)\neq\hom(T,H)$
 		\end{itemize}
 	\end{frame}
 	
+	\iffalse
 	\begin{frame}{Application of Characterisations to Example}
 			\begin{columns}
 			\begin{column}{0.25\textwidth}
@@ -245,29 +246,34 @@
 			\end{column}
 		\end{columns}
 	\end{frame}
+	\fi
 	
 	\section{Relational Colour Refinement}
 	
-	\begin{frame}{Relational Colour Refinement}
+	\begin{frame}{Relational Colour Refinement (RCR)}
 		\begin{itemize}
-			\item Called \emph{RCR} for short
 			\item Applies variant of classical Colour Refinement on tuples of structure
-			\item Uses atomic type as part of initial colouring
+			\item Uses set of relations that contain tuple as part of initial colouring
 			\item Uses pairs of indices as edges to mark shared elements of tuples
 			\item Formally:
 			$$\operatorname{atp}(\mathbf a) = \{ R \in \sigma : \mathbf a \in R\}$$
 			and
 			$$\operatorname{stp}(\mathbf a, \mathbf b)=\{(i,j)\in [n]\times[m] : a_i = b_j\}$$
+			\item For relational structure $\mathfrak A$ and all tuples $\mathbf a\in \mathbf A$:
+			\item Initial colour: $\varrho_0(\mathbf a)=(\operatorname{atp}(\mathbf a), \operatorname{stp}(\mathbf a, \mathbf a))$
+			\item For the next rounds: $\varrho_{i+1}(\mathbf a)=(\varrho_i(\mathbf a), \multiset{(\operatorname{stp}(\mathbf a,\mathbf b), \varrho_i(\mathbf b)) : \operatorname{stp}(\mathbf a,\mathbf b)\neq \emptyset})$
 		\end{itemize}
 	\end{frame}
 	
+	\iffalse
 	\begin{frame}{The Algorithm}
 		\begin{itemize}
 			\item For relational structure $\mathfrak A$ and all tuples $\mathbf a\in \mathbf A$:
 			\item Initial colour: $\varrho_0(\mathbf a)=(\operatorname{atp}(\mathbf a), \operatorname{stp}(\mathbf a, \mathbf a))$
-			\item For the next rounds: $\varrho_{i+1}(\mathbf a)=(\varrho_i(\mathbf a), \multiset{(\operatorname{stp}(\mathbf a,\mathbf b), \varrho_i(\mathbf b)) : \set(\mathbf a)\cap\set(\mathbf b)\neq\emptyset})$
+			\item For the next rounds: $\varrho_{i+1}(\mathbf a)=(\varrho_i(\mathbf a), \multiset{(\operatorname{stp}(\mathbf a,\mathbf b), \varrho_i(\mathbf b)) : \operatorname{stp}(\mathbf a,\mathbf b)\neq \emptyset})$
 		\end{itemize}
 	\end{frame}
+	\fi
 	
 	\begin{frame}{An Example for RCR}
 		\begin{columns}
@@ -290,8 +296,7 @@
 			\end{column}
 			\begin{column}{0.75\textwidth}
 				\begin{itemize}
-					\item Structure $\mathfrak A=(A,R^{\mathfrak A},T^{\mathfrak A})$
-					\item $A=\{a,b,c,d\}$, $R^{\mathfrak A}=\{(a,b)\}$, $T^{\mathfrak A}=\{(a,c,d),(b,c,d)\}$
+					\item Structure $\mathfrak A=(A,\textcolor{rwth-blue}{R}^{\mathfrak A},\textcolor{rwth-red}{T}^{\mathfrak A})$
 				\end{itemize}
 			\end{column}
 		\end{columns}
@@ -348,7 +353,7 @@
 		\end{itemize}
 	\end{frame}
 	
-	\subsection{Logical Characterisation of RCR}
+	% \subsection{Logical Characterisation of RCR}
 	
 	\begin{frame}{Guarded Fragment of Counting Logic}
 		\begin{itemize}
@@ -373,7 +378,7 @@
 	\end{frame}
 	
 	\begin{frame}{Characterising RCR Using Logic}
-		\begin{block}{Theorem B from \textcolor{red}{bibliography}}
+		\begin{block}{Theorem B (Scheidt and Schweikardt, 2025)}
 			Let $\mathfrak A$ and $\mathfrak B$ be two relational structures.
 			Then the two following statements are equivalent.
 			\begin{enumerate}
@@ -426,7 +431,7 @@
 		\end{itemize}
 	\end{frame}
 	
-	\subsection{Combinatorial Characterisation of RCR}
+	% \subsection{Combinatorial Characterisation of RCR}
 	
 	\begin{frame}{Acyclic Structures}
 		\begin{itemize}
@@ -435,12 +440,11 @@
 		\end{itemize}
 		\begin{block}{Acyclic Structures}
 			\begin{itemize}
-				\item Let $\mathfrak C$ be relational structure
-				\item Join tree $J$ for $\mathfrak C$ is tree with $V(J)=\mathbf C$ and fulfils join-tree-property:
+				\item Relational structure $\mathfrak C$ is acyclic if it has a join tree $J$
+				\item Join tree $J$ is tree with $V(J)=\bigcup_{R\in\sigma}R^{\mathfrak C}$ and fulfils join-tree-property:
 				\begin{itemize}
-					\item For every $e\in C$, the set $\{\mathbf x \in V(J) : e\in \mathbf \set(x)\}$ induces a connected subtree
+					\item For every $e\in C$, the set $\{\mathbf x \in V(J) : e\in \mathbf \set(\mathbf x)\}$ induces a connected subtree
 				\end{itemize}
-				\item We call $\mathfrak C$ acyclic, if it has a join tree
 			\end{itemize}
 		\end{block}
 	\end{frame}
@@ -526,12 +530,12 @@
 	\end{frame}
 	
 	\begin{frame}{Characterising RCR Using Homomorphism Counting}
-		\begin{block}{Theorem A from \textcolor{red}{bibliography}}
+		\begin{block}{Theorem A (Scheidt and Schweikardt, 2025)}
 			Let $\mathfrak A$ and $\mathfrak B$ be relational structures.
 			Then the two following statements are equivalent.
 			\begin{enumerate}
 				\item RCR distinguishes $\mathfrak A$ and $\mathfrak B$
-				\item There exists an acyclic relational structure $\mathfrak C$, such that it has a different number of homomorphisms to $\mathfrak A$ than to $\mathfrak B$
+				\item There exists an acyclic relational structure $\mathfrak C$, such that it distinguishes $\mathfrak A$ and $\mathfrak B$ by homomorphism count
 			\end{enumerate}
 		\end{block}
 	\end{frame}
@@ -539,12 +543,12 @@
 	\begin{frame}{Example for Combinatorial Characterisation of RCR}
 		\begin{columns}
 			\begin{column}{0.33\textwidth}
-				\centering
 				\begin{tikzpicture}
 					\node[] at (0,0) (a) {$a$};
 					\node[] at (2, 0) (b) {$b$};
 					\node[] at (0, -2) (c) {$c$};
 					\node[] at (2, -2) (d) {$d$};
+					\node[] at (1, 0.8) (name) {$\mathfrak A$:};
 					
 					\node[fit=(a) (c) (d)] (acd) {};
 					\draw[rounded corners=20pt, thick, rwth-red] ($(acd.north west)+(0,0.4)$) -- (acd.south west) -- ($(acd.south east)+(0.4,0)$) -- cycle;
@@ -562,6 +566,7 @@
 					\node[] at (2, 0) (b) {$b'$};
 					\node[] at (0, -2) (c) {$c'$};
 					\node[] at (2, -2) (d) {$d'$};
+					\node[] at (1, 0.8) (name) {$\mathfrak B$:};
 					
 					\node[fit=(a) (c) (d)] (acd) {};
 					\draw[rounded corners=20pt, thick, rwth-red] ($(acd.north west)+(0,0.4)$) -- (acd.south west) -- ($(acd.south east)+(0.4,0)$) -- cycle;
@@ -573,12 +578,13 @@
 				\end{tikzpicture}
 			\end{column}
 			\begin{column}{0.33\textwidth}
-				\vspace{13pt}
+				\vspace{3pt}
 				\centering
 				\begin{tikzpicture}
 					\node[draw, rounded corners=8pt] at (0, 0) (cd) {$(c',d')$};
 					\node[draw, rounded corners=8pt] at (-1.5, -2) (acd) {$(a',c',d')$};
 					\node[draw, rounded corners=8pt] at (1.5, -2) (bcd) {$(b',c',d')$};
+					\node[] at (0, 0.8) (name) {$J$:};
 					
 					\draw
 					(cd) edge[-] (acd)
@@ -588,9 +594,9 @@
 		\end{columns}
 		\vspace{10pt}
 		\begin{itemize}
-			\item Right tree is join tree for middle structure, therefore middle structure is acyclic
-			\item Identity is homomorphism, so middle structure has at least one homomorphism to itself
-			\item Middle structure has no homomorphisms to left structure
+			\item $J$ is join tree for $\mathfrak B$, therefore $\mathfrak B$ is acyclic
+			\item Identity is homomorphism, so $\mathfrak B$ has at least one homomorphism to itself
+			\item $\mathfrak B$ has no homomorphisms to $\mathfrak A$
 		\end{itemize}
 	\end{frame}
 	
@@ -600,7 +606,7 @@
 		\begin{itemize}
 			\item Many interesting structures use functions
 			\item Colour Refinement algorithm for such structures seems desirable
-			\item Will use the results of Scheidt and Schweikardt \textcolor{red}{bibliography} and investigate how robust they are
+			\item Will use the results of Scheidt and Schweikardt and investigate how robust they are
 			\item Following structure:
 			\begin{enumerate}
 				\item Presentation of two approaches for Colour Refinement for non-relational signatures
@@ -617,15 +623,15 @@
 			$$f(\mathbf x)=y \Longleftrightarrow (\mathbf xy)\in R_f$$
 			\item For non-relational signature $\sigma$ define relational signature $\sigma'$:
 			\begin{itemize}
-				\item Relation symbol $R\in\sigma$ of arity $n$ $\rightarrow$ introduce $R\in\sigma'$ of arity $n$
+				\item Inherit relation symbols from $\sigma$
 				\item Function symbol $f\in\sigma$ of arity $n$ $\rightarrow$ introduce $R_f\in\sigma'$ of arity $n+1$
 			\end{itemize}
 			\item Encode $\sigma$-structure $\mathfrak A$ as $\sigma'$-structure $\mathfrak A'$:
 			\begin{itemize}
-				\item For relation symbol $R\in\sigma$: $R^{\mathfrak A'}\coloneqq R^{\mathfrak A}$
+				\item Relations like in $\mathfrak A$
 				\item For function symbol $f\in \sigma$: $R_f^{\mathfrak A'}\coloneqq \{(\mathbf xy) : f^{\mathfrak A}(\mathbf x)=y\}$
 			\end{itemize}
-			\item We say naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$, if RCR distinguishes the encodings
+			\item We say \emph{naive RCR} distinguishes $\mathfrak A$ and $\mathfrak B$, if RCR distinguishes the encodings
 		\end{itemize}
 	\end{frame}
 	
@@ -643,12 +649,11 @@
 		\begin{block}{Alternations of Function Applications}
 			\begin{itemize}
 				\item Let $\sigma$ be signature with unary function symbols
-				\item Define set of all allowed function application alternations $\operatorname{Alters}^k_n$ as $\operatorname{Alters}^0_n(\sigma)=\{\operatorname{id}\}$ and 
-				\begin{align*}
-					\operatorname{Alters}^k_{n}(\sigma)\coloneqq \operatorname{Alters}^{k-1}_{n}(\sigma)\cup\{f_1^{m_1}\dots f_k^{m_k} : & f_1,\dots, f_k\in \sigma_{\operatorname{Func}} \\ 
-					& \land \forall i\in[k]\operatorname{.} m_i\in[n] \\ 
-					& \land \forall i\in[k-1] \operatorname{.} f_{i} \neq f_{i+1}\}.
-				\end{align*}
+				\item Define set of all allowed function application alternations $\operatorname{Alters}^k_n$ as all sequences of up to $k$ function symbols, where 
+				\begin{enumerate}
+					\item Every function symbol has exponent in $[n]$
+					\item Two succeeding function symbols are different
+				\end{enumerate}
 			\end{itemize}
 		\end{block}
 		\begin{itemize}
@@ -663,8 +668,8 @@
 	\begin{frame}{Transitive Expansion ii}
 		\begin{block}{Transitive Expansion}
 			\begin{itemize}
-				\item For alternation depth $k$ and $\sigma$-structure $\mathfrak A$ with $\vert \mathfrak A\vert = n$ define transitive expansion $\widetilde{\mathfrak A}$ as a $\widetilde{\sigma}$-structure
-				\item For $\alpha,\beta,\alpha_1,\dots,\alpha_\ell\in \operatorname{Alters}^k_n(\sigma)$ and relation symbol $R\in\sigma$ of arity $\ell$, insert relation symbol $\operatorname{Eq}_{\alpha,\beta}$ of arity $2$ and relation symbol $R_{\alpha_1,\dots,\alpha_\ell}$ of arity $\ell$ into $\widetilde{\sigma}$
+				\item For alternation depth $k$ and $\sigma$-structure $\mathfrak A$ with $\vert \mathfrak A\vert = n$ define signature $\widetilde{\sigma}$ and transitive expansion $\widetilde{\mathfrak A}$ as $\widetilde{\sigma}$-structure
+				\item For all $\alpha,\beta,\alpha_1,\dots,\alpha_\ell\in \operatorname{Alters}^k_n(\sigma)$ and relation symbol $R\in\sigma$ of arity $\ell$, insert relation symbol $\operatorname{Eq}_{\alpha,\beta}$ of arity $2$ and relation symbol $R_{\alpha_1,\dots,\alpha_\ell}$ of arity $\ell$ into $\widetilde{\sigma}$
 				\item Define $\operatorname{Eq}_{\alpha,\beta}^{\widetilde{\mathfrak A}}\coloneqq \{(x,y) : \alpha^{\mathfrak A}(x)=\beta^{\mathfrak A}(y)\}$ and $R_{\alpha_1,\dots,\alpha_\ell}^{\widetilde{\mathfrak A}}\coloneqq \{(x_1,\dots,x_\ell) : (\alpha_1^{\mathfrak A}(x_1),\dots,\alpha_\ell^{\mathfrak A}(x_\ell))\in R^{\mathfrak A}\}$
 			\end{itemize}
 		\end{block}
@@ -698,7 +703,6 @@
 		\end{itemize}
 	\end{frame}
 	
-	\iffalse
 	\begin{frame}{Naive Encoding versus Transitive Expansion}
 		\begin{columns}
 			\begin{column}{0.5\textwidth}
@@ -753,9 +757,8 @@
 			\end{itemize}
 		\end{itemize}
 	\end{frame}
-	\fi
 	
-	\subsection{Logical Characterisation of Naive RCR}
+	\subsection{Logical Characterisations for Both Approaches}
 	
 	\begin{frame}{Nesting-Free Guarded Fragment of Counting Logic}
 		\begin{block}{$\mathsf{nfGF}(\mathsf C)$}
@@ -777,26 +780,26 @@
 	\begin{frame}{Characterising Naive RCR Logically}
 		\begin{block}{Logical Characterisation of Naive RCR}
 			Let $\mathfrak A$ and $\mathfrak B$ be structures.
-			Then the two following statements are equivalent.
-			\begin{enumerate}
-				\item Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$
-				\item There exists a sentence $\phi\in\mathsf{nfGF}(\mathsf C)$ which is fulfilled by $\mathfrak A$, but not by $\mathfrak B$
-			\end{enumerate}
+			\begin{center}
+				Naive RCR distinguishes $\mathfrak A$ and $\mathfrak B$\\
+				iff.\\
+				There exists a sentence $\phi\in\mathsf{nfGF}(\mathsf C)$ which is fulfilled by $\mathfrak A$, but not by $\mathfrak B$
+			\end{center}
 		\end{block}
 		\emph{Proof idea}:
 		\begin{itemize}
 			\item Naive RCR distinguishes structures iff. RCR distinguishes encodings iff. there exists a sentence in $\GFC$ that distinguishes the encodings
-			\item Define translation of sentences in $\GFC$ over signature $\sigma'$ to and from sentences in $\mathsf{nfGF}(\mathsf C)$ over signature $\sigma$
+			\item Define translation of $\GFC$ to and from $\mathsf{nfGF}(\mathsf C)$
 			\begin{itemize}
-				\item $R_f(\mathbf xy) \leftrightarrow f(\mathbf x)=y$
+				\item Replace $R_f(\mathbf xy)$ by $f(\mathbf x)=y$
 			\end{itemize}
 		\end{itemize}
 	\end{frame}
 	
-	\subsection{Logical Characterisation of RCR$_k$}
+	% \subsection{Logical Characterisation of RCR$_k$}
 	
-	\begin{frame}{$\GFC$ with alternation depth $k$}
-		\begin{block}{$\GFC_k$}
+	\begin{frame}{$\GFC$ with alternation depth $k$ ($\GFC_k$)}
+		\begin{block}{$\GFC$ with alternation depth $k$}
 			\begin{itemize}
 				\item Fixate $k\in\mathbb N$
 				\item Atomics are defined like in natural extension to non-relational signatures, with one restriction
@@ -825,17 +828,33 @@
 	\end{frame}
 	\fi
 	
-	\begin{frame}{Characterising RCR$_k$ Logically ii}
+	\begin{frame}{Characterising RCR$_k$ Logically}
 		\begin{block}{Logical Characterisation of RCR$_k$}
 			Let $k\in\mathbb N$ and let $\mathfrak A$ and $\mathfrak B$ be two structures.
-			Then the two following statements are equivalent.
-			\begin{enumerate}
-				\item RCR$_k$ distinguishes $\mathfrak A$ and $\mathfrak B$
-				\item There exists a sentence in $\GFC_k$ that is fulfilled by $\mathfrak A$, but not by $\mathfrak B$
-			\end{enumerate}
+			\begin{center}
+				RCR$_k$ distinguishes $\mathfrak A$ and $\mathfrak B$\\
+				iff.\\
+				There exists a sentence in $\GFC_k$ that is fulfilled by $\mathfrak A$, but not by $\mathfrak B$
+			\end{center}
 		\end{block}
+		\begin{itemize}
+			\item 1. to 2.: Similar to before, translation from $\GFC$ to $\GFC_k$ very simple
+			\item 2. to 1.:
+			\begin{itemize}
+				\item Assume $n=\vert \mathfrak A \vert = \vert \mathfrak B \vert$
+				\item Translate and replace all atomic subformulae by formula that:
+				\begin{itemize}
+					\item is equivalent for all structures with $n$ elements
+					\item only contains terms $f^i(s(x))$ with $i\leq n$
+				\end{itemize}
+				\item Rearrange resulting formula to get valid $\GFC_k$-sentence
+				\item Results in equivalent formula for structures with $n$ elements and for every term $t$ there exists an $\alpha\in\operatorname{Alters}^k_n(\sigma)$, such that $t=\alpha$
+				\item Can easily be translated into sentence in $\GFC$ of signature $\widetilde{\sigma}$
+			\end{itemize}
+		\end{itemize}
 	\end{frame}
 	
+	\iffalse
 	\begin{frame}{Characterising RCR$_k$ Logically iii}
 		\emph{Proof idea}
 		\begin{itemize}
@@ -854,14 +873,15 @@
 			\end{itemize}
 		\end{itemize}
 	\end{frame}
+	\fi
 	
 	\subsection{Discussion on the Combinatorial Characterisation}
 	
 	\begin{frame}{Total and Functional Structures}
 		\begin{itemize}
 			\item Let $\sigma$ be a signature, $\sigma'$ its naive encoding and $\mathfrak A'$ a $\sigma'$-structure
-			\item We call $\mathfrak A'$ total if for every $n$-ary function symbol $f\in\sigma$ and every $n$-tuple $\mathbf x$ there is a $y$, such that $(\mathbf xy)\in R_f^{\mathfrak A'}$
-			\item We call $\mathfrak A'$ functional if for every $n$-ary function symbol $f$ there are no two $n+1$-tuples $(\mathbf xy),(\mathbf xz)\in R_f^{\mathfrak A'}$
+			\item We call $\mathfrak A'$ total if for every function symbol $f\in\sigma$ and every tuple $\mathbf x$ there is a $y$, such that $(\mathbf xy)\in R_f^{\mathfrak A'}$
+			\item We call $\mathfrak A'$ functional if for every function symbol $f\in\sigma$ there are no two tuples $(\mathbf xy),(\mathbf xz)\in R_f^{\mathfrak A'}$
 		\end{itemize}
 		\vspace{10pt}
 		\begin{columns}
@@ -941,11 +961,11 @@
 			\item There are structures that are distinguished by naive RCR, but there is no acyclic and total structure that distinguishes the encodings by homomorphism count
 			\item Define signature $\sigma=\{E/2,f/1\}$
 			\item Two families of $\sigma$-structures $(\mathfrak A_i)_{i\in\mathbb N_{\geq 4}}$ and $(\mathfrak B_i)_{i\in\mathbb N_{\geq 4}}$
-			\item For all $i\in \mathbb N_{\geq 4}$: Naive RCR distinguishes $\mathfrak A_i$ and $\mathfrak B_i$, but no acyclic and total structure can distinguish the encodings by hom. count
+			\item For all $i\in \mathbb N_{\geq 4}$: Naive RCR distinguishes $\mathfrak A_i$ and $\mathfrak B_i$, but no total and acyclic structure can distinguish the encodings by hom. count
 		\end{itemize}
 	\end{frame}
 	
-	\begin{frame}{Structures that are distinguished by nRCR but not total structures i}
+	\begin{frame}{Non-Enforceability of Totality ii}
 		\begin{columns}
 			\begin{column}{0.25\textwidth}
 				\centering
@@ -1047,7 +1067,7 @@
 		\end{columns}
 	\end{frame}
 	
-	\begin{frame}{Structures that are distinguished by nRCR but not total structures ii}
+	\begin{frame}{Non-Enforceability of Totality iii}
 		\begin{columns}
 			\begin{column}{0.25\textwidth}
 				\centering
@@ -1151,15 +1171,15 @@
 			$\Updownarrow$\\
 			There exists acyclic structure that dist. encodings $\mathfrak A'$ and $\mathfrak B'$ by hom. count\\
 			$\Updownarrow$\\
-			There exists acyclic and functional structure that dist. encodings by hom. count\\
+			There exists \emph{functional} and acyclic structure that dist. encodings by hom. count\\
 			$\Uparrow$, but $\not\Downarrow$\\
-			There exists acyclic, total and functional structure that dist. encodings by hom. count\\
+			There exists \emph{total}, functional and acyclic structure that dist. encodings by hom. count\\
 			$\Updownarrow$\\
-			There exists acyclic, non-relational structure that dist. $\mathfrak A$ and $\mathfrak B$ by hom. count
+			There exists \emph{non-relational} and acyclic structure that dist. $\mathfrak A$ and $\mathfrak B$ by hom. count
 		\end{center}
 	\end{frame}
 	
-	\section{RCR on Subclasses of Relational Structures}
+	\section{Restricting RCR to Subclasses of Relational Structures}
 	
 	\begin{frame}{Restricting the Class of Structures}
 		\begin{itemize}
@@ -1171,7 +1191,7 @@
 			\end{center}
 			\item Does not hold for class of total structures
 			\begin{itemize}
-				\item[$\circ$] Encodings of classes of structures from before are total, but no total and acyclic structure dist. them by hom. count
+				\item[$\circ$] Encodings of families of structures from before are total, but no total and acyclic structure dist. them by hom. count
 			\end{itemize}
 			\item Another class to investigate: Class of symmetric structures
 		\end{itemize}
@@ -1179,127 +1199,28 @@
 	
 	\begin{frame}{Restriction to Symmetric Structures}
 		\begin{itemize}
-			\item Relational Structure is symmetric, if for every $k$-ary relation $R$ and for every $k$-tuple $\mathbf x\in R$, every permutation of the elements in $\mathbf x$ is also in $R$
+			\item Relational Structure is symmetric, if for every relation $R$ and for every tuple $\mathbf x\in R$, every permutation of the elements in $\mathbf x$ is also in $R$
 			\pause
 			\item For two symmetric structures we can show
 			\begin{center}
-				There exists acyclic structure dist. the structures by hom. count\\
+				There exists acyclic structure that dist. the structures by hom. count\\
 				iff.\\
-				There exists acyclic, symmetric structure dist. the structure by hom. count
+				There exists symmetric and acyclic structure that dist. the structure by hom. count
 			\end{center}
 			\item From this, restriction to symmetric structures is possible
 		\end{itemize}
 	\end{frame}
 	
-	\section{Sketch of a Proof}
-	
-	\begin{frame}{Description of the Lemma}
-		\begin{itemize}
-			\item Lemma for translating $f^m(x_1)=x_2$ to a formula with a bounded number of applications of $f$ in series
-			\item Used in proof of logical characterisation of RCR$_k$
-		\end{itemize}
-		\begin{block}{Lemma 4.6}
-			A formula $\psi$ of the form $f^m(x_1)=x_2\in \GFC_1$ can be translated to a formula $\theta(x_1,x_2)\in\GFC_1$, such that:
-			\begin{enumerate}
-				\item They are equivalent for structures with $n$ elements
-				\item There does not appear a term $f^i$ with $i>n$ in $\theta$
-				\item $\theta$ is of the form $\bigvee \Phi$ and if $\theta$ is fulfilled, then there exists exactly one $\phi\in\Phi$ which is satisfied
-			\end{enumerate}
-		\end{block}
-	\end{frame}
-	
-	\begin{frame}{Proof Idea}
-		\begin{itemize}
-			\item Elements $f^0(x),f^1(x),\dots,f^m(x)$ describe a path through a structure
-			\item If $m>n$, there have to be $i,j\leq n$ such that $f^i(x)=f^j(x)$
-			\item Path can be decomposed into:
-			\begin{enumerate}
-				\item Path to a cycle
-				\item A cycle
-				\item A last part of the cycle
-			\end{enumerate}
-			\item Define set $\mathcal I(n,m)$ as set of all such decomposition $(k,\ell,p)$
-		\end{itemize}
-		\centering
-		\begin{tikzpicture}
-			\filldraw (-2, 0) circle (2pt); % Begin
-			\draw[thick, ->] (-1.9, 0) -- node[below] {$k$} (1.9, 0) ;
-			\filldraw (2, 0) circle (2pt); % End of k
-			\draw[thick, |->] (3.25, 0) ++(-175:1.25) arc (-175:175:1.25);
-			\node[xshift=4.7cm] {$\ell$};
-			\draw[thick, |->] (3.25, 0) ++(-175:1) arc (-175:-50:1);
-			\node[xshift=3cm, yshift=-0.75cm] {$p$};
-			\filldraw (3.96, -0.71) circle (2pt);
-		\end{tikzpicture}
-	\end{frame}
-	
-	\begin{frame}[allowframebreaks]{Sketch of the Proof}
-		\begin{itemize}
-			\item Define $\theta(x_1,x_2)\coloneqq \bigvee_{(k,\ell,p)\in \mathcal I(n,m)} \zeta_{(k,\ell,p)}(x_1,x_2)$ where
-			\begin{align*}
-				\zeta_{(k,\ell,p)}(x_1,x_2)\coloneqq & f^{k+p}(x_1)=x_2 \land f^{k}(x_1)=f^{k+\ell}(x_1) \\
-				& \land f^{k-1}(x_1)\neq f^{k-1+\ell}(x_1)  \\
-				& \land \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)
-			\end{align*}
-			\begin{center}
-				\begin{tikzpicture}
-					\filldraw (-2, 0) circle (2pt); % Begin
-					\draw[thick, ->] (-1.9, 0) -- node[below] {$k$} (1.9, 0) ;
-					\filldraw (2, 0) circle (2pt); % End of k
-					\draw[thick, |->] (3.25, 0) ++(-175:1.25) arc (-175:175:1.25);
-					\node[xshift=4.7cm] {$\ell$};
-					\draw[thick, |->] (3.25, 0) ++(-175:1) arc (-175:-50:1);
-					\node[xshift=3cm, yshift=-0.75cm] {$p$};
-					\filldraw (3.96, -0.71) circle (2pt);
-				\end{tikzpicture}
-			\end{center}
-			\item $f^{k+p}(x_1)=x_2 \land f^{k}(x_1)=f^{k+\ell}(x_1)$ ensures that $(k,\ell,p)$ decomposes the path into a path to a cycle and the cycle itself
-			\item $f^{k-1}(x_1)\neq f^{k-1+\ell}(x_1) \land \bigwedge_{0<\ell'<\ell}f^{k}(x_1)\neq f^{k+\ell'}(x_1)$ ensures that only the lexicographically smallest decomposition is satisfied
-			\item[]
-			\item If $\psi$ is satisfied, a smallest decomposition $(k,\ell,p)$ exists that decomposes the path of $f$
-			\item Then it can be shown that $\zeta_{(k,\ell,p)}$ is satisfied, and because only the lexicographically smallest $(k,\ell,p)$ is satisfied, it is the only one
-			\item[]
-			\item If $\theta$ is satisfied, some $\zeta_{(k,\ell,p)}$ is satisfied
-			\item This means that $(k,\ell,p)$ decomposes the path of $f$, therefore $\psi$ is also satisfied
-		\end{itemize}
-	\end{frame}
 	
 	\section{Conclusion}
 	
 	\begin{frame}{Conclusion}
 		\begin{itemize}
-			\item We presented classical CR and Scheidt's and Scheikardt's RCR algorithm
+			\item We presented classical CR and Scheidt's and Schweikardt's RCR algorithm
 			\item We defined two possible ways to apply their algorithm to non-relational signatures
-			\begin{itemize}
-				\item Naive RCR
-				\item RCR$_k$
-			\end{itemize}
-			\item We showed our results for the logical characterisations
-			\begin{itemize}
-				\item Naive RCR gets characterised by the nesting free fragment of counting logic
-				\item RCR$_k$ gets characterised by the natural extension of $\GFC$ to non-relational signatures where terms have a maximal alternation depth of $k$
-			\end{itemize}
+			\item We showed a logical characterisation for each of the approaches
 			\item We disproved the characterisation by homomorphism counting
-			\begin{itemize}
-				\item Functionality can be enforced
-				\item Totality cannot
-			\end{itemize}
 			\item We showed results for the restriction to two subclasses of the relational structures
-			\begin{itemize}
-				\item The restriction to total structures does not preserve the characterisation by hom. counting
-				\item The restriction to symmetric structures does preserve it
-			\end{itemize}
-		\end{itemize}
-	\end{frame}
-	
-	\appendix
-	
-	\begin{frame}{Equality between terms $t$ and alternations $\alpha$}
-		\begin{itemize}
-			\item For a term $t$ and a $\alpha\in\operatorname{Alters}^k_n(\sigma)$ we say $t=\alpha$, if:
-			\item If $t=f^i(x)$, the $i$-times application of one function symbol $f$, and $\alpha=f^i$
-			\item If $t=f^i(g^j(s(x)))$, where $f$ and $g$ are function symbols and $s$ is a term, and $\alpha=f^i\alpha'$ and $s=\alpha'$
-			\item Informally, if $t$ is written using $\circ$, i.e. $f^i\circ g^j(x)$ instead of $f^i(g^j(x))$, the $\circ$ are omitted and then this equals $\alpha$
 		\end{itemize}
 	\end{frame}
 	
