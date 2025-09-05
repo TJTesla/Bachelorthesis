@@ -258,10 +258,12 @@
 			\item Formally:
 			$$\operatorname{atp}(\mathbf a) = \{ R \in \sigma : \mathbf a \in R\}$$
 			and
-			$$\operatorname{stp}(\mathbf a, \mathbf b)=\{(i,j)\in [n]\times[m] : a_i = b_j\}$$
-			\item For relational structure $\mathfrak A$ and all tuples $\mathbf a\in \mathbf A$:
-			\item Initial colour: $\varrho_0(\mathbf a)=(\operatorname{atp}(\mathbf a), \operatorname{stp}(\mathbf a, \mathbf a))$
-			\item For the next rounds: $\varrho_{i+1}(\mathbf a)=(\varrho_i(\mathbf a), \multiset{(\operatorname{stp}(\mathbf a,\mathbf b), \varrho_i(\mathbf b)) : \operatorname{stp}(\mathbf a,\mathbf b)\neq \emptyset})$
+			$$\operatorname{stp}(\mathbf a, \mathbf b)=\{(i,j)\in [n]\times[m] : \mathbf a_i = \mathbf b_j\}$$
+			\item For relational structure $\mathfrak A$ and all tuples $\mathbf a\in \bigcup_{R\in\sigma}R^{\mathfrak A}$:
+			\begin{itemize}
+				\item Initial colour: $\varrho_0(\mathbf a)=(\operatorname{atp}(\mathbf a), \operatorname{stp}(\mathbf a, \mathbf a))$
+				\item For the next rounds: $\varrho_{i+1}(\mathbf a)=(\varrho_i(\mathbf a), \multiset{(\operatorname{stp}(\mathbf a,\mathbf b), \varrho_i(\mathbf b)) : \operatorname{stp}(\mathbf a,\mathbf b)\neq \emptyset})$
+			\end{itemize}
 		\end{itemize}
 	\end{frame}
 	
@@ -649,7 +651,7 @@
 		\begin{block}{Alternations of Function Applications}
 			\begin{itemize}
 				\item Let $\sigma$ be signature with unary function symbols
-				\item Define set of all allowed function application alternations $\operatorname{Alters}^k_n$ as all sequences of up to $k$ function symbols, where 
+				\item Define set of all allowed function application alternations $\operatorname{Alters}^k_n(\sigma)$ as all sequences of up to $k$ function symbols, where 
 				\begin{enumerate}
 					\item Every function symbol has exponent in $[n]$
 					\item Two succeeding function symbols are different
@@ -760,8 +762,8 @@
 	
 	\subsection{Logical Characterisations for Both Approaches}
 	
-	\begin{frame}{Nesting-Free Guarded Fragment of Counting Logic}
-		\begin{block}{$\mathsf{nfGF}(\mathsf C)$}
+	\begin{frame}{Nesting-Free Guarded Fragment of Counting Logic $\mathsf{nfGF}(\mathsf C)$}
+		\begin{block}{Nesting-Free Guarded Fragment of Counting Logic}
 			\begin{itemize}
 				\item Extends given definition of $\GFC$ for non-relational signatures
 				\item Allow atomics of the following forms
@@ -839,9 +841,8 @@
 		\end{block}
 		\begin{itemize}
 			\item 1. to 2.: Similar to before, translation from $\GFC$ to $\GFC_k$ very simple
-			\item 2. to 1.:
+			\item 2. to 1.: Assume $n=\vert \mathfrak A \vert = \vert \mathfrak B \vert$
 			\begin{itemize}
-				\item Assume $n=\vert \mathfrak A \vert = \vert \mathfrak B \vert$
 				\item Translate and replace all atomic subformulae by formula that:
 				\begin{itemize}
 					\item is equivalent for all structures with $n$ elements
@@ -1220,7 +1221,7 @@
 			\item We defined two possible ways to apply their algorithm to non-relational signatures
 			\item We showed a logical characterisation for each of the approaches
 			\item We disproved the characterisation by homomorphism counting
-			\item We showed results for the restriction to two subclasses of the relational structures
+			\item We showed results for two restrictions of relational structures
 		\end{itemize}
 	\end{frame}
 	
