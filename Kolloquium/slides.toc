@@ -1,7 +1,0 @@
-\beamer@sectionintoc {1}{Classical Colour Refinement}{4}{0}{1}
-\beamer@sectionintoc {2}{Relational Colour Refinement}{7}{0}{2}
-\beamer@sectionintoc {3}{Relational Colour Refinement for Structures With Functions}{19}{0}{3}
-\beamer@subsectionintoc {3}{1}{Logical Characterisations for Both Approaches}{27}{0}{3}
-\beamer@subsectionintoc {3}{2}{Discussion on the Combinatorial Characterisation}{32}{0}{3}
-\beamer@sectionintoc {4}{Restricting RCR to Subclasses of Relational Structures}{42}{0}{4}
-\beamer@sectionintoc {5}{Conclusion}{46}{0}{5}
