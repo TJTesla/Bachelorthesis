@@ -4,6 +4,8 @@ This repo holds the latex files for the concept paper as well as my bachelorthes
 
 The file `thesis.pdf` contains my thesis and the file `Kolloquium/slides.pdf` contains my presentation.
 
+Final Grade was a 1.3
+
 ## Abstract
 
 Colour Refinement is an iterative algorithm for graphs that computes a colouring
